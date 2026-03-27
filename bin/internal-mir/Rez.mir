@@ -1,0 +1,2428 @@
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; ]
+using Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [WatchUi,3,13,20]; @symbol_usingAlias = [Ui,3,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; ]
+using Toybox.Graphics;
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 7; @symbol_moduledef = [Rez,7,7,10]; ]
+module Rez {
+    [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 8; @symbol_moduledef = [Drawables,8,11,20]; ]
+    module Drawables {
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 8; ]
+        <init> {
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 9; @position = 27; initialized = true; @symbol_vardef = [cadence_icon,9,27,39]; @symbol_type<0> = [ResourceId,9,43,53]; ]
+        var cadence_icon as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 10; @position = 27; initialized = true; @symbol_vardef = [heartrate_icon,10,27,41]; @symbol_type<0> = [ResourceId,10,45,55]; ]
+        var heartrate_icon as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 11; @position = 27; initialized = true; @symbol_vardef = [LauncherIcon,11,27,39]; @symbol_type<0> = [ResourceId,11,43,53]; ]
+        var LauncherIcon as ResourceId;
+    }
+    [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 14; @symbol_moduledef = [Layouts,14,11,18]; ]
+    module Layouts {
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 14; ]
+        <init> {
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 15; @symbol_functiondef = [MainLayout,15,17,27]; @symbol_param<0> = [dc,15,28,30]; @symbol_param<0>_type<0> = [Graphics,15,34,42]; @symbol_param<0>_type<1> = [Dc,15,43,45]; @symbol_return<0> = [Array,15,50,55]; @symbol_return<1> = [WatchUi,15,56,63]; @symbol_return<2> = [Drawable,15,64,72]; ]
+        function MainLayout(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start:
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 16 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_var_dc_getHeight.1 = local;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 16 16 46 ];
+            %tmp.1 = lgetv %dc;
+            symbol [ dc %tmp.1 16 49 51 ];
+            symbol [ getHeight %tmp.2 16 52 61 ];
+            %tmp.2 = getv function %tmp.1 :getHeight;
+            %tmp.3 = invoke %tmp.1 %tmp.2();
+            lputv %rez_cmp_local_var_dc_getHeight.1 %tmp.3;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 16 16 46 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 18 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_var_dc_getWidth.2 = local;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 18 16 45 ];
+            %tmp.4 = lgetv %dc;
+            symbol [ dc %tmp.4 18 48 50 ];
+            symbol [ getWidth %tmp.5 18 51 59 ];
+            %tmp.5 = getv function %tmp.4 :getWidth;
+            %tmp.6 = invoke %tmp.4 %tmp.5();
+            lputv %rez_cmp_local_var_dc_getWidth.2 %tmp.6;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 18 16 45 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 20 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_bitmap_cadence_icon.3 = local;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.3 20 16 49 ];
+            symbol [ WatchUi %tmp.9 20 56 63 ];
+            %tmp.9 = getm $.Toybox.WatchUi;
+            symbol [ Bitmap %tmp.10 20 64 70 ];
+            %tmp.10 = getv function ? %tmp.9 :Bitmap;
+            %tmp.11 = newd 4;
+            %tmp.13 = const :identifier;
+            symbol [ identifier %tmp.13 20 73 83 const ];
+            %tmp.14 = "cadence_icon";
+            %tmp.15 = dup %tmp.11;
+            %tmp.16 = aputv %tmp.15 %tmp.13 %tmp.14;
+            %tmp.18 = const :rezId;
+            symbol [ rezId %tmp.18 20 102 107 const ];
+            symbol [ $ %tmp.19 20 109 110 ];
+            %tmp.19 = getm $;
+            symbol [ Rez %tmp.20 20 111 114 ];
+            %tmp.20 = getv %tmp.19 :Rez;
+            symbol [ Drawables %tmp.21 20 115 124 ];
+            %tmp.21 = getv %tmp.20 :Drawables;
+            symbol [ cadence_icon %tmp.22 20 125 137 ];
+            %tmp.22 = getv %tmp.21 :cadence_icon;
+            %tmp.23 = dup %tmp.16;
+            %tmp.24 = aputv %tmp.23 %tmp.18 %tmp.22;
+            %tmp.26 = const :locX;
+            symbol [ locX %tmp.26 20 140 144 const ];
+            %tmp.27 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.27 20 147 176 ];
+            %tmp.28 = 75;
+            %tmp.29 = 100.0;
+            %tmp.30 = div %tmp.28 %tmp.29;
+            %tmp.31 = mul %tmp.27 %tmp.30;
+            %tmp.32 = dup %tmp.24;
+            %tmp.33 = aputv %tmp.32 %tmp.26 %tmp.31;
+            %tmp.35 = const :locY;
+            symbol [ locY %tmp.35 20 195 199 const ];
+            %tmp.36 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.36 20 202 232 ];
+            %tmp.37 = 32;
+            %tmp.38 = 100.0;
+            %tmp.39 = div %tmp.37 %tmp.38;
+            %tmp.40 = mul %tmp.36 %tmp.39;
+            %tmp.41 = dup %tmp.33;
+            %tmp.42 = aputv %tmp.41 %tmp.35 %tmp.40;
+            %tmp.7 = newc %tmp.10 (%tmp.42);
+            lputv %rez_cmp_local_bitmap_cadence_icon.3 %tmp.7;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %rez_cmp_local_bitmap_cadence_icon.3 20 16 49 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 21 12 ]
+            %tmp.43 = lgetv %rez_cmp_local_bitmap_cadence_icon.3;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.43 21 12 45 ];
+            symbol [ setLocation %tmp.44 21 46 57 ];
+            %tmp.44 = getv function %tmp.43 :setLocation;
+            %tmp.45 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.45 21 59 88 ];
+            %tmp.46 = 75;
+            %tmp.47 = 100.0;
+            %tmp.48 = div %tmp.46 %tmp.47;
+            %tmp.49 = mul %tmp.45 %tmp.48;
+            %tmp.50 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.50 21 107 137 ];
+            %tmp.51 = 32;
+            %tmp.52 = 100.0;
+            %tmp.53 = div %tmp.51 %tmp.52;
+            %tmp.54 = mul %tmp.50 %tmp.53;
+            invoke %tmp.43 %tmp.44(%tmp.49, %tmp.54);
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 23 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_cadence_text.4 = local;
+            symbol [ rez_cmp_local_text_cadence_text %rez_cmp_local_text_cadence_text.4 23 16 47 ];
+            symbol [ WatchUi %tmp.57 23 54 61 ];
+            %tmp.57 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.58 23 62 66 ];
+            %tmp.58 = getv function ? %tmp.57 :Text;
+            %tmp.59 = newd 6;
+            %tmp.61 = const :identifier;
+            symbol [ identifier %tmp.61 23 69 79 const ];
+            %tmp.62 = "cadence_text";
+            %tmp.63 = dup %tmp.59;
+            %tmp.64 = aputv %tmp.63 %tmp.61 %tmp.62;
+            %tmp.66 = const :color;
+            symbol [ color %tmp.66 23 98 103 const ];
+            symbol [ Gfx %tmp.67 23 105 108 ];
+            %tmp.67 = getm $.Toybox.Graphics;
+            symbol [ COLOR_GREEN %tmp.68 23 109 120 ];
+            %tmp.68 = getv %tmp.67 :COLOR_GREEN;
+            %tmp.69 = dup %tmp.64;
+            %tmp.70 = aputv %tmp.69 %tmp.66 %tmp.68;
+            %tmp.72 = const :locX;
+            symbol [ locX %tmp.72 23 123 127 const ];
+            %tmp.73 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.73 23 130 159 ];
+            %tmp.74 = 80;
+            %tmp.75 = 100.0;
+            %tmp.76 = div %tmp.74 %tmp.75;
+            %tmp.77 = mul %tmp.73 %tmp.76;
+            %tmp.78 = dup %tmp.70;
+            %tmp.79 = aputv %tmp.78 %tmp.72 %tmp.77;
+            %tmp.81 = const :locY;
+            symbol [ locY %tmp.81 23 178 182 const ];
+            %tmp.82 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.82 23 186 216 ];
+            %tmp.83 = lgetv %dc;
+            symbol [ dc %tmp.83 23 219 221 ];
+            symbol [ getFontHeight %tmp.84 23 222 235 ];
+            %tmp.84 = getv function %tmp.83 :getFontHeight;
+            symbol [ Gfx %tmp.85 23 236 239 ];
+            %tmp.85 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.86 23 240 250 ];
+            %tmp.86 = getv %tmp.85 :FONT_LARGE;
+            %tmp.87 = invoke %tmp.83 %tmp.84(%tmp.86);
+            %tmp.88 = sub %tmp.82 %tmp.87;
+            %tmp.89 = 0.5;
+            %tmp.90 = mul %tmp.88 %tmp.89;
+            %tmp.91 = dup %tmp.79;
+            %tmp.92 = aputv %tmp.91 %tmp.81 %tmp.90;
+            %tmp.94 = const :justification;
+            symbol [ justification %tmp.94 23 262 275 const ];
+            symbol [ Gfx %tmp.95 23 277 280 ];
+            %tmp.95 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.96 23 281 300 ];
+            %tmp.96 = getv %tmp.95 :TEXT_JUSTIFY_CENTER;
+            %tmp.97 = dup %tmp.92;
+            %tmp.98 = aputv %tmp.97 %tmp.94 %tmp.96;
+            %tmp.100 = const :font;
+            symbol [ font %tmp.100 23 303 307 const ];
+            symbol [ Gfx %tmp.101 23 309 312 ];
+            %tmp.101 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.102 23 313 323 ];
+            %tmp.102 = getv %tmp.101 :FONT_LARGE;
+            %tmp.103 = dup %tmp.98;
+            %tmp.104 = aputv %tmp.103 %tmp.100 %tmp.102;
+            %tmp.55 = newc %tmp.58 (%tmp.104);
+            lputv %rez_cmp_local_text_cadence_text.4 %tmp.55;
+            symbol [ rez_cmp_local_text_cadence_text %rez_cmp_local_text_cadence_text.4 23 16 47 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 25 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_bitmap_heartrate_icon.5 = local;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.5 25 16 51 ];
+            symbol [ WatchUi %tmp.107 25 58 65 ];
+            %tmp.107 = getm $.Toybox.WatchUi;
+            symbol [ Bitmap %tmp.108 25 66 72 ];
+            %tmp.108 = getv function ? %tmp.107 :Bitmap;
+            %tmp.109 = newd 4;
+            %tmp.111 = const :identifier;
+            symbol [ identifier %tmp.111 25 75 85 const ];
+            %tmp.112 = "heartrate_icon";
+            %tmp.113 = dup %tmp.109;
+            %tmp.114 = aputv %tmp.113 %tmp.111 %tmp.112;
+            %tmp.116 = const :rezId;
+            symbol [ rezId %tmp.116 25 106 111 const ];
+            symbol [ $ %tmp.117 25 113 114 ];
+            %tmp.117 = getm $;
+            symbol [ Rez %tmp.118 25 115 118 ];
+            %tmp.118 = getv %tmp.117 :Rez;
+            symbol [ Drawables %tmp.119 25 119 128 ];
+            %tmp.119 = getv %tmp.118 :Drawables;
+            symbol [ heartrate_icon %tmp.120 25 129 143 ];
+            %tmp.120 = getv %tmp.119 :heartrate_icon;
+            %tmp.121 = dup %tmp.114;
+            %tmp.122 = aputv %tmp.121 %tmp.116 %tmp.120;
+            %tmp.124 = const :locX;
+            symbol [ locX %tmp.124 25 146 150 const ];
+            %tmp.125 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.125 25 153 182 ];
+            %tmp.126 = 15;
+            %tmp.127 = 100.0;
+            %tmp.128 = div %tmp.126 %tmp.127;
+            %tmp.129 = mul %tmp.125 %tmp.128;
+            %tmp.130 = dup %tmp.122;
+            %tmp.131 = aputv %tmp.130 %tmp.124 %tmp.129;
+            %tmp.133 = const :locY;
+            symbol [ locY %tmp.133 25 201 205 const ];
+            %tmp.134 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.134 25 208 238 ];
+            %tmp.135 = 32;
+            %tmp.136 = 100.0;
+            %tmp.137 = div %tmp.135 %tmp.136;
+            %tmp.138 = mul %tmp.134 %tmp.137;
+            %tmp.139 = dup %tmp.131;
+            %tmp.140 = aputv %tmp.139 %tmp.133 %tmp.138;
+            %tmp.105 = newc %tmp.108 (%tmp.140);
+            lputv %rez_cmp_local_bitmap_heartrate_icon.5 %tmp.105;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %rez_cmp_local_bitmap_heartrate_icon.5 25 16 51 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 26 12 ]
+            %tmp.141 = lgetv %rez_cmp_local_bitmap_heartrate_icon.5;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %tmp.141 26 12 47 ];
+            symbol [ setLocation %tmp.142 26 48 59 ];
+            %tmp.142 = getv function %tmp.141 :setLocation;
+            %tmp.143 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.143 26 61 90 ];
+            %tmp.144 = 15;
+            %tmp.145 = 100.0;
+            %tmp.146 = div %tmp.144 %tmp.145;
+            %tmp.147 = mul %tmp.143 %tmp.146;
+            %tmp.148 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.148 26 109 139 ];
+            %tmp.149 = 32;
+            %tmp.150 = 100.0;
+            %tmp.151 = div %tmp.149 %tmp.150;
+            %tmp.152 = mul %tmp.148 %tmp.151;
+            invoke %tmp.141 %tmp.142(%tmp.147, %tmp.152);
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 28 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_heartrate_text.6 = local;
+            symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.6 28 16 49 ];
+            symbol [ WatchUi %tmp.155 28 56 63 ];
+            %tmp.155 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.156 28 64 68 ];
+            %tmp.156 = getv function ? %tmp.155 :Text;
+            %tmp.157 = newd 6;
+            %tmp.159 = const :identifier;
+            symbol [ identifier %tmp.159 28 71 81 const ];
+            %tmp.160 = "heartrate_text";
+            %tmp.161 = dup %tmp.157;
+            %tmp.162 = aputv %tmp.161 %tmp.159 %tmp.160;
+            %tmp.164 = const :color;
+            symbol [ color %tmp.164 28 102 107 const ];
+            symbol [ Gfx %tmp.165 28 109 112 ];
+            %tmp.165 = getm $.Toybox.Graphics;
+            symbol [ COLOR_DK_RED %tmp.166 28 113 125 ];
+            %tmp.166 = getv %tmp.165 :COLOR_DK_RED;
+            %tmp.167 = dup %tmp.162;
+            %tmp.168 = aputv %tmp.167 %tmp.164 %tmp.166;
+            %tmp.170 = const :locX;
+            symbol [ locX %tmp.170 28 128 132 const ];
+            %tmp.171 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.171 28 135 164 ];
+            %tmp.172 = 20;
+            %tmp.173 = 100.0;
+            %tmp.174 = div %tmp.172 %tmp.173;
+            %tmp.175 = mul %tmp.171 %tmp.174;
+            %tmp.176 = dup %tmp.168;
+            %tmp.177 = aputv %tmp.176 %tmp.170 %tmp.175;
+            %tmp.179 = const :locY;
+            symbol [ locY %tmp.179 28 183 187 const ];
+            %tmp.180 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.180 28 191 221 ];
+            %tmp.181 = lgetv %dc;
+            symbol [ dc %tmp.181 28 224 226 ];
+            symbol [ getFontHeight %tmp.182 28 227 240 ];
+            %tmp.182 = getv function %tmp.181 :getFontHeight;
+            symbol [ Gfx %tmp.183 28 241 244 ];
+            %tmp.183 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.184 28 245 255 ];
+            %tmp.184 = getv %tmp.183 :FONT_LARGE;
+            %tmp.185 = invoke %tmp.181 %tmp.182(%tmp.184);
+            %tmp.186 = sub %tmp.180 %tmp.185;
+            %tmp.187 = 0.5;
+            %tmp.188 = mul %tmp.186 %tmp.187;
+            %tmp.189 = dup %tmp.177;
+            %tmp.190 = aputv %tmp.189 %tmp.179 %tmp.188;
+            %tmp.192 = const :justification;
+            symbol [ justification %tmp.192 28 267 280 const ];
+            symbol [ Gfx %tmp.193 28 282 285 ];
+            %tmp.193 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.194 28 286 305 ];
+            %tmp.194 = getv %tmp.193 :TEXT_JUSTIFY_CENTER;
+            %tmp.195 = dup %tmp.190;
+            %tmp.196 = aputv %tmp.195 %tmp.192 %tmp.194;
+            %tmp.198 = const :font;
+            symbol [ font %tmp.198 28 308 312 const ];
+            symbol [ Gfx %tmp.199 28 314 317 ];
+            %tmp.199 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.200 28 318 328 ];
+            %tmp.200 = getv %tmp.199 :FONT_LARGE;
+            %tmp.201 = dup %tmp.196;
+            %tmp.202 = aputv %tmp.201 %tmp.198 %tmp.200;
+            %tmp.153 = newc %tmp.156 (%tmp.202);
+            lputv %rez_cmp_local_text_heartrate_text.6 %tmp.153;
+            symbol [ rez_cmp_local_text_heartrate_text %rez_cmp_local_text_heartrate_text.6 28 16 49 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 30 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_distance_text.7 = local;
+            symbol [ rez_cmp_local_text_distance_text %rez_cmp_local_text_distance_text.7 30 16 48 ];
+            symbol [ WatchUi %tmp.205 30 55 62 ];
+            %tmp.205 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.206 30 63 67 ];
+            %tmp.206 = getv function ? %tmp.205 :Text;
+            %tmp.207 = newd 6;
+            %tmp.209 = const :identifier;
+            symbol [ identifier %tmp.209 30 70 80 const ];
+            %tmp.210 = "distance_text";
+            %tmp.211 = dup %tmp.207;
+            %tmp.212 = aputv %tmp.211 %tmp.209 %tmp.210;
+            %tmp.214 = const :color;
+            symbol [ color %tmp.214 30 100 105 const ];
+            symbol [ Gfx %tmp.215 30 107 110 ];
+            %tmp.215 = getm $.Toybox.Graphics;
+            symbol [ COLOR_PURPLE %tmp.216 30 111 123 ];
+            %tmp.216 = getv %tmp.215 :COLOR_PURPLE;
+            %tmp.217 = dup %tmp.212;
+            %tmp.218 = aputv %tmp.217 %tmp.214 %tmp.216;
+            %tmp.220 = const :locX;
+            symbol [ locX %tmp.220 30 126 130 const ];
+            %tmp.221 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.221 30 133 162 ];
+            %tmp.222 = 0.5;
+            %tmp.223 = mul %tmp.221 %tmp.222;
+            %tmp.224 = dup %tmp.218;
+            %tmp.225 = aputv %tmp.224 %tmp.220 %tmp.223;
+            %tmp.227 = const :locY;
+            symbol [ locY %tmp.227 30 172 176 const ];
+            %tmp.228 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.228 30 179 209 ];
+            %tmp.229 = 70;
+            %tmp.230 = 100.0;
+            %tmp.231 = div %tmp.229 %tmp.230;
+            %tmp.232 = mul %tmp.228 %tmp.231;
+            %tmp.233 = dup %tmp.225;
+            %tmp.234 = aputv %tmp.233 %tmp.227 %tmp.232;
+            %tmp.236 = const :justification;
+            symbol [ justification %tmp.236 30 228 241 const ];
+            symbol [ Gfx %tmp.237 30 243 246 ];
+            %tmp.237 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.238 30 247 266 ];
+            %tmp.238 = getv %tmp.237 :TEXT_JUSTIFY_CENTER;
+            %tmp.239 = dup %tmp.234;
+            %tmp.240 = aputv %tmp.239 %tmp.236 %tmp.238;
+            %tmp.242 = const :font;
+            symbol [ font %tmp.242 30 269 273 const ];
+            symbol [ Gfx %tmp.243 30 275 278 ];
+            %tmp.243 = getm $.Toybox.Graphics;
+            symbol [ FONT_SMALL %tmp.244 30 279 289 ];
+            %tmp.244 = getv %tmp.243 :FONT_SMALL;
+            %tmp.245 = dup %tmp.240;
+            %tmp.246 = aputv %tmp.245 %tmp.242 %tmp.244;
+            %tmp.203 = newc %tmp.206 (%tmp.246);
+            lputv %rez_cmp_local_text_distance_text.7 %tmp.203;
+            symbol [ rez_cmp_local_text_distance_text %rez_cmp_local_text_distance_text.7 30 16 48 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 32 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_time_text.8 = local;
+            symbol [ rez_cmp_local_text_time_text %rez_cmp_local_text_time_text.8 32 16 44 ];
+            symbol [ WatchUi %tmp.249 32 51 58 ];
+            %tmp.249 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.250 32 59 63 ];
+            %tmp.250 = getv function ? %tmp.249 :Text;
+            %tmp.251 = newd 6;
+            %tmp.253 = const :identifier;
+            symbol [ identifier %tmp.253 32 66 76 const ];
+            %tmp.254 = "time_text";
+            %tmp.255 = dup %tmp.251;
+            %tmp.256 = aputv %tmp.255 %tmp.253 %tmp.254;
+            %tmp.258 = const :color;
+            symbol [ color %tmp.258 32 92 97 const ];
+            symbol [ Gfx %tmp.259 32 99 102 ];
+            %tmp.259 = getm $.Toybox.Graphics;
+            symbol [ COLOR_WHITE %tmp.260 32 103 114 ];
+            %tmp.260 = getv %tmp.259 :COLOR_WHITE;
+            %tmp.261 = dup %tmp.256;
+            %tmp.262 = aputv %tmp.261 %tmp.258 %tmp.260;
+            %tmp.264 = const :locX;
+            symbol [ locX %tmp.264 32 117 121 const ];
+            %tmp.265 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.265 32 124 153 ];
+            %tmp.266 = 0.5;
+            %tmp.267 = mul %tmp.265 %tmp.266;
+            %tmp.268 = dup %tmp.262;
+            %tmp.269 = aputv %tmp.268 %tmp.264 %tmp.267;
+            %tmp.271 = const :locY;
+            symbol [ locY %tmp.271 32 163 167 const ];
+            %tmp.272 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.272 32 170 200 ];
+            %tmp.273 = 15;
+            %tmp.274 = 100.0;
+            %tmp.275 = div %tmp.273 %tmp.274;
+            %tmp.276 = mul %tmp.272 %tmp.275;
+            %tmp.277 = dup %tmp.269;
+            %tmp.278 = aputv %tmp.277 %tmp.271 %tmp.276;
+            %tmp.280 = const :justification;
+            symbol [ justification %tmp.280 32 219 232 const ];
+            symbol [ Gfx %tmp.281 32 234 237 ];
+            %tmp.281 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.282 32 238 257 ];
+            %tmp.282 = getv %tmp.281 :TEXT_JUSTIFY_CENTER;
+            %tmp.283 = dup %tmp.278;
+            %tmp.284 = aputv %tmp.283 %tmp.280 %tmp.282;
+            %tmp.286 = const :font;
+            symbol [ font %tmp.286 32 260 264 const ];
+            symbol [ Gfx %tmp.287 32 266 269 ];
+            %tmp.287 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.288 32 270 280 ];
+            %tmp.288 = getv %tmp.287 :FONT_LARGE;
+            %tmp.289 = dup %tmp.284;
+            %tmp.290 = aputv %tmp.289 %tmp.286 %tmp.288;
+            %tmp.247 = newc %tmp.250 (%tmp.290);
+            lputv %rez_cmp_local_text_time_text.8 %tmp.247;
+            symbol [ rez_cmp_local_text_time_text %rez_cmp_local_text_time_text.8 32 16 44 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 34 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop" ]
+            %rez_cmp_local_text_cq_text.9 = local;
+            symbol [ rez_cmp_local_text_cq_text %rez_cmp_local_text_cq_text.9 34 16 42 ];
+            symbol [ WatchUi %tmp.293 34 49 56 ];
+            %tmp.293 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.294 34 57 61 ];
+            %tmp.294 = getv function ? %tmp.293 :Text;
+            %tmp.295 = newd 6;
+            %tmp.297 = const :identifier;
+            symbol [ identifier %tmp.297 34 64 74 const ];
+            %tmp.298 = "cq_text";
+            %tmp.299 = dup %tmp.295;
+            %tmp.300 = aputv %tmp.299 %tmp.297 %tmp.298;
+            %tmp.302 = const :color;
+            symbol [ color %tmp.302 34 88 93 const ];
+            symbol [ Gfx %tmp.303 34 95 98 ];
+            %tmp.303 = getm $.Toybox.Graphics;
+            symbol [ COLOR_LT_GRAY %tmp.304 34 99 112 ];
+            %tmp.304 = getv %tmp.303 :COLOR_LT_GRAY;
+            %tmp.305 = dup %tmp.300;
+            %tmp.306 = aputv %tmp.305 %tmp.302 %tmp.304;
+            %tmp.308 = const :locX;
+            symbol [ locX %tmp.308 34 115 119 const ];
+            %tmp.309 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.309 34 122 151 ];
+            %tmp.310 = 0.5;
+            %tmp.311 = mul %tmp.309 %tmp.310;
+            %tmp.312 = dup %tmp.306;
+            %tmp.313 = aputv %tmp.312 %tmp.308 %tmp.311;
+            %tmp.315 = const :locY;
+            symbol [ locY %tmp.315 34 161 165 const ];
+            %tmp.316 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.316 34 168 198 ];
+            %tmp.317 = 85;
+            %tmp.318 = 100.0;
+            %tmp.319 = div %tmp.317 %tmp.318;
+            %tmp.320 = mul %tmp.316 %tmp.319;
+            %tmp.321 = dup %tmp.313;
+            %tmp.322 = aputv %tmp.321 %tmp.315 %tmp.320;
+            %tmp.324 = const :justification;
+            symbol [ justification %tmp.324 34 217 230 const ];
+            symbol [ Gfx %tmp.325 34 232 235 ];
+            %tmp.325 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.326 34 236 255 ];
+            %tmp.326 = getv %tmp.325 :TEXT_JUSTIFY_CENTER;
+            %tmp.327 = dup %tmp.322;
+            %tmp.328 = aputv %tmp.327 %tmp.324 %tmp.326;
+            %tmp.330 = const :font;
+            symbol [ font %tmp.330 34 258 262 const ];
+            symbol [ Gfx %tmp.331 34 264 267 ];
+            %tmp.331 = getm $.Toybox.Graphics;
+            symbol [ FONT_TINY %tmp.332 34 268 277 ];
+            %tmp.332 = getv %tmp.331 :FONT_TINY;
+            %tmp.333 = dup %tmp.328;
+            %tmp.334 = aputv %tmp.333 %tmp.330 %tmp.332;
+            %tmp.291 = newc %tmp.294 (%tmp.334);
+            lputv %rez_cmp_local_text_cq_text.9 %tmp.291;
+            symbol [ rez_cmp_local_text_cq_text %rez_cmp_local_text_cq_text.9 34 16 42 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 36 12 ]
+            %tmp.335 = newa 7 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.335 36 255 260 ];
+            symbol [ WatchUi %tmp.335 36 261 268 ];
+            symbol [ Drawable %tmp.335 36 269 277 ];
+            %tmp.336 = lgetv %rez_cmp_local_bitmap_cadence_icon.3;
+            symbol [ rez_cmp_local_bitmap_cadence_icon %tmp.336 36 20 53 ];
+            %tmp.337 = dup %tmp.335;
+            %tmp.338 = aputv %tmp.337 0 %tmp.336;
+            %tmp.339 = lgetv %rez_cmp_local_text_cadence_text.4;
+            symbol [ rez_cmp_local_text_cadence_text %tmp.339 36 55 86 ];
+            %tmp.340 = dup %tmp.338;
+            %tmp.341 = aputv %tmp.340 1 %tmp.339;
+            %tmp.342 = lgetv %rez_cmp_local_bitmap_heartrate_icon.5;
+            symbol [ rez_cmp_local_bitmap_heartrate_icon %tmp.342 36 88 123 ];
+            %tmp.343 = dup %tmp.341;
+            %tmp.344 = aputv %tmp.343 2 %tmp.342;
+            %tmp.345 = lgetv %rez_cmp_local_text_heartrate_text.6;
+            symbol [ rez_cmp_local_text_heartrate_text %tmp.345 36 125 158 ];
+            %tmp.346 = dup %tmp.344;
+            %tmp.347 = aputv %tmp.346 3 %tmp.345;
+            %tmp.348 = lgetv %rez_cmp_local_text_distance_text.7;
+            symbol [ rez_cmp_local_text_distance_text %tmp.348 36 160 192 ];
+            %tmp.349 = dup %tmp.347;
+            %tmp.350 = aputv %tmp.349 4 %tmp.348;
+            %tmp.351 = lgetv %rez_cmp_local_text_time_text.8;
+            symbol [ rez_cmp_local_text_time_text %tmp.351 36 194 222 ];
+            %tmp.352 = dup %tmp.350;
+            %tmp.353 = aputv %tmp.352 5 %tmp.351;
+            %tmp.354 = lgetv %rez_cmp_local_text_cq_text.9;
+            symbol [ rez_cmp_local_text_cq_text %tmp.354 36 224 250 ];
+            %tmp.355 = dup %tmp.353;
+            %tmp.356 = aputv %tmp.355 6 %tmp.354;
+            ret %tmp.356;
+W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_15_74_37_8_stop:
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 39; @symbol_functiondef = [WatchFace,39,17,26]; @symbol_param<0> = [dc,39,27,29]; @symbol_param<0>_type<0> = [Graphics,39,33,41]; @symbol_param<0>_type<1> = [Dc,39,42,44]; @symbol_return<0> = [Array,39,49,54]; @symbol_return<1> = [WatchUi,39,55,62]; @symbol_return<2> = [Drawable,39,63,71]; ]
+        function WatchFace(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_start:
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 40 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_stop" ]
+            %rez_cmp_local_var_dc_getHeight.1 = local;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 40 16 46 ];
+            %tmp.1 = lgetv %dc;
+            symbol [ dc %tmp.1 40 49 51 ];
+            symbol [ getHeight %tmp.2 40 52 61 ];
+            %tmp.2 = getv function %tmp.1 :getHeight;
+            %tmp.3 = invoke %tmp.1 %tmp.2();
+            lputv %rez_cmp_local_var_dc_getHeight.1 %tmp.3;
+            symbol [ rez_cmp_local_var_dc_getHeight %rez_cmp_local_var_dc_getHeight.1 40 16 46 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 42 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_stop" ]
+            %rez_cmp_local_var_dc_getWidth.2 = local;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 42 16 45 ];
+            %tmp.4 = lgetv %dc;
+            symbol [ dc %tmp.4 42 48 50 ];
+            symbol [ getWidth %tmp.5 42 51 59 ];
+            %tmp.5 = getv function %tmp.4 :getWidth;
+            %tmp.6 = invoke %tmp.4 %tmp.5();
+            lputv %rez_cmp_local_var_dc_getWidth.2 %tmp.6;
+            symbol [ rez_cmp_local_var_dc_getWidth %rez_cmp_local_var_dc_getWidth.2 42 16 45 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 44 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_stop" ]
+            %rez_cmp_local_text_Date.3 = local;
+            symbol [ rez_cmp_local_text_Date %rez_cmp_local_text_Date.3 44 16 39 ];
+            symbol [ WatchUi %tmp.9 44 46 53 ];
+            %tmp.9 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.10 44 54 58 ];
+            %tmp.10 = getv function ? %tmp.9 :Text;
+            %tmp.11 = newd 5;
+            %tmp.13 = const :identifier;
+            symbol [ identifier %tmp.13 44 61 71 const ];
+            %tmp.14 = "Date";
+            %tmp.15 = dup %tmp.11;
+            %tmp.16 = aputv %tmp.15 %tmp.13 %tmp.14;
+            %tmp.18 = const :locX;
+            symbol [ locX %tmp.18 44 82 86 const ];
+            %tmp.19 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.19 44 89 118 ];
+            %tmp.20 = 0.5;
+            %tmp.21 = mul %tmp.19 %tmp.20;
+            %tmp.22 = dup %tmp.16;
+            %tmp.23 = aputv %tmp.22 %tmp.18 %tmp.21;
+            %tmp.25 = const :locY;
+            symbol [ locY %tmp.25 44 128 132 const ];
+            %tmp.26 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.26 44 135 165 ];
+            %tmp.27 = 30;
+            %tmp.28 = 100.0;
+            %tmp.29 = div %tmp.27 %tmp.28;
+            %tmp.30 = mul %tmp.26 %tmp.29;
+            %tmp.31 = dup %tmp.23;
+            %tmp.32 = aputv %tmp.31 %tmp.25 %tmp.30;
+            %tmp.34 = const :justification;
+            symbol [ justification %tmp.34 44 184 197 const ];
+            symbol [ Graphics %tmp.35 44 199 207 ];
+            %tmp.35 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.36 44 208 227 ];
+            %tmp.36 = getv %tmp.35 :TEXT_JUSTIFY_CENTER;
+            %tmp.37 = dup %tmp.32;
+            %tmp.38 = aputv %tmp.37 %tmp.34 %tmp.36;
+            %tmp.40 = const :font;
+            symbol [ font %tmp.40 44 230 234 const ];
+            symbol [ Graphics %tmp.41 44 236 244 ];
+            %tmp.41 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.42 44 245 255 ];
+            %tmp.42 = getv %tmp.41 :FONT_LARGE;
+            %tmp.43 = dup %tmp.38;
+            %tmp.44 = aputv %tmp.43 %tmp.40 %tmp.42;
+            %tmp.7 = newc %tmp.10 (%tmp.44);
+            lputv %rez_cmp_local_text_Date.3 %tmp.7;
+            symbol [ rez_cmp_local_text_Date %rez_cmp_local_text_Date.3 44 16 39 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 46 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_stop" ]
+            %rez_cmp_local_text_HoursAndMinutes.4 = local;
+            symbol [ rez_cmp_local_text_HoursAndMinutes %rez_cmp_local_text_HoursAndMinutes.4 46 16 50 ];
+            symbol [ WatchUi %tmp.47 46 57 64 ];
+            %tmp.47 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.48 46 65 69 ];
+            %tmp.48 = getv function ? %tmp.47 :Text;
+            %tmp.49 = newd 5;
+            %tmp.51 = const :identifier;
+            symbol [ identifier %tmp.51 46 72 82 const ];
+            %tmp.52 = "HoursAndMinutes";
+            %tmp.53 = dup %tmp.49;
+            %tmp.54 = aputv %tmp.53 %tmp.51 %tmp.52;
+            %tmp.56 = const :locX;
+            symbol [ locX %tmp.56 46 104 108 const ];
+            %tmp.57 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.57 46 111 140 ];
+            %tmp.58 = 40;
+            %tmp.59 = 100.0;
+            %tmp.60 = div %tmp.58 %tmp.59;
+            %tmp.61 = mul %tmp.57 %tmp.60;
+            %tmp.62 = dup %tmp.54;
+            %tmp.63 = aputv %tmp.62 %tmp.56 %tmp.61;
+            %tmp.65 = const :locY;
+            symbol [ locY %tmp.65 46 159 163 const ];
+            %tmp.66 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.66 46 166 196 ];
+            %tmp.67 = 55;
+            %tmp.68 = 100.0;
+            %tmp.69 = div %tmp.67 %tmp.68;
+            %tmp.70 = mul %tmp.66 %tmp.69;
+            %tmp.71 = dup %tmp.63;
+            %tmp.72 = aputv %tmp.71 %tmp.65 %tmp.70;
+            %tmp.74 = const :justification;
+            symbol [ justification %tmp.74 46 215 228 const ];
+            symbol [ Graphics %tmp.75 46 230 238 ];
+            %tmp.75 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.76 46 239 258 ];
+            %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_CENTER;
+            %tmp.77 = dup %tmp.72;
+            %tmp.78 = aputv %tmp.77 %tmp.74 %tmp.76;
+            %tmp.80 = const :font;
+            symbol [ font %tmp.80 46 261 265 const ];
+            symbol [ Graphics %tmp.81 46 267 275 ];
+            %tmp.81 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.82 46 276 286 ];
+            %tmp.82 = getv %tmp.81 :FONT_LARGE;
+            %tmp.83 = dup %tmp.78;
+            %tmp.84 = aputv %tmp.83 %tmp.80 %tmp.82;
+            %tmp.45 = newc %tmp.48 (%tmp.84);
+            lputv %rez_cmp_local_text_HoursAndMinutes.4 %tmp.45;
+            symbol [ rez_cmp_local_text_HoursAndMinutes %rez_cmp_local_text_HoursAndMinutes.4 46 16 50 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 48 12 ]
+            [ "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_start" "W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_stop" ]
+            %rez_cmp_local_text_AmPm.5 = local;
+            symbol [ rez_cmp_local_text_AmPm %rez_cmp_local_text_AmPm.5 48 16 39 ];
+            symbol [ WatchUi %tmp.87 48 46 53 ];
+            %tmp.87 = getm $.Toybox.WatchUi;
+            symbol [ Text %tmp.88 48 54 58 ];
+            %tmp.88 = getv function ? %tmp.87 :Text;
+            %tmp.89 = newd 5;
+            %tmp.91 = const :identifier;
+            symbol [ identifier %tmp.91 48 61 71 const ];
+            %tmp.92 = "AmPm";
+            %tmp.93 = dup %tmp.89;
+            %tmp.94 = aputv %tmp.93 %tmp.91 %tmp.92;
+            %tmp.96 = const :locX;
+            symbol [ locX %tmp.96 48 82 86 const ];
+            %tmp.97 = lgetv %rez_cmp_local_var_dc_getWidth.2;
+            symbol [ rez_cmp_local_var_dc_getWidth %tmp.97 48 89 118 ];
+            %tmp.98 = 70;
+            %tmp.99 = 100.0;
+            %tmp.100 = div %tmp.98 %tmp.99;
+            %tmp.101 = mul %tmp.97 %tmp.100;
+            %tmp.102 = dup %tmp.94;
+            %tmp.103 = aputv %tmp.102 %tmp.96 %tmp.101;
+            %tmp.105 = const :locY;
+            symbol [ locY %tmp.105 48 137 141 const ];
+            %tmp.106 = lgetv %rez_cmp_local_var_dc_getHeight.1;
+            symbol [ rez_cmp_local_var_dc_getHeight %tmp.106 48 144 174 ];
+            %tmp.107 = 55;
+            %tmp.108 = 100.0;
+            %tmp.109 = div %tmp.107 %tmp.108;
+            %tmp.110 = mul %tmp.106 %tmp.109;
+            %tmp.111 = dup %tmp.103;
+            %tmp.112 = aputv %tmp.111 %tmp.105 %tmp.110;
+            %tmp.114 = const :justification;
+            symbol [ justification %tmp.114 48 193 206 const ];
+            symbol [ Graphics %tmp.115 48 208 216 ];
+            %tmp.115 = getm $.Toybox.Graphics;
+            symbol [ TEXT_JUSTIFY_CENTER %tmp.116 48 217 236 ];
+            %tmp.116 = getv %tmp.115 :TEXT_JUSTIFY_CENTER;
+            %tmp.117 = dup %tmp.112;
+            %tmp.118 = aputv %tmp.117 %tmp.114 %tmp.116;
+            %tmp.120 = const :font;
+            symbol [ font %tmp.120 48 239 243 const ];
+            symbol [ Graphics %tmp.121 48 245 253 ];
+            %tmp.121 = getm $.Toybox.Graphics;
+            symbol [ FONT_LARGE %tmp.122 48 254 264 ];
+            %tmp.122 = getv %tmp.121 :FONT_LARGE;
+            %tmp.123 = dup %tmp.118;
+            %tmp.124 = aputv %tmp.123 %tmp.120 %tmp.122;
+            %tmp.85 = newc %tmp.88 (%tmp.124);
+            lputv %rez_cmp_local_text_AmPm.5 %tmp.85;
+            symbol [ rez_cmp_local_text_AmPm %rez_cmp_local_text_AmPm.5 48 16 39 ];
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 50 12 ]
+            %tmp.125 = newa 3 Array<WatchUi.Drawable>;
+            symbol [ Array %tmp.125 50 109 114 ];
+            symbol [ WatchUi %tmp.125 50 115 122 ];
+            symbol [ Drawable %tmp.125 50 123 131 ];
+            %tmp.126 = lgetv %rez_cmp_local_text_Date.3;
+            symbol [ rez_cmp_local_text_Date %tmp.126 50 20 43 ];
+            %tmp.127 = dup %tmp.125;
+            %tmp.128 = aputv %tmp.127 0 %tmp.126;
+            %tmp.129 = lgetv %rez_cmp_local_text_HoursAndMinutes.4;
+            symbol [ rez_cmp_local_text_HoursAndMinutes %tmp.129 50 45 79 ];
+            %tmp.130 = dup %tmp.128;
+            %tmp.131 = aputv %tmp.130 1 %tmp.129;
+            %tmp.132 = lgetv %rez_cmp_local_text_AmPm.5;
+            symbol [ rez_cmp_local_text_AmPm %tmp.132 50 81 104 ];
+            %tmp.133 = dup %tmp.131;
+            %tmp.134 = aputv %tmp.133 2 %tmp.132;
+            ret %tmp.134;
+W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_39_73_51_8_stop:
+        }
+    }
+    [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 54; @symbol_moduledef = [Menus,54,11,16]; ]
+    module Menus {
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 54; ]
+        <init> {
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 55; @symbol_classdef = [MainMenu,55,14,22]; @symbol_extends<0> = [WatchUi,55,31,38]; @symbol_extends<1> = [Menu,55,39,43]; ]
+        class MainMenu extends WatchUi.Menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 55; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 55; ]
+            static
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 56; @symbol_functiondef = [initialize,56,21,31]; ]
+            function initialize() as Void {
+W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_56_34_60_12_start:
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 57 16 ]
+                symbol [ Menu %tmp.2 57 16 20 ];
+                %tmp.2 = getv ? :Menu;
+                symbol [ initialize %tmp.3 57 21 31 ];
+                %tmp.3 = getv function %tmp.2 :initialize;
+                invoke %tmp.2 %tmp.3();
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 58 16 ]
+                %tmp.4 = self;
+                symbol [ addItem %tmp.5 58 16 23 ];
+                %tmp.5 = getv function %tmp.4 :addItem;
+                symbol [ WatchUi %tmp.6 58 25 32 ];
+                %tmp.6 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.7 58 33 45 ];
+                %tmp.7 = getv function %tmp.6 :loadResource;
+                symbol [ $ %tmp.8 58 46 47 ];
+                %tmp.8 = getm $;
+                symbol [ Rez %tmp.9 58 48 51 ];
+                %tmp.9 = getv %tmp.8 :Rez;
+                symbol [ Strings %tmp.10 58 52 59 ];
+                %tmp.10 = getv %tmp.9 :Strings;
+                symbol [ menu_set_min %tmp.11 58 60 72 ];
+                %tmp.11 = getv %tmp.10 :menu_set_min;
+                %tmp.12 = invoke %tmp.6 %tmp.7(%tmp.11);
+                %tmp.13 = as %tmp.12 String;
+                symbol [ String %tmp.13 58 77 83 ];
+                %tmp.15 = const :item_set_min;
+                symbol [ item_set_min %tmp.15 58 87 99 const ];
+                invoke %tmp.4 %tmp.5(%tmp.13, %tmp.15);
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 59 16 ]
+                %tmp.16 = self;
+                symbol [ addItem %tmp.17 59 16 23 ];
+                %tmp.17 = getv function %tmp.16 :addItem;
+                symbol [ WatchUi %tmp.18 59 25 32 ];
+                %tmp.18 = getm $.Toybox.WatchUi;
+                symbol [ loadResource %tmp.19 59 33 45 ];
+                %tmp.19 = getv function %tmp.18 :loadResource;
+                symbol [ $ %tmp.20 59 46 47 ];
+                %tmp.20 = getm $;
+                symbol [ Rez %tmp.21 59 48 51 ];
+                %tmp.21 = getv %tmp.20 :Rez;
+                symbol [ Strings %tmp.22 59 52 59 ];
+                %tmp.22 = getv %tmp.21 :Strings;
+                symbol [ menu_set_max %tmp.23 59 60 72 ];
+                %tmp.23 = getv %tmp.22 :menu_set_max;
+                %tmp.24 = invoke %tmp.18 %tmp.19(%tmp.23);
+                %tmp.25 = as %tmp.24 String;
+                symbol [ String %tmp.25 59 77 83 ];
+                %tmp.27 = const :item_set_max;
+                symbol [ item_set_max %tmp.27 59 87 99 const ];
+                invoke %tmp.16 %tmp.17(%tmp.25, %tmp.27);
+W__Github_garmin_smartwatch_bin_gen_006_B4426_00_source_Rez_mcgen_56_34_60_12_stop:
+            }
+        }
+    }
+    [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 64; @symbol_moduledef = [Strings,64,11,18]; ]
+    module Strings {
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 64; ]
+        <init> {
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 65; @position = 27; initialized = true; @symbol_vardef = [menu_inc_max,65,27,39]; @symbol_type<0> = [ResourceId,65,43,53]; ]
+        var menu_inc_max as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 66; @position = 27; initialized = true; @symbol_vardef = [zone_in,66,27,34]; @symbol_type<0> = [ResourceId,66,38,48]; ]
+        var zone_in as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 67; @position = 27; initialized = true; @symbol_vardef = [menu_dec_max,67,27,39]; @symbol_type<0> = [ResourceId,67,43,53]; ]
+        var menu_dec_max as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 68; @position = 27; initialized = true; @symbol_vardef = [menu_set_min,68,27,39]; @symbol_type<0> = [ResourceId,68,43,53]; ]
+        var menu_set_min as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 69; @position = 27; initialized = true; @symbol_vardef = [AppName,69,27,34]; @symbol_type<0> = [ResourceId,69,38,48]; ]
+        var AppName as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 70; @position = 27; initialized = true; @symbol_vardef = [zone_out,70,27,35]; @symbol_type<0> = [ResourceId,70,39,49]; ]
+        var zone_out as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 71; @position = 27; initialized = true; @symbol_vardef = [menu_reset_zones,71,27,43]; @symbol_type<0> = [ResourceId,71,47,57]; ]
+        var menu_reset_zones as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 72; @position = 27; initialized = true; @symbol_vardef = [menu_inc_min,72,27,39]; @symbol_type<0> = [ResourceId,72,43,53]; ]
+        var menu_inc_min as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 73; @position = 27; initialized = true; @symbol_vardef = [menu_label_1,73,27,39]; @symbol_type<0> = [ResourceId,73,43,53]; ]
+        var menu_label_1 as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 74; @position = 27; initialized = true; @symbol_vardef = [menu_label_2,74,27,39]; @symbol_type<0> = [ResourceId,74,43,53]; ]
+        var menu_label_2 as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 75; @position = 27; initialized = true; @symbol_vardef = [prompt,75,27,33]; @symbol_type<0> = [ResourceId,75,37,47]; ]
+        var prompt as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 76; @position = 27; initialized = true; @symbol_vardef = [menu_dec_min,76,27,39]; @symbol_type<0> = [ResourceId,76,43,53]; ]
+        var menu_dec_min as ResourceId;
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 77; @position = 27; initialized = true; @symbol_vardef = [menu_set_max,77,27,39]; @symbol_type<0> = [ResourceId,77,43,53]; ]
+        var menu_set_max as ResourceId;
+    }
+    [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 80; @symbol_moduledef = [Styles,80,11,17]; ]
+    module Styles {
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 80; ]
+        <init> {
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 81; @symbol_moduledef = [prompt_font_enhanced_readability__body_with_title,81,15,64]; ]
+        module prompt_font_enhanced_readability__body_with_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 81; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 82 18 ]
+                symbol [ Graphics %tmp.28 82 34 42 ];
+                %tmp.28 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.29 82 43 62 ];
+                %tmp.29 = getv %tmp.28 :TEXT_JUSTIFY_CENTER;
+                putv self :justification %tmp.29;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 83 18 ]
+                symbol [ Graphics %tmp.30 83 25 33 ];
+                %tmp.30 = getm $.Toybox.Graphics;
+                symbol [ FONT_SMALL %tmp.31 83 34 44 ];
+                %tmp.31 = getv %tmp.30 :FONT_SMALL;
+                putv self :font %tmp.31;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 82; @position = 18; @symbol_constdef = [justification,82,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 83; @position = 18; @symbol_constdef = [font,83,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 86; @symbol_moduledef = [system_size__menu_header,86,15,39]; ]
+        module system_size__menu_header {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 86; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 87; @position = 18; @symbol_constdef = [width,87,18,23]; @symbol_type<0> = [Number,87,27,33]; ]
+            const width as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 88; @position = 18; @symbol_constdef = [height,88,18,24]; @symbol_type<0> = [Number,88,28,34]; ]
+            const height as Number = 90;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 91; @symbol_moduledef = [system_loc__hint_button_left_bottom,91,15,50]; ]
+        module system_loc__hint_button_left_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 91; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 92; @position = 18; @symbol_constdef = [exclude,92,18,25]; @symbol_type<0> = [Boolean,92,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 95; @symbol_moduledef = [prompt_font_enhanced_readability__body_no_title,95,15,62]; ]
+        module prompt_font_enhanced_readability__body_no_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 95; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 96 18 ]
+                symbol [ Graphics %tmp.32 96 34 42 ];
+                %tmp.32 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.33 96 43 62 ];
+                %tmp.33 = getv %tmp.32 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.34 96 63 71 ];
+                %tmp.34 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.35 96 72 92 ];
+                %tmp.35 = getv %tmp.34 :TEXT_JUSTIFY_VCENTER;
+                %tmp.36 = bitor %tmp.33 %tmp.35;
+                putv self :justification %tmp.36;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 97 18 ]
+                symbol [ Graphics %tmp.37 97 25 33 ];
+                %tmp.37 = getm $.Toybox.Graphics;
+                symbol [ FONT_SMALL %tmp.38 97 34 44 ];
+                %tmp.38 = getv %tmp.37 :FONT_SMALL;
+                putv self :font %tmp.38;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 96; @position = 18; @symbol_constdef = [justification,96,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 97; @position = 18; @symbol_constdef = [font,97,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 100; @symbol_moduledef = [prompt_loc__body_no_title,100,15,40]; ]
+        module prompt_loc__body_no_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 100; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 101; @position = 18; @symbol_constdef = [x,101,18,19]; @symbol_type<0> = [Number,101,23,29]; ]
+            const x as Number = 39;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 102; @position = 18; @symbol_constdef = [y,102,18,19]; @symbol_type<0> = [Number,102,23,29]; ]
+            const y as Number = 58;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 105; @symbol_moduledef = [system_icon_dark__about,105,15,38]; ]
+        module system_icon_dark__about {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 105; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 106; @position = 18; @symbol_constdef = [filename,106,18,26]; @symbol_type<0> = [String,106,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__about.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 107; @position = 18; @symbol_constdef = [compress,107,18,26]; @symbol_type<0> = [String,107,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 108; @position = 18; @symbol_constdef = [dithering,108,18,27]; @symbol_type<0> = [String,108,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 109; @position = 18; @symbol_constdef = [automaticPalette,109,18,34]; @symbol_type<0> = [String,109,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 110; @position = 18; @symbol_constdef = [packingFormat,110,18,31]; @symbol_type<0> = [String,110,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 113; @symbol_moduledef = [system_icon_light__question,113,15,42]; ]
+        module system_icon_light__question {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 113; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 114; @position = 18; @symbol_constdef = [filename,114,18,26]; @symbol_type<0> = [String,114,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__question.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 115; @position = 18; @symbol_constdef = [compress,115,18,26]; @symbol_type<0> = [String,115,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 116; @position = 18; @symbol_constdef = [dithering,116,18,27]; @symbol_type<0> = [String,116,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 117; @position = 18; @symbol_constdef = [automaticPalette,117,18,34]; @symbol_type<0> = [String,117,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 118; @position = 18; @symbol_constdef = [packingFormat,118,18,31]; @symbol_type<0> = [String,118,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 121; @symbol_moduledef = [system_loc__hint_button_left_top,121,15,47]; ]
+        module system_loc__hint_button_left_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 121; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 122; @position = 18; @symbol_constdef = [exclude,122,18,25]; @symbol_type<0> = [Boolean,122,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 125; @symbol_moduledef = [prompt_font__title,125,15,33]; ]
+        module prompt_font__title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 125; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 126 18 ]
+                symbol [ Graphics %tmp.39 126 34 42 ];
+                %tmp.39 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.40 126 43 62 ];
+                %tmp.40 = getv %tmp.39 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.41 126 63 71 ];
+                %tmp.41 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.42 126 72 92 ];
+                %tmp.42 = getv %tmp.41 :TEXT_JUSTIFY_VCENTER;
+                %tmp.43 = bitor %tmp.40 %tmp.42;
+                putv self :justification %tmp.43;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 127 18 ]
+                symbol [ Graphics %tmp.44 127 25 33 ];
+                %tmp.44 = getm $.Toybox.Graphics;
+                symbol [ FONT_XTINY %tmp.45 127 34 44 ];
+                %tmp.45 = getv %tmp.44 :FONT_XTINY;
+                putv self :font %tmp.45;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 126; @position = 18; @symbol_constdef = [justification,126,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 127; @position = 18; @symbol_constdef = [font,127,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 130; @symbol_moduledef = [system_icon_dark__discard,130,15,40]; ]
+        module system_icon_dark__discard {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 130; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 131; @position = 18; @symbol_constdef = [filename,131,18,26]; @symbol_type<0> = [String,131,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__discard.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 132; @position = 18; @symbol_constdef = [compress,132,18,26]; @symbol_type<0> = [String,132,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 133; @position = 18; @symbol_constdef = [dithering,133,18,27]; @symbol_type<0> = [String,133,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 134; @position = 18; @symbol_constdef = [automaticPalette,134,18,34]; @symbol_type<0> = [String,134,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 135; @position = 18; @symbol_constdef = [packingFormat,135,18,31]; @symbol_type<0> = [String,135,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 138; @symbol_moduledef = [system_size__menu_item,138,15,37]; ]
+        module system_size__menu_item {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 138; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 139; @position = 18; @symbol_constdef = [width,139,18,23]; @symbol_type<0> = [Number,139,27,33]; ]
+            const width as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 140; @position = 18; @symbol_constdef = [height,140,18,24]; @symbol_type<0> = [Number,140,28,34]; ]
+            const height as Number = 100;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 143; @symbol_moduledef = [system_color_dark__text,143,15,38]; ]
+        module system_color_dark__text {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 143; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 145 18 ]
+                symbol [ Graphics %tmp.46 145 31 39 ];
+                %tmp.46 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.47 145 40 57 ];
+                %tmp.47 = getv %tmp.46 :COLOR_TRANSPARENT;
+                putv self :background %tmp.47;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 144; @position = 18; @symbol_constdef = [color,144,18,23]; @symbol_type<0> = [Number,144,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 145; @position = 18; @symbol_constdef = [background,145,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 148; @symbol_moduledef = [system_icon_destructive__discard,148,15,47]; ]
+        module system_icon_destructive__discard {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 148; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 149; @position = 18; @symbol_constdef = [filename,149,18,26]; @symbol_type<0> = [String,149,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_destructive__discard.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 150; @position = 18; @symbol_constdef = [dithering,150,18,27]; @symbol_type<0> = [String,150,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 151; @position = 18; @symbol_constdef = [packingFormat,151,18,31]; @symbol_type<0> = [String,151,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 154; @symbol_moduledef = [system_icon_dark__hint_action_menu,154,15,49]; ]
+        module system_icon_dark__hint_action_menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 154; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 155; @position = 18; @symbol_constdef = [filename,155,18,26]; @symbol_type<0> = [String,155,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__hint_action_menu.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 156; @position = 18; @symbol_constdef = [dithering,156,18,27]; @symbol_type<0> = [String,156,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 157; @position = 18; @symbol_constdef = [packingFormat,157,18,31]; @symbol_type<0> = [String,157,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 160; @symbol_moduledef = [prompt_size__title,160,15,33]; ]
+        module prompt_size__title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 160; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 161; @position = 18; @symbol_constdef = [width,161,18,23]; @symbol_type<0> = [Number,161,27,33]; ]
+            const width as Number = 165;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 162; @position = 18; @symbol_constdef = [height,162,18,24]; @symbol_type<0> = [Number,162,28,34]; ]
+            const height as Number = 70;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 165; @symbol_moduledef = [confirmation_font__body,165,15,38]; ]
+        module confirmation_font__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 165; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 166 18 ]
+                symbol [ Graphics %tmp.48 166 34 42 ];
+                %tmp.48 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.49 166 43 62 ];
+                %tmp.49 = getv %tmp.48 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.50 166 63 71 ];
+                %tmp.50 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.51 166 72 92 ];
+                %tmp.51 = getv %tmp.50 :TEXT_JUSTIFY_VCENTER;
+                %tmp.52 = bitor %tmp.49 %tmp.51;
+                putv self :justification %tmp.52;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 167 18 ]
+                symbol [ Graphics %tmp.53 167 25 33 ];
+                %tmp.53 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.54 167 34 43 ];
+                %tmp.54 = getv %tmp.53 :FONT_TINY;
+                putv self :font %tmp.54;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 166; @position = 18; @symbol_constdef = [justification,166,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 167; @position = 18; @symbol_constdef = [font,167,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 170; @symbol_moduledef = [system_color_dark__background,170,15,44]; ]
+        module system_color_dark__background {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 170; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 171; @position = 18; @symbol_constdef = [color,171,18,23]; @symbol_type<0> = [Number,171,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 172; @position = 18; @symbol_constdef = [background,172,18,28]; @symbol_type<0> = [Number,172,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 175; @symbol_moduledef = [system_icon_destructive__hint_button_left_top,175,15,60]; ]
+        module system_icon_destructive__hint_button_left_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 175; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 176; @position = 18; @symbol_constdef = [exclude,176,18,25]; @symbol_type<0> = [Boolean,176,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 179; @symbol_moduledef = [system_size__launch_icon,179,15,39]; ]
+        module system_size__launch_icon {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 179; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 180; @position = 18; @symbol_constdef = [scaleX,180,18,24]; @symbol_type<0> = [Number,180,28,34]; ]
+            const scaleX as Number = 70;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 181; @position = 18; @symbol_constdef = [scaleY,181,18,24]; @symbol_type<0> = [Number,181,28,34]; ]
+            const scaleY as Number = 70;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 182; @position = 18; @symbol_constdef = [scaleRelativeTo,182,18,33]; @symbol_type<0> = [String,182,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 185; @symbol_moduledef = [confirmation_input__confirm,185,15,42]; ]
+        module confirmation_input__confirm {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 185; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 186; @position = 18; @symbol_constdef = [y1,186,18,20]; @symbol_type<0> = [Number,186,24,30]; ]
+            const y1 as Number = 297;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 187; @position = 18; @symbol_constdef = [x1,187,18,20]; @symbol_type<0> = [Number,187,24,30]; ]
+            const x1 as Number = 72;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 188; @position = 18; @symbol_constdef = [y2,188,18,20]; @symbol_type<0> = [Number,188,24,30]; ]
+            const y2 as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 189; @position = 18; @symbol_constdef = [x2,189,18,20]; @symbol_type<0> = [Number,189,24,30]; ]
+            const x2 as Number = 318;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 192; @symbol_moduledef = [prompt_font__body_with_title,192,15,43]; ]
+        module prompt_font__body_with_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 192; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 193 18 ]
+                symbol [ Graphics %tmp.55 193 34 42 ];
+                %tmp.55 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.56 193 43 62 ];
+                %tmp.56 = getv %tmp.55 :TEXT_JUSTIFY_CENTER;
+                putv self :justification %tmp.56;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 194 18 ]
+                symbol [ Graphics %tmp.57 194 25 33 ];
+                %tmp.57 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.58 194 34 43 ];
+                %tmp.58 = getv %tmp.57 :FONT_TINY;
+                putv self :font %tmp.58;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 193; @position = 18; @symbol_constdef = [justification,193,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 194; @position = 18; @symbol_constdef = [font,194,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 197; @symbol_moduledef = [confirmation_loc__body,197,15,37]; ]
+        module confirmation_loc__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 197; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 198; @position = 18; @symbol_constdef = [x,198,18,19]; @symbol_type<0> = [Number,198,23,29]; ]
+            const x as Number = 80;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 199; @position = 18; @symbol_constdef = [y,199,18,19]; @symbol_type<0> = [Number,199,23,29]; ]
+            const y as Number = 78;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 202; @symbol_moduledef = [system_icon_destructive__hint_button_left_bottom,202,15,63]; ]
+        module system_icon_destructive__hint_button_left_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 202; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 203; @position = 18; @symbol_constdef = [exclude,203,18,25]; @symbol_type<0> = [Boolean,203,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 206; @symbol_moduledef = [prompt_color_dark__background,206,15,44]; ]
+        module prompt_color_dark__background {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 206; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 207; @position = 18; @symbol_constdef = [color,207,18,23]; @symbol_type<0> = [Number,207,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 208; @position = 18; @symbol_constdef = [background,208,18,28]; @symbol_type<0> = [Number,208,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 211; @symbol_moduledef = [system_icon_destructive__hint_action_menu,211,15,56]; ]
+        module system_icon_destructive__hint_action_menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 211; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 212; @position = 18; @symbol_constdef = [filename,212,18,26]; @symbol_type<0> = [String,212,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_destructive__hint_action_menu.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 213; @position = 18; @symbol_constdef = [dithering,213,18,27]; @symbol_type<0> = [String,213,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 214; @position = 18; @symbol_constdef = [packingFormat,214,18,31]; @symbol_type<0> = [String,214,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 217; @symbol_moduledef = [system_loc__hint_action_menu,217,15,43]; ]
+        module system_loc__hint_action_menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 217; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 218; @position = 18; @symbol_constdef = [x,218,18,19]; @symbol_type<0> = [Number,218,23,29]; ]
+            const x as Number = 195;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 219; @position = 18; @symbol_constdef = [horizontalJustification,219,18,41]; @symbol_type<0> = [String,219,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 220; @position = 18; @symbol_constdef = [y,220,18,19]; @symbol_type<0> = [Number,220,23,29]; ]
+            const y as Number = 318;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 223; @symbol_moduledef = [confirmation_icon__hint_confirm,223,15,46]; ]
+        module confirmation_icon__hint_confirm {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 223; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 224; @position = 18; @symbol_constdef = [filename,224,18,26]; @symbol_type<0> = [String,224,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_completion.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 225; @position = 18; @symbol_constdef = [dithering,225,18,27]; @symbol_type<0> = [String,225,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 226; @position = 18; @symbol_constdef = [packingFormat,226,18,31]; @symbol_type<0> = [String,226,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 229; @symbol_moduledef = [system_loc__hint_button_left_middle,229,15,50]; ]
+        module system_loc__hint_button_left_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 229; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 230; @position = 18; @symbol_constdef = [exclude,230,18,25]; @symbol_type<0> = [Boolean,230,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 233; @symbol_moduledef = [prompt_size__body_no_title,233,15,41]; ]
+        module prompt_size__body_no_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 233; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 234; @position = 18; @symbol_constdef = [width,234,18,23]; @symbol_type<0> = [Number,234,27,33]; ]
+            const width as Number = 312;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 235; @position = 18; @symbol_constdef = [height,235,18,24]; @symbol_type<0> = [Number,235,28,34]; ]
+            const height as Number = 253;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 238; @symbol_moduledef = [system_icon_light__hint_button_left_top,238,15,54]; ]
+        module system_icon_light__hint_button_left_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 238; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 239; @position = 18; @symbol_constdef = [exclude,239,18,25]; @symbol_type<0> = [Boolean,239,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 242; @symbol_moduledef = [prompt_color_light__background,242,15,45]; ]
+        module prompt_color_light__background {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 242; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 243; @position = 18; @symbol_constdef = [color,243,18,23]; @symbol_type<0> = [Number,243,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 244; @position = 18; @symbol_constdef = [background,244,18,28]; @symbol_type<0> = [Number,244,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 247; @symbol_moduledef = [confirmation_input__delete,247,15,41]; ]
+        module confirmation_input__delete {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 247; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 248 18 ]
+                symbol [ WatchUi %tmp.59 248 27 34 ];
+                %tmp.59 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ENTER %tmp.60 248 35 44 ];
+                %tmp.60 = getv %tmp.59 :KEY_ENTER;
+                putv self :button %tmp.60;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 248; @position = 18; @symbol_constdef = [button,248,18,24]; ]
+            const button;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 251; @symbol_moduledef = [system_icon_dark__hint_button_left_top,251,15,53]; ]
+        module system_icon_dark__hint_button_left_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 251; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 252; @position = 18; @symbol_constdef = [exclude,252,18,25]; @symbol_type<0> = [Boolean,252,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 255; @symbol_moduledef = [system_input__action_menu,255,15,40]; ]
+        module system_input__action_menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 255; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 256; @position = 18; @symbol_constdef = [y1,256,18,20]; @symbol_type<0> = [Number,256,24,30]; ]
+            const y1 as Number = 318;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 257; @position = 18; @symbol_constdef = [x1,257,18,20]; @symbol_type<0> = [Number,257,24,30]; ]
+            const x1 as Number = 97;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 258; @position = 18; @symbol_constdef = [y2,258,18,20]; @symbol_type<0> = [Number,258,24,30]; ]
+            const y2 as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 259; @position = 18; @symbol_constdef = [x2,259,18,20]; @symbol_type<0> = [Number,259,24,30]; ]
+            const x2 as Number = 293;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 262; @symbol_moduledef = [system_icon_light__save,262,15,38]; ]
+        module system_icon_light__save {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 262; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 263; @position = 18; @symbol_constdef = [filename,263,18,26]; @symbol_type<0> = [String,263,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__save.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 264; @position = 18; @symbol_constdef = [compress,264,18,26]; @symbol_type<0> = [String,264,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 265; @position = 18; @symbol_constdef = [dithering,265,18,27]; @symbol_type<0> = [String,265,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 266; @position = 18; @symbol_constdef = [automaticPalette,266,18,34]; @symbol_type<0> = [String,266,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 267; @position = 18; @symbol_constdef = [packingFormat,267,18,31]; @symbol_type<0> = [String,267,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 270; @symbol_moduledef = [prompt_color_light__body,270,15,39]; ]
+        module prompt_color_light__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 270; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 272 18 ]
+                symbol [ Graphics %tmp.61 272 31 39 ];
+                %tmp.61 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.62 272 40 57 ];
+                %tmp.62 = getv %tmp.61 :COLOR_TRANSPARENT;
+                putv self :background %tmp.62;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 271; @position = 18; @symbol_constdef = [color,271,18,23]; @symbol_type<0> = [Number,271,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 272; @position = 18; @symbol_constdef = [background,272,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 275; @symbol_moduledef = [system_loc__subwindow,275,15,36]; ]
+        module system_loc__subwindow {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 275; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 276; @position = 18; @symbol_constdef = [exclude,276,18,25]; @symbol_type<0> = [Boolean,276,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 279; @symbol_moduledef = [system_icon_light__warning,279,15,41]; ]
+        module system_icon_light__warning {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 279; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 280; @position = 18; @symbol_constdef = [filename,280,18,26]; @symbol_type<0> = [String,280,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__warning.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 281; @position = 18; @symbol_constdef = [compress,281,18,26]; @symbol_type<0> = [String,281,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 282; @position = 18; @symbol_constdef = [dithering,282,18,27]; @symbol_type<0> = [String,282,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 283; @position = 18; @symbol_constdef = [automaticPalette,283,18,34]; @symbol_type<0> = [String,283,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 284; @position = 18; @symbol_constdef = [packingFormat,284,18,31]; @symbol_type<0> = [String,284,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 287; @symbol_moduledef = [confirmation_color_light__body,287,15,45]; ]
+        module confirmation_color_light__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 287; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 289 18 ]
+                symbol [ Graphics %tmp.63 289 31 39 ];
+                %tmp.63 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.64 289 40 57 ];
+                %tmp.64 = getv %tmp.63 :COLOR_TRANSPARENT;
+                putv self :background %tmp.64;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 288; @position = 18; @symbol_constdef = [color,288,18,23]; @symbol_type<0> = [Number,288,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 289; @position = 18; @symbol_constdef = [background,289,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 292; @symbol_moduledef = [confirmation_icon_light__hint_keep,292,15,49]; ]
+        module confirmation_icon_light__hint_keep {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 292; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 293; @position = 18; @symbol_constdef = [filename,293,18,26]; @symbol_type<0> = [String,293,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_keep.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 294; @position = 18; @symbol_constdef = [dithering,294,18,27]; @symbol_type<0> = [String,294,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 295; @position = 18; @symbol_constdef = [packingFormat,295,18,31]; @symbol_type<0> = [String,295,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 298; @symbol_moduledef = [activity_color_light__background,298,15,47]; ]
+        module activity_color_light__background {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 298; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 299; @position = 18; @symbol_constdef = [color,299,18,23]; @symbol_type<0> = [Number,299,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 300; @position = 18; @symbol_constdef = [background,300,18,28]; @symbol_type<0> = [Number,300,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 303; @symbol_moduledef = [system_icon_positive__hint_button_right_top,303,15,58]; ]
+        module system_icon_positive__hint_button_right_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 303; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 304; @position = 18; @symbol_constdef = [filename,304,18,26]; @symbol_type<0> = [String,304,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_positive__hint_button_right_top.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 305; @position = 18; @symbol_constdef = [dithering,305,18,27]; @symbol_type<0> = [String,305,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 306; @position = 18; @symbol_constdef = [packingFormat,306,18,31]; @symbol_type<0> = [String,306,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 309; @symbol_moduledef = [system_size__screen,309,15,34]; ]
+        module system_size__screen {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 309; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 310; @position = 18; @symbol_constdef = [width,310,18,23]; @symbol_type<0> = [Number,310,27,33]; ]
+            const width as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 311; @position = 18; @symbol_constdef = [height,311,18,24]; @symbol_type<0> = [Number,311,28,34]; ]
+            const height as Number = 390;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 314; @symbol_moduledef = [system_icon_destructive__hint_button_right_bottom,314,15,64]; ]
+        module system_icon_destructive__hint_button_right_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 314; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 315; @position = 18; @symbol_constdef = [filename,315,18,26]; @symbol_type<0> = [String,315,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__hint_button_right_bottom.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 316; @position = 18; @symbol_constdef = [dithering,316,18,27]; @symbol_type<0> = [String,316,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 317; @position = 18; @symbol_constdef = [packingFormat,317,18,31]; @symbol_type<0> = [String,317,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 320; @symbol_moduledef = [system_color_light__background,320,15,45]; ]
+        module system_color_light__background {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 320; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 321; @position = 18; @symbol_constdef = [color,321,18,23]; @symbol_type<0> = [Number,321,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 322; @position = 18; @symbol_constdef = [background,322,18,28]; @symbol_type<0> = [Number,322,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 325; @symbol_moduledef = [system_icon_destructive__hint_button_right_top,325,15,61]; ]
+        module system_icon_destructive__hint_button_right_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 325; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 326; @position = 18; @symbol_constdef = [filename,326,18,26]; @symbol_type<0> = [String,326,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_destructive__hint_button_right_top.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 327; @position = 18; @symbol_constdef = [dithering,327,18,27]; @symbol_type<0> = [String,327,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 328; @position = 18; @symbol_constdef = [packingFormat,328,18,31]; @symbol_type<0> = [String,328,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 331; @symbol_moduledef = [confirmation_loc__hint_confirm,331,15,45]; ]
+        module confirmation_loc__hint_confirm {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 331; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 332; @position = 18; @symbol_constdef = [x,332,18,19]; @symbol_type<0> = [Number,332,23,29]; ]
+            const x as Number = 195;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 333; @position = 18; @symbol_constdef = [horizontalJustification,333,18,41]; @symbol_type<0> = [String,333,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 334; @position = 18; @symbol_constdef = [y,334,18,19]; @symbol_type<0> = [Number,334,23,29]; ]
+            const y as Number = 297;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 337; @symbol_moduledef = [activity_color_dark__text,337,15,40]; ]
+        module activity_color_dark__text {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 337; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 339 18 ]
+                symbol [ Graphics %tmp.65 339 31 39 ];
+                %tmp.65 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.66 339 40 57 ];
+                %tmp.66 = getv %tmp.65 :COLOR_TRANSPARENT;
+                putv self :background %tmp.66;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 338; @position = 18; @symbol_constdef = [color,338,18,23]; @symbol_type<0> = [Number,338,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 339; @position = 18; @symbol_constdef = [background,339,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 342; @symbol_moduledef = [confirmation_input__keep,342,15,39]; ]
+        module confirmation_input__keep {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 342; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 343 18 ]
+                symbol [ WatchUi %tmp.67 343 27 34 ];
+                %tmp.67 = getm $.Toybox.WatchUi;
+                symbol [ KEY_ESC %tmp.68 343 35 42 ];
+                %tmp.68 = getv %tmp.67 :KEY_ESC;
+                putv self :button %tmp.68;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 343; @position = 18; @symbol_constdef = [button,343,18,24]; ]
+            const button;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 346; @symbol_moduledef = [prompt_loc__body_with_title,346,15,42]; ]
+        module prompt_loc__body_with_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 346; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 347; @position = 18; @symbol_constdef = [x,347,18,19]; @symbol_type<0> = [Number,347,23,29]; ]
+            const x as Number = 39;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 348; @position = 18; @symbol_constdef = [y,348,18,19]; @symbol_type<0> = [Number,348,23,29]; ]
+            const y as Number = 98;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 351; @symbol_moduledef = [system_icon_dark__search,351,15,39]; ]
+        module system_icon_dark__search {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 351; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 352; @position = 18; @symbol_constdef = [filename,352,18,26]; @symbol_type<0> = [String,352,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__search.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 353; @position = 18; @symbol_constdef = [compress,353,18,26]; @symbol_type<0> = [String,353,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 354; @position = 18; @symbol_constdef = [dithering,354,18,27]; @symbol_type<0> = [String,354,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 355; @position = 18; @symbol_constdef = [automaticPalette,355,18,34]; @symbol_type<0> = [String,355,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 356; @position = 18; @symbol_constdef = [packingFormat,356,18,31]; @symbol_type<0> = [String,356,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 359; @symbol_moduledef = [activity_color_light__text,359,15,41]; ]
+        module activity_color_light__text {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 359; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 361 18 ]
+                symbol [ Graphics %tmp.69 361 31 39 ];
+                %tmp.69 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.70 361 40 57 ];
+                %tmp.70 = getv %tmp.69 :COLOR_TRANSPARENT;
+                putv self :background %tmp.70;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 360; @position = 18; @symbol_constdef = [color,360,18,23]; @symbol_type<0> = [Number,360,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 361; @position = 18; @symbol_constdef = [background,361,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 364; @symbol_moduledef = [confirmation_icon__hint_keep,364,15,43]; ]
+        module confirmation_icon__hint_keep {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 364; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 365; @position = 18; @symbol_constdef = [filename,365,18,26]; @symbol_type<0> = [String,365,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_keep.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 366; @position = 18; @symbol_constdef = [dithering,366,18,27]; @symbol_type<0> = [String,366,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 367; @position = 18; @symbol_constdef = [packingFormat,367,18,31]; @symbol_type<0> = [String,367,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 370; @symbol_moduledef = [system_icon_dark__save,370,15,37]; ]
+        module system_icon_dark__save {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 370; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 371; @position = 18; @symbol_constdef = [filename,371,18,26]; @symbol_type<0> = [String,371,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__save.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 372; @position = 18; @symbol_constdef = [compress,372,18,26]; @symbol_type<0> = [String,372,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 373; @position = 18; @symbol_constdef = [dithering,373,18,27]; @symbol_type<0> = [String,373,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 374; @position = 18; @symbol_constdef = [automaticPalette,374,18,34]; @symbol_type<0> = [String,374,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 375; @position = 18; @symbol_constdef = [packingFormat,375,18,31]; @symbol_type<0> = [String,375,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 378; @symbol_moduledef = [system_icon_destructive__hint_button_left_middle,378,15,63]; ]
+        module system_icon_destructive__hint_button_left_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 378; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 379; @position = 18; @symbol_constdef = [exclude,379,18,25]; @symbol_type<0> = [Boolean,379,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 382; @symbol_moduledef = [system_icon_light__search,382,15,40]; ]
+        module system_icon_light__search {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 382; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 383; @position = 18; @symbol_constdef = [filename,383,18,26]; @symbol_type<0> = [String,383,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__search.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 384; @position = 18; @symbol_constdef = [compress,384,18,26]; @symbol_type<0> = [String,384,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 385; @position = 18; @symbol_constdef = [dithering,385,18,27]; @symbol_type<0> = [String,385,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 386; @position = 18; @symbol_constdef = [automaticPalette,386,18,34]; @symbol_type<0> = [String,386,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 387; @position = 18; @symbol_constdef = [packingFormat,387,18,31]; @symbol_type<0> = [String,387,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 390; @symbol_moduledef = [system_icon_dark__hint_button_left_bottom,390,15,56]; ]
+        module system_icon_dark__hint_button_left_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 390; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 391; @position = 18; @symbol_constdef = [exclude,391,18,25]; @symbol_type<0> = [Boolean,391,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 394; @symbol_moduledef = [system_icon_positive__hint_button_left_top,394,15,57]; ]
+        module system_icon_positive__hint_button_left_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 394; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 395; @position = 18; @symbol_constdef = [exclude,395,18,25]; @symbol_type<0> = [Boolean,395,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 398; @symbol_moduledef = [system_loc__hint_button_right_bottom,398,15,51]; ]
+        module system_loc__hint_button_right_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 398; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 399; @position = 18; @symbol_constdef = [x,399,18,19]; @symbol_type<0> = [Number,399,23,29]; ]
+            const x as Number = 304;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 400; @position = 18; @symbol_constdef = [y,400,18,19]; @symbol_type<0> = [Number,400,23,29]; ]
+            const y as Number = 234;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 403; @symbol_moduledef = [confirmation_icon_dark__hint_reject,403,15,50]; ]
+        module confirmation_icon_dark__hint_reject {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 403; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 404; @position = 18; @symbol_constdef = [filename,404,18,26]; @symbol_type<0> = [String,404,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_reject.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 405; @position = 18; @symbol_constdef = [dithering,405,18,27]; @symbol_type<0> = [String,405,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 406; @position = 18; @symbol_constdef = [packingFormat,406,18,31]; @symbol_type<0> = [String,406,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 409; @symbol_moduledef = [confirmation_color_dark__body,409,15,44]; ]
+        module confirmation_color_dark__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 409; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 411 18 ]
+                symbol [ Graphics %tmp.71 411 31 39 ];
+                %tmp.71 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.72 411 40 57 ];
+                %tmp.72 = getv %tmp.71 :COLOR_TRANSPARENT;
+                putv self :background %tmp.72;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 410; @position = 18; @symbol_constdef = [color,410,18,23]; @symbol_type<0> = [Number,410,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 411; @position = 18; @symbol_constdef = [background,411,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 414; @symbol_moduledef = [confirmation_icon_light__hint_confirm,414,15,52]; ]
+        module confirmation_icon_light__hint_confirm {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 414; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 415; @position = 18; @symbol_constdef = [filename,415,18,26]; @symbol_type<0> = [String,415,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_completion.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 416; @position = 18; @symbol_constdef = [dithering,416,18,27]; @symbol_type<0> = [String,416,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 417; @position = 18; @symbol_constdef = [packingFormat,417,18,31]; @symbol_type<0> = [String,417,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 420; @symbol_moduledef = [prompt_color_dark__title,420,15,39]; ]
+        module prompt_color_dark__title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 420; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 422 18 ]
+                symbol [ Graphics %tmp.73 422 31 39 ];
+                %tmp.73 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.74 422 40 57 ];
+                %tmp.74 = getv %tmp.73 :COLOR_TRANSPARENT;
+                putv self :background %tmp.74;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 421; @position = 18; @symbol_constdef = [color,421,18,23]; @symbol_type<0> = [Number,421,27,33]; ]
+            const color as Number = 0xB3B3B3;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 422; @position = 18; @symbol_constdef = [background,422,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 425; @symbol_moduledef = [system_icon_destructive__cancel,425,15,46]; ]
+        module system_icon_destructive__cancel {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 425; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 426; @position = 18; @symbol_constdef = [filename,426,18,26]; @symbol_type<0> = [String,426,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_destructive__cancel.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 427; @position = 18; @symbol_constdef = [dithering,427,18,27]; @symbol_type<0> = [String,427,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 428; @position = 18; @symbol_constdef = [packingFormat,428,18,31]; @symbol_type<0> = [String,428,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 431; @symbol_moduledef = [system_icon_light__hint_button_right_bottom,431,15,58]; ]
+        module system_icon_light__hint_button_right_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 431; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 432; @position = 18; @symbol_constdef = [filename,432,18,26]; @symbol_type<0> = [String,432,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__hint_button_right_bottom.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 433; @position = 18; @symbol_constdef = [dithering,433,18,27]; @symbol_type<0> = [String,433,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 434; @position = 18; @symbol_constdef = [packingFormat,434,18,31]; @symbol_type<0> = [String,434,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 437; @symbol_moduledef = [prompt_loc__title,437,15,32]; ]
+        module prompt_loc__title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 437; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 438; @position = 18; @symbol_constdef = [x,438,18,19]; @symbol_type<0> = [Number,438,23,29]; ]
+            const x as Number = 113;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 439; @position = 18; @symbol_constdef = [y,439,18,19]; @symbol_type<0> = [Number,439,23,29]; ]
+            const y as Number = 19;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 442; @symbol_moduledef = [confirmation_font_enhanced_readability__body,442,15,59]; ]
+        module confirmation_font_enhanced_readability__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 442; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 443 18 ]
+                symbol [ Graphics %tmp.75 443 34 42 ];
+                %tmp.75 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.76 443 43 62 ];
+                %tmp.76 = getv %tmp.75 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.77 443 63 71 ];
+                %tmp.77 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.78 443 72 92 ];
+                %tmp.78 = getv %tmp.77 :TEXT_JUSTIFY_VCENTER;
+                %tmp.79 = bitor %tmp.76 %tmp.78;
+                putv self :justification %tmp.79;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 444 18 ]
+                symbol [ Graphics %tmp.80 444 25 33 ];
+                %tmp.80 = getm $.Toybox.Graphics;
+                symbol [ FONT_SMALL %tmp.81 444 34 44 ];
+                %tmp.81 = getv %tmp.80 :FONT_SMALL;
+                putv self :font %tmp.81;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 443; @position = 18; @symbol_constdef = [justification,443,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 444; @position = 18; @symbol_constdef = [font,444,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 447; @symbol_moduledef = [prompt_color_light__title,447,15,40]; ]
+        module prompt_color_light__title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 447; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 449 18 ]
+                symbol [ Graphics %tmp.82 449 31 39 ];
+                %tmp.82 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.83 449 40 57 ];
+                %tmp.83 = getv %tmp.82 :COLOR_TRANSPARENT;
+                putv self :background %tmp.83;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 448; @position = 18; @symbol_constdef = [color,448,18,23]; @symbol_type<0> = [Number,448,27,33]; ]
+            const color as Number = 0xB3B3B3;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 449; @position = 18; @symbol_constdef = [background,449,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 452; @symbol_moduledef = [system_icon_dark__hint_button_right_top,452,15,54]; ]
+        module system_icon_dark__hint_button_right_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 452; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 453; @position = 18; @symbol_constdef = [filename,453,18,26]; @symbol_type<0> = [String,453,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__hint_button_right_top.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 454; @position = 18; @symbol_constdef = [dithering,454,18,27]; @symbol_type<0> = [String,454,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 455; @position = 18; @symbol_constdef = [packingFormat,455,18,31]; @symbol_type<0> = [String,455,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 458; @symbol_moduledef = [system_icon_dark__hint_button_left_middle,458,15,56]; ]
+        module system_icon_dark__hint_button_left_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 458; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 459; @position = 18; @symbol_constdef = [exclude,459,18,25]; @symbol_type<0> = [Boolean,459,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 462; @symbol_moduledef = [confirmation_icon_dark__hint_keep,462,15,48]; ]
+        module confirmation_icon_dark__hint_keep {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 462; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 463; @position = 18; @symbol_constdef = [filename,463,18,26]; @symbol_type<0> = [String,463,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_keep.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 464; @position = 18; @symbol_constdef = [dithering,464,18,27]; @symbol_type<0> = [String,464,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 465; @position = 18; @symbol_constdef = [packingFormat,465,18,31]; @symbol_type<0> = [String,465,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 468; @symbol_moduledef = [system_icon_light__cancel,468,15,40]; ]
+        module system_icon_light__cancel {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 468; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 469; @position = 18; @symbol_constdef = [filename,469,18,26]; @symbol_type<0> = [String,469,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__cancel.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 470; @position = 18; @symbol_constdef = [compress,470,18,26]; @symbol_type<0> = [String,470,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 471; @position = 18; @symbol_constdef = [dithering,471,18,27]; @symbol_type<0> = [String,471,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 472; @position = 18; @symbol_constdef = [automaticPalette,472,18,34]; @symbol_type<0> = [String,472,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 473; @position = 18; @symbol_constdef = [packingFormat,473,18,31]; @symbol_type<0> = [String,473,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 476; @symbol_moduledef = [confirmation_icon_light__hint_reject,476,15,51]; ]
+        module confirmation_icon_light__hint_reject {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 476; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 477; @position = 18; @symbol_constdef = [filename,477,18,26]; @symbol_type<0> = [String,477,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_reject.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 478; @position = 18; @symbol_constdef = [dithering,478,18,27]; @symbol_type<0> = [String,478,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 479; @position = 18; @symbol_constdef = [packingFormat,479,18,31]; @symbol_type<0> = [String,479,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 482; @symbol_moduledef = [system_icon_light__about,482,15,39]; ]
+        module system_icon_light__about {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 482; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 483; @position = 18; @symbol_constdef = [filename,483,18,26]; @symbol_type<0> = [String,483,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__about.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 484; @position = 18; @symbol_constdef = [compress,484,18,26]; @symbol_type<0> = [String,484,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 485; @position = 18; @symbol_constdef = [dithering,485,18,27]; @symbol_type<0> = [String,485,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 486; @position = 18; @symbol_constdef = [automaticPalette,486,18,34]; @symbol_type<0> = [String,486,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 487; @position = 18; @symbol_constdef = [packingFormat,487,18,31]; @symbol_type<0> = [String,487,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 490; @symbol_moduledef = [system_size__toast_icon,490,15,38]; ]
+        module system_size__toast_icon {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 490; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 491; @position = 18; @symbol_constdef = [scaleX,491,18,24]; @symbol_type<0> = [Number,491,28,34]; ]
+            const scaleX as Number = 40;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 492; @position = 18; @symbol_constdef = [scaleY,492,18,24]; @symbol_type<0> = [Number,492,28,34]; ]
+            const scaleY as Number = 40;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 493; @position = 18; @symbol_constdef = [scaleRelativeTo,493,18,33]; @symbol_type<0> = [String,493,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 496; @symbol_moduledef = [system_icon_dark__hint_button_right_middle,496,15,57]; ]
+        module system_icon_dark__hint_button_right_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 496; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 497; @position = 18; @symbol_constdef = [exclude,497,18,25]; @symbol_type<0> = [Boolean,497,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 500; @symbol_moduledef = [confirmation_icon__hint_reject,500,15,45]; ]
+        module confirmation_icon__hint_reject {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 500; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 501; @position = 18; @symbol_constdef = [filename,501,18,26]; @symbol_type<0> = [String,501,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_reject.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 502; @position = 18; @symbol_constdef = [dithering,502,18,27]; @symbol_type<0> = [String,502,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 503; @position = 18; @symbol_constdef = [packingFormat,503,18,31]; @symbol_type<0> = [String,503,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 506; @symbol_moduledef = [system_icon_light__hint_action_menu,506,15,50]; ]
+        module system_icon_light__hint_action_menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 506; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 507; @position = 18; @symbol_constdef = [filename,507,18,26]; @symbol_type<0> = [String,507,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__hint_action_menu.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 508; @position = 18; @symbol_constdef = [dithering,508,18,27]; @symbol_type<0> = [String,508,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 509; @position = 18; @symbol_constdef = [packingFormat,509,18,31]; @symbol_type<0> = [String,509,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 512; @symbol_moduledef = [system_icon_light__hint_button_right_middle,512,15,58]; ]
+        module system_icon_light__hint_button_right_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 512; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 513; @position = 18; @symbol_constdef = [exclude,513,18,25]; @symbol_type<0> = [Boolean,513,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 516; @symbol_moduledef = [system_icon_destructive__hint_button_right_middle,516,15,64]; ]
+        module system_icon_destructive__hint_button_right_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 516; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 517; @position = 18; @symbol_constdef = [exclude,517,18,25]; @symbol_type<0> = [Boolean,517,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 520; @symbol_moduledef = [confirmation_loc__hint_reject,520,15,44]; ]
+        module confirmation_loc__hint_reject {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 520; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 521; @position = 18; @symbol_constdef = [x,521,18,19]; @symbol_type<0> = [Number,521,23,29]; ]
+            const x as Number = 195;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 522; @position = 18; @symbol_constdef = [horizontalJustification,522,18,41]; @symbol_type<0> = [String,522,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 523; @position = 18; @symbol_constdef = [y,523,18,19]; @symbol_type<0> = [Number,523,23,29]; ]
+            const y as Number = 0;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 526; @symbol_moduledef = [confirmation_icon_dark__hint_delete,526,15,50]; ]
+        module confirmation_icon_dark__hint_delete {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 526; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 527; @position = 18; @symbol_constdef = [filename,527,18,26]; @symbol_type<0> = [String,527,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_delete.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 528; @position = 18; @symbol_constdef = [dithering,528,18,27]; @symbol_type<0> = [String,528,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 529; @position = 18; @symbol_constdef = [packingFormat,529,18,31]; @symbol_type<0> = [String,529,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 532; @symbol_moduledef = [activity_color_dark__background,532,15,46]; ]
+        module activity_color_dark__background {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 532; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 533; @position = 18; @symbol_constdef = [color,533,18,23]; @symbol_type<0> = [Number,533,27,33]; ]
+            const color as Number = 0x000000;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 534; @position = 18; @symbol_constdef = [background,534,18,28]; @symbol_type<0> = [Number,534,32,38]; ]
+            const background as Number = 0x000000;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 537; @symbol_moduledef = [system_icon_light__hint_button_left_bottom,537,15,57]; ]
+        module system_icon_light__hint_button_left_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 537; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 538; @position = 18; @symbol_constdef = [exclude,538,18,25]; @symbol_type<0> = [Boolean,538,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 541; @symbol_moduledef = [system_icon_positive__hint_button_left_middle,541,15,60]; ]
+        module system_icon_positive__hint_button_left_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 541; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 542; @position = 18; @symbol_constdef = [exclude,542,18,25]; @symbol_type<0> = [Boolean,542,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 545; @symbol_moduledef = [system_size__menu_icon,545,15,37]; ]
+        module system_size__menu_icon {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 545; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 546; @position = 18; @symbol_constdef = [scaleX,546,18,24]; @symbol_type<0> = [Number,546,28,34]; ]
+            const scaleX as Number = 45;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 547; @position = 18; @symbol_constdef = [scaleY,547,18,24]; @symbol_type<0> = [Number,547,28,34]; ]
+            const scaleY as Number = 45;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 548; @position = 18; @symbol_constdef = [scaleRelativeTo,548,18,33]; @symbol_type<0> = [String,548,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 551; @symbol_moduledef = [system_icon_destructive__warning,551,15,47]; ]
+        module system_icon_destructive__warning {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 551; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 552; @position = 18; @symbol_constdef = [filename,552,18,26]; @symbol_type<0> = [String,552,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_destructive__warning.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 553; @position = 18; @symbol_constdef = [dithering,553,18,27]; @symbol_type<0> = [String,553,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 554; @position = 18; @symbol_constdef = [packingFormat,554,18,31]; @symbol_type<0> = [String,554,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 557; @symbol_moduledef = [system_loc__hint_button_right_middle,557,15,51]; ]
+        module system_loc__hint_button_right_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 557; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 558; @position = 18; @symbol_constdef = [exclude,558,18,25]; @symbol_type<0> = [Boolean,558,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 561; @symbol_moduledef = [system_icon_dark__cancel,561,15,39]; ]
+        module system_icon_dark__cancel {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 561; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 562; @position = 18; @symbol_constdef = [filename,562,18,26]; @symbol_type<0> = [String,562,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__cancel.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 563; @position = 18; @symbol_constdef = [compress,563,18,26]; @symbol_type<0> = [String,563,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 564; @position = 18; @symbol_constdef = [dithering,564,18,27]; @symbol_type<0> = [String,564,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 565; @position = 18; @symbol_constdef = [automaticPalette,565,18,34]; @symbol_type<0> = [String,565,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 566; @position = 18; @symbol_constdef = [packingFormat,566,18,31]; @symbol_type<0> = [String,566,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 569; @symbol_moduledef = [prompt_size__body_with_title,569,15,43]; ]
+        module prompt_size__body_with_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 569; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 570; @position = 18; @symbol_constdef = [width,570,18,23]; @symbol_type<0> = [Number,570,27,33]; ]
+            const width as Number = 312;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 571; @position = 18; @symbol_constdef = [height,571,18,24]; @symbol_type<0> = [Number,571,28,34]; ]
+            const height as Number = 215;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 574; @symbol_moduledef = [system_loc__hint_button_right_top,574,15,48]; ]
+        module system_loc__hint_button_right_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 574; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 575; @position = 18; @symbol_constdef = [x,575,18,19]; @symbol_type<0> = [Number,575,23,29]; ]
+            const x as Number = 318;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 576; @position = 18; @symbol_constdef = [y,576,18,19]; @symbol_type<0> = [Number,576,23,29]; ]
+            const y as Number = 59;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 579; @symbol_moduledef = [system_color_light__text,579,15,39]; ]
+        module system_color_light__text {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 579; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 581 18 ]
+                symbol [ Graphics %tmp.84 581 31 39 ];
+                %tmp.84 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.85 581 40 57 ];
+                %tmp.85 = getv %tmp.84 :COLOR_TRANSPARENT;
+                putv self :background %tmp.85;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 580; @position = 18; @symbol_constdef = [color,580,18,23]; @symbol_type<0> = [Number,580,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 581; @position = 18; @symbol_constdef = [background,581,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 584; @symbol_moduledef = [system_icon_light__check,584,15,39]; ]
+        module system_icon_light__check {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 584; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 585; @position = 18; @symbol_constdef = [filename,585,18,26]; @symbol_type<0> = [String,585,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__check.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 586; @position = 18; @symbol_constdef = [compress,586,18,26]; @symbol_type<0> = [String,586,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 587; @position = 18; @symbol_constdef = [dithering,587,18,27]; @symbol_type<0> = [String,587,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 588; @position = 18; @symbol_constdef = [automaticPalette,588,18,34]; @symbol_type<0> = [String,588,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 589; @position = 18; @symbol_constdef = [packingFormat,589,18,31]; @symbol_type<0> = [String,589,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 592; @symbol_moduledef = [confirmation_input__reject,592,15,41]; ]
+        module confirmation_input__reject {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 592; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 593; @position = 18; @symbol_constdef = [y1,593,18,20]; @symbol_type<0> = [Number,593,24,30]; ]
+            const y1 as Number = 0;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 594; @position = 18; @symbol_constdef = [x1,594,18,20]; @symbol_type<0> = [Number,594,24,30]; ]
+            const x1 as Number = 97;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 595; @position = 18; @symbol_constdef = [y2,595,18,20]; @symbol_type<0> = [Number,595,24,30]; ]
+            const y2 as Number = 76;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 596; @position = 18; @symbol_constdef = [x2,596,18,20]; @symbol_type<0> = [Number,596,24,30]; ]
+            const x2 as Number = 293;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 599; @symbol_moduledef = [system_icon_light__revert,599,15,40]; ]
+        module system_icon_light__revert {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 599; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 600; @position = 18; @symbol_constdef = [filename,600,18,26]; @symbol_type<0> = [String,600,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__revert.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 601; @position = 18; @symbol_constdef = [compress,601,18,26]; @symbol_type<0> = [String,601,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 602; @position = 18; @symbol_constdef = [dithering,602,18,27]; @symbol_type<0> = [String,602,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 603; @position = 18; @symbol_constdef = [automaticPalette,603,18,34]; @symbol_type<0> = [String,603,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 604; @position = 18; @symbol_constdef = [packingFormat,604,18,31]; @symbol_type<0> = [String,604,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 607; @symbol_moduledef = [system_size__subwindow,607,15,37]; ]
+        module system_size__subwindow {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 607; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 608; @position = 18; @symbol_constdef = [exclude,608,18,25]; @symbol_type<0> = [Boolean,608,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 611; @symbol_moduledef = [system_icon_positive__hint_button_left_bottom,611,15,60]; ]
+        module system_icon_positive__hint_button_left_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 611; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 612; @position = 18; @symbol_constdef = [exclude,612,18,25]; @symbol_type<0> = [Boolean,612,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 615; @symbol_moduledef = [system_icon_dark__check,615,15,38]; ]
+        module system_icon_dark__check {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 615; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 616; @position = 18; @symbol_constdef = [filename,616,18,26]; @symbol_type<0> = [String,616,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__check.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 617; @position = 18; @symbol_constdef = [compress,617,18,26]; @symbol_type<0> = [String,617,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 618; @position = 18; @symbol_constdef = [dithering,618,18,27]; @symbol_type<0> = [String,618,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 619; @position = 18; @symbol_constdef = [automaticPalette,619,18,34]; @symbol_type<0> = [String,619,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 620; @position = 18; @symbol_constdef = [packingFormat,620,18,31]; @symbol_type<0> = [String,620,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 623; @symbol_moduledef = [confirmation_loc__hint_keep,623,15,42]; ]
+        module confirmation_loc__hint_keep {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 623; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 624; @position = 18; @symbol_constdef = [x,624,18,19]; @symbol_type<0> = [Number,624,23,29]; ]
+            const x as Number = 304;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 625; @position = 18; @symbol_constdef = [y,625,18,19]; @symbol_type<0> = [Number,625,23,29]; ]
+            const y as Number = 234;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 628; @symbol_moduledef = [confirmation_loc__hint_delete,628,15,44]; ]
+        module confirmation_loc__hint_delete {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 628; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 629; @position = 18; @symbol_constdef = [x,629,18,19]; @symbol_type<0> = [Number,629,23,29]; ]
+            const x as Number = 309;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 630; @position = 18; @symbol_constdef = [y,630,18,19]; @symbol_type<0> = [Number,630,23,29]; ]
+            const y as Number = 47;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 633; @symbol_moduledef = [system_icon_positive__hint_action_menu,633,15,53]; ]
+        module system_icon_positive__hint_action_menu {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 633; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 634; @position = 18; @symbol_constdef = [filename,634,18,26]; @symbol_type<0> = [String,634,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_positive__hint_action_menu.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 635; @position = 18; @symbol_constdef = [dithering,635,18,27]; @symbol_type<0> = [String,635,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 636; @position = 18; @symbol_constdef = [packingFormat,636,18,31]; @symbol_type<0> = [String,636,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 639; @symbol_moduledef = [system_icon_positive__hint_button_right_middle,639,15,61]; ]
+        module system_icon_positive__hint_button_right_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 639; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 640; @position = 18; @symbol_constdef = [exclude,640,18,25]; @symbol_type<0> = [Boolean,640,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 643; @symbol_moduledef = [system_icon_light__hint_button_left_middle,643,15,57]; ]
+        module system_icon_light__hint_button_left_middle {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 643; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 644; @position = 18; @symbol_constdef = [exclude,644,18,25]; @symbol_type<0> = [Boolean,644,29,36]; ]
+            const exclude as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 647; @symbol_moduledef = [system_icon_dark__hint_button_right_bottom,647,15,57]; ]
+        module system_icon_dark__hint_button_right_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 647; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 648; @position = 18; @symbol_constdef = [filename,648,18,26]; @symbol_type<0> = [String,648,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__hint_button_right_bottom.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 649; @position = 18; @symbol_constdef = [dithering,649,18,27]; @symbol_type<0> = [String,649,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 650; @position = 18; @symbol_constdef = [packingFormat,650,18,31]; @symbol_type<0> = [String,650,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 653; @symbol_moduledef = [system_icon_positive__hint_button_right_bottom,653,15,61]; ]
+        module system_icon_positive__hint_button_right_bottom {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 653; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 654; @position = 18; @symbol_constdef = [filename,654,18,26]; @symbol_type<0> = [String,654,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_positive__hint_button_right_bottom.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 655; @position = 18; @symbol_constdef = [dithering,655,18,27]; @symbol_type<0> = [String,655,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 656; @position = 18; @symbol_constdef = [packingFormat,656,18,31]; @symbol_type<0> = [String,656,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 659; @symbol_moduledef = [system_icon_dark__revert,659,15,39]; ]
+        module system_icon_dark__revert {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 659; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 660; @position = 18; @symbol_constdef = [filename,660,18,26]; @symbol_type<0> = [String,660,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__revert.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 661; @position = 18; @symbol_constdef = [compress,661,18,26]; @symbol_type<0> = [String,661,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 662; @position = 18; @symbol_constdef = [dithering,662,18,27]; @symbol_type<0> = [String,662,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 663; @position = 18; @symbol_constdef = [automaticPalette,663,18,34]; @symbol_type<0> = [String,663,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 664; @position = 18; @symbol_constdef = [packingFormat,664,18,31]; @symbol_type<0> = [String,664,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 667; @symbol_moduledef = [confirmation_icon_light__hint_delete,667,15,51]; ]
+        module confirmation_icon_light__hint_delete {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 667; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 668; @position = 18; @symbol_constdef = [filename,668,18,26]; @symbol_type<0> = [String,668,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_delete.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 669; @position = 18; @symbol_constdef = [dithering,669,18,27]; @symbol_type<0> = [String,669,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 670; @position = 18; @symbol_constdef = [packingFormat,670,18,31]; @symbol_type<0> = [String,670,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 673; @symbol_moduledef = [system_icon_dark__question,673,15,41]; ]
+        module system_icon_dark__question {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 673; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 674; @position = 18; @symbol_constdef = [filename,674,18,26]; @symbol_type<0> = [String,674,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__question.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 675; @position = 18; @symbol_constdef = [compress,675,18,26]; @symbol_type<0> = [String,675,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 676; @position = 18; @symbol_constdef = [dithering,676,18,27]; @symbol_type<0> = [String,676,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 677; @position = 18; @symbol_constdef = [automaticPalette,677,18,34]; @symbol_type<0> = [String,677,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 678; @position = 18; @symbol_constdef = [packingFormat,678,18,31]; @symbol_type<0> = [String,678,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 681; @symbol_moduledef = [system_icon_light__discard,681,15,41]; ]
+        module system_icon_light__discard {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 681; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 682; @position = 18; @symbol_constdef = [filename,682,18,26]; @symbol_type<0> = [String,682,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__discard.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 683; @position = 18; @symbol_constdef = [compress,683,18,26]; @symbol_type<0> = [String,683,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 684; @position = 18; @symbol_constdef = [dithering,684,18,27]; @symbol_type<0> = [String,684,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 685; @position = 18; @symbol_constdef = [automaticPalette,685,18,34]; @symbol_type<0> = [String,685,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 686; @position = 18; @symbol_constdef = [packingFormat,686,18,31]; @symbol_type<0> = [String,686,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 689; @symbol_moduledef = [device_info,689,15,26]; ]
+        module device_info {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 689; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 691 18 ]
+                symbol [ Toybox %tmp.87 691 32 38 ];
+                %tmp.87 = getv ? :Toybox;
+                symbol [ System %tmp.88 691 39 45 ];
+                %tmp.88 = getv %tmp.87 :System;
+                symbol [ SCREEN_SHAPE_ROUND %tmp.89 691 46 64 ];
+                %tmp.89 = getv %tmp.88 :SCREEN_SHAPE_ROUND;
+                putv self :screenShape %tmp.89;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 690; @position = 18; @symbol_constdef = [screenWidth,690,18,29]; @symbol_type<0> = [Number,690,33,39]; ]
+            const screenWidth as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 691; @position = 18; @symbol_constdef = [screenShape,691,18,29]; ]
+            const screenShape;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 692; @position = 18; @symbol_constdef = [hasNightMode,692,18,30]; @symbol_type<0> = [Boolean,692,34,41]; ]
+            const hasNightMode as Boolean = false;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 693; @position = 18; @symbol_constdef = [hasGpu,693,18,24]; @symbol_type<0> = [Boolean,693,28,35]; ]
+            const hasGpu as Boolean = false;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 694; @position = 18; @symbol_constdef = [screenHeight,694,18,30]; @symbol_type<0> = [Number,694,34,40]; ]
+            const screenHeight as Number = 390;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 695; @position = 18; @symbol_constdef = [hasTouchScreen,695,18,32]; @symbol_type<0> = [Boolean,695,36,43]; ]
+            const hasTouchScreen as Boolean = true;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 696; @position = 18; @symbol_constdef = [hasEnhancedReadabilityMode,696,18,44]; @symbol_type<0> = [Boolean,696,48,55]; ]
+            const hasEnhancedReadabilityMode as Boolean = true;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 699; @symbol_moduledef = [confirmation_icon_dark__hint_confirm,699,15,51]; ]
+        module confirmation_icon_dark__hint_confirm {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 699; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 700; @position = 18; @symbol_constdef = [filename,700,18,26]; @symbol_type<0> = [String,700,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_completion.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 701; @position = 18; @symbol_constdef = [dithering,701,18,27]; @symbol_type<0> = [String,701,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 702; @position = 18; @symbol_constdef = [packingFormat,702,18,31]; @symbol_type<0> = [String,702,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 705; @symbol_moduledef = [prompt_font__body_no_title,705,15,41]; ]
+        module prompt_font__body_no_title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 705; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 706 18 ]
+                symbol [ Graphics %tmp.90 706 34 42 ];
+                %tmp.90 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.91 706 43 62 ];
+                %tmp.91 = getv %tmp.90 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.92 706 63 71 ];
+                %tmp.92 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.93 706 72 92 ];
+                %tmp.93 = getv %tmp.92 :TEXT_JUSTIFY_VCENTER;
+                %tmp.94 = bitor %tmp.91 %tmp.93;
+                putv self :justification %tmp.94;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 707 18 ]
+                symbol [ Graphics %tmp.95 707 25 33 ];
+                %tmp.95 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.96 707 34 43 ];
+                %tmp.96 = getv %tmp.95 :FONT_TINY;
+                putv self :font %tmp.96;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 706; @position = 18; @symbol_constdef = [justification,706,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 707; @position = 18; @symbol_constdef = [font,707,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 710; @symbol_moduledef = [prompt_size__title_icon,710,15,38]; ]
+        module prompt_size__title_icon {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 710; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 711; @position = 18; @symbol_constdef = [scaleX,711,18,24]; @symbol_type<0> = [Float,711,28,33]; ]
+            const scaleX as Float = 0.12;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 712; @position = 18; @symbol_constdef = [scaleRelativeTo,712,18,33]; @symbol_type<0> = [String,712,37,43]; ]
+            const scaleRelativeTo as String = "screen";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 715; @symbol_moduledef = [system_icon_dark__warning,715,15,40]; ]
+        module system_icon_dark__warning {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 715; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 716; @position = 18; @symbol_constdef = [filename,716,18,26]; @symbol_type<0> = [String,716,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_dark__warning.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 717; @position = 18; @symbol_constdef = [compress,717,18,26]; @symbol_type<0> = [String,717,30,36]; ]
+            const compress as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 718; @position = 18; @symbol_constdef = [dithering,718,18,27]; @symbol_type<0> = [String,718,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 719; @position = 18; @symbol_constdef = [automaticPalette,719,18,34]; @symbol_type<0> = [String,719,38,44]; ]
+            const automaticPalette as String = "true";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 720; @position = 18; @symbol_constdef = [packingFormat,720,18,31]; @symbol_type<0> = [String,720,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 723; @symbol_moduledef = [prompt_loc__title_icon,723,15,37]; ]
+        module prompt_loc__title_icon {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 723; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 724; @position = 18; @symbol_constdef = [x,724,18,19]; @symbol_type<0> = [Number,724,23,29]; ]
+            const x as Number = 195;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 725; @position = 18; @symbol_constdef = [y,725,18,19]; @symbol_type<0> = [Number,725,23,29]; ]
+            const y as Number = 39;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 726; @position = 18; @symbol_constdef = [horizontalJustification,726,18,41]; @symbol_type<0> = [String,726,45,51]; ]
+            const horizontalJustification as String = "center";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 727; @position = 18; @symbol_constdef = [verticalJustification,727,18,39]; @symbol_type<0> = [String,727,43,49]; ]
+            const verticalJustification as String = "center";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 730; @symbol_moduledef = [prompt_font_enhanced_readability__title,730,15,54]; ]
+        module prompt_font_enhanced_readability__title {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 730; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 731 18 ]
+                symbol [ Graphics %tmp.97 731 34 42 ];
+                %tmp.97 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_CENTER %tmp.98 731 43 62 ];
+                %tmp.98 = getv %tmp.97 :TEXT_JUSTIFY_CENTER;
+                symbol [ Graphics %tmp.99 731 63 71 ];
+                %tmp.99 = getm $.Toybox.Graphics;
+                symbol [ TEXT_JUSTIFY_VCENTER %tmp.100 731 72 92 ];
+                %tmp.100 = getv %tmp.99 :TEXT_JUSTIFY_VCENTER;
+                %tmp.101 = bitor %tmp.98 %tmp.100;
+                putv self :justification %tmp.101;
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 732 18 ]
+                symbol [ Graphics %tmp.102 732 25 33 ];
+                %tmp.102 = getm $.Toybox.Graphics;
+                symbol [ FONT_TINY %tmp.103 732 34 43 ];
+                %tmp.103 = getv %tmp.102 :FONT_TINY;
+                putv self :font %tmp.103;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 731; @position = 18; @symbol_constdef = [justification,731,18,31]; ]
+            const justification;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 732; @position = 18; @symbol_constdef = [font,732,18,22]; ]
+            const font;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 735; @symbol_moduledef = [prompt_color_dark__body,735,15,38]; ]
+        module prompt_color_dark__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 735; ]
+            <init> {
+[ "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen" 737 18 ]
+                symbol [ Graphics %tmp.104 737 31 39 ];
+                %tmp.104 = getm $.Toybox.Graphics;
+                symbol [ COLOR_TRANSPARENT %tmp.105 737 40 57 ];
+                %tmp.105 = getv %tmp.104 :COLOR_TRANSPARENT;
+                putv self :background %tmp.105;
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 736; @position = 18; @symbol_constdef = [color,736,18,23]; @symbol_type<0> = [Number,736,27,33]; ]
+            const color as Number = 0xFFFFFF;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 737; @position = 18; @symbol_constdef = [background,737,18,28]; ]
+            const background;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 740; @symbol_moduledef = [confirmation_icon__hint_delete,740,15,45]; ]
+        module confirmation_icon__hint_delete {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 740; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 741; @position = 18; @symbol_constdef = [filename,741,18,26]; @symbol_type<0> = [String,741,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\confirmation_icon__hint_delete.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 742; @position = 18; @symbol_constdef = [dithering,742,18,27]; @symbol_type<0> = [String,742,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 743; @position = 18; @symbol_constdef = [packingFormat,743,18,31]; @symbol_type<0> = [String,743,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 746; @symbol_moduledef = [system_icon_light__hint_button_right_top,746,15,55]; ]
+        module system_icon_light__hint_button_right_top {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 746; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 747; @position = 18; @symbol_constdef = [filename,747,18,26]; @symbol_type<0> = [String,747,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_light__hint_button_right_top.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 748; @position = 18; @symbol_constdef = [dithering,748,18,27]; @symbol_type<0> = [String,748,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 749; @position = 18; @symbol_constdef = [packingFormat,749,18,31]; @symbol_type<0> = [String,749,35,41]; ]
+            const packingFormat as String = "png";
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 752; @symbol_moduledef = [confirmation_size__body,752,15,38]; ]
+        module confirmation_size__body {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 752; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 753; @position = 18; @symbol_constdef = [width,753,18,23]; @symbol_type<0> = [Number,753,27,33]; ]
+            const width as Number = 231;
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 754; @position = 18; @symbol_constdef = [height,754,18,24]; @symbol_type<0> = [Number,754,28,34]; ]
+            const height as Number = 234;
+        }
+        [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 757; @symbol_moduledef = [system_icon_positive__check,757,15,42]; ]
+        module system_icon_positive__check {
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 757; ]
+            <init> {
+            }
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 758; @position = 18; @symbol_constdef = [filename,758,18,26]; @symbol_type<0> = [String,758,30,36]; ]
+            const filename as String = "C:\\Users\\shiva\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\vivoactive5\\system_icon_positive__check.svg";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 759; @position = 18; @symbol_constdef = [dithering,759,18,27]; @symbol_type<0> = [String,759,31,37]; ]
+            const dithering as String = "none";
+            [ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 760; @position = 18; @symbol_constdef = [packingFormat,760,18,31]; @symbol_type<0> = [String,760,35,41]; ]
+            const packingFormat as String = "png";
+        }
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\bin\gen\006-B4426-00\source\Rez.mcgen"; @line = 1; ]
+<init> {
+}

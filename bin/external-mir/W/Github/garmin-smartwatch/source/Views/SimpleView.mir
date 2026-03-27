@@ -1,0 +1,1523 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Activity,3,14,22]; ]
+import Toybox.Activity;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Lang,4,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Timer,5,14,19]; ]
+import Toybox.Timer;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [System,6,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Attention,7,14,23]; ]
+import Toybox.Attention;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 9; @symbol_classdef = [SimpleView,9,6,16]; @symbol_extends<0> = [WatchUi,9,25,32]; @symbol_extends<1> = [View,9,33,37]; ]
+class SimpleView extends WatchUi.View {
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 9; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 11; @position = 16; @symbol_vardef = [_cadenceDisplay,11,16,31]; ]
+    private
+    var _cadenceDisplay;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 12; @position = 16; @symbol_vardef = [_refreshTimer,12,16,29]; ]
+    private
+    var _refreshTimer;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 13; @position = 16; @symbol_vardef = [_heartrateDisplay,13,16,33]; ]
+    private
+    var _heartrateDisplay;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 14; @position = 16; @symbol_vardef = [_distanceDisplay,14,16,32]; ]
+    private
+    var _distanceDisplay;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 15; @position = 16; @symbol_vardef = [_timeDisplay,15,16,28]; ]
+    private
+    var _timeDisplay;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 16; @position = 16; @symbol_vardef = [_cadenceZoneDisplay,16,16,35]; ]
+    private
+    var _cadenceZoneDisplay;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 17; @position = 16; @symbol_vardef = [_lastZoneState,17,16,30]; ]
+    private
+    var _lastZoneState = 0;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 18; @position = 16; @symbol_vardef = [_cqDisplay,18,16,26]; ]
+    private
+    var _cqDisplay;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 22; @position = 16; @symbol_vardef = [_alertStartTime,22,16,31]; ]
+    private
+    var _alertStartTime = null;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 23; @position = 16; @symbol_vardef = [_alertDuration,23,16,30]; ]
+    private
+    var _alertDuration = 180000;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 24; @position = 16; @symbol_vardef = [_alertInterval,24,16,30]; ]
+    private
+    var _alertInterval = 30000;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 25; @position = 16; @symbol_vardef = [_lastAlertTime,25,16,30]; ]
+    private
+    var _lastAlertTime = 0;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 26; @position = 16; @symbol_vardef = [_pendingSecondVibe,26,16,34]; ]
+    private
+    var _pendingSecondVibe = false;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 27; @position = 16; @symbol_vardef = [_secondVibeTime,27,16,31]; ]
+    private
+    var _secondVibeTime = 0;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 29; @symbol_functiondef = [initialize,29,13,23]; ]
+    function initialize() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_29_26_31_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 30 8 ]
+        symbol [ View %tmp.2 30 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 30 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_29_26_31_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 36; @symbol_functiondef = [onShow,36,13,19]; ]
+    function onShow() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_36_30_39_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 37 8 ]
+        symbol [ Timer %tmp.3 37 28 33 ];
+        %tmp.3 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.4 37 34 39 ];
+        %tmp.4 = getv function ? %tmp.3 :Timer;
+        %tmp.1 = newc %tmp.4 ();
+        symbol [ _refreshTimer ? 37 8 21 ];
+        putv self :_refreshTimer %tmp.1;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 38 8 ]
+        symbol [ _refreshTimer %tmp.6 38 8 21 ];
+        %tmp.6 = getv ? :_refreshTimer;
+        symbol [ start %tmp.7 38 22 27 ];
+        %tmp.7 = getv function %tmp.6 :start;
+        %tmp.8 = self;
+        symbol [ method %tmp.9 38 28 34 ];
+        %tmp.9 = getv function %tmp.8 :method;
+        %tmp.11 = const :refreshScreen;
+        symbol [ refreshScreen %tmp.11 38 36 49 const ];
+        %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
+        %tmp.13 = 1000;
+        %tmp.14 = true;
+        invoke %tmp.6 %tmp.7(%tmp.12, %tmp.13, %tmp.14);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_36_30_39_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 42; @symbol_functiondef = [onUpdate,42,13,21]; @symbol_param<0> = [dc,42,22,24]; @symbol_param<0>_type<0> = [Dc,42,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_42_40_54_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 44 8 ]
+        %tmp.1 = self;
+        symbol [ displayCadence %tmp.2 44 8 22 ];
+        %tmp.2 = getv function %tmp.1 :displayCadence;
+        invoke %tmp.1 %tmp.2();
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 47 8 ]
+        %tmp.3 = self;
+        symbol [ checkPendingVibration %tmp.4 47 8 29 ];
+        %tmp.4 = getv function %tmp.3 :checkPendingVibration;
+        invoke %tmp.3 %tmp.4();
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 50 8 ]
+        %tmp.5 = self;
+        symbol [ drawRecordingIndicator %tmp.6 50 8 30 ];
+        %tmp.6 = getv function %tmp.5 :drawRecordingIndicator;
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 50 31 33 ];
+        invoke %tmp.5 %tmp.6(%tmp.7);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 53 8 ]
+        symbol [ View %tmp.9 53 8 12 ];
+        %tmp.9 = getv ? :View;
+        symbol [ onUpdate %tmp.10 53 13 21 ];
+        %tmp.10 = getv function %tmp.9 :onUpdate;
+        %tmp.11 = lgetv %dc;
+        symbol [ dc %tmp.11 53 22 24 ];
+        invoke %tmp.9 %tmp.10(%tmp.11);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_42_40_54_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 59; @symbol_functiondef = [onHide,59,13,19]; ]
+    function onHide() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_59_30_67_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 60 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_8_63_8_if_stmt:
+        symbol [ _refreshTimer %tmp.2 60 12 25 ];
+        %tmp.2 = getv ? :_refreshTimer;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_8_63_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_8_63_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_35_63_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 61 12 ]
+        symbol [ _refreshTimer %tmp.6 61 12 25 ];
+        %tmp.6 = getv ? :_refreshTimer;
+        %tmp.7 = as %tmp.6 { (!Null) };
+        symbol [ stop %tmp.8 61 26 30 ];
+        %tmp.8 = getv function %tmp.7 :stop;
+        invoke %tmp.7 %tmp.8();
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 62 12 ]
+        %tmp.9 = null;
+        symbol [ _refreshTimer ? 62 12 25 ];
+        putv self :_refreshTimer %tmp.9;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_35_63_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_8_63_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_60_8_63_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 65 8 ]
+        %tmp.10 = null;
+        symbol [ _alertStartTime ? 65 8 23 ];
+        putv self :_alertStartTime %tmp.10;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 66 8 ]
+        %tmp.11 = 0;
+        symbol [ _lastAlertTime ? 66 8 22 ];
+        putv self :_lastAlertTime %tmp.11;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_59_30_67_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 69; @symbol_functiondef = [refreshScreen,69,13,26]; ]
+    function refreshScreen() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_69_36_71_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 70 8 ]
+        symbol [ WatchUi %tmp.1 70 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.2 70 16 29 ];
+        %tmp.2 = getv function %tmp.1 :requestUpdate;
+        invoke %tmp.1 %tmp.2();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_69_36_71_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 73; @symbol_functiondef = [checkPendingVibration,73,13,34]; ]
+    function checkPendingVibration() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_73_45_85_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 74 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_8_84_8_if_stmt:
+        symbol [ _pendingSecondVibe %tmp.2 74 12 30 ];
+        %tmp.2 = getv ? :_pendingSecondVibe;
+        bf %tmp.2 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_8_84_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_8_84_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_32_84_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 75 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_32_84_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_32_84_8_stop" ]
+        %currentTime.1 = local;
+        symbol [ currentTime %currentTime.1 75 16 27 ];
+        symbol [ System %tmp.3 75 30 36 ];
+        %tmp.3 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.4 75 37 45 ];
+        %tmp.4 = getv function %tmp.3 :getTimer;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %currentTime.1 %tmp.5;
+        symbol [ currentTime %currentTime.1 75 16 27 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 76 12 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_12_83_12_if_stmt:
+        %tmp.6 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.6 76 16 27 ];
+        symbol [ _secondVibeTime %tmp.8 76 31 46 ];
+        %tmp.8 = getv ? :_secondVibeTime;
+        %tmp.9 = gte %tmp.6 %tmp.8;
+        bf %tmp.9 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_12_83_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_12_83_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_48_83_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 78 16 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_16_81_16_if_stmt:
+        symbol [ Attention %tmp.10 78 20 29 ];
+        %tmp.10 = getm $.Toybox.Attention;
+        %tmp.12 = const :vibrate;
+        symbol [ vibrate %tmp.12 78 35 42 const ];
+        %tmp.13 = canhazplz %tmp.10 %tmp.12;
+        bf %tmp.13 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_16_81_16_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_16_81_16_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_44_81_16_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 79 20 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_44_81_16_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_44_81_16_stop" ]
+        %vibeData.2 = local;
+        symbol [ vibeData %vibeData.2 79 24 32 ];
+        %tmp.14 = newa 1;
+        symbol [ Attention %tmp.17 79 40 49 ];
+        %tmp.17 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.18 79 50 61 ];
+        %tmp.18 = getv function ? %tmp.17 :VibeProfile;
+        %tmp.19 = 50;
+        %tmp.20 = 200;
+        %tmp.15 = newc %tmp.18 (%tmp.19, %tmp.20);
+        %tmp.21 = dup %tmp.14;
+        %tmp.22 = aputv %tmp.21 0 %tmp.15;
+        lputv %vibeData.2 %tmp.22;
+        symbol [ vibeData %vibeData.2 79 24 32 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 80 20 ]
+        symbol [ Attention %tmp.23 80 20 29 ];
+        %tmp.23 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.24 80 30 37 ];
+        %tmp.24 = getv function %tmp.23 :vibrate;
+        %tmp.25 = lgetv %vibeData.2;
+        symbol [ vibeData %tmp.25 80 38 46 ];
+        invoke %tmp.23 %tmp.24(%tmp.25);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_44_81_16_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_16_81_16_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_78_16_81_16_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 82 16 ]
+        %tmp.26 = false;
+        symbol [ _pendingSecondVibe ? 82 16 34 ];
+        putv self :_pendingSecondVibe %tmp.26;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_48_83_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_12_83_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_76_12_83_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_32_84_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_8_84_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_74_8_84_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_73_45_85_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 87; @symbol_functiondef = [triggerSingleVibration,87,13,35]; ]
+    function triggerSingleVibration() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_87_46_92_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 88 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_8_91_8_if_stmt:
+        symbol [ Attention %tmp.1 88 12 21 ];
+        %tmp.1 = getm $.Toybox.Attention;
+        %tmp.3 = const :vibrate;
+        symbol [ vibrate %tmp.3 88 27 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_8_91_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_8_91_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_36_91_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 89 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_36_91_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_36_91_8_stop" ]
+        %vibeData.1 = local;
+        symbol [ vibeData %vibeData.1 89 16 24 ];
+        %tmp.5 = newa 1;
+        symbol [ Attention %tmp.8 89 32 41 ];
+        %tmp.8 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.9 89 42 53 ];
+        %tmp.9 = getv function ? %tmp.8 :VibeProfile;
+        %tmp.10 = 50;
+        %tmp.11 = 200;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11);
+        %tmp.12 = dup %tmp.5;
+        %tmp.13 = aputv %tmp.12 0 %tmp.6;
+        lputv %vibeData.1 %tmp.13;
+        symbol [ vibeData %vibeData.1 89 16 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 90 12 ]
+        symbol [ Attention %tmp.14 90 12 21 ];
+        %tmp.14 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.15 90 22 29 ];
+        %tmp.15 = getv function %tmp.14 :vibrate;
+        %tmp.16 = lgetv %vibeData.1;
+        symbol [ vibeData %tmp.16 90 30 38 ];
+        invoke %tmp.14 %tmp.15(%tmp.16);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_36_91_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_8_91_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_88_8_91_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_87_46_92_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 94; @symbol_functiondef = [triggerDoubleVibration,94,13,35]; ]
+    function triggerDoubleVibration() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_94_46_104_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 95 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_8_103_8_if_stmt:
+        symbol [ Attention %tmp.1 95 12 21 ];
+        %tmp.1 = getm $.Toybox.Attention;
+        %tmp.3 = const :vibrate;
+        symbol [ vibrate %tmp.3 95 27 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_8_103_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_8_103_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_36_103_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 97 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_36_103_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_36_103_8_stop" ]
+        %vibeData.1 = local;
+        symbol [ vibeData %vibeData.1 97 16 24 ];
+        %tmp.5 = newa 1;
+        symbol [ Attention %tmp.8 97 32 41 ];
+        %tmp.8 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.9 97 42 53 ];
+        %tmp.9 = getv function ? %tmp.8 :VibeProfile;
+        %tmp.10 = 50;
+        %tmp.11 = 200;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11);
+        %tmp.12 = dup %tmp.5;
+        %tmp.13 = aputv %tmp.12 0 %tmp.6;
+        lputv %vibeData.1 %tmp.13;
+        symbol [ vibeData %vibeData.1 97 16 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 98 12 ]
+        symbol [ Attention %tmp.14 98 12 21 ];
+        %tmp.14 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.15 98 22 29 ];
+        %tmp.15 = getv function %tmp.14 :vibrate;
+        %tmp.16 = lgetv %vibeData.1;
+        symbol [ vibeData %tmp.16 98 30 38 ];
+        invoke %tmp.14 %tmp.15(%tmp.16);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 101 12 ]
+        %tmp.17 = true;
+        symbol [ _pendingSecondVibe ? 101 12 30 ];
+        putv self :_pendingSecondVibe %tmp.17;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 102 12 ]
+        symbol [ System %tmp.18 102 30 36 ];
+        %tmp.18 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.19 102 37 45 ];
+        %tmp.19 = getv function %tmp.18 :getTimer;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = 240;
+        %tmp.22 = add %tmp.20 %tmp.21;
+        symbol [ _secondVibeTime ? 102 12 27 ];
+        putv self :_secondVibeTime %tmp.22;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_36_103_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_8_103_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_95_8_103_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_94_46_104_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 106; @symbol_functiondef = [checkAndTriggerAlerts,106,13,34]; ]
+    function checkAndTriggerAlerts() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 108 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_8_110_8_if_stmt:
+        symbol [ _alertStartTime %tmp.2 108 12 27 ];
+        %tmp.2 = getv ? :_alertStartTime;
+        %tmp.3 = null;
+        %tmp.4 = eq %tmp.2 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_8_110_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_8_110_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_37_110_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 109 12 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_37_110_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_8_110_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_108_8_110_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 112 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_stop" ]
+        %currentTime.1 = local;
+        symbol [ currentTime %currentTime.1 112 12 23 ];
+        symbol [ System %tmp.5 112 26 32 ];
+        %tmp.5 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.6 112 33 41 ];
+        %tmp.6 = getv function %tmp.5 :getTimer;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %currentTime.1 %tmp.7;
+        symbol [ currentTime %currentTime.1 112 12 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 113 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_stop" ]
+        %elapsed.2 = local;
+        symbol [ elapsed %elapsed.2 113 12 19 ];
+        %tmp.8 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.8 113 22 33 ];
+        symbol [ _alertStartTime %tmp.10 113 36 51 ];
+        %tmp.10 = getv ? :_alertStartTime;
+        %tmp.11 = sub %tmp.8 %tmp.10;
+        lputv %elapsed.2 %tmp.11;
+        symbol [ elapsed %elapsed.2 113 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 116 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_8_120_8_if_stmt:
+        %tmp.12 = lgetv %elapsed.2;
+        symbol [ elapsed %tmp.12 116 12 19 ];
+        symbol [ _alertDuration %tmp.14 116 23 37 ];
+        %tmp.14 = getv ? :_alertDuration;
+        %tmp.15 = gte %tmp.12 %tmp.14;
+        bf %tmp.15 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_8_120_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_8_120_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_39_120_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 117 12 ]
+        %tmp.16 = null;
+        symbol [ _alertStartTime ? 117 12 27 ];
+        putv self :_alertStartTime %tmp.16;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 118 12 ]
+        %tmp.17 = 0;
+        symbol [ _lastAlertTime ? 118 12 26 ];
+        putv self :_lastAlertTime %tmp.17;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 119 12 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_39_120_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_8_120_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_116_8_120_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 123 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_stop" ]
+        %timeSinceLastAlert.3 = local;
+        symbol [ timeSinceLastAlert %timeSinceLastAlert.3 123 12 30 ];
+        %tmp.18 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.18 123 33 44 ];
+        symbol [ _lastAlertTime %tmp.20 123 47 61 ];
+        %tmp.20 = getv ? :_lastAlertTime;
+        %tmp.21 = sub %tmp.18 %tmp.20;
+        lputv %timeSinceLastAlert.3 %tmp.21;
+        symbol [ timeSinceLastAlert %timeSinceLastAlert.3 123 12 30 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 124 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_8_133_8_if_stmt:
+        %tmp.22 = lgetv %timeSinceLastAlert.3;
+        symbol [ timeSinceLastAlert %tmp.22 124 12 30 ];
+        symbol [ _alertInterval %tmp.24 124 34 48 ];
+        %tmp.24 = getv ? :_alertInterval;
+        %tmp.25 = gte %tmp.22 %tmp.24;
+        bf %tmp.25 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_8_133_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_8_133_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_50_133_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 125 12 ]
+        %tmp.26 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.26 125 29 40 ];
+        symbol [ _lastAlertTime ? 125 12 26 ];
+        putv self :_lastAlertTime %tmp.26;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 128 12 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_12_132_12_if_stmt:
+        symbol [ _lastZoneState %tmp.28 128 16 30 ];
+        %tmp.28 = getv ? :_lastZoneState;
+        %tmp.29 = -1;
+        %tmp.30 = eq %tmp.28 %tmp.29;
+        bf %tmp.30 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_12_132_12_if_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_12_132_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_38_130_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 129 16 ]
+        %tmp.31 = self;
+        symbol [ triggerSingleVibration %tmp.32 129 16 38 ];
+        %tmp.32 = getv function %tmp.31 :triggerSingleVibration;
+        invoke %tmp.31 %tmp.32();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_38_130_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_12_132_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_12_132_12_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 130 19 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_19_132_12_if_stmt:
+        symbol [ _lastZoneState %tmp.34 130 23 37 ];
+        %tmp.34 = getv ? :_lastZoneState;
+        %tmp.35 = 1;
+        %tmp.36 = eq %tmp.34 %tmp.35;
+        bf %tmp.36 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_19_132_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_19_132_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_44_132_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 131 16 ]
+        %tmp.37 = self;
+        symbol [ triggerDoubleVibration %tmp.38 131 16 38 ];
+        %tmp.38 = getv function %tmp.37 :triggerDoubleVibration;
+        invoke %tmp.37 %tmp.38();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_44_132_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_19_132_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_130_19_132_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_128_12_132_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_50_133_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_8_133_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_124_8_133_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_106_45_134_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 136; @symbol_functiondef = [drawRecordingIndicator,136,13,35]; @symbol_param<0> = [dc,136,36,38]; @symbol_param<0>_type<0> = [Dc,136,42,44]; ]
+    function drawRecordingIndicator(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_136_54_156_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 137 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_136_54_156_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_136_54_156_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 137 12 15 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 137 18 24 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 137 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 139 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_8_155_8_if_stmt:
+        %tmp.4 = lgetv %app.1;
+        symbol [ app %tmp.4 139 12 15 ];
+        symbol [ isActivityRecording %tmp.5 139 16 35 ];
+        %tmp.5 = getv function %tmp.4 :isActivityRecording;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        bf %tmp.6 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_8_155_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_8_155_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_39_149_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 141 12 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 141 12 14 ];
+        symbol [ setColor %tmp.8 141 15 23 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ Graphics %tmp.9 141 24 32 ];
+        %tmp.9 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.10 141 33 42 ];
+        %tmp.10 = getv %tmp.9 :COLOR_RED;
+        symbol [ Graphics %tmp.11 141 44 52 ];
+        %tmp.11 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.12 141 53 70 ];
+        %tmp.12 = getv %tmp.11 :COLOR_TRANSPARENT;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 142 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_39_149_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_39_149_8_stop" ]
+        %width.2 = local;
+        symbol [ width %width.2 142 16 21 ];
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 142 24 26 ];
+        symbol [ getWidth %tmp.14 142 27 35 ];
+        %tmp.14 = getv function %tmp.13 :getWidth;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        lputv %width.2 %tmp.15;
+        symbol [ width %width.2 142 16 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 143 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_39_149_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_39_149_8_stop" ]
+        %radius.3 = local;
+        symbol [ radius %radius.3 143 16 22 ];
+        %tmp.16 = 8;
+        lputv %radius.3 %tmp.16;
+        symbol [ radius %radius.3 143 16 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 144 12 ]
+        %tmp.17 = lgetv %dc;
+        symbol [ dc %tmp.17 144 12 14 ];
+        symbol [ fillCircle %tmp.18 144 15 25 ];
+        %tmp.18 = getv function %tmp.17 :fillCircle;
+        %tmp.19 = lgetv %width.2;
+        symbol [ width %tmp.19 144 26 31 ];
+        %tmp.20 = 15;
+        %tmp.21 = sub %tmp.19 %tmp.20;
+        %tmp.22 = 15;
+        %tmp.23 = lgetv %radius.3;
+        symbol [ radius %tmp.23 144 42 48 ];
+        invoke %tmp.17 %tmp.18(%tmp.21, %tmp.22, %tmp.23);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 147 12 ]
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 147 12 14 ];
+        symbol [ setColor %tmp.25 147 15 23 ];
+        %tmp.25 = getv function %tmp.24 :setColor;
+        symbol [ Graphics %tmp.26 147 24 32 ];
+        %tmp.26 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.27 147 33 44 ];
+        %tmp.27 = getv %tmp.26 :COLOR_WHITE;
+        symbol [ Graphics %tmp.28 147 46 54 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.29 147 55 72 ];
+        %tmp.29 = getv %tmp.28 :COLOR_TRANSPARENT;
+        invoke %tmp.24 %tmp.25(%tmp.27, %tmp.29);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 148 12 ]
+        %tmp.30 = lgetv %dc;
+        symbol [ dc %tmp.30 148 12 14 ];
+        symbol [ drawText %tmp.31 148 15 23 ];
+        %tmp.31 = getv function %tmp.30 :drawText;
+        %tmp.32 = lgetv %width.2;
+        symbol [ width %tmp.32 148 24 29 ];
+        %tmp.33 = 35;
+        %tmp.34 = sub %tmp.32 %tmp.33;
+        %tmp.35 = 5;
+        symbol [ Graphics %tmp.36 148 39 47 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.37 148 48 57 ];
+        %tmp.37 = getv %tmp.36 :FONT_TINY;
+        %tmp.38 = "REC";
+        symbol [ Graphics %tmp.39 148 66 74 ];
+        %tmp.39 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.40 148 75 93 ];
+        %tmp.40 = getv %tmp.39 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.30 %tmp.31(%tmp.34, %tmp.35, %tmp.37, %tmp.38, %tmp.40);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_39_149_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_8_155_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_8_155_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_149_15_155_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 151 12 ]
+        %tmp.41 = lgetv %dc;
+        symbol [ dc %tmp.41 151 12 14 ];
+        symbol [ setColor %tmp.42 151 15 23 ];
+        %tmp.42 = getv function %tmp.41 :setColor;
+        symbol [ Graphics %tmp.43 151 24 32 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.44 151 33 46 ];
+        %tmp.44 = getv %tmp.43 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.45 151 48 56 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.46 151 57 74 ];
+        %tmp.46 = getv %tmp.45 :COLOR_TRANSPARENT;
+        invoke %tmp.41 %tmp.42(%tmp.44, %tmp.46);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 152 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_149_15_155_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_149_15_155_8_stop" ]
+        %width.4 = local;
+        symbol [ width %width.4 152 16 21 ];
+        %tmp.47 = lgetv %dc;
+        symbol [ dc %tmp.47 152 24 26 ];
+        symbol [ getWidth %tmp.48 152 27 35 ];
+        %tmp.48 = getv function %tmp.47 :getWidth;
+        %tmp.49 = invoke %tmp.47 %tmp.48();
+        lputv %width.4 %tmp.49;
+        symbol [ width %width.4 152 16 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 153 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_149_15_155_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_149_15_155_8_stop" ]
+        %height.5 = local;
+        symbol [ height %height.5 153 16 22 ];
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 153 25 27 ];
+        symbol [ getHeight %tmp.51 153 28 37 ];
+        %tmp.51 = getv function %tmp.50 :getHeight;
+        %tmp.52 = invoke %tmp.50 %tmp.51();
+        lputv %height.5 %tmp.52;
+        symbol [ height %height.5 153 16 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 154 12 ]
+        %tmp.53 = lgetv %dc;
+        symbol [ dc %tmp.53 154 12 14 ];
+        symbol [ drawText %tmp.54 154 15 23 ];
+        %tmp.54 = getv function %tmp.53 :drawText;
+        %tmp.55 = lgetv %width.4;
+        symbol [ width %tmp.55 154 24 29 ];
+        %tmp.56 = 2;
+        %tmp.57 = div %tmp.55 %tmp.56;
+        %tmp.58 = lgetv %height.5;
+        symbol [ height %tmp.58 154 35 41 ];
+        %tmp.59 = 25;
+        %tmp.60 = sub %tmp.58 %tmp.59;
+        symbol [ Graphics %tmp.61 154 48 56 ];
+        %tmp.61 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.62 154 57 66 ];
+        %tmp.62 = getv %tmp.61 :FONT_TINY;
+        %tmp.63 = "Press SELECT to start";
+        symbol [ Graphics %tmp.64 154 93 101 ];
+        %tmp.64 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.65 154 102 121 ];
+        %tmp.65 = getv %tmp.64 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.53 %tmp.54(%tmp.57, %tmp.60, %tmp.62, %tmp.63, %tmp.65);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_149_15_155_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_139_8_155_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_136_54_156_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 158; @symbol_functiondef = [displayCadence,158,13,27]; ]
+    function displayCadence() as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 159 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_stop" ]
+        %info.1 = local;
+        symbol [ info %info.1 159 12 16 ];
+        symbol [ Activity %tmp.1 159 19 27 ];
+        %tmp.1 = getm $.Toybox.Activity;
+        symbol [ getActivityInfo %tmp.2 159 28 43 ];
+        %tmp.2 = getv function %tmp.1 :getActivityInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %info.1 %tmp.3;
+        symbol [ info %info.1 159 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 162 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_12_162_51_begin:
+        %tmp.4 = lgetv %info.1;
+        symbol [ info %tmp.4 162 12 16 ];
+        %tmp.5 = null;
+        %tmp.6 = ne %tmp.4 %tmp.5;
+        bf %tmp.6 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_28_162_51_true:
+        %tmp.7 = lgetv %info.1;
+        symbol [ info %tmp.7 162 28 32 ];
+        %tmp.8 = as %tmp.7 { (!Null) };
+        symbol [ currentCadence %tmp.9 162 33 47 ];
+        %tmp.9 = getv %tmp.8 :currentCadence;
+        %tmp.10 = null;
+        %tmp.11 = ne %tmp.9 %tmp.10;
+        push %tmp.11;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_28_162_51_end:
+        %tmp.12 = phi [%tmp.6 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_12_162_51_begin] [%tmp.11 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_28_162_51_true] [%tmp.12 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_28_162_51_end];
+        bf %tmp.12 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_56_164_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 163 12 ]
+        symbol [ _cadenceDisplay %tmp.14 163 12 27 ];
+        %tmp.14 = getv ? :_cadenceDisplay;
+        symbol [ setText %tmp.15 163 28 35 ];
+        %tmp.15 = getv function %tmp.14 :setText;
+        %tmp.16 = lgetv %info.1;
+        symbol [ info %tmp.16 163 36 40 ];
+        %tmp.17 = as %tmp.16 { (!Null) };
+        symbol [ currentCadence %tmp.18 163 41 55 ];
+        %tmp.18 = getv %tmp.17 :currentCadence;
+        symbol [ toString %tmp.19 163 56 64 ];
+        %tmp.19 = getv function %tmp.18 :toString;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        invoke %tmp.14 %tmp.15(%tmp.20);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_56_164_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_164_13_166_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 165 12 ]
+        symbol [ _cadenceDisplay %tmp.22 165 12 27 ];
+        %tmp.22 = getv ? :_cadenceDisplay;
+        symbol [ setText %tmp.23 165 28 35 ];
+        %tmp.23 = getv function %tmp.22 :setText;
+        %tmp.24 = "--";
+        invoke %tmp.22 %tmp.23(%tmp.24);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_164_13_166_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_162_8_166_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 169 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_stop" ]
+        %minZone.2 = local;
+        symbol [ minZone %minZone.2 169 12 19 ];
+        %tmp.25 = self;
+        symbol [ getApp %tmp.26 169 22 28 ];
+        %tmp.26 = getv function %tmp.25 :getApp;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        symbol [ getMinCadence %tmp.28 169 31 44 ];
+        %tmp.28 = getv function %tmp.27 :getMinCadence;
+        %tmp.29 = invoke %tmp.27 %tmp.28();
+        lputv %minZone.2 %tmp.29;
+        symbol [ minZone %minZone.2 169 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 170 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_stop" ]
+        %maxZone.3 = local;
+        symbol [ maxZone %maxZone.3 170 12 19 ];
+        %tmp.30 = self;
+        symbol [ getApp %tmp.31 170 22 28 ];
+        %tmp.31 = getv function %tmp.30 :getApp;
+        %tmp.32 = invoke %tmp.30 %tmp.31();
+        symbol [ getMaxCadence %tmp.33 170 31 44 ];
+        %tmp.33 = getv function %tmp.32 :getMaxCadence;
+        %tmp.34 = invoke %tmp.32 %tmp.33();
+        lputv %maxZone.3 %tmp.34;
+        symbol [ maxZone %maxZone.3 170 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 171 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_stop" ]
+        %zoneText.4 = local;
+        symbol [ zoneText %zoneText.4 171 12 20 ];
+        %tmp.35 = "";
+        lputv %zoneText.4 %tmp.35;
+        symbol [ zoneText %zoneText.4 171 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 172 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_12_172_51_begin:
+        %tmp.36 = lgetv %info.1;
+        symbol [ info %tmp.36 172 12 16 ];
+        %tmp.37 = null;
+        %tmp.38 = ne %tmp.36 %tmp.37;
+        bf %tmp.38 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_28_172_51_true:
+        %tmp.39 = lgetv %info.1;
+        symbol [ info %tmp.39 172 28 32 ];
+        %tmp.40 = as %tmp.39 { (!Null) };
+        symbol [ currentCadence %tmp.41 172 33 47 ];
+        %tmp.41 = getv %tmp.40 :currentCadence;
+        %tmp.42 = null;
+        %tmp.43 = ne %tmp.41 %tmp.42;
+        push %tmp.43;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_28_172_51_end:
+        %tmp.44 = phi [%tmp.38 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_12_172_51_begin] [%tmp.43 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_28_172_51_true] [%tmp.44 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_28_172_51_end];
+        bf %tmp.44 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_57_179_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 173 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_57_179_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_57_179_8_stop" ]
+        %c.5 = local;
+        symbol [ c %c.5 173 16 17 ];
+        %tmp.45 = lgetv %info.1;
+        symbol [ info %tmp.45 173 20 24 ];
+        %tmp.46 = as %tmp.45 { (!Null) };
+        symbol [ currentCadence %tmp.47 173 25 39 ];
+        %tmp.47 = getv %tmp.46 :currentCadence;
+        lputv %c.5 %tmp.47;
+        symbol [ c %c.5 173 16 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 174 12 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_16_174_37_begin:
+        %tmp.48 = lgetv %c.5;
+        symbol [ c %tmp.48 174 16 17 ];
+        %tmp.49 = lgetv %minZone.2;
+        symbol [ minZone %tmp.49 174 21 28 ];
+        %tmp.50 = gte %tmp.48 %tmp.49;
+        bf %tmp.50 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_32_174_37_true:
+        %tmp.51 = lgetv %c.5;
+        symbol [ c %tmp.51 174 32 33 ];
+        %tmp.52 = lgetv %maxZone.3;
+        symbol [ maxZone %tmp.52 174 37 44 ];
+        %tmp.53 = lte %tmp.51 %tmp.52;
+        push %tmp.53;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_32_174_37_end:
+        %tmp.54 = phi [%tmp.50 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_16_174_37_begin] [%tmp.53 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_32_174_37_true] [%tmp.54 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_32_174_37_end];
+        bf %tmp.54 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_46_176_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 175 16 ]
+        symbol [ WatchUi %tmp.55 175 28 35 ];
+        %tmp.55 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.56 175 36 48 ];
+        %tmp.56 = getv function %tmp.55 :loadResource;
+        symbol [ Rez %tmp.58 175 49 52 ];
+        %tmp.58 = getv ? :Rez;
+        symbol [ Strings %tmp.59 175 53 60 ];
+        %tmp.59 = getv %tmp.58 :Strings;
+        symbol [ zone_in %tmp.60 175 61 68 ];
+        %tmp.60 = getv %tmp.59 :zone_in;
+        %tmp.61 = invoke %tmp.55 %tmp.56(%tmp.60);
+        %tmp.62 = as %tmp.61 String;
+        symbol [ String %tmp.62 175 73 79 ];
+        %tmp.63 = " (";
+        %tmp.64 = add %tmp.62 %tmp.63;
+        %tmp.65 = lgetv %minZone.2;
+        symbol [ minZone %tmp.65 175 90 97 ];
+        symbol [ toString %tmp.66 175 98 106 ];
+        %tmp.66 = getv function %tmp.65 :toString;
+        %tmp.67 = invoke %tmp.65 %tmp.66();
+        %tmp.68 = add %tmp.64 %tmp.67;
+        %tmp.69 = "-";
+        %tmp.70 = add %tmp.68 %tmp.69;
+        %tmp.71 = lgetv %maxZone.3;
+        symbol [ maxZone %tmp.71 175 117 124 ];
+        symbol [ toString %tmp.72 175 125 133 ];
+        %tmp.72 = getv function %tmp.71 :toString;
+        %tmp.73 = invoke %tmp.71 %tmp.72();
+        %tmp.74 = add %tmp.70 %tmp.73;
+        %tmp.75 = ")";
+        %tmp.76 = add %tmp.74 %tmp.75;
+        lputv %zoneText.4 %tmp.76;
+        symbol [ zoneText %zoneText.4 175 16 24 ];
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_46_176_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_176_19_178_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 177 16 ]
+        symbol [ WatchUi %tmp.77 177 28 35 ];
+        %tmp.77 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.78 177 36 48 ];
+        %tmp.78 = getv function %tmp.77 :loadResource;
+        symbol [ Rez %tmp.80 177 49 52 ];
+        %tmp.80 = getv ? :Rez;
+        symbol [ Strings %tmp.81 177 53 60 ];
+        %tmp.81 = getv %tmp.80 :Strings;
+        symbol [ zone_out %tmp.82 177 61 69 ];
+        %tmp.82 = getv %tmp.81 :zone_out;
+        %tmp.83 = invoke %tmp.77 %tmp.78(%tmp.82);
+        %tmp.84 = as %tmp.83 String;
+        symbol [ String %tmp.84 177 74 80 ];
+        %tmp.85 = " (";
+        %tmp.86 = add %tmp.84 %tmp.85;
+        %tmp.87 = lgetv %minZone.2;
+        symbol [ minZone %tmp.87 177 91 98 ];
+        symbol [ toString %tmp.88 177 99 107 ];
+        %tmp.88 = getv function %tmp.87 :toString;
+        %tmp.89 = invoke %tmp.87 %tmp.88();
+        %tmp.90 = add %tmp.86 %tmp.89;
+        %tmp.91 = "-";
+        %tmp.92 = add %tmp.90 %tmp.91;
+        %tmp.93 = lgetv %maxZone.3;
+        symbol [ maxZone %tmp.93 177 118 125 ];
+        symbol [ toString %tmp.94 177 126 134 ];
+        %tmp.94 = getv function %tmp.93 :toString;
+        %tmp.95 = invoke %tmp.93 %tmp.94();
+        %tmp.96 = add %tmp.92 %tmp.95;
+        %tmp.97 = ")";
+        %tmp.98 = add %tmp.96 %tmp.97;
+        lputv %zoneText.4 %tmp.98;
+        symbol [ zoneText %zoneText.4 177 16 24 ];
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_176_19_178_12_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_174_12_178_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_57_179_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_179_15_181_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 180 12 ]
+        %tmp.99 = "(";
+        %tmp.100 = lgetv %minZone.2;
+        symbol [ minZone %tmp.100 180 29 36 ];
+        symbol [ toString %tmp.101 180 37 45 ];
+        %tmp.101 = getv function %tmp.100 :toString;
+        %tmp.102 = invoke %tmp.100 %tmp.101();
+        %tmp.103 = add %tmp.99 %tmp.102;
+        %tmp.104 = "-";
+        %tmp.105 = add %tmp.103 %tmp.104;
+        %tmp.106 = lgetv %maxZone.3;
+        symbol [ maxZone %tmp.106 180 56 63 ];
+        symbol [ toString %tmp.107 180 64 72 ];
+        %tmp.107 = getv function %tmp.106 :toString;
+        %tmp.108 = invoke %tmp.106 %tmp.107();
+        %tmp.109 = add %tmp.105 %tmp.108;
+        %tmp.110 = ")";
+        %tmp.111 = add %tmp.109 %tmp.110;
+        lputv %zoneText.4 %tmp.111;
+        symbol [ zoneText %zoneText.4 180 12 20 ];
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_179_15_181_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_172_8_181_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 182 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_8_184_8_if_stmt:
+        symbol [ _cadenceZoneDisplay %tmp.113 182 12 31 ];
+        %tmp.113 = getv ? :_cadenceZoneDisplay;
+        %tmp.114 = null;
+        %tmp.115 = ne %tmp.113 %tmp.114;
+        bf %tmp.115 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_8_184_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_8_184_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_41_184_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 183 12 ]
+        symbol [ _cadenceZoneDisplay %tmp.117 183 12 31 ];
+        %tmp.117 = getv ? :_cadenceZoneDisplay;
+        %tmp.118 = as %tmp.117 { (!Null) };
+        symbol [ setText %tmp.119 183 32 39 ];
+        %tmp.119 = getv function %tmp.118 :setText;
+        %tmp.120 = lgetv %zoneText.4;
+        symbol [ zoneText %tmp.120 183 40 48 ];
+        invoke %tmp.118 %tmp.119(%tmp.120);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_41_184_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_8_184_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_182_8_184_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 187 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_stop" ]
+        %newZoneState.6 = local;
+        symbol [ newZoneState %newZoneState.6 187 12 24 ];
+        %tmp.121 = 0;
+        lputv %newZoneState.6 %tmp.121;
+        symbol [ newZoneState %newZoneState.6 187 12 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 188 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_8_197_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_12_188_51_begin:
+        %tmp.122 = lgetv %info.1;
+        symbol [ info %tmp.122 188 12 16 ];
+        %tmp.123 = null;
+        %tmp.124 = ne %tmp.122 %tmp.123;
+        bf %tmp.124 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_8_197_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_28_188_51_true:
+        %tmp.125 = lgetv %info.1;
+        symbol [ info %tmp.125 188 28 32 ];
+        %tmp.126 = as %tmp.125 { (!Null) };
+        symbol [ currentCadence %tmp.127 188 33 47 ];
+        %tmp.127 = getv %tmp.126 :currentCadence;
+        %tmp.128 = null;
+        %tmp.129 = ne %tmp.127 %tmp.128;
+        push %tmp.129;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_28_188_51_end:
+        %tmp.130 = phi [%tmp.124 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_12_188_51_begin] [%tmp.129 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_28_188_51_true] [%tmp.130 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_28_188_51_end];
+        bf %tmp.130 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_8_197_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_8_197_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_57_197_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 189 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_57_197_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_57_197_8_stop" ]
+        %c.7 = local;
+        symbol [ c %c.7 189 16 17 ];
+        %tmp.131 = lgetv %info.1;
+        symbol [ info %tmp.131 189 20 24 ];
+        %tmp.132 = as %tmp.131 { (!Null) };
+        symbol [ currentCadence %tmp.133 189 25 39 ];
+        %tmp.133 = getv %tmp.132 :currentCadence;
+        lputv %c.7 %tmp.133;
+        symbol [ c %c.7 189 16 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 190 12 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_12_196_12_if_stmt:
+        %tmp.134 = lgetv %c.7;
+        symbol [ c %tmp.134 190 16 17 ];
+        %tmp.135 = lgetv %minZone.2;
+        symbol [ minZone %tmp.135 190 20 27 ];
+        %tmp.136 = lt %tmp.134 %tmp.135;
+        bf %tmp.136 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_12_196_12_if_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_12_196_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_29_192_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 191 16 ]
+        %tmp.137 = -1;
+        lputv %newZoneState.6 %tmp.137;
+        symbol [ newZoneState %newZoneState.6 191 16 28 ];
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_29_192_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_12_196_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_12_196_12_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 192 19 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_19_196_12_if_stmt:
+        %tmp.138 = lgetv %c.7;
+        symbol [ c %tmp.138 192 23 24 ];
+        %tmp.139 = lgetv %maxZone.3;
+        symbol [ maxZone %tmp.139 192 27 34 ];
+        %tmp.140 = gt %tmp.138 %tmp.139;
+        bf %tmp.140 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_19_196_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_19_196_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_36_194_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 193 16 ]
+        %tmp.141 = 1;
+        lputv %newZoneState.6 %tmp.141;
+        symbol [ newZoneState %newZoneState.6 193 16 28 ];
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_36_194_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_19_196_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_19_196_12_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_194_19_196_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 195 16 ]
+        %tmp.142 = 0;
+        lputv %newZoneState.6 %tmp.142;
+        symbol [ newZoneState %newZoneState.6 195 16 28 ];
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_194_19_196_12_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_192_19_196_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_190_12_196_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_57_197_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_8_197_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_188_8_197_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 199 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_8_219_8_if_stmt:
+        %tmp.143 = lgetv %newZoneState.6;
+        symbol [ newZoneState %tmp.143 199 12 24 ];
+        symbol [ _lastZoneState %tmp.145 199 28 42 ];
+        %tmp.145 = getv ? :_lastZoneState;
+        %tmp.146 = ne %tmp.143 %tmp.145;
+        bf %tmp.146 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_8_219_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_8_219_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_44_216_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 200 12 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_12_214_12_if_stmt:
+        %tmp.147 = lgetv %newZoneState.6;
+        symbol [ newZoneState %tmp.147 200 16 28 ];
+        %tmp.148 = -1;
+        %tmp.149 = eq %tmp.147 %tmp.148;
+        bf %tmp.149 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_12_214_12_if_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_12_214_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_36_205_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 202 16 ]
+        symbol [ System %tmp.150 202 34 40 ];
+        %tmp.150 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.151 202 41 49 ];
+        %tmp.151 = getv function %tmp.150 :getTimer;
+        %tmp.152 = invoke %tmp.150 %tmp.151();
+        symbol [ _alertStartTime ? 202 16 31 ];
+        putv self :_alertStartTime %tmp.152;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 203 16 ]
+        symbol [ System %tmp.153 203 33 39 ];
+        %tmp.153 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.154 203 40 48 ];
+        %tmp.154 = getv function %tmp.153 :getTimer;
+        %tmp.155 = invoke %tmp.153 %tmp.154();
+        symbol [ _lastAlertTime ? 203 16 30 ];
+        putv self :_lastAlertTime %tmp.155;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 204 16 ]
+        %tmp.156 = self;
+        symbol [ triggerSingleVibration %tmp.157 204 16 38 ];
+        %tmp.157 = getv function %tmp.156 :triggerSingleVibration;
+        invoke %tmp.156 %tmp.157();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_36_205_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_12_214_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_12_214_12_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 205 19 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_19_214_12_if_stmt:
+        %tmp.158 = lgetv %newZoneState.6;
+        symbol [ newZoneState %tmp.158 205 23 35 ];
+        %tmp.159 = 1;
+        %tmp.160 = eq %tmp.158 %tmp.159;
+        bf %tmp.160 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_19_214_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_19_214_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_42_210_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 207 16 ]
+        symbol [ System %tmp.161 207 34 40 ];
+        %tmp.161 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.162 207 41 49 ];
+        %tmp.162 = getv function %tmp.161 :getTimer;
+        %tmp.163 = invoke %tmp.161 %tmp.162();
+        symbol [ _alertStartTime ? 207 16 31 ];
+        putv self :_alertStartTime %tmp.163;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 208 16 ]
+        symbol [ System %tmp.164 208 33 39 ];
+        %tmp.164 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.165 208 40 48 ];
+        %tmp.165 = getv function %tmp.164 :getTimer;
+        %tmp.166 = invoke %tmp.164 %tmp.165();
+        symbol [ _lastAlertTime ? 208 16 30 ];
+        putv self :_lastAlertTime %tmp.166;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 209 16 ]
+        %tmp.167 = self;
+        symbol [ triggerDoubleVibration %tmp.168 209 16 38 ];
+        %tmp.168 = getv function %tmp.167 :triggerDoubleVibration;
+        invoke %tmp.167 %tmp.168();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_42_210_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_19_214_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_19_214_12_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_210_19_214_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 212 16 ]
+        %tmp.169 = null;
+        symbol [ _alertStartTime ? 212 16 31 ];
+        putv self :_alertStartTime %tmp.169;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 213 16 ]
+        %tmp.170 = 0;
+        symbol [ _lastAlertTime ? 213 16 30 ];
+        putv self :_lastAlertTime %tmp.170;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_210_19_214_12_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_205_19_214_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_200_12_214_12_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 215 12 ]
+        %tmp.171 = lgetv %newZoneState.6;
+        symbol [ newZoneState %tmp.171 215 29 41 ];
+        symbol [ _lastZoneState ? 215 12 26 ];
+        putv self :_lastZoneState %tmp.171;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_44_216_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_8_219_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_8_219_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_216_15_219_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 218 12 ]
+        %tmp.172 = self;
+        symbol [ checkAndTriggerAlerts %tmp.173 218 12 33 ];
+        %tmp.173 = getv function %tmp.172 :checkAndTriggerAlerts;
+        invoke %tmp.172 %tmp.173();
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_216_15_219_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_199_8_219_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 221 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_12_221_53_begin:
+        %tmp.174 = lgetv %info.1;
+        symbol [ info %tmp.174 221 12 16 ];
+        %tmp.175 = null;
+        %tmp.176 = ne %tmp.174 %tmp.175;
+        bf %tmp.176 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_28_221_53_true:
+        %tmp.177 = lgetv %info.1;
+        symbol [ info %tmp.177 221 28 32 ];
+        %tmp.178 = as %tmp.177 { (!Null) };
+        symbol [ currentHeartRate %tmp.179 221 33 49 ];
+        %tmp.179 = getv %tmp.178 :currentHeartRate;
+        %tmp.180 = null;
+        %tmp.181 = ne %tmp.179 %tmp.180;
+        push %tmp.181;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_28_221_53_end:
+        %tmp.182 = phi [%tmp.176 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_12_221_53_begin] [%tmp.181 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_28_221_53_true] [%tmp.182 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_28_221_53_end];
+        bf %tmp.182 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_58_223_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 222 12 ]
+        symbol [ _heartrateDisplay %tmp.184 222 12 29 ];
+        %tmp.184 = getv ? :_heartrateDisplay;
+        symbol [ setText %tmp.185 222 30 37 ];
+        %tmp.185 = getv function %tmp.184 :setText;
+        %tmp.186 = lgetv %info.1;
+        symbol [ info %tmp.186 222 38 42 ];
+        %tmp.187 = as %tmp.186 { (!Null) };
+        symbol [ currentHeartRate %tmp.188 222 43 59 ];
+        %tmp.188 = getv %tmp.187 :currentHeartRate;
+        symbol [ toString %tmp.189 222 60 68 ];
+        %tmp.189 = getv function %tmp.188 :toString;
+        %tmp.190 = invoke %tmp.188 %tmp.189();
+        invoke %tmp.184 %tmp.185(%tmp.190);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_58_223_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_223_13_225_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 224 12 ]
+        symbol [ _heartrateDisplay %tmp.192 224 12 29 ];
+        %tmp.192 = getv ? :_heartrateDisplay;
+        symbol [ setText %tmp.193 224 30 37 ];
+        %tmp.193 = getv function %tmp.192 :setText;
+        %tmp.194 = "--";
+        invoke %tmp.192 %tmp.193(%tmp.194);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_223_13_225_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_221_8_225_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 228 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_12_228_52_begin:
+        %tmp.195 = lgetv %info.1;
+        symbol [ info %tmp.195 228 12 16 ];
+        %tmp.196 = null;
+        %tmp.197 = ne %tmp.195 %tmp.196;
+        bf %tmp.197 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_28_228_52_true:
+        %tmp.198 = lgetv %info.1;
+        symbol [ info %tmp.198 228 28 32 ];
+        %tmp.199 = as %tmp.198 { (!Null) };
+        symbol [ elapsedDistance %tmp.200 228 33 48 ];
+        %tmp.200 = getv %tmp.199 :elapsedDistance;
+        %tmp.201 = null;
+        %tmp.202 = ne %tmp.200 %tmp.201;
+        push %tmp.202;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_28_228_52_end:
+        %tmp.203 = phi [%tmp.197 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_12_228_52_begin] [%tmp.202 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_28_228_52_true] [%tmp.203 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_28_228_52_end];
+        bf %tmp.203 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_57_231_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 229 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_57_231_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_57_231_8_stop" ]
+        %distanceKm.8 = local;
+        symbol [ distanceKm %distanceKm.8 229 16 26 ];
+        %tmp.204 = lgetv %info.1;
+        symbol [ info %tmp.204 229 29 33 ];
+        %tmp.205 = as %tmp.204 { (!Null) };
+        symbol [ elapsedDistance %tmp.206 229 34 49 ];
+        %tmp.206 = getv %tmp.205 :elapsedDistance;
+        %tmp.207 = 100000.0;
+        %tmp.208 = div %tmp.206 %tmp.207;
+        lputv %distanceKm.8 %tmp.208;
+        symbol [ distanceKm %distanceKm.8 229 16 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 230 12 ]
+        symbol [ _distanceDisplay %tmp.210 230 12 28 ];
+        %tmp.210 = getv ? :_distanceDisplay;
+        symbol [ setText %tmp.211 230 29 36 ];
+        %tmp.211 = getv function %tmp.210 :setText;
+        %tmp.212 = lgetv %distanceKm.8;
+        symbol [ distanceKm %tmp.212 230 37 47 ];
+        symbol [ format %tmp.213 230 48 54 ];
+        %tmp.213 = getv function %tmp.212 :format;
+        %tmp.214 = "%.2f";
+        %tmp.215 = invoke %tmp.212 %tmp.213(%tmp.214);
+        %tmp.216 = " km";
+        %tmp.217 = add %tmp.215 %tmp.216;
+        invoke %tmp.210 %tmp.211(%tmp.217);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_57_231_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_231_13_233_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 232 12 ]
+        symbol [ _distanceDisplay %tmp.219 232 12 28 ];
+        %tmp.219 = getv ? :_distanceDisplay;
+        symbol [ setText %tmp.220 232 29 36 ];
+        %tmp.220 = getv function %tmp.219 :setText;
+        %tmp.221 = "-- km";
+        invoke %tmp.219 %tmp.220(%tmp.221);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_231_13_233_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_228_8_233_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 236 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_12_236_46_begin:
+        %tmp.222 = lgetv %info.1;
+        symbol [ info %tmp.222 236 12 16 ];
+        %tmp.223 = null;
+        %tmp.224 = ne %tmp.222 %tmp.223;
+        bf %tmp.224 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_28_236_46_true:
+        %tmp.225 = lgetv %info.1;
+        symbol [ info %tmp.225 236 28 32 ];
+        %tmp.226 = as %tmp.225 { (!Null) };
+        symbol [ timerTime %tmp.227 236 33 42 ];
+        %tmp.227 = getv %tmp.226 :timerTime;
+        %tmp.228 = null;
+        %tmp.229 = ne %tmp.227 %tmp.228;
+        push %tmp.229;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_28_236_46_end:
+        %tmp.230 = phi [%tmp.224 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_12_236_46_begin] [%tmp.229 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_28_236_46_true] [%tmp.230 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_28_236_46_end];
+        bf %tmp.230 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 237 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_stop" ]
+        %seconds.9 = local;
+        symbol [ seconds %seconds.9 237 16 23 ];
+        %tmp.231 = lgetv %info.1;
+        symbol [ info %tmp.231 237 26 30 ];
+        %tmp.232 = as %tmp.231 { (!Null) };
+        symbol [ timerTime %tmp.233 237 31 40 ];
+        %tmp.233 = getv %tmp.232 :timerTime;
+        %tmp.234 = 1000;
+        %tmp.235 = div %tmp.233 %tmp.234;
+        lputv %seconds.9 %tmp.235;
+        symbol [ seconds %seconds.9 237 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 238 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_stop" ]
+        %hours.10 = local;
+        symbol [ hours %hours.10 238 16 21 ];
+        %tmp.236 = lgetv %seconds.9;
+        symbol [ seconds %tmp.236 238 24 31 ];
+        %tmp.237 = 3600;
+        %tmp.238 = div %tmp.236 %tmp.237;
+        lputv %hours.10 %tmp.238;
+        symbol [ hours %hours.10 238 16 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 239 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_stop" ]
+        %minutes.11 = local;
+        symbol [ minutes %minutes.11 239 16 23 ];
+        %tmp.239 = lgetv %seconds.9;
+        symbol [ seconds %tmp.239 239 27 34 ];
+        %tmp.240 = 3600;
+        %tmp.241 = mod %tmp.239 %tmp.240;
+        %tmp.242 = 60;
+        %tmp.243 = div %tmp.241 %tmp.242;
+        lputv %minutes.11 %tmp.243;
+        symbol [ minutes %minutes.11 239 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 240 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_stop" ]
+        %secs.12 = local;
+        symbol [ secs %secs.12 240 16 20 ];
+        %tmp.244 = lgetv %seconds.9;
+        symbol [ seconds %tmp.244 240 23 30 ];
+        %tmp.245 = 60;
+        %tmp.246 = mod %tmp.244 %tmp.245;
+        lputv %secs.12 %tmp.246;
+        symbol [ secs %secs.12 240 16 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 241 12 ]
+        symbol [ _timeDisplay %tmp.248 241 12 24 ];
+        %tmp.248 = getv ? :_timeDisplay;
+        symbol [ setText %tmp.249 241 25 32 ];
+        %tmp.249 = getv function %tmp.248 :setText;
+        %tmp.250 = lgetv %hours.10;
+        symbol [ hours %tmp.250 241 33 38 ];
+        symbol [ format %tmp.251 241 39 45 ];
+        %tmp.251 = getv function %tmp.250 :format;
+        %tmp.252 = "%02d";
+        %tmp.253 = invoke %tmp.250 %tmp.251(%tmp.252);
+        %tmp.254 = ":";
+        %tmp.255 = add %tmp.253 %tmp.254;
+        %tmp.256 = lgetv %minutes.11;
+        symbol [ minutes %tmp.256 241 62 69 ];
+        symbol [ format %tmp.257 241 70 76 ];
+        %tmp.257 = getv function %tmp.256 :format;
+        %tmp.258 = "%02d";
+        %tmp.259 = invoke %tmp.256 %tmp.257(%tmp.258);
+        %tmp.260 = add %tmp.255 %tmp.259;
+        %tmp.261 = ":";
+        %tmp.262 = add %tmp.260 %tmp.261;
+        %tmp.263 = lgetv %secs.12;
+        symbol [ secs %tmp.263 241 93 97 ];
+        symbol [ format %tmp.264 241 98 104 ];
+        %tmp.264 = getv function %tmp.263 :format;
+        %tmp.265 = "%02d";
+        %tmp.266 = invoke %tmp.263 %tmp.264(%tmp.265);
+        %tmp.267 = add %tmp.262 %tmp.266;
+        invoke %tmp.248 %tmp.249(%tmp.267);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_51_242_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_242_13_244_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 243 12 ]
+        symbol [ _timeDisplay %tmp.269 243 12 24 ];
+        %tmp.269 = getv ? :_timeDisplay;
+        symbol [ setText %tmp.270 243 25 32 ];
+        %tmp.270 = getv function %tmp.269 :setText;
+        %tmp.271 = "--:--:--";
+        invoke %tmp.269 %tmp.270(%tmp.271);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_242_13_244_8_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_236_8_244_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 247 8 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_8_262_8_if_stmt:
+        symbol [ _cqDisplay %tmp.273 247 12 22 ];
+        %tmp.273 = getv ? :_cqDisplay;
+        %tmp.274 = null;
+        %tmp.275 = ne %tmp.273 %tmp.274;
+        bf %tmp.275 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_8_262_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_8_262_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_32_262_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 248 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_32_262_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_32_262_8_stop" ]
+        %app.13 = local;
+        symbol [ app %app.13 248 16 19 ];
+        %tmp.276 = self;
+        symbol [ getApp %tmp.277 248 22 28 ];
+        %tmp.277 = getv function %tmp.276 :getApp;
+        %tmp.278 = invoke %tmp.276 %tmp.277();
+        lputv %app.13 %tmp.278;
+        symbol [ app %app.13 248 16 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 249 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_32_262_8_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_32_262_8_stop" ]
+        %frozenCQ.14 = local;
+        symbol [ frozenCQ %frozenCQ.14 249 16 24 ];
+        %tmp.279 = lgetv %app.13;
+        symbol [ app %tmp.279 249 27 30 ];
+        symbol [ getFinalCadenceQuality %tmp.280 249 31 53 ];
+        %tmp.280 = getv function %tmp.279 :getFinalCadenceQuality;
+        %tmp.281 = invoke %tmp.279 %tmp.280();
+        lputv %frozenCQ.14 %tmp.281;
+        symbol [ frozenCQ %frozenCQ.14 249 16 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 251 12 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_12_261_12_if_stmt:
+        %tmp.282 = lgetv %frozenCQ.14;
+        symbol [ frozenCQ %tmp.282 251 16 24 ];
+        %tmp.283 = null;
+        %tmp.284 = ne %tmp.282 %tmp.283;
+        bf %tmp.284 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_12_261_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_12_261_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_34_253_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 252 16 ]
+        symbol [ _cqDisplay %tmp.286 252 16 26 ];
+        %tmp.286 = getv ? :_cqDisplay;
+        symbol [ setText %tmp.287 252 27 34 ];
+        %tmp.287 = getv function %tmp.286 :setText;
+        %tmp.288 = "CQ: ";
+        %tmp.289 = lgetv %frozenCQ.14;
+        symbol [ frozenCQ %tmp.289 252 44 52 ];
+        %tmp.290 = as %tmp.289 { (!Null) };
+        symbol [ format %tmp.291 252 53 59 ];
+        %tmp.291 = getv function %tmp.290 :format;
+        %tmp.292 = "%d";
+        %tmp.293 = invoke %tmp.290 %tmp.291(%tmp.292);
+        %tmp.294 = add %tmp.288 %tmp.293;
+        %tmp.295 = "%";
+        %tmp.296 = add %tmp.294 %tmp.295;
+        invoke %tmp.286 %tmp.287(%tmp.296);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_34_253_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_12_261_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_12_261_12_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_253_19_261_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 254 16 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_253_19_261_12_start" "W__Github_garmin_smartwatch_source_Views_SimpleView_mc_253_19_261_12_stop" ]
+        %cq.15 = local;
+        symbol [ cq %cq.15 254 20 22 ];
+        %tmp.297 = lgetv %app.13;
+        symbol [ app %tmp.297 254 25 28 ];
+        symbol [ computeCadenceQualityScore %tmp.298 254 29 55 ];
+        %tmp.298 = getv function %tmp.297 :computeCadenceQualityScore;
+        %tmp.299 = invoke %tmp.297 %tmp.298();
+        lputv %cq.15 %tmp.299;
+        symbol [ cq %cq.15 254 20 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 256 16 ]
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_16_260_16_if_stmt:
+        %tmp.300 = lgetv %cq.15;
+        symbol [ cq %tmp.300 256 20 22 ];
+        %tmp.301 = 0;
+        %tmp.302 = lt %tmp.300 %tmp.301;
+        bf %tmp.302 @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_16_260_16_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_16_260_16_if_true:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_28_258_16_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 257 20 ]
+        symbol [ _cqDisplay %tmp.304 257 20 30 ];
+        %tmp.304 = getv ? :_cqDisplay;
+        symbol [ setText %tmp.305 257 31 38 ];
+        %tmp.305 = getv function %tmp.304 :setText;
+        %tmp.306 = "CQ: --";
+        invoke %tmp.304 %tmp.305(%tmp.306);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_28_258_16_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_16_260_16_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_16_260_16_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_258_23_260_16_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 259 20 ]
+        symbol [ _cqDisplay %tmp.308 259 20 30 ];
+        %tmp.308 = getv ? :_cqDisplay;
+        symbol [ setText %tmp.309 259 31 38 ];
+        %tmp.309 = getv function %tmp.308 :setText;
+        %tmp.310 = "CQ: ";
+        %tmp.311 = lgetv %cq.15;
+        symbol [ cq %tmp.311 259 48 50 ];
+        symbol [ format %tmp.312 259 51 57 ];
+        %tmp.312 = getv function %tmp.311 :format;
+        %tmp.313 = "%d";
+        %tmp.314 = invoke %tmp.311 %tmp.312(%tmp.313);
+        %tmp.315 = add %tmp.310 %tmp.314;
+        %tmp.316 = "%";
+        %tmp.317 = add %tmp.315 %tmp.316;
+        invoke %tmp.308 %tmp.309(%tmp.317);
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_258_23_260_16_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_256_16_260_16_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_253_19_261_12_stop:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_251_12_261_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_32_262_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_8_262_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_247_8_262_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_158_37_265_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 268; @symbol_functiondef = [onLayout,268,13,21]; @symbol_param<0> = [dc,268,22,24]; @symbol_param<0>_type<0> = [Dc,268,28,30]; ]
+    function onLayout(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_268_40_277_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 269 8 ]
+        %tmp.1 = self;
+        symbol [ setLayout %tmp.2 269 8 17 ];
+        %tmp.2 = getv function %tmp.1 :setLayout;
+        symbol [ Rez %tmp.4 269 18 21 ];
+        %tmp.4 = getv ? :Rez;
+        symbol [ Layouts %tmp.5 269 22 29 ];
+        %tmp.5 = getv %tmp.4 :Layouts;
+        symbol [ MainLayout %tmp.6 269 30 40 ];
+        %tmp.6 = getv function %tmp.5 :MainLayout;
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 269 41 43 ];
+        %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
+        invoke %tmp.1 %tmp.2(%tmp.8);
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 270 8 ]
+        %tmp.9 = self;
+        symbol [ findDrawableById %tmp.10 270 26 42 ];
+        %tmp.10 = getv function %tmp.9 :findDrawableById;
+        %tmp.11 = "cadence_text";
+        %tmp.12 = invoke %tmp.9 %tmp.10(%tmp.11);
+        symbol [ _cadenceDisplay ? 270 8 23 ];
+        putv self :_cadenceDisplay %tmp.12;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 271 8 ]
+        %tmp.13 = self;
+        symbol [ findDrawableById %tmp.14 271 30 46 ];
+        %tmp.14 = getv function %tmp.13 :findDrawableById;
+        %tmp.15 = "cadence_zone";
+        %tmp.16 = invoke %tmp.13 %tmp.14(%tmp.15);
+        symbol [ _cadenceZoneDisplay ? 271 8 27 ];
+        putv self :_cadenceZoneDisplay %tmp.16;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 272 8 ]
+        %tmp.17 = self;
+        symbol [ findDrawableById %tmp.18 272 28 44 ];
+        %tmp.18 = getv function %tmp.17 :findDrawableById;
+        %tmp.19 = "heartrate_text";
+        %tmp.20 = invoke %tmp.17 %tmp.18(%tmp.19);
+        symbol [ _heartrateDisplay ? 272 8 25 ];
+        putv self :_heartrateDisplay %tmp.20;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 273 8 ]
+        %tmp.21 = self;
+        symbol [ findDrawableById %tmp.22 273 27 43 ];
+        %tmp.22 = getv function %tmp.21 :findDrawableById;
+        %tmp.23 = "distance_text";
+        %tmp.24 = invoke %tmp.21 %tmp.22(%tmp.23);
+        symbol [ _distanceDisplay ? 273 8 24 ];
+        putv self :_distanceDisplay %tmp.24;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 274 8 ]
+        %tmp.25 = self;
+        symbol [ findDrawableById %tmp.26 274 23 39 ];
+        %tmp.26 = getv function %tmp.25 :findDrawableById;
+        %tmp.27 = "time_text";
+        %tmp.28 = invoke %tmp.25 %tmp.26(%tmp.27);
+        symbol [ _timeDisplay ? 274 8 20 ];
+        putv self :_timeDisplay %tmp.28;
+[ "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc" 275 8 ]
+        %tmp.29 = self;
+        symbol [ findDrawableById %tmp.30 275 21 37 ];
+        %tmp.30 = getv function %tmp.29 :findDrawableById;
+        %tmp.31 = "cq_text";
+        %tmp.32 = invoke %tmp.29 %tmp.30(%tmp.31);
+        symbol [ _cqDisplay ? 275 8 18 ];
+        putv self :_cqDisplay %tmp.32;
+W__Github_garmin_smartwatch_source_Views_SimpleView_mc_268_40_277_4_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SimpleView.mc"; @line = 1; ]
+<init> {
+}

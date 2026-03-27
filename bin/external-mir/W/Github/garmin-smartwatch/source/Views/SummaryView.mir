@@ -1,0 +1,1954 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [System,4,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Activity,5,14,22]; ]
+import Toybox.Activity;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 7; @symbol_classdef = [SummaryView,7,6,17]; @symbol_extends<0> = [WatchUi,7,26,33]; @symbol_extends<1> = [View,7,34,38]; ]
+class SummaryView extends WatchUi.View {
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
+    function initialize() as Void {
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_9_26_11_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 10 8 ]
+        symbol [ View %tmp.2 10 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 10 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_9_26_11_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 13; @symbol_functiondef = [onUpdate,13,13,21]; @symbol_param<0> = [dc,13,22,24]; @symbol_param<0>_type<0> = [Dc,13,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 15 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 15 8 10 ];
+        symbol [ setColor %tmp.2 15 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        symbol [ Graphics %tmp.3 15 20 28 ];
+        %tmp.3 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.4 15 29 40 ];
+        %tmp.4 = getv %tmp.3 :COLOR_BLACK;
+        symbol [ Graphics %tmp.5 15 42 50 ];
+        %tmp.5 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.6 15 51 62 ];
+        %tmp.6 = getv %tmp.5 :COLOR_BLACK;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 16 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 16 8 10 ];
+        symbol [ clear %tmp.8 16 11 16 ];
+        %tmp.8 = getv function %tmp.7 :clear;
+        invoke %tmp.7 %tmp.8();
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 18 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 18 12 15 ];
+        %tmp.9 = self;
+        symbol [ getApp %tmp.10 18 18 24 ];
+        %tmp.10 = getv function %tmp.9 :getApp;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        lputv %app.1 %tmp.11;
+        symbol [ app %app.1 18 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 19 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_stop" ]
+        %width.2 = local;
+        symbol [ width %width.2 19 12 17 ];
+        %tmp.12 = lgetv %dc;
+        symbol [ dc %tmp.12 19 20 22 ];
+        symbol [ getWidth %tmp.13 19 23 31 ];
+        %tmp.13 = getv function %tmp.12 :getWidth;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        lputv %width.2 %tmp.14;
+        symbol [ width %width.2 19 12 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 20 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_stop" ]
+        %height.3 = local;
+        symbol [ height %height.3 20 12 18 ];
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 20 21 23 ];
+        symbol [ getHeight %tmp.16 20 24 33 ];
+        %tmp.16 = getv function %tmp.15 :getHeight;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        lputv %height.3 %tmp.17;
+        symbol [ height %height.3 20 12 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 23 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_8_26_8_if_stmt:
+        %tmp.18 = lgetv %app.1;
+        symbol [ app %tmp.18 23 13 16 ];
+        symbol [ hasValidSummaryData %tmp.19 23 17 36 ];
+        %tmp.19 = getv function %tmp.18 :hasValidSummaryData;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = not %tmp.20;
+        bf %tmp.21 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_8_26_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_8_26_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_40_26_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 24 12 ]
+        %tmp.22 = self;
+        symbol [ drawNoDataMessage %tmp.23 24 12 29 ];
+        %tmp.23 = getv function %tmp.22 :drawNoDataMessage;
+        %tmp.24 = lgetv %dc;
+        symbol [ dc %tmp.24 24 30 32 ];
+        %tmp.25 = lgetv %width.2;
+        symbol [ width %tmp.25 24 34 39 ];
+        %tmp.26 = lgetv %height.3;
+        symbol [ height %tmp.26 24 41 47 ];
+        invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25, %tmp.26);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 25 12 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_40_26_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_8_26_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_23_8_26_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 29 8 ]
+        %tmp.27 = self;
+        symbol [ drawSummaryContent %tmp.28 29 8 26 ];
+        %tmp.28 = getv function %tmp.27 :drawSummaryContent;
+        %tmp.29 = lgetv %dc;
+        symbol [ dc %tmp.29 29 27 29 ];
+        %tmp.30 = lgetv %width.2;
+        symbol [ width %tmp.30 29 31 36 ];
+        %tmp.31 = lgetv %height.3;
+        symbol [ height %tmp.31 29 38 44 ];
+        %tmp.32 = lgetv %app.1;
+        symbol [ app %tmp.32 29 46 49 ];
+        invoke %tmp.27 %tmp.28(%tmp.29, %tmp.30, %tmp.31, %tmp.32);
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_13_40_30_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 32; @symbol_functiondef = [drawNoDataMessage,32,13,30]; @symbol_param<0> = [dc,32,31,33]; @symbol_param<0>_type<0> = [Dc,32,37,39]; @symbol_param<1> = [width,32,41,46]; @symbol_param<1>_type<0> = [Number,32,50,56]; @symbol_param<2> = [height,32,58,64]; @symbol_param<2>_type<0> = [Number,32,68,74]; ]
+    function drawNoDataMessage(dc as Dc, width as Number, height as Number) as Void {
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_32_84_41_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 33 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 33 8 10 ];
+        symbol [ setColor %tmp.2 33 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        symbol [ Graphics %tmp.3 33 20 28 ];
+        %tmp.3 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.4 33 29 40 ];
+        %tmp.4 = getv %tmp.3 :COLOR_WHITE;
+        symbol [ Graphics %tmp.5 33 42 50 ];
+        %tmp.5 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.6 33 51 68 ];
+        %tmp.6 = getv %tmp.5 :COLOR_TRANSPARENT;
+        invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 34 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 34 8 10 ];
+        symbol [ drawText %tmp.8 34 11 19 ];
+        %tmp.8 = getv function %tmp.7 :drawText;
+        %tmp.9 = lgetv %width;
+        symbol [ width %tmp.9 35 12 17 ];
+        %tmp.10 = 2;
+        %tmp.11 = div %tmp.9 %tmp.10;
+        %tmp.12 = lgetv %height;
+        symbol [ height %tmp.12 36 12 18 ];
+        %tmp.13 = 2;
+        %tmp.14 = div %tmp.12 %tmp.13;
+        symbol [ Graphics %tmp.15 37 12 20 ];
+        %tmp.15 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.16 37 21 32 ];
+        %tmp.16 = getv %tmp.15 :FONT_MEDIUM;
+        %tmp.17 = "No data available";
+        symbol [ Graphics %tmp.18 39 12 20 ];
+        %tmp.18 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.19 39 21 40 ];
+        %tmp.19 = getv %tmp.18 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.20 39 43 51 ];
+        %tmp.20 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.21 39 52 72 ];
+        %tmp.21 = getv %tmp.20 :TEXT_JUSTIFY_VCENTER;
+        %tmp.22 = bitor %tmp.19 %tmp.21;
+        invoke %tmp.7 %tmp.8(%tmp.11, %tmp.14, %tmp.16, %tmp.17, %tmp.22);
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_32_84_41_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 43; @symbol_functiondef = [drawSummaryContent,43,13,31]; @symbol_param<0> = [dc,43,32,34]; @symbol_param<0>_type<0> = [Dc,43,38,40]; @symbol_param<1> = [width,43,42,47]; @symbol_param<1>_type<0> = [Number,43,51,57]; @symbol_param<2> = [height,43,59,65]; @symbol_param<2>_type<0> = [Number,43,69,75]; @symbol_param<3> = [app,43,77,80]; @symbol_param<3>_type<0> = [GarminApp,43,84,93]; ]
+    function drawSummaryContent(dc as Dc, width as Number, height as Number, app as GarminApp) as Void {
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 44 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %yPos.1 = local;
+        symbol [ yPos %yPos.1 44 12 16 ];
+        %tmp.1 = 10;
+        lputv %yPos.1 %tmp.1;
+        symbol [ yPos %yPos.1 44 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 45 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %lineHeight.2 = local;
+        symbol [ lineHeight %lineHeight.2 45 12 22 ];
+        %tmp.2 = 25;
+        lputv %lineHeight.2 %tmp.2;
+        symbol [ lineHeight %lineHeight.2 45 12 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 46 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %sectionSpacing.3 = local;
+        symbol [ sectionSpacing %sectionSpacing.3 46 12 26 ];
+        %tmp.3 = 15;
+        lputv %sectionSpacing.3 %tmp.3;
+        symbol [ sectionSpacing %sectionSpacing.3 46 12 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 49 8 ]
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 49 8 10 ];
+        symbol [ setColor %tmp.5 49 11 19 ];
+        %tmp.5 = getv function %tmp.4 :setColor;
+        symbol [ Graphics %tmp.6 49 20 28 ];
+        %tmp.6 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.7 49 29 40 ];
+        %tmp.7 = getv %tmp.6 :COLOR_WHITE;
+        symbol [ Graphics %tmp.8 49 42 50 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.9 49 51 68 ];
+        %tmp.9 = getv %tmp.8 :COLOR_TRANSPARENT;
+        invoke %tmp.4 %tmp.5(%tmp.7, %tmp.9);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 50 8 ]
+        %tmp.10 = lgetv %dc;
+        symbol [ dc %tmp.10 50 8 10 ];
+        symbol [ drawText %tmp.11 50 11 19 ];
+        %tmp.11 = getv function %tmp.10 :drawText;
+        %tmp.12 = lgetv %width;
+        symbol [ width %tmp.12 51 12 17 ];
+        %tmp.13 = 2;
+        %tmp.14 = div %tmp.12 %tmp.13;
+        %tmp.15 = lgetv %yPos.1;
+        symbol [ yPos %tmp.15 52 12 16 ];
+        symbol [ Graphics %tmp.16 53 12 20 ];
+        %tmp.16 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.17 53 21 31 ];
+        %tmp.17 = getv %tmp.16 :FONT_SMALL;
+        %tmp.18 = "SESSION SUMMARY";
+        symbol [ Graphics %tmp.19 55 12 20 ];
+        %tmp.19 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.20 55 21 40 ];
+        %tmp.20 = getv %tmp.19 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.10 %tmp.11(%tmp.14, %tmp.15, %tmp.17, %tmp.18, %tmp.20);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 57 8 ]
+        %tmp.21 = lgetv %yPos.1;
+        symbol [ yPos %tmp.21 57 8 12 ];
+        %tmp.22 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.22 57 16 26 ];
+        %tmp.23 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.23 57 29 43 ];
+        %tmp.24 = add %tmp.22 %tmp.23;
+        %tmp.25 = add %tmp.21 %tmp.24;
+        lputv %yPos.1 %tmp.25;
+        symbol [ yPos %yPos.1 57 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 60 8 ]
+        %tmp.26 = lgetv %dc;
+        symbol [ dc %tmp.26 60 8 10 ];
+        symbol [ setColor %tmp.27 60 11 19 ];
+        %tmp.27 = getv function %tmp.26 :setColor;
+        symbol [ Graphics %tmp.28 60 20 28 ];
+        %tmp.28 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.29 60 29 42 ];
+        %tmp.29 = getv %tmp.28 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.30 60 44 52 ];
+        %tmp.30 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.31 60 53 70 ];
+        %tmp.31 = getv %tmp.30 :COLOR_TRANSPARENT;
+        invoke %tmp.26 %tmp.27(%tmp.29, %tmp.31);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 61 8 ]
+        %tmp.32 = lgetv %dc;
+        symbol [ dc %tmp.32 61 8 10 ];
+        symbol [ drawLine %tmp.33 61 11 19 ];
+        %tmp.33 = getv function %tmp.32 :drawLine;
+        %tmp.34 = 10;
+        %tmp.35 = lgetv %yPos.1;
+        symbol [ yPos %tmp.35 61 24 28 ];
+        %tmp.36 = lgetv %width;
+        symbol [ width %tmp.36 61 30 35 ];
+        %tmp.37 = 10;
+        %tmp.38 = sub %tmp.36 %tmp.37;
+        %tmp.39 = lgetv %yPos.1;
+        symbol [ yPos %tmp.39 61 42 46 ];
+        invoke %tmp.32 %tmp.33(%tmp.34, %tmp.35, %tmp.38, %tmp.39);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 62 8 ]
+        %tmp.40 = lgetv %yPos.1;
+        symbol [ yPos %tmp.40 62 8 12 ];
+        %tmp.41 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.41 62 16 30 ];
+        %tmp.42 = add %tmp.40 %tmp.41;
+        lputv %yPos.1 %tmp.42;
+        symbol [ yPos %yPos.1 62 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 65 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %cq.4 = local;
+        symbol [ cq %cq.4 65 12 14 ];
+        %tmp.43 = lgetv %app;
+        symbol [ app %tmp.43 65 17 20 ];
+        symbol [ getFinalCadenceQuality %tmp.44 65 21 43 ];
+        %tmp.44 = getv function %tmp.43 :getFinalCadenceQuality;
+        %tmp.45 = invoke %tmp.43 %tmp.44();
+        lputv %cq.4 %tmp.45;
+        symbol [ cq %cq.4 65 12 14 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 66 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_8_107_8_if_stmt:
+        %tmp.46 = lgetv %cq.4;
+        symbol [ cq %tmp.46 66 12 14 ];
+        %tmp.47 = null;
+        %tmp.48 = ne %tmp.46 %tmp.47;
+        bf %tmp.48 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_8_107_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_8_107_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 67 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_stop" ]
+        %cqColor.5 = local;
+        symbol [ cqColor %cqColor.5 67 16 23 ];
+        %tmp.49 = self;
+        symbol [ getCQColor %tmp.50 67 26 36 ];
+        %tmp.50 = getv function %tmp.49 :getCQColor;
+        %tmp.51 = lgetv %cq.4;
+        symbol [ cq %tmp.51 67 37 39 ];
+        %tmp.52 = as %tmp.51 { (!Null) };
+        %tmp.53 = invoke %tmp.49 %tmp.50(%tmp.52);
+        lputv %cqColor.5 %tmp.53;
+        symbol [ cqColor %cqColor.5 67 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 68 12 ]
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 68 12 14 ];
+        symbol [ setColor %tmp.55 68 15 23 ];
+        %tmp.55 = getv function %tmp.54 :setColor;
+        %tmp.56 = lgetv %cqColor.5;
+        symbol [ cqColor %tmp.56 68 24 31 ];
+        symbol [ Graphics %tmp.57 68 33 41 ];
+        %tmp.57 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.58 68 42 59 ];
+        %tmp.58 = getv %tmp.57 :COLOR_TRANSPARENT;
+        invoke %tmp.54 %tmp.55(%tmp.56, %tmp.58);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 71 12 ]
+        %tmp.59 = lgetv %dc;
+        symbol [ dc %tmp.59 71 12 14 ];
+        symbol [ setColor %tmp.60 71 15 23 ];
+        %tmp.60 = getv function %tmp.59 :setColor;
+        symbol [ Graphics %tmp.61 71 24 32 ];
+        %tmp.61 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.62 71 33 46 ];
+        %tmp.62 = getv %tmp.61 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.63 71 48 56 ];
+        %tmp.63 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.64 71 57 74 ];
+        %tmp.64 = getv %tmp.63 :COLOR_TRANSPARENT;
+        invoke %tmp.59 %tmp.60(%tmp.62, %tmp.64);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 72 12 ]
+        %tmp.65 = lgetv %dc;
+        symbol [ dc %tmp.65 72 12 14 ];
+        symbol [ drawText %tmp.66 72 15 23 ];
+        %tmp.66 = getv function %tmp.65 :drawText;
+        %tmp.67 = lgetv %width;
+        symbol [ width %tmp.67 73 16 21 ];
+        %tmp.68 = 2;
+        %tmp.69 = div %tmp.67 %tmp.68;
+        %tmp.70 = lgetv %yPos.1;
+        symbol [ yPos %tmp.70 74 16 20 ];
+        symbol [ Graphics %tmp.71 75 16 24 ];
+        %tmp.71 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.72 75 25 35 ];
+        %tmp.72 = getv %tmp.71 :FONT_SMALL;
+        %tmp.73 = "Cadence Quality";
+        symbol [ Graphics %tmp.74 77 16 24 ];
+        %tmp.74 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.75 77 25 44 ];
+        %tmp.75 = getv %tmp.74 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.65 %tmp.66(%tmp.69, %tmp.70, %tmp.72, %tmp.73, %tmp.75);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 79 12 ]
+        %tmp.76 = lgetv %yPos.1;
+        symbol [ yPos %tmp.76 79 12 16 ];
+        %tmp.77 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.77 79 20 30 ];
+        %tmp.78 = add %tmp.76 %tmp.77;
+        lputv %yPos.1 %tmp.78;
+        symbol [ yPos %yPos.1 79 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 82 12 ]
+        %tmp.79 = lgetv %dc;
+        symbol [ dc %tmp.79 82 12 14 ];
+        symbol [ setColor %tmp.80 82 15 23 ];
+        %tmp.80 = getv function %tmp.79 :setColor;
+        %tmp.81 = lgetv %cqColor.5;
+        symbol [ cqColor %tmp.81 82 24 31 ];
+        symbol [ Graphics %tmp.82 82 33 41 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.83 82 42 59 ];
+        %tmp.83 = getv %tmp.82 :COLOR_TRANSPARENT;
+        invoke %tmp.79 %tmp.80(%tmp.81, %tmp.83);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 83 12 ]
+        %tmp.84 = lgetv %dc;
+        symbol [ dc %tmp.84 83 12 14 ];
+        symbol [ drawText %tmp.85 83 15 23 ];
+        %tmp.85 = getv function %tmp.84 :drawText;
+        %tmp.86 = lgetv %width;
+        symbol [ width %tmp.86 84 16 21 ];
+        %tmp.87 = 2;
+        %tmp.88 = div %tmp.86 %tmp.87;
+        %tmp.89 = lgetv %yPos.1;
+        symbol [ yPos %tmp.89 85 16 20 ];
+        symbol [ Graphics %tmp.90 86 16 24 ];
+        %tmp.90 = getm $.Toybox.Graphics;
+        symbol [ FONT_NUMBER_HOT %tmp.91 86 25 40 ];
+        %tmp.91 = getv %tmp.90 :FONT_NUMBER_HOT;
+        %tmp.92 = lgetv %cq.4;
+        symbol [ cq %tmp.92 87 16 18 ];
+        %tmp.93 = as %tmp.92 { (!Null) };
+        symbol [ format %tmp.94 87 19 25 ];
+        %tmp.94 = getv function %tmp.93 :format;
+        %tmp.95 = "%d";
+        %tmp.96 = invoke %tmp.93 %tmp.94(%tmp.95);
+        %tmp.97 = "%";
+        %tmp.98 = add %tmp.96 %tmp.97;
+        symbol [ Graphics %tmp.99 88 16 24 ];
+        %tmp.99 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.100 88 25 44 ];
+        %tmp.100 = getv %tmp.99 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.84 %tmp.85(%tmp.88, %tmp.89, %tmp.91, %tmp.98, %tmp.100);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 90 12 ]
+        %tmp.101 = lgetv %yPos.1;
+        symbol [ yPos %tmp.101 90 12 16 ];
+        %tmp.102 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.102 90 20 30 ];
+        %tmp.103 = 5;
+        %tmp.104 = add %tmp.102 %tmp.103;
+        %tmp.105 = add %tmp.101 %tmp.104;
+        lputv %yPos.1 %tmp.105;
+        symbol [ yPos %yPos.1 90 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 93 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_stop" ]
+        %confidence.6 = local;
+        symbol [ confidence %confidence.6 93 16 26 ];
+        %tmp.106 = lgetv %app;
+        symbol [ app %tmp.106 93 29 32 ];
+        symbol [ getFinalCQConfidence %tmp.107 93 33 53 ];
+        %tmp.107 = getv function %tmp.106 :getFinalCQConfidence;
+        %tmp.108 = invoke %tmp.106 %tmp.107();
+        lputv %confidence.6 %tmp.108;
+        symbol [ confidence %confidence.6 93 16 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 94 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_stop" ]
+        %trend.7 = local;
+        symbol [ trend %trend.7 94 16 21 ];
+        %tmp.109 = lgetv %app;
+        symbol [ app %tmp.109 94 24 27 ];
+        symbol [ getFinalCQTrend %tmp.110 94 28 43 ];
+        %tmp.110 = getv function %tmp.109 :getFinalCQTrend;
+        %tmp.111 = invoke %tmp.109 %tmp.110();
+        lputv %trend.7 %tmp.111;
+        symbol [ trend %trend.7 94 16 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 95 12 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_12_106_12_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_16_95_47_begin:
+        %tmp.112 = lgetv %confidence.6;
+        symbol [ confidence %tmp.112 95 16 26 ];
+        %tmp.113 = null;
+        %tmp.114 = ne %tmp.112 %tmp.113;
+        bf %tmp.114 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_12_106_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_38_95_47_true:
+        %tmp.115 = lgetv %trend.7;
+        symbol [ trend %tmp.115 95 38 43 ];
+        %tmp.116 = null;
+        %tmp.117 = ne %tmp.115 %tmp.116;
+        push %tmp.117;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_38_95_47_end:
+        %tmp.118 = phi [%tmp.114 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_16_95_47_begin] [%tmp.117 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_38_95_47_true] [%tmp.118 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_38_95_47_end];
+        bf %tmp.118 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_12_106_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_12_106_12_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_53_106_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 96 16 ]
+        %tmp.119 = lgetv %dc;
+        symbol [ dc %tmp.119 96 16 18 ];
+        symbol [ setColor %tmp.120 96 19 27 ];
+        %tmp.120 = getv function %tmp.119 :setColor;
+        symbol [ Graphics %tmp.121 96 28 36 ];
+        %tmp.121 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.122 96 37 50 ];
+        %tmp.122 = getv %tmp.121 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.123 96 52 60 ];
+        %tmp.123 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.124 96 61 78 ];
+        %tmp.124 = getv %tmp.123 :COLOR_TRANSPARENT;
+        invoke %tmp.119 %tmp.120(%tmp.122, %tmp.124);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 97 16 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_53_106_12_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_53_106_12_stop" ]
+        %statusText.8 = local;
+        symbol [ statusText %statusText.8 97 20 30 ];
+        %tmp.125 = "(";
+        %tmp.126 = lgetv %confidence.6;
+        symbol [ confidence %tmp.126 97 39 49 ];
+        %tmp.127 = as %tmp.126 { (!Null) };
+        %tmp.128 = add %tmp.125 %tmp.127;
+        %tmp.129 = ", ";
+        %tmp.130 = add %tmp.128 %tmp.129;
+        %tmp.131 = lgetv %trend.7;
+        symbol [ trend %tmp.131 97 59 64 ];
+        %tmp.132 = as %tmp.131 { (!Null) };
+        %tmp.133 = add %tmp.130 %tmp.132;
+        %tmp.134 = ")";
+        %tmp.135 = add %tmp.133 %tmp.134;
+        lputv %statusText.8 %tmp.135;
+        symbol [ statusText %statusText.8 97 20 30 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 98 16 ]
+        %tmp.136 = lgetv %dc;
+        symbol [ dc %tmp.136 98 16 18 ];
+        symbol [ drawText %tmp.137 98 19 27 ];
+        %tmp.137 = getv function %tmp.136 :drawText;
+        %tmp.138 = lgetv %width;
+        symbol [ width %tmp.138 99 20 25 ];
+        %tmp.139 = 2;
+        %tmp.140 = div %tmp.138 %tmp.139;
+        %tmp.141 = lgetv %yPos.1;
+        symbol [ yPos %tmp.141 100 20 24 ];
+        symbol [ Graphics %tmp.142 101 20 28 ];
+        %tmp.142 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.143 101 29 38 ];
+        %tmp.143 = getv %tmp.142 :FONT_TINY;
+        %tmp.144 = lgetv %statusText.8;
+        symbol [ statusText %tmp.144 102 20 30 ];
+        symbol [ Graphics %tmp.145 103 20 28 ];
+        %tmp.145 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.146 103 29 48 ];
+        %tmp.146 = getv %tmp.145 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.136 %tmp.137(%tmp.140, %tmp.141, %tmp.143, %tmp.144, %tmp.146);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 105 16 ]
+        %tmp.147 = lgetv %yPos.1;
+        symbol [ yPos %tmp.147 105 16 20 ];
+        %tmp.148 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.148 105 24 34 ];
+        %tmp.149 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.149 105 37 51 ];
+        %tmp.150 = add %tmp.148 %tmp.149;
+        %tmp.151 = add %tmp.147 %tmp.150;
+        lputv %yPos.1 %tmp.151;
+        symbol [ yPos %yPos.1 105 16 20 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_53_106_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_12_106_12_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_95_12_106_12_if_end:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_24_107_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_8_107_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_66_8_107_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 110 8 ]
+        %tmp.152 = lgetv %dc;
+        symbol [ dc %tmp.152 110 8 10 ];
+        symbol [ setColor %tmp.153 110 11 19 ];
+        %tmp.153 = getv function %tmp.152 :setColor;
+        symbol [ Graphics %tmp.154 110 20 28 ];
+        %tmp.154 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.155 110 29 42 ];
+        %tmp.155 = getv %tmp.154 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.156 110 44 52 ];
+        %tmp.156 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.157 110 53 70 ];
+        %tmp.157 = getv %tmp.156 :COLOR_TRANSPARENT;
+        invoke %tmp.152 %tmp.153(%tmp.155, %tmp.157);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 111 8 ]
+        %tmp.158 = lgetv %dc;
+        symbol [ dc %tmp.158 111 8 10 ];
+        symbol [ drawLine %tmp.159 111 11 19 ];
+        %tmp.159 = getv function %tmp.158 :drawLine;
+        %tmp.160 = 10;
+        %tmp.161 = lgetv %yPos.1;
+        symbol [ yPos %tmp.161 111 24 28 ];
+        %tmp.162 = lgetv %width;
+        symbol [ width %tmp.162 111 30 35 ];
+        %tmp.163 = 10;
+        %tmp.164 = sub %tmp.162 %tmp.163;
+        %tmp.165 = lgetv %yPos.1;
+        symbol [ yPos %tmp.165 111 42 46 ];
+        invoke %tmp.158 %tmp.159(%tmp.160, %tmp.161, %tmp.164, %tmp.165);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 112 8 ]
+        %tmp.166 = lgetv %yPos.1;
+        symbol [ yPos %tmp.166 112 8 12 ];
+        %tmp.167 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.167 112 16 30 ];
+        %tmp.168 = add %tmp.166 %tmp.167;
+        lputv %yPos.1 %tmp.168;
+        symbol [ yPos %yPos.1 112 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 115 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %timeInZone.9 = local;
+        symbol [ timeInZone %timeInZone.9 115 12 22 ];
+        %tmp.169 = lgetv %app;
+        symbol [ app %tmp.169 115 25 28 ];
+        symbol [ getTimeInZonePercentage %tmp.170 115 29 52 ];
+        %tmp.170 = getv function %tmp.169 :getTimeInZonePercentage;
+        %tmp.171 = invoke %tmp.169 %tmp.170();
+        lputv %timeInZone.9 %tmp.171;
+        symbol [ timeInZone %timeInZone.9 115 12 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 116 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_8_139_8_if_stmt:
+        %tmp.172 = lgetv %timeInZone.9;
+        symbol [ timeInZone %tmp.172 116 12 22 ];
+        %tmp.173 = 0;
+        %tmp.174 = gte %tmp.172 %tmp.173;
+        bf %tmp.174 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_8_139_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_8_139_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_29_139_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 117 12 ]
+        %tmp.175 = lgetv %dc;
+        symbol [ dc %tmp.175 117 12 14 ];
+        symbol [ setColor %tmp.176 117 15 23 ];
+        %tmp.176 = getv function %tmp.175 :setColor;
+        symbol [ Graphics %tmp.177 117 24 32 ];
+        %tmp.177 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.178 117 33 44 ];
+        %tmp.178 = getv %tmp.177 :COLOR_WHITE;
+        symbol [ Graphics %tmp.179 117 46 54 ];
+        %tmp.179 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.180 117 55 72 ];
+        %tmp.180 = getv %tmp.179 :COLOR_TRANSPARENT;
+        invoke %tmp.175 %tmp.176(%tmp.178, %tmp.180);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 118 12 ]
+        %tmp.181 = lgetv %dc;
+        symbol [ dc %tmp.181 118 12 14 ];
+        symbol [ drawText %tmp.182 118 15 23 ];
+        %tmp.182 = getv function %tmp.181 :drawText;
+        %tmp.183 = 15;
+        %tmp.184 = lgetv %yPos.1;
+        symbol [ yPos %tmp.184 120 16 20 ];
+        symbol [ Graphics %tmp.185 121 16 24 ];
+        %tmp.185 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.186 121 25 35 ];
+        %tmp.186 = getv %tmp.185 :FONT_SMALL;
+        %tmp.187 = "Time in Zone:";
+        symbol [ Graphics %tmp.188 123 16 24 ];
+        %tmp.188 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.189 123 25 42 ];
+        %tmp.189 = getv %tmp.188 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.181 %tmp.182(%tmp.183, %tmp.184, %tmp.186, %tmp.187, %tmp.189);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 126 12 ]
+        %tmp.190 = lgetv %dc;
+        symbol [ dc %tmp.190 126 12 14 ];
+        symbol [ setColor %tmp.191 126 15 23 ];
+        %tmp.191 = getv function %tmp.190 :setColor;
+        symbol [ Graphics %tmp.192 126 24 32 ];
+        %tmp.192 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.193 126 33 44 ];
+        %tmp.193 = getv %tmp.192 :COLOR_GREEN;
+        symbol [ Graphics %tmp.194 126 46 54 ];
+        %tmp.194 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.195 126 55 72 ];
+        %tmp.195 = getv %tmp.194 :COLOR_TRANSPARENT;
+        invoke %tmp.190 %tmp.191(%tmp.193, %tmp.195);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 127 12 ]
+        %tmp.196 = lgetv %dc;
+        symbol [ dc %tmp.196 127 12 14 ];
+        symbol [ drawText %tmp.197 127 15 23 ];
+        %tmp.197 = getv function %tmp.196 :drawText;
+        %tmp.198 = lgetv %width;
+        symbol [ width %tmp.198 128 16 21 ];
+        %tmp.199 = 15;
+        %tmp.200 = sub %tmp.198 %tmp.199;
+        %tmp.201 = lgetv %yPos.1;
+        symbol [ yPos %tmp.201 129 16 20 ];
+        symbol [ Graphics %tmp.202 130 16 24 ];
+        %tmp.202 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.203 130 25 35 ];
+        %tmp.203 = getv %tmp.202 :FONT_SMALL;
+        %tmp.204 = lgetv %timeInZone.9;
+        symbol [ timeInZone %tmp.204 131 16 26 ];
+        symbol [ format %tmp.205 131 27 33 ];
+        %tmp.205 = getv function %tmp.204 :format;
+        %tmp.206 = "%d";
+        %tmp.207 = invoke %tmp.204 %tmp.205(%tmp.206);
+        %tmp.208 = "%";
+        %tmp.209 = add %tmp.207 %tmp.208;
+        symbol [ Graphics %tmp.210 132 16 24 ];
+        %tmp.210 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.211 132 25 43 ];
+        %tmp.211 = getv %tmp.210 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.196 %tmp.197(%tmp.200, %tmp.201, %tmp.203, %tmp.209, %tmp.211);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 134 12 ]
+        %tmp.212 = lgetv %yPos.1;
+        symbol [ yPos %tmp.212 134 12 16 ];
+        %tmp.213 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.213 134 20 30 ];
+        %tmp.214 = 3;
+        %tmp.215 = add %tmp.213 %tmp.214;
+        %tmp.216 = add %tmp.212 %tmp.215;
+        lputv %yPos.1 %tmp.216;
+        symbol [ yPos %yPos.1 134 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 137 12 ]
+        %tmp.217 = self;
+        symbol [ drawProgressBar %tmp.218 137 12 27 ];
+        %tmp.218 = getv function %tmp.217 :drawProgressBar;
+        %tmp.219 = lgetv %dc;
+        symbol [ dc %tmp.219 137 28 30 ];
+        %tmp.220 = lgetv %width;
+        symbol [ width %tmp.220 137 32 37 ];
+        %tmp.221 = lgetv %yPos.1;
+        symbol [ yPos %tmp.221 137 39 43 ];
+        %tmp.222 = lgetv %timeInZone.9;
+        symbol [ timeInZone %tmp.222 137 45 55 ];
+        symbol [ Graphics %tmp.223 137 57 65 ];
+        %tmp.223 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.224 137 66 77 ];
+        %tmp.224 = getv %tmp.223 :COLOR_GREEN;
+        invoke %tmp.217 %tmp.218(%tmp.219, %tmp.220, %tmp.221, %tmp.222, %tmp.224);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 138 12 ]
+        %tmp.225 = lgetv %yPos.1;
+        symbol [ yPos %tmp.225 138 12 16 ];
+        %tmp.226 = 12;
+        %tmp.227 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.227 138 25 39 ];
+        %tmp.228 = add %tmp.226 %tmp.227;
+        %tmp.229 = add %tmp.225 %tmp.228;
+        lputv %yPos.1 %tmp.229;
+        symbol [ yPos %yPos.1 138 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_29_139_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_8_139_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_116_8_139_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 142 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %avgCadence.10 = local;
+        symbol [ avgCadence %avgCadence.10 142 12 22 ];
+        %tmp.230 = lgetv %app;
+        symbol [ app %tmp.230 142 25 28 ];
+        symbol [ getAverageCadence %tmp.231 142 29 46 ];
+        %tmp.231 = getv function %tmp.230 :getAverageCadence;
+        %tmp.232 = invoke %tmp.230 %tmp.231();
+        lputv %avgCadence.10 %tmp.232;
+        symbol [ avgCadence %avgCadence.10 142 12 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 143 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_8_162_8_if_stmt:
+        %tmp.233 = lgetv %avgCadence.10;
+        symbol [ avgCadence %tmp.233 143 12 22 ];
+        %tmp.234 = 0;
+        %tmp.235 = gt %tmp.233 %tmp.234;
+        bf %tmp.235 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_8_162_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_8_162_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_28_162_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 144 12 ]
+        %tmp.236 = lgetv %dc;
+        symbol [ dc %tmp.236 144 12 14 ];
+        symbol [ setColor %tmp.237 144 15 23 ];
+        %tmp.237 = getv function %tmp.236 :setColor;
+        symbol [ Graphics %tmp.238 144 24 32 ];
+        %tmp.238 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.239 144 33 44 ];
+        %tmp.239 = getv %tmp.238 :COLOR_WHITE;
+        symbol [ Graphics %tmp.240 144 46 54 ];
+        %tmp.240 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.241 144 55 72 ];
+        %tmp.241 = getv %tmp.240 :COLOR_TRANSPARENT;
+        invoke %tmp.236 %tmp.237(%tmp.239, %tmp.241);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 145 12 ]
+        %tmp.242 = lgetv %dc;
+        symbol [ dc %tmp.242 145 12 14 ];
+        symbol [ drawText %tmp.243 145 15 23 ];
+        %tmp.243 = getv function %tmp.242 :drawText;
+        %tmp.244 = 15;
+        %tmp.245 = lgetv %yPos.1;
+        symbol [ yPos %tmp.245 147 16 20 ];
+        symbol [ Graphics %tmp.246 148 16 24 ];
+        %tmp.246 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.247 148 25 35 ];
+        %tmp.247 = getv %tmp.246 :FONT_SMALL;
+        %tmp.248 = "Avg Cadence:";
+        symbol [ Graphics %tmp.249 150 16 24 ];
+        %tmp.249 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.250 150 25 42 ];
+        %tmp.250 = getv %tmp.249 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.242 %tmp.243(%tmp.244, %tmp.245, %tmp.247, %tmp.248, %tmp.250);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 153 12 ]
+        %tmp.251 = lgetv %dc;
+        symbol [ dc %tmp.251 153 12 14 ];
+        symbol [ setColor %tmp.252 153 15 23 ];
+        %tmp.252 = getv function %tmp.251 :setColor;
+        symbol [ Graphics %tmp.253 153 24 32 ];
+        %tmp.253 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.254 153 33 44 ];
+        %tmp.254 = getv %tmp.253 :COLOR_GREEN;
+        symbol [ Graphics %tmp.255 153 46 54 ];
+        %tmp.255 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.256 153 55 72 ];
+        %tmp.256 = getv %tmp.255 :COLOR_TRANSPARENT;
+        invoke %tmp.251 %tmp.252(%tmp.254, %tmp.256);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 154 12 ]
+        %tmp.257 = lgetv %dc;
+        symbol [ dc %tmp.257 154 12 14 ];
+        symbol [ drawText %tmp.258 154 15 23 ];
+        %tmp.258 = getv function %tmp.257 :drawText;
+        %tmp.259 = lgetv %width;
+        symbol [ width %tmp.259 155 16 21 ];
+        %tmp.260 = 15;
+        %tmp.261 = sub %tmp.259 %tmp.260;
+        %tmp.262 = lgetv %yPos.1;
+        symbol [ yPos %tmp.262 156 16 20 ];
+        symbol [ Graphics %tmp.263 157 16 24 ];
+        %tmp.263 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.264 157 25 35 ];
+        %tmp.264 = getv %tmp.263 :FONT_SMALL;
+        %tmp.265 = lgetv %avgCadence.10;
+        symbol [ avgCadence %tmp.265 158 16 26 ];
+        symbol [ format %tmp.266 158 27 33 ];
+        %tmp.266 = getv function %tmp.265 :format;
+        %tmp.267 = "%.0f";
+        %tmp.268 = invoke %tmp.265 %tmp.266(%tmp.267);
+        %tmp.269 = " spm";
+        %tmp.270 = add %tmp.268 %tmp.269;
+        symbol [ Graphics %tmp.271 159 16 24 ];
+        %tmp.271 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.272 159 25 43 ];
+        %tmp.272 = getv %tmp.271 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.257 %tmp.258(%tmp.261, %tmp.262, %tmp.264, %tmp.270, %tmp.272);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 161 12 ]
+        %tmp.273 = lgetv %yPos.1;
+        symbol [ yPos %tmp.273 161 12 16 ];
+        %tmp.274 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.274 161 20 30 ];
+        %tmp.275 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.275 161 33 47 ];
+        %tmp.276 = add %tmp.274 %tmp.275;
+        %tmp.277 = add %tmp.273 %tmp.276;
+        lputv %yPos.1 %tmp.277;
+        symbol [ yPos %yPos.1 161 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_28_162_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_8_162_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_143_8_162_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 165 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %minCad.11 = local;
+        symbol [ minCad %minCad.11 165 12 18 ];
+        %tmp.278 = lgetv %app;
+        symbol [ app %tmp.278 165 21 24 ];
+        symbol [ getMinCadenceFromHistory %tmp.279 165 25 49 ];
+        %tmp.279 = getv function %tmp.278 :getMinCadenceFromHistory;
+        %tmp.280 = invoke %tmp.278 %tmp.279();
+        lputv %minCad.11 %tmp.280;
+        symbol [ minCad %minCad.11 165 12 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 166 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %maxCad.12 = local;
+        symbol [ maxCad %maxCad.12 166 12 18 ];
+        %tmp.281 = lgetv %app;
+        symbol [ app %tmp.281 166 21 24 ];
+        symbol [ getMaxCadenceFromHistory %tmp.282 166 25 49 ];
+        %tmp.282 = getv function %tmp.281 :getMaxCadenceFromHistory;
+        %tmp.283 = invoke %tmp.281 %tmp.282();
+        lputv %maxCad.12 %tmp.283;
+        symbol [ maxCad %maxCad.12 166 12 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 167 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_8_187_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_12_167_35_begin:
+        %tmp.284 = lgetv %minCad.11;
+        symbol [ minCad %tmp.284 167 12 18 ];
+        %tmp.285 = 0;
+        %tmp.286 = gt %tmp.284 %tmp.285;
+        bf %tmp.286 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_8_187_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_26_167_35_true:
+        %tmp.287 = lgetv %maxCad.12;
+        symbol [ maxCad %tmp.287 167 26 32 ];
+        %tmp.288 = 0;
+        %tmp.289 = gt %tmp.287 %tmp.288;
+        push %tmp.289;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_26_167_35_end:
+        %tmp.290 = phi [%tmp.286 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_12_167_35_begin] [%tmp.289 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_26_167_35_true] [%tmp.290 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_26_167_35_end];
+        bf %tmp.290 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_8_187_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_8_187_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_38_187_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 168 12 ]
+        %tmp.291 = lgetv %dc;
+        symbol [ dc %tmp.291 168 12 14 ];
+        symbol [ setColor %tmp.292 168 15 23 ];
+        %tmp.292 = getv function %tmp.291 :setColor;
+        symbol [ Graphics %tmp.293 168 24 32 ];
+        %tmp.293 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.294 168 33 44 ];
+        %tmp.294 = getv %tmp.293 :COLOR_WHITE;
+        symbol [ Graphics %tmp.295 168 46 54 ];
+        %tmp.295 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.296 168 55 72 ];
+        %tmp.296 = getv %tmp.295 :COLOR_TRANSPARENT;
+        invoke %tmp.291 %tmp.292(%tmp.294, %tmp.296);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 169 12 ]
+        %tmp.297 = lgetv %dc;
+        symbol [ dc %tmp.297 169 12 14 ];
+        symbol [ drawText %tmp.298 169 15 23 ];
+        %tmp.298 = getv function %tmp.297 :drawText;
+        %tmp.299 = 15;
+        %tmp.300 = lgetv %yPos.1;
+        symbol [ yPos %tmp.300 171 16 20 ];
+        symbol [ Graphics %tmp.301 172 16 24 ];
+        %tmp.301 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.302 172 25 34 ];
+        %tmp.302 = getv %tmp.301 :FONT_TINY;
+        %tmp.303 = "Range:";
+        symbol [ Graphics %tmp.304 174 16 24 ];
+        %tmp.304 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.305 174 25 42 ];
+        %tmp.305 = getv %tmp.304 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.297 %tmp.298(%tmp.299, %tmp.300, %tmp.302, %tmp.303, %tmp.305);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 177 12 ]
+        %tmp.306 = lgetv %dc;
+        symbol [ dc %tmp.306 177 12 14 ];
+        symbol [ setColor %tmp.307 177 15 23 ];
+        %tmp.307 = getv function %tmp.306 :setColor;
+        symbol [ Graphics %tmp.308 177 24 32 ];
+        %tmp.308 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.309 177 33 46 ];
+        %tmp.309 = getv %tmp.308 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.310 177 48 56 ];
+        %tmp.310 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.311 177 57 74 ];
+        %tmp.311 = getv %tmp.310 :COLOR_TRANSPARENT;
+        invoke %tmp.306 %tmp.307(%tmp.309, %tmp.311);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 178 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_38_187_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_38_187_8_stop" ]
+        %rangeText.13 = local;
+        symbol [ rangeText %rangeText.13 178 16 25 ];
+        %tmp.312 = lgetv %minCad.11;
+        symbol [ minCad %tmp.312 178 28 34 ];
+        symbol [ format %tmp.313 178 35 41 ];
+        %tmp.313 = getv function %tmp.312 :format;
+        %tmp.314 = "%.0f";
+        %tmp.315 = invoke %tmp.312 %tmp.313(%tmp.314);
+        %tmp.316 = "-";
+        %tmp.317 = add %tmp.315 %tmp.316;
+        %tmp.318 = lgetv %maxCad.12;
+        symbol [ maxCad %tmp.318 178 58 64 ];
+        symbol [ format %tmp.319 178 65 71 ];
+        %tmp.319 = getv function %tmp.318 :format;
+        %tmp.320 = "%.0f";
+        %tmp.321 = invoke %tmp.318 %tmp.319(%tmp.320);
+        %tmp.322 = add %tmp.317 %tmp.321;
+        %tmp.323 = " spm";
+        %tmp.324 = add %tmp.322 %tmp.323;
+        lputv %rangeText.13 %tmp.324;
+        symbol [ rangeText %rangeText.13 178 16 25 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 179 12 ]
+        %tmp.325 = lgetv %dc;
+        symbol [ dc %tmp.325 179 12 14 ];
+        symbol [ drawText %tmp.326 179 15 23 ];
+        %tmp.326 = getv function %tmp.325 :drawText;
+        %tmp.327 = lgetv %width;
+        symbol [ width %tmp.327 180 16 21 ];
+        %tmp.328 = 15;
+        %tmp.329 = sub %tmp.327 %tmp.328;
+        %tmp.330 = lgetv %yPos.1;
+        symbol [ yPos %tmp.330 181 16 20 ];
+        symbol [ Graphics %tmp.331 182 16 24 ];
+        %tmp.331 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.332 182 25 34 ];
+        %tmp.332 = getv %tmp.331 :FONT_TINY;
+        %tmp.333 = lgetv %rangeText.13;
+        symbol [ rangeText %tmp.333 183 16 25 ];
+        symbol [ Graphics %tmp.334 184 16 24 ];
+        %tmp.334 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.335 184 25 43 ];
+        %tmp.335 = getv %tmp.334 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.325 %tmp.326(%tmp.329, %tmp.330, %tmp.332, %tmp.333, %tmp.335);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 186 12 ]
+        %tmp.336 = lgetv %yPos.1;
+        symbol [ yPos %tmp.336 186 12 16 ];
+        %tmp.337 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.337 186 20 30 ];
+        %tmp.338 = add %tmp.336 %tmp.337;
+        lputv %yPos.1 %tmp.338;
+        symbol [ yPos %yPos.1 186 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_38_187_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_8_187_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_167_8_187_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 190 8 ]
+        %tmp.339 = lgetv %dc;
+        symbol [ dc %tmp.339 190 8 10 ];
+        symbol [ setColor %tmp.340 190 11 19 ];
+        %tmp.340 = getv function %tmp.339 :setColor;
+        symbol [ Graphics %tmp.341 190 20 28 ];
+        %tmp.341 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.342 190 29 40 ];
+        %tmp.342 = getv %tmp.341 :COLOR_WHITE;
+        symbol [ Graphics %tmp.343 190 42 50 ];
+        %tmp.343 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.344 190 51 68 ];
+        %tmp.344 = getv %tmp.343 :COLOR_TRANSPARENT;
+        invoke %tmp.339 %tmp.340(%tmp.342, %tmp.344);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 191 8 ]
+        %tmp.345 = lgetv %dc;
+        symbol [ dc %tmp.345 191 8 10 ];
+        symbol [ drawText %tmp.346 191 11 19 ];
+        %tmp.346 = getv function %tmp.345 :drawText;
+        %tmp.347 = 15;
+        %tmp.348 = lgetv %yPos.1;
+        symbol [ yPos %tmp.348 193 12 16 ];
+        symbol [ Graphics %tmp.349 194 12 20 ];
+        %tmp.349 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.350 194 21 30 ];
+        %tmp.350 = getv %tmp.349 :FONT_TINY;
+        %tmp.351 = "Target:";
+        symbol [ Graphics %tmp.352 196 12 20 ];
+        %tmp.352 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.353 196 21 38 ];
+        %tmp.353 = getv %tmp.352 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.345 %tmp.346(%tmp.347, %tmp.348, %tmp.350, %tmp.351, %tmp.353);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 199 8 ]
+        %tmp.354 = lgetv %dc;
+        symbol [ dc %tmp.354 199 8 10 ];
+        symbol [ setColor %tmp.355 199 11 19 ];
+        %tmp.355 = getv function %tmp.354 :setColor;
+        symbol [ Graphics %tmp.356 199 20 28 ];
+        %tmp.356 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.357 199 29 42 ];
+        %tmp.357 = getv %tmp.356 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.358 199 44 52 ];
+        %tmp.358 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.359 199 53 70 ];
+        %tmp.359 = getv %tmp.358 :COLOR_TRANSPARENT;
+        invoke %tmp.354 %tmp.355(%tmp.357, %tmp.359);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 200 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %targetText.14 = local;
+        symbol [ targetText %targetText.14 200 12 22 ];
+        %tmp.360 = lgetv %app;
+        symbol [ app %tmp.360 200 25 28 ];
+        symbol [ getMinCadence %tmp.361 200 29 42 ];
+        %tmp.361 = getv function %tmp.360 :getMinCadence;
+        %tmp.362 = invoke %tmp.360 %tmp.361();
+        symbol [ toString %tmp.363 200 45 53 ];
+        %tmp.363 = getv function %tmp.362 :toString;
+        %tmp.364 = invoke %tmp.362 %tmp.363();
+        %tmp.365 = "-";
+        %tmp.366 = add %tmp.364 %tmp.365;
+        %tmp.367 = lgetv %app;
+        symbol [ app %tmp.367 200 64 67 ];
+        symbol [ getMaxCadence %tmp.368 200 68 81 ];
+        %tmp.368 = getv function %tmp.367 :getMaxCadence;
+        %tmp.369 = invoke %tmp.367 %tmp.368();
+        symbol [ toString %tmp.370 200 84 92 ];
+        %tmp.370 = getv function %tmp.369 :toString;
+        %tmp.371 = invoke %tmp.369 %tmp.370();
+        %tmp.372 = add %tmp.366 %tmp.371;
+        %tmp.373 = " spm";
+        %tmp.374 = add %tmp.372 %tmp.373;
+        lputv %targetText.14 %tmp.374;
+        symbol [ targetText %targetText.14 200 12 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 201 8 ]
+        %tmp.375 = lgetv %dc;
+        symbol [ dc %tmp.375 201 8 10 ];
+        symbol [ drawText %tmp.376 201 11 19 ];
+        %tmp.376 = getv function %tmp.375 :drawText;
+        %tmp.377 = lgetv %width;
+        symbol [ width %tmp.377 202 12 17 ];
+        %tmp.378 = 15;
+        %tmp.379 = sub %tmp.377 %tmp.378;
+        %tmp.380 = lgetv %yPos.1;
+        symbol [ yPos %tmp.380 203 12 16 ];
+        symbol [ Graphics %tmp.381 204 12 20 ];
+        %tmp.381 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.382 204 21 30 ];
+        %tmp.382 = getv %tmp.381 :FONT_TINY;
+        %tmp.383 = lgetv %targetText.14;
+        symbol [ targetText %tmp.383 205 12 22 ];
+        symbol [ Graphics %tmp.384 206 12 20 ];
+        %tmp.384 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.385 206 21 39 ];
+        %tmp.385 = getv %tmp.384 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.375 %tmp.376(%tmp.379, %tmp.380, %tmp.382, %tmp.383, %tmp.385);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 208 8 ]
+        %tmp.386 = lgetv %yPos.1;
+        symbol [ yPos %tmp.386 208 8 12 ];
+        %tmp.387 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.387 208 16 26 ];
+        %tmp.388 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.388 208 29 43 ];
+        %tmp.389 = add %tmp.387 %tmp.388;
+        %tmp.390 = add %tmp.386 %tmp.389;
+        lputv %yPos.1 %tmp.390;
+        symbol [ yPos %yPos.1 208 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 211 8 ]
+        %tmp.391 = lgetv %dc;
+        symbol [ dc %tmp.391 211 8 10 ];
+        symbol [ setColor %tmp.392 211 11 19 ];
+        %tmp.392 = getv function %tmp.391 :setColor;
+        symbol [ Graphics %tmp.393 211 20 28 ];
+        %tmp.393 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.394 211 29 42 ];
+        %tmp.394 = getv %tmp.393 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.395 211 44 52 ];
+        %tmp.395 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.396 211 53 70 ];
+        %tmp.396 = getv %tmp.395 :COLOR_TRANSPARENT;
+        invoke %tmp.391 %tmp.392(%tmp.394, %tmp.396);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 212 8 ]
+        %tmp.397 = lgetv %dc;
+        symbol [ dc %tmp.397 212 8 10 ];
+        symbol [ drawLine %tmp.398 212 11 19 ];
+        %tmp.398 = getv function %tmp.397 :drawLine;
+        %tmp.399 = 10;
+        %tmp.400 = lgetv %yPos.1;
+        symbol [ yPos %tmp.400 212 24 28 ];
+        %tmp.401 = lgetv %width;
+        symbol [ width %tmp.401 212 30 35 ];
+        %tmp.402 = 10;
+        %tmp.403 = sub %tmp.401 %tmp.402;
+        %tmp.404 = lgetv %yPos.1;
+        symbol [ yPos %tmp.404 212 42 46 ];
+        invoke %tmp.397 %tmp.398(%tmp.399, %tmp.400, %tmp.403, %tmp.404);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 213 8 ]
+        %tmp.405 = lgetv %yPos.1;
+        symbol [ yPos %tmp.405 213 8 12 ];
+        %tmp.406 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.406 213 16 30 ];
+        %tmp.407 = add %tmp.405 %tmp.406;
+        lputv %yPos.1 %tmp.407;
+        symbol [ yPos %yPos.1 213 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 216 8 ]
+        %tmp.408 = lgetv %dc;
+        symbol [ dc %tmp.408 216 8 10 ];
+        symbol [ setColor %tmp.409 216 11 19 ];
+        %tmp.409 = getv function %tmp.408 :setColor;
+        symbol [ Graphics %tmp.410 216 20 28 ];
+        %tmp.410 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.411 216 29 40 ];
+        %tmp.411 = getv %tmp.410 :COLOR_WHITE;
+        symbol [ Graphics %tmp.412 216 42 50 ];
+        %tmp.412 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.413 216 51 68 ];
+        %tmp.413 = getv %tmp.412 :COLOR_TRANSPARENT;
+        invoke %tmp.408 %tmp.409(%tmp.411, %tmp.413);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 217 8 ]
+        %tmp.414 = lgetv %dc;
+        symbol [ dc %tmp.414 217 8 10 ];
+        symbol [ drawText %tmp.415 217 11 19 ];
+        %tmp.415 = getv function %tmp.414 :drawText;
+        %tmp.416 = lgetv %width;
+        symbol [ width %tmp.416 218 12 17 ];
+        %tmp.417 = 2;
+        %tmp.418 = div %tmp.416 %tmp.417;
+        %tmp.419 = lgetv %yPos.1;
+        symbol [ yPos %tmp.419 219 12 16 ];
+        symbol [ Graphics %tmp.420 220 12 20 ];
+        %tmp.420 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.421 220 21 31 ];
+        %tmp.421 = getv %tmp.420 :FONT_SMALL;
+        %tmp.422 = "Activity Metrics";
+        symbol [ Graphics %tmp.423 222 12 20 ];
+        %tmp.423 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.424 222 21 40 ];
+        %tmp.424 = getv %tmp.423 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.414 %tmp.415(%tmp.418, %tmp.419, %tmp.421, %tmp.422, %tmp.424);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 224 8 ]
+        %tmp.425 = lgetv %yPos.1;
+        symbol [ yPos %tmp.425 224 8 12 ];
+        %tmp.426 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.426 224 16 26 ];
+        %tmp.427 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.427 224 29 43 ];
+        %tmp.428 = add %tmp.426 %tmp.427;
+        %tmp.429 = add %tmp.425 %tmp.428;
+        lputv %yPos.1 %tmp.429;
+        symbol [ yPos %yPos.1 224 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 227 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %duration.15 = local;
+        symbol [ duration %duration.15 227 12 20 ];
+        %tmp.430 = lgetv %app;
+        symbol [ app %tmp.430 227 23 26 ];
+        symbol [ getSessionDuration %tmp.431 227 27 45 ];
+        %tmp.431 = getv function %tmp.430 :getSessionDuration;
+        %tmp.432 = invoke %tmp.430 %tmp.431();
+        lputv %duration.15 %tmp.432;
+        symbol [ duration %duration.15 227 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 228 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_8_253_8_if_stmt:
+        %tmp.433 = lgetv %duration.15;
+        symbol [ duration %tmp.433 228 12 20 ];
+        %tmp.434 = null;
+        %tmp.435 = ne %tmp.433 %tmp.434;
+        bf %tmp.435 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_8_253_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_8_253_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 229 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_stop" ]
+        %seconds.16 = local;
+        symbol [ seconds %seconds.16 229 16 23 ];
+        %tmp.436 = lgetv %duration.15;
+        symbol [ duration %tmp.436 229 26 34 ];
+        %tmp.437 = as %tmp.436 { (!Null) };
+        %tmp.438 = 1000;
+        %tmp.439 = div %tmp.437 %tmp.438;
+        lputv %seconds.16 %tmp.439;
+        symbol [ seconds %seconds.16 229 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 230 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_stop" ]
+        %hours.17 = local;
+        symbol [ hours %hours.17 230 16 21 ];
+        %tmp.440 = lgetv %seconds.16;
+        symbol [ seconds %tmp.440 230 24 31 ];
+        %tmp.441 = 3600;
+        %tmp.442 = div %tmp.440 %tmp.441;
+        lputv %hours.17 %tmp.442;
+        symbol [ hours %hours.17 230 16 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 231 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_stop" ]
+        %minutes.18 = local;
+        symbol [ minutes %minutes.18 231 16 23 ];
+        %tmp.443 = lgetv %seconds.16;
+        symbol [ seconds %tmp.443 231 27 34 ];
+        %tmp.444 = 3600;
+        %tmp.445 = mod %tmp.443 %tmp.444;
+        %tmp.446 = 60;
+        %tmp.447 = div %tmp.445 %tmp.446;
+        lputv %minutes.18 %tmp.447;
+        symbol [ minutes %minutes.18 231 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 232 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_stop" ]
+        %secs.19 = local;
+        symbol [ secs %secs.19 232 16 20 ];
+        %tmp.448 = lgetv %seconds.16;
+        symbol [ seconds %tmp.448 232 23 30 ];
+        %tmp.449 = 60;
+        %tmp.450 = mod %tmp.448 %tmp.449;
+        lputv %secs.19 %tmp.450;
+        symbol [ secs %secs.19 232 16 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 233 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_stop" ]
+        %durationText.20 = local;
+        symbol [ durationText %durationText.20 233 16 28 ];
+        %tmp.451 = lgetv %hours.17;
+        symbol [ hours %tmp.451 233 31 36 ];
+        symbol [ format %tmp.452 233 37 43 ];
+        %tmp.452 = getv function %tmp.451 :format;
+        %tmp.453 = "%02d";
+        %tmp.454 = invoke %tmp.451 %tmp.452(%tmp.453);
+        %tmp.455 = ":";
+        %tmp.456 = add %tmp.454 %tmp.455;
+        %tmp.457 = lgetv %minutes.18;
+        symbol [ minutes %tmp.457 233 60 67 ];
+        symbol [ format %tmp.458 233 68 74 ];
+        %tmp.458 = getv function %tmp.457 :format;
+        %tmp.459 = "%02d";
+        %tmp.460 = invoke %tmp.457 %tmp.458(%tmp.459);
+        %tmp.461 = add %tmp.456 %tmp.460;
+        %tmp.462 = ":";
+        %tmp.463 = add %tmp.461 %tmp.462;
+        %tmp.464 = lgetv %secs.19;
+        symbol [ secs %tmp.464 233 91 95 ];
+        symbol [ format %tmp.465 233 96 102 ];
+        %tmp.465 = getv function %tmp.464 :format;
+        %tmp.466 = "%02d";
+        %tmp.467 = invoke %tmp.464 %tmp.465(%tmp.466);
+        %tmp.468 = add %tmp.463 %tmp.467;
+        lputv %durationText.20 %tmp.468;
+        symbol [ durationText %durationText.20 233 16 28 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 235 12 ]
+        %tmp.469 = lgetv %dc;
+        symbol [ dc %tmp.469 235 12 14 ];
+        symbol [ setColor %tmp.470 235 15 23 ];
+        %tmp.470 = getv function %tmp.469 :setColor;
+        symbol [ Graphics %tmp.471 235 24 32 ];
+        %tmp.471 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.472 235 33 44 ];
+        %tmp.472 = getv %tmp.471 :COLOR_WHITE;
+        symbol [ Graphics %tmp.473 235 46 54 ];
+        %tmp.473 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.474 235 55 72 ];
+        %tmp.474 = getv %tmp.473 :COLOR_TRANSPARENT;
+        invoke %tmp.469 %tmp.470(%tmp.472, %tmp.474);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 236 12 ]
+        %tmp.475 = lgetv %dc;
+        symbol [ dc %tmp.475 236 12 14 ];
+        symbol [ drawText %tmp.476 236 15 23 ];
+        %tmp.476 = getv function %tmp.475 :drawText;
+        %tmp.477 = 15;
+        %tmp.478 = lgetv %yPos.1;
+        symbol [ yPos %tmp.478 238 16 20 ];
+        symbol [ Graphics %tmp.479 239 16 24 ];
+        %tmp.479 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.480 239 25 35 ];
+        %tmp.480 = getv %tmp.479 :FONT_SMALL;
+        %tmp.481 = "Duration:";
+        symbol [ Graphics %tmp.482 241 16 24 ];
+        %tmp.482 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.483 241 25 42 ];
+        %tmp.483 = getv %tmp.482 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.475 %tmp.476(%tmp.477, %tmp.478, %tmp.480, %tmp.481, %tmp.483);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 244 12 ]
+        %tmp.484 = lgetv %dc;
+        symbol [ dc %tmp.484 244 12 14 ];
+        symbol [ setColor %tmp.485 244 15 23 ];
+        %tmp.485 = getv function %tmp.484 :setColor;
+        symbol [ Graphics %tmp.486 244 24 32 ];
+        %tmp.486 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.487 244 33 44 ];
+        %tmp.487 = getv %tmp.486 :COLOR_GREEN;
+        symbol [ Graphics %tmp.488 244 46 54 ];
+        %tmp.488 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.489 244 55 72 ];
+        %tmp.489 = getv %tmp.488 :COLOR_TRANSPARENT;
+        invoke %tmp.484 %tmp.485(%tmp.487, %tmp.489);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 245 12 ]
+        %tmp.490 = lgetv %dc;
+        symbol [ dc %tmp.490 245 12 14 ];
+        symbol [ drawText %tmp.491 245 15 23 ];
+        %tmp.491 = getv function %tmp.490 :drawText;
+        %tmp.492 = lgetv %width;
+        symbol [ width %tmp.492 246 16 21 ];
+        %tmp.493 = 15;
+        %tmp.494 = sub %tmp.492 %tmp.493;
+        %tmp.495 = lgetv %yPos.1;
+        symbol [ yPos %tmp.495 247 16 20 ];
+        symbol [ Graphics %tmp.496 248 16 24 ];
+        %tmp.496 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.497 248 25 35 ];
+        %tmp.497 = getv %tmp.496 :FONT_SMALL;
+        %tmp.498 = lgetv %durationText.20;
+        symbol [ durationText %tmp.498 249 16 28 ];
+        symbol [ Graphics %tmp.499 250 16 24 ];
+        %tmp.499 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.500 250 25 43 ];
+        %tmp.500 = getv %tmp.499 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.490 %tmp.491(%tmp.494, %tmp.495, %tmp.497, %tmp.498, %tmp.500);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 252 12 ]
+        %tmp.501 = lgetv %yPos.1;
+        symbol [ yPos %tmp.501 252 12 16 ];
+        %tmp.502 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.502 252 20 30 ];
+        %tmp.503 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.503 252 33 47 ];
+        %tmp.504 = add %tmp.502 %tmp.503;
+        %tmp.505 = add %tmp.501 %tmp.504;
+        lputv %yPos.1 %tmp.505;
+        symbol [ yPos %yPos.1 252 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_30_253_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_8_253_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_228_8_253_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 256 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %distance.21 = local;
+        symbol [ distance %distance.21 256 12 20 ];
+        %tmp.506 = lgetv %app;
+        symbol [ app %tmp.506 256 23 26 ];
+        symbol [ getSessionDistance %tmp.507 256 27 45 ];
+        %tmp.507 = getv function %tmp.506 :getSessionDistance;
+        %tmp.508 = invoke %tmp.506 %tmp.507();
+        lputv %distance.21 %tmp.508;
+        symbol [ distance %distance.21 256 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 257 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_8_278_8_if_stmt:
+        %tmp.509 = lgetv %distance.21;
+        symbol [ distance %tmp.509 257 12 20 ];
+        %tmp.510 = null;
+        %tmp.511 = ne %tmp.509 %tmp.510;
+        bf %tmp.511 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_8_278_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_8_278_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_30_278_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 258 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_30_278_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_30_278_8_stop" ]
+        %distanceKm.22 = local;
+        symbol [ distanceKm %distanceKm.22 258 16 26 ];
+        %tmp.512 = lgetv %distance.21;
+        symbol [ distance %tmp.512 258 29 37 ];
+        %tmp.513 = as %tmp.512 { (!Null) };
+        %tmp.514 = 100000.0;
+        %tmp.515 = div %tmp.513 %tmp.514;
+        lputv %distanceKm.22 %tmp.515;
+        symbol [ distanceKm %distanceKm.22 258 16 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 260 12 ]
+        %tmp.516 = lgetv %dc;
+        symbol [ dc %tmp.516 260 12 14 ];
+        symbol [ setColor %tmp.517 260 15 23 ];
+        %tmp.517 = getv function %tmp.516 :setColor;
+        symbol [ Graphics %tmp.518 260 24 32 ];
+        %tmp.518 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.519 260 33 44 ];
+        %tmp.519 = getv %tmp.518 :COLOR_WHITE;
+        symbol [ Graphics %tmp.520 260 46 54 ];
+        %tmp.520 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.521 260 55 72 ];
+        %tmp.521 = getv %tmp.520 :COLOR_TRANSPARENT;
+        invoke %tmp.516 %tmp.517(%tmp.519, %tmp.521);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 261 12 ]
+        %tmp.522 = lgetv %dc;
+        symbol [ dc %tmp.522 261 12 14 ];
+        symbol [ drawText %tmp.523 261 15 23 ];
+        %tmp.523 = getv function %tmp.522 :drawText;
+        %tmp.524 = 15;
+        %tmp.525 = lgetv %yPos.1;
+        symbol [ yPos %tmp.525 263 16 20 ];
+        symbol [ Graphics %tmp.526 264 16 24 ];
+        %tmp.526 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.527 264 25 35 ];
+        %tmp.527 = getv %tmp.526 :FONT_SMALL;
+        %tmp.528 = "Distance:";
+        symbol [ Graphics %tmp.529 266 16 24 ];
+        %tmp.529 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.530 266 25 42 ];
+        %tmp.530 = getv %tmp.529 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.522 %tmp.523(%tmp.524, %tmp.525, %tmp.527, %tmp.528, %tmp.530);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 269 12 ]
+        %tmp.531 = lgetv %dc;
+        symbol [ dc %tmp.531 269 12 14 ];
+        symbol [ setColor %tmp.532 269 15 23 ];
+        %tmp.532 = getv function %tmp.531 :setColor;
+        symbol [ Graphics %tmp.533 269 24 32 ];
+        %tmp.533 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.534 269 33 44 ];
+        %tmp.534 = getv %tmp.533 :COLOR_GREEN;
+        symbol [ Graphics %tmp.535 269 46 54 ];
+        %tmp.535 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.536 269 55 72 ];
+        %tmp.536 = getv %tmp.535 :COLOR_TRANSPARENT;
+        invoke %tmp.531 %tmp.532(%tmp.534, %tmp.536);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 270 12 ]
+        %tmp.537 = lgetv %dc;
+        symbol [ dc %tmp.537 270 12 14 ];
+        symbol [ drawText %tmp.538 270 15 23 ];
+        %tmp.538 = getv function %tmp.537 :drawText;
+        %tmp.539 = lgetv %width;
+        symbol [ width %tmp.539 271 16 21 ];
+        %tmp.540 = 15;
+        %tmp.541 = sub %tmp.539 %tmp.540;
+        %tmp.542 = lgetv %yPos.1;
+        symbol [ yPos %tmp.542 272 16 20 ];
+        symbol [ Graphics %tmp.543 273 16 24 ];
+        %tmp.543 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.544 273 25 35 ];
+        %tmp.544 = getv %tmp.543 :FONT_SMALL;
+        %tmp.545 = lgetv %distanceKm.22;
+        symbol [ distanceKm %tmp.545 274 16 26 ];
+        symbol [ format %tmp.546 274 27 33 ];
+        %tmp.546 = getv function %tmp.545 :format;
+        %tmp.547 = "%.2f";
+        %tmp.548 = invoke %tmp.545 %tmp.546(%tmp.547);
+        %tmp.549 = " km";
+        %tmp.550 = add %tmp.548 %tmp.549;
+        symbol [ Graphics %tmp.551 275 16 24 ];
+        %tmp.551 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.552 275 25 43 ];
+        %tmp.552 = getv %tmp.551 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.537 %tmp.538(%tmp.541, %tmp.542, %tmp.544, %tmp.550, %tmp.552);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 277 12 ]
+        %tmp.553 = lgetv %yPos.1;
+        symbol [ yPos %tmp.553 277 12 16 ];
+        %tmp.554 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.554 277 20 30 ];
+        %tmp.555 = lgetv %sectionSpacing.3;
+        symbol [ sectionSpacing %tmp.555 277 33 47 ];
+        %tmp.556 = add %tmp.554 %tmp.555;
+        %tmp.557 = add %tmp.553 %tmp.556;
+        lputv %yPos.1 %tmp.557;
+        symbol [ yPos %yPos.1 277 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_30_278_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_8_278_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_257_8_278_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 281 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %avgHR.23 = local;
+        symbol [ avgHR %avgHR.23 281 12 17 ];
+        %tmp.558 = lgetv %app;
+        symbol [ app %tmp.558 281 20 23 ];
+        symbol [ getAvgHeartRate %tmp.559 281 24 39 ];
+        %tmp.559 = getv function %tmp.558 :getAvgHeartRate;
+        %tmp.560 = invoke %tmp.558 %tmp.559();
+        lputv %avgHR.23 %tmp.560;
+        symbol [ avgHR %avgHR.23 281 12 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 282 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_8_301_8_if_stmt:
+        %tmp.561 = lgetv %avgHR.23;
+        symbol [ avgHR %tmp.561 282 12 17 ];
+        %tmp.562 = null;
+        %tmp.563 = ne %tmp.561 %tmp.562;
+        bf %tmp.563 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_8_301_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_8_301_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_27_301_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 283 12 ]
+        %tmp.564 = lgetv %dc;
+        symbol [ dc %tmp.564 283 12 14 ];
+        symbol [ setColor %tmp.565 283 15 23 ];
+        %tmp.565 = getv function %tmp.564 :setColor;
+        symbol [ Graphics %tmp.566 283 24 32 ];
+        %tmp.566 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.567 283 33 44 ];
+        %tmp.567 = getv %tmp.566 :COLOR_WHITE;
+        symbol [ Graphics %tmp.568 283 46 54 ];
+        %tmp.568 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.569 283 55 72 ];
+        %tmp.569 = getv %tmp.568 :COLOR_TRANSPARENT;
+        invoke %tmp.564 %tmp.565(%tmp.567, %tmp.569);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 284 12 ]
+        %tmp.570 = lgetv %dc;
+        symbol [ dc %tmp.570 284 12 14 ];
+        symbol [ drawText %tmp.571 284 15 23 ];
+        %tmp.571 = getv function %tmp.570 :drawText;
+        %tmp.572 = 15;
+        %tmp.573 = lgetv %yPos.1;
+        symbol [ yPos %tmp.573 286 16 20 ];
+        symbol [ Graphics %tmp.574 287 16 24 ];
+        %tmp.574 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.575 287 25 35 ];
+        %tmp.575 = getv %tmp.574 :FONT_SMALL;
+        %tmp.576 = "Avg HR:";
+        symbol [ Graphics %tmp.577 289 16 24 ];
+        %tmp.577 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.578 289 25 42 ];
+        %tmp.578 = getv %tmp.577 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.570 %tmp.571(%tmp.572, %tmp.573, %tmp.575, %tmp.576, %tmp.578);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 292 12 ]
+        %tmp.579 = lgetv %dc;
+        symbol [ dc %tmp.579 292 12 14 ];
+        symbol [ setColor %tmp.580 292 15 23 ];
+        %tmp.580 = getv function %tmp.579 :setColor;
+        symbol [ Graphics %tmp.581 292 24 32 ];
+        %tmp.581 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.582 292 33 42 ];
+        %tmp.582 = getv %tmp.581 :COLOR_RED;
+        symbol [ Graphics %tmp.583 292 44 52 ];
+        %tmp.583 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.584 292 53 70 ];
+        %tmp.584 = getv %tmp.583 :COLOR_TRANSPARENT;
+        invoke %tmp.579 %tmp.580(%tmp.582, %tmp.584);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 293 12 ]
+        %tmp.585 = lgetv %dc;
+        symbol [ dc %tmp.585 293 12 14 ];
+        symbol [ drawText %tmp.586 293 15 23 ];
+        %tmp.586 = getv function %tmp.585 :drawText;
+        %tmp.587 = lgetv %width;
+        symbol [ width %tmp.587 294 16 21 ];
+        %tmp.588 = 15;
+        %tmp.589 = sub %tmp.587 %tmp.588;
+        %tmp.590 = lgetv %yPos.1;
+        symbol [ yPos %tmp.590 295 16 20 ];
+        symbol [ Graphics %tmp.591 296 16 24 ];
+        %tmp.591 = getm $.Toybox.Graphics;
+        symbol [ FONT_SMALL %tmp.592 296 25 35 ];
+        %tmp.592 = getv %tmp.591 :FONT_SMALL;
+        %tmp.593 = lgetv %avgHR.23;
+        symbol [ avgHR %tmp.593 297 16 21 ];
+        %tmp.594 = as %tmp.593 { (!Null) };
+        symbol [ toString %tmp.595 297 22 30 ];
+        %tmp.595 = getv function %tmp.594 :toString;
+        %tmp.596 = invoke %tmp.594 %tmp.595();
+        %tmp.597 = " bpm";
+        %tmp.598 = add %tmp.596 %tmp.597;
+        symbol [ Graphics %tmp.599 298 16 24 ];
+        %tmp.599 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.600 298 25 43 ];
+        %tmp.600 = getv %tmp.599 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.585 %tmp.586(%tmp.589, %tmp.590, %tmp.592, %tmp.598, %tmp.600);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 300 12 ]
+        %tmp.601 = lgetv %yPos.1;
+        symbol [ yPos %tmp.601 300 12 16 ];
+        %tmp.602 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.602 300 20 30 ];
+        %tmp.603 = add %tmp.601 %tmp.602;
+        lputv %yPos.1 %tmp.603;
+        symbol [ yPos %yPos.1 300 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_27_301_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_8_301_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_282_8_301_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 304 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop" ]
+        %peakHR.24 = local;
+        symbol [ peakHR %peakHR.24 304 12 18 ];
+        %tmp.604 = lgetv %app;
+        symbol [ app %tmp.604 304 21 24 ];
+        symbol [ getPeakHeartRate %tmp.605 304 25 41 ];
+        %tmp.605 = getv function %tmp.604 :getPeakHeartRate;
+        %tmp.606 = invoke %tmp.604 %tmp.605();
+        lputv %peakHR.24 %tmp.606;
+        symbol [ peakHR %peakHR.24 304 12 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 305 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_12_305_56_begin:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_12_305_39_begin:
+        %tmp.607 = lgetv %peakHR.24;
+        symbol [ peakHR %tmp.607 305 12 18 ];
+        %tmp.608 = null;
+        %tmp.609 = ne %tmp.607 %tmp.608;
+        bf %tmp.609 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_30_305_39_true:
+        %tmp.610 = lgetv %avgHR.23;
+        symbol [ avgHR %tmp.610 305 30 35 ];
+        %tmp.611 = null;
+        %tmp.612 = ne %tmp.610 %tmp.611;
+        push %tmp.612;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_30_305_39_end:
+        %tmp.613 = phi [%tmp.609 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_12_305_39_begin] [%tmp.612 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_30_305_39_true] [%tmp.613 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_30_305_39_end];
+        bf %tmp.613 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_47_305_56_true:
+        %tmp.614 = lgetv %peakHR.24;
+        symbol [ peakHR %tmp.614 305 47 53 ];
+        %tmp.615 = as %tmp.614 { (!Null) };
+        %tmp.616 = lgetv %avgHR.23;
+        symbol [ avgHR %tmp.616 305 56 61 ];
+        %tmp.617 = as %tmp.616 { (!Null) };
+        %tmp.618 = gt %tmp.615 %tmp.617;
+        push %tmp.618;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_47_305_56_end:
+        %tmp.619 = phi [%tmp.613 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_12_305_56_begin] [%tmp.618 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_47_305_56_true] [%tmp.619 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_47_305_56_end];
+        bf %tmp.619 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_63_324_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 306 12 ]
+        %tmp.620 = lgetv %dc;
+        symbol [ dc %tmp.620 306 12 14 ];
+        symbol [ setColor %tmp.621 306 15 23 ];
+        %tmp.621 = getv function %tmp.620 :setColor;
+        symbol [ Graphics %tmp.622 306 24 32 ];
+        %tmp.622 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.623 306 33 44 ];
+        %tmp.623 = getv %tmp.622 :COLOR_WHITE;
+        symbol [ Graphics %tmp.624 306 46 54 ];
+        %tmp.624 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.625 306 55 72 ];
+        %tmp.625 = getv %tmp.624 :COLOR_TRANSPARENT;
+        invoke %tmp.620 %tmp.621(%tmp.623, %tmp.625);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 307 12 ]
+        %tmp.626 = lgetv %dc;
+        symbol [ dc %tmp.626 307 12 14 ];
+        symbol [ drawText %tmp.627 307 15 23 ];
+        %tmp.627 = getv function %tmp.626 :drawText;
+        %tmp.628 = 15;
+        %tmp.629 = lgetv %yPos.1;
+        symbol [ yPos %tmp.629 309 16 20 ];
+        symbol [ Graphics %tmp.630 310 16 24 ];
+        %tmp.630 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.631 310 25 34 ];
+        %tmp.631 = getv %tmp.630 :FONT_TINY;
+        %tmp.632 = "Peak HR:";
+        symbol [ Graphics %tmp.633 312 16 24 ];
+        %tmp.633 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_LEFT %tmp.634 312 25 42 ];
+        %tmp.634 = getv %tmp.633 :TEXT_JUSTIFY_LEFT;
+        invoke %tmp.626 %tmp.627(%tmp.628, %tmp.629, %tmp.631, %tmp.632, %tmp.634);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 315 12 ]
+        %tmp.635 = lgetv %dc;
+        symbol [ dc %tmp.635 315 12 14 ];
+        symbol [ setColor %tmp.636 315 15 23 ];
+        %tmp.636 = getv function %tmp.635 :setColor;
+        symbol [ Graphics %tmp.637 315 24 32 ];
+        %tmp.637 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_RED %tmp.638 315 33 45 ];
+        %tmp.638 = getv %tmp.637 :COLOR_DK_RED;
+        symbol [ Graphics %tmp.639 315 47 55 ];
+        %tmp.639 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.640 315 56 73 ];
+        %tmp.640 = getv %tmp.639 :COLOR_TRANSPARENT;
+        invoke %tmp.635 %tmp.636(%tmp.638, %tmp.640);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 316 12 ]
+        %tmp.641 = lgetv %dc;
+        symbol [ dc %tmp.641 316 12 14 ];
+        symbol [ drawText %tmp.642 316 15 23 ];
+        %tmp.642 = getv function %tmp.641 :drawText;
+        %tmp.643 = lgetv %width;
+        symbol [ width %tmp.643 317 16 21 ];
+        %tmp.644 = 15;
+        %tmp.645 = sub %tmp.643 %tmp.644;
+        %tmp.646 = lgetv %yPos.1;
+        symbol [ yPos %tmp.646 318 16 20 ];
+        symbol [ Graphics %tmp.647 319 16 24 ];
+        %tmp.647 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.648 319 25 34 ];
+        %tmp.648 = getv %tmp.647 :FONT_TINY;
+        %tmp.649 = lgetv %peakHR.24;
+        symbol [ peakHR %tmp.649 320 16 22 ];
+        %tmp.650 = as %tmp.649 { (!Null) };
+        symbol [ toString %tmp.651 320 23 31 ];
+        %tmp.651 = getv function %tmp.650 :toString;
+        %tmp.652 = invoke %tmp.650 %tmp.651();
+        %tmp.653 = " bpm";
+        %tmp.654 = add %tmp.652 %tmp.653;
+        symbol [ Graphics %tmp.655 321 16 24 ];
+        %tmp.655 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_RIGHT %tmp.656 321 25 43 ];
+        %tmp.656 = getv %tmp.655 :TEXT_JUSTIFY_RIGHT;
+        invoke %tmp.641 %tmp.642(%tmp.645, %tmp.646, %tmp.648, %tmp.654, %tmp.656);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 323 12 ]
+        %tmp.657 = lgetv %yPos.1;
+        symbol [ yPos %tmp.657 323 12 16 ];
+        %tmp.658 = lgetv %lineHeight.2;
+        symbol [ lineHeight %tmp.658 323 20 30 ];
+        %tmp.659 = add %tmp.657 %tmp.658;
+        lputv %yPos.1 %tmp.659;
+        symbol [ yPos %yPos.1 323 12 16 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_63_324_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_305_8_324_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 327 8 ]
+        %tmp.660 = lgetv %height;
+        symbol [ height %tmp.660 327 15 21 ];
+        %tmp.661 = 20;
+        %tmp.662 = sub %tmp.660 %tmp.661;
+        lputv %yPos.1 %tmp.662;
+        symbol [ yPos %yPos.1 327 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 328 8 ]
+        %tmp.663 = lgetv %dc;
+        symbol [ dc %tmp.663 328 8 10 ];
+        symbol [ setColor %tmp.664 328 11 19 ];
+        %tmp.664 = getv function %tmp.663 :setColor;
+        symbol [ Graphics %tmp.665 328 20 28 ];
+        %tmp.665 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.666 328 29 42 ];
+        %tmp.666 = getv %tmp.665 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.667 328 44 52 ];
+        %tmp.667 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.668 328 53 70 ];
+        %tmp.668 = getv %tmp.667 :COLOR_TRANSPARENT;
+        invoke %tmp.663 %tmp.664(%tmp.666, %tmp.668);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 329 8 ]
+        %tmp.669 = lgetv %dc;
+        symbol [ dc %tmp.669 329 8 10 ];
+        symbol [ drawText %tmp.670 329 11 19 ];
+        %tmp.670 = getv function %tmp.669 :drawText;
+        %tmp.671 = lgetv %width;
+        symbol [ width %tmp.671 330 12 17 ];
+        %tmp.672 = 2;
+        %tmp.673 = div %tmp.671 %tmp.672;
+        %tmp.674 = lgetv %yPos.1;
+        symbol [ yPos %tmp.674 331 12 16 ];
+        symbol [ Graphics %tmp.675 332 12 20 ];
+        %tmp.675 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.676 332 21 31 ];
+        %tmp.676 = getv %tmp.675 :FONT_XTINY;
+        %tmp.677 = "Press SELECT to continue";
+        symbol [ Graphics %tmp.678 334 12 20 ];
+        %tmp.678 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.679 334 21 40 ];
+        %tmp.679 = getv %tmp.678 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.669 %tmp.670(%tmp.673, %tmp.674, %tmp.676, %tmp.677, %tmp.679);
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_43_103_336_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 338; @symbol_functiondef = [drawProgressBar,338,13,28]; @symbol_param<0> = [dc,338,29,31]; @symbol_param<0>_type<0> = [Dc,338,35,37]; @symbol_param<1> = [width,338,39,44]; @symbol_param<1>_type<0> = [Number,338,48,54]; @symbol_param<2> = [yPos,338,56,60]; @symbol_param<2>_type<0> = [Number,338,64,70]; @symbol_param<3> = [percentage,338,72,82]; @symbol_param<3>_type<0> = [Number,338,86,92]; @symbol_param<4> = [color,338,94,99]; @symbol_param<4>_type<0> = [Number,338,103,109]; ]
+    function drawProgressBar(dc as Dc, width as Number, yPos as Number, percentage as Number, color as Number) as Void {
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 339 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_stop" ]
+        %barWidth.1 = local;
+        symbol [ barWidth %barWidth.1 339 12 20 ];
+        %tmp.1 = lgetv %width;
+        symbol [ width %tmp.1 339 23 28 ];
+        %tmp.2 = 30;
+        %tmp.3 = sub %tmp.1 %tmp.2;
+        lputv %barWidth.1 %tmp.3;
+        symbol [ barWidth %barWidth.1 339 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 340 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_stop" ]
+        %barHeight.2 = local;
+        symbol [ barHeight %barHeight.2 340 12 21 ];
+        %tmp.4 = 8;
+        lputv %barHeight.2 %tmp.4;
+        symbol [ barHeight %barHeight.2 340 12 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 341 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_stop" ]
+        %barX.3 = local;
+        symbol [ barX %barX.3 341 12 16 ];
+        %tmp.5 = 15;
+        lputv %barX.3 %tmp.5;
+        symbol [ barX %barX.3 341 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 342 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_stop" ]
+        %barY.4 = local;
+        symbol [ barY %barY.4 342 12 16 ];
+        %tmp.6 = lgetv %yPos;
+        symbol [ yPos %tmp.6 342 19 23 ];
+        lputv %barY.4 %tmp.6;
+        symbol [ barY %barY.4 342 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 345 8 ]
+        %tmp.7 = lgetv %dc;
+        symbol [ dc %tmp.7 345 8 10 ];
+        symbol [ setColor %tmp.8 345 11 19 ];
+        %tmp.8 = getv function %tmp.7 :setColor;
+        symbol [ Graphics %tmp.9 345 20 28 ];
+        %tmp.9 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GRAY %tmp.10 345 29 42 ];
+        %tmp.10 = getv %tmp.9 :COLOR_DK_GRAY;
+        symbol [ Graphics %tmp.11 345 44 52 ];
+        %tmp.11 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.12 345 53 70 ];
+        %tmp.12 = getv %tmp.11 :COLOR_TRANSPARENT;
+        invoke %tmp.7 %tmp.8(%tmp.10, %tmp.12);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 346 8 ]
+        %tmp.13 = lgetv %dc;
+        symbol [ dc %tmp.13 346 8 10 ];
+        symbol [ fillRectangle %tmp.14 346 11 24 ];
+        %tmp.14 = getv function %tmp.13 :fillRectangle;
+        %tmp.15 = lgetv %barX.3;
+        symbol [ barX %tmp.15 346 25 29 ];
+        %tmp.16 = lgetv %barY.4;
+        symbol [ barY %tmp.16 346 31 35 ];
+        %tmp.17 = lgetv %barWidth.1;
+        symbol [ barWidth %tmp.17 346 37 45 ];
+        %tmp.18 = lgetv %barHeight.2;
+        symbol [ barHeight %tmp.18 346 47 56 ];
+        invoke %tmp.13 %tmp.14(%tmp.15, %tmp.16, %tmp.17, %tmp.18);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 349 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_8_355_8_if_stmt:
+        %tmp.19 = lgetv %percentage;
+        symbol [ percentage %tmp.19 349 12 22 ];
+        %tmp.20 = 0;
+        %tmp.21 = gt %tmp.19 %tmp.20;
+        bf %tmp.21 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_8_355_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_8_355_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_28_355_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 350 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_28_355_8_start" "W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_28_355_8_stop" ]
+        %filledWidth.5 = local;
+        symbol [ filledWidth %filledWidth.5 350 16 27 ];
+        %tmp.22 = lgetv %barWidth.1;
+        symbol [ barWidth %tmp.22 350 31 39 ];
+        %tmp.23 = lgetv %percentage;
+        symbol [ percentage %tmp.23 350 42 52 ];
+        %tmp.24 = mul %tmp.22 %tmp.23;
+        %tmp.25 = 100.0;
+        %tmp.26 = div %tmp.24 %tmp.25;
+        symbol [ toNumber %tmp.27 350 62 70 ];
+        %tmp.27 = getv function %tmp.26 :toNumber;
+        %tmp.28 = invoke %tmp.26 %tmp.27();
+        lputv %filledWidth.5 %tmp.28;
+        symbol [ filledWidth %filledWidth.5 350 16 27 ];
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 351 12 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_12_351_66_if_stmt:
+        %tmp.29 = lgetv %filledWidth.5;
+        symbol [ filledWidth %tmp.29 351 16 27 ];
+        %tmp.30 = lgetv %barWidth.1;
+        symbol [ barWidth %tmp.30 351 30 38 ];
+        %tmp.31 = gt %tmp.29 %tmp.30;
+        bf %tmp.31 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_12_351_66_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_12_351_66_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_40_351_66_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 351 42 ]
+        %tmp.32 = lgetv %barWidth.1;
+        symbol [ barWidth %tmp.32 351 56 64 ];
+        lputv %filledWidth.5 %tmp.32;
+        symbol [ filledWidth %filledWidth.5 351 42 53 ];
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_40_351_66_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_12_351_66_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_351_12_351_66_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 353 12 ]
+        %tmp.33 = lgetv %dc;
+        symbol [ dc %tmp.33 353 12 14 ];
+        symbol [ setColor %tmp.34 353 15 23 ];
+        %tmp.34 = getv function %tmp.33 :setColor;
+        %tmp.35 = lgetv %color;
+        symbol [ color %tmp.35 353 24 29 ];
+        symbol [ Graphics %tmp.36 353 31 39 ];
+        %tmp.36 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.37 353 40 57 ];
+        %tmp.37 = getv %tmp.36 :COLOR_TRANSPARENT;
+        invoke %tmp.33 %tmp.34(%tmp.35, %tmp.37);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 354 12 ]
+        %tmp.38 = lgetv %dc;
+        symbol [ dc %tmp.38 354 12 14 ];
+        symbol [ fillRectangle %tmp.39 354 15 28 ];
+        %tmp.39 = getv function %tmp.38 :fillRectangle;
+        %tmp.40 = lgetv %barX.3;
+        symbol [ barX %tmp.40 354 29 33 ];
+        %tmp.41 = lgetv %barY.4;
+        symbol [ barY %tmp.41 354 35 39 ];
+        %tmp.42 = lgetv %filledWidth.5;
+        symbol [ filledWidth %tmp.42 354 41 52 ];
+        %tmp.43 = lgetv %barHeight.2;
+        symbol [ barHeight %tmp.43 354 54 63 ];
+        invoke %tmp.38 %tmp.39(%tmp.40, %tmp.41, %tmp.42, %tmp.43);
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_28_355_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_8_355_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_349_8_355_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 358 8 ]
+        %tmp.44 = lgetv %dc;
+        symbol [ dc %tmp.44 358 8 10 ];
+        symbol [ setColor %tmp.45 358 11 19 ];
+        %tmp.45 = getv function %tmp.44 :setColor;
+        symbol [ Graphics %tmp.46 358 20 28 ];
+        %tmp.46 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.47 358 29 42 ];
+        %tmp.47 = getv %tmp.46 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.48 358 44 52 ];
+        %tmp.48 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.49 358 53 70 ];
+        %tmp.49 = getv %tmp.48 :COLOR_TRANSPARENT;
+        invoke %tmp.44 %tmp.45(%tmp.47, %tmp.49);
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 359 8 ]
+        %tmp.50 = lgetv %dc;
+        symbol [ dc %tmp.50 359 8 10 ];
+        symbol [ drawRectangle %tmp.51 359 11 24 ];
+        %tmp.51 = getv function %tmp.50 :drawRectangle;
+        %tmp.52 = lgetv %barX.3;
+        symbol [ barX %tmp.52 359 25 29 ];
+        %tmp.53 = lgetv %barY.4;
+        symbol [ barY %tmp.53 359 31 35 ];
+        %tmp.54 = lgetv %barWidth.1;
+        symbol [ barWidth %tmp.54 359 37 45 ];
+        %tmp.55 = lgetv %barHeight.2;
+        symbol [ barHeight %tmp.55 359 47 56 ];
+        invoke %tmp.50 %tmp.51(%tmp.52, %tmp.53, %tmp.54, %tmp.55);
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_338_119_360_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 362; @symbol_functiondef = [getCQColor,362,13,23]; @symbol_param<0> = [cq,362,24,26]; @symbol_param<0>_type<0> = [Number,362,30,36]; @symbol_return<0> = [Number,362,41,47]; ]
+    function getCQColor(cq as Number) as Number {
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_362_48_372_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 363 8 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_8_371_8_if_stmt:
+        %tmp.1 = lgetv %cq;
+        symbol [ cq %tmp.1 363 12 14 ];
+        %tmp.2 = 80;
+        %tmp.3 = gte %tmp.1 %tmp.2;
+        bf %tmp.3 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_8_371_8_if_false;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_8_371_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_22_365_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 364 12 ]
+        symbol [ Graphics %tmp.4 364 19 27 ];
+        %tmp.4 = getm $.Toybox.Graphics;
+        symbol [ COLOR_GREEN %tmp.5 364 28 39 ];
+        %tmp.5 = getv %tmp.4 :COLOR_GREEN;
+        ret %tmp.5;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_22_365_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_8_371_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_8_371_8_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 365 15 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_15_371_8_if_stmt:
+        %tmp.6 = lgetv %cq;
+        symbol [ cq %tmp.6 365 19 21 ];
+        %tmp.7 = 60;
+        %tmp.8 = gte %tmp.6 %tmp.7;
+        bf %tmp.8 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_15_371_8_if_false;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_15_371_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_29_367_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 366 12 ]
+        symbol [ Graphics %tmp.9 366 19 27 ];
+        %tmp.9 = getm $.Toybox.Graphics;
+        symbol [ COLOR_YELLOW %tmp.10 366 28 40 ];
+        %tmp.10 = getv %tmp.9 :COLOR_YELLOW;
+        ret %tmp.10;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_29_367_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_15_371_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_15_371_8_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 367 15 ]
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_15_371_8_if_stmt:
+        %tmp.11 = lgetv %cq;
+        symbol [ cq %tmp.11 367 19 21 ];
+        %tmp.12 = 40;
+        %tmp.13 = gte %tmp.11 %tmp.12;
+        bf %tmp.13 @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_15_371_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_15_371_8_if_true:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_29_369_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 368 12 ]
+        symbol [ Graphics %tmp.14 368 19 27 ];
+        %tmp.14 = getm $.Toybox.Graphics;
+        symbol [ COLOR_ORANGE %tmp.15 368 28 40 ];
+        %tmp.15 = getv %tmp.14 :COLOR_ORANGE;
+        ret %tmp.15;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_29_369_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_15_371_8_if_end;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_15_371_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_369_15_371_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc" 370 12 ]
+        symbol [ Graphics %tmp.16 370 19 27 ];
+        %tmp.16 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.17 370 28 37 ];
+        %tmp.17 = getv %tmp.16 :COLOR_RED;
+        ret %tmp.17;
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_369_15_371_8_stop:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_367_15_371_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_365_15_371_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_363_8_371_8_if_end:
+W__Github_garmin_smartwatch_source_Views_SummaryView_mc_362_48_372_4_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Views\SummaryView.mc"; @line = 1; ]
+<init> {
+}

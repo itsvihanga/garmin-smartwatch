@@ -1,0 +1,53 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Utils\Logger.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [System,1,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Utils\Logger.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Utils\Logger.mc"; @line = 5; @symbol_moduledef = [Logger,5,7,13]; ]
+module Logger {
+    [ @file = "W:\Github\garmin-smartwatch\source\Utils\Logger.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Utils\Logger.mc"; @line = 6; @symbol_functiondef = [logMemoryStats,6,13,27]; @symbol_param<0> = [tag,6,28,31]; @symbol_param<0>_type<0> = [String,6,35,41]; ]
+    function logMemoryStats(tag as String) as Void {
+W__Github_garmin_smartwatch_source_Utils_Logger_mc_6_51_9_4_start:
+[ "W:\Github\garmin-smartwatch\source\Utils\Logger.mc" 7 8 ]
+        [ "W__Github_garmin_smartwatch_source_Utils_Logger_mc_6_51_9_4_start" "W__Github_garmin_smartwatch_source_Utils_Logger_mc_6_51_9_4_stop" ]
+        %stats.1 = local;
+        symbol [ stats %stats.1 7 12 17 ];
+        symbol [ System %tmp.1 7 20 26 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ getSystemStats %tmp.2 7 27 41 ];
+        %tmp.2 = getv function %tmp.1 :getSystemStats;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %stats.1 %tmp.3;
+        symbol [ stats %stats.1 7 12 17 ];
+[ "W:\Github\garmin-smartwatch\source\Utils\Logger.mc" 8 8 ]
+        symbol [ System %tmp.4 8 8 14 ];
+        %tmp.4 = getm $.Toybox.System;
+        symbol [ println %tmp.5 8 15 22 ];
+        %tmp.5 = getv function %tmp.4 :println;
+        %tmp.6 = "[MEMORY][";
+        %tmp.7 = lgetv %tag;
+        symbol [ tag %tmp.7 8 37 40 ];
+        %tmp.8 = add %tmp.6 %tmp.7;
+        %tmp.9 = "] Used: ";
+        %tmp.10 = add %tmp.8 %tmp.9;
+        %tmp.11 = lgetv %stats.1;
+        symbol [ stats %tmp.11 8 56 61 ];
+        symbol [ usedMemory %tmp.12 8 62 72 ];
+        %tmp.12 = getv %tmp.11 :usedMemory;
+        %tmp.13 = add %tmp.10 %tmp.12;
+        %tmp.14 = "  Free: ";
+        %tmp.15 = add %tmp.13 %tmp.14;
+        %tmp.16 = lgetv %stats.1;
+        symbol [ stats %tmp.16 8 88 93 ];
+        symbol [ freeMemory %tmp.17 8 94 104 ];
+        %tmp.17 = getv %tmp.16 :freeMemory;
+        %tmp.18 = add %tmp.15 %tmp.17;
+        invoke %tmp.4 %tmp.5(%tmp.18);
+W__Github_garmin_smartwatch_source_Utils_Logger_mc_6_51_9_4_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Utils\Logger.mc"; @line = 1; ]
+<init> {
+}

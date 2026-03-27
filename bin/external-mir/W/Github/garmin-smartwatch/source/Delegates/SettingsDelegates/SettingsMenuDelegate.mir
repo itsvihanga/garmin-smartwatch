@@ -1,0 +1,214 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
+import Toybox.Application;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 6; @symbol_classdef = [SettingsMenuDelegate,6,6,26]; @symbol_extends<0> = [WatchUi,6,35,42]; @symbol_extends<1> = [Menu2InputDelegate,6,43,61]; ]
+class SettingsMenuDelegate extends WatchUi.Menu2InputDelegate {
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; ]
+    function initialize() as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_8_26_10_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 9 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 9 8 26 ];
+        %tmp.2 = getv ? :Menu2InputDelegate;
+        symbol [ initialize %tmp.3 9 27 37 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_8_26_10_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 12; @symbol_functiondef = [onSelect,12,13,21]; @symbol_param<0> = [item,12,22,26]; @symbol_param<0>_type<0> = [WatchUi,12,30,37]; @symbol_param<0>_type<1> = [MenuItem,12,38,46]; ]
+    function onSelect(item as WatchUi.MenuItem) as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_12_56_29_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 13 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_12_56_29_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_12_56_29_4_stop" ]
+        %id.1 = local;
+        symbol [ id %id.1 13 12 14 ];
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 13 17 21 ];
+        symbol [ getId %tmp.2 13 22 27 ];
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %id.1 %tmp.3;
+        symbol [ id %id.1 13 12 14 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 14 8 ]
+        symbol [ System %tmp.4 14 8 14 ];
+        %tmp.4 = getm $.Toybox.System;
+        symbol [ println %tmp.5 14 15 22 ];
+        %tmp.5 = getv function %tmp.4 :println;
+        %tmp.6 = "[DEBUG] SettingsMenuDelegate onSelect: ";
+        %tmp.7 = lgetv %id.1;
+        symbol [ id %tmp.7 14 67 69 ];
+        %tmp.8 = add %tmp.6 %tmp.7;
+        invoke %tmp.4 %tmp.5(%tmp.8);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 16 8 ]
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_8_28_8_if_stmt:
+        %tmp.9 = lgetv %id.1;
+        symbol [ id %tmp.9 16 12 14 ];
+        %tmp.11 = const :cadence_range;
+        symbol [ cadence_range %tmp.11 16 19 32 const ];
+        %tmp.12 = eq %tmp.9 %tmp.11;
+        bf %tmp.12 @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_8_28_8_if_else_false;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_8_28_8_if_true:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 17 12 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 17 16 19 ];
+        symbol [ Application %tmp.13 17 22 33 ];
+        %tmp.13 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.14 17 34 40 ];
+        %tmp.14 = getv function %tmp.13 :getApp;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        %tmp.16 = as %tmp.15 GarminApp;
+        symbol [ GarminApp %tmp.16 17 46 55 ];
+        lputv %app.2 %tmp.16;
+        symbol [ app %app.2 17 16 19 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 18 12 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_stop" ]
+        %minCadence.3 = local;
+        symbol [ minCadence %minCadence.3 18 16 26 ];
+        %tmp.17 = lgetv %app.2;
+        symbol [ app %tmp.17 18 29 32 ];
+        symbol [ getMinCadence %tmp.18 18 33 46 ];
+        %tmp.18 = getv function %tmp.17 :getMinCadence;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        lputv %minCadence.3 %tmp.19;
+        symbol [ minCadence %minCadence.3 18 16 26 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 19 12 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_stop" ]
+        %maxCadence.4 = local;
+        symbol [ maxCadence %maxCadence.4 19 16 26 ];
+        %tmp.20 = lgetv %app.2;
+        symbol [ app %tmp.20 19 29 32 ];
+        symbol [ getMaxCadence %tmp.21 19 33 46 ];
+        %tmp.21 = getv function %tmp.20 :getMaxCadence;
+        %tmp.22 = invoke %tmp.20 %tmp.21();
+        lputv %maxCadence.4 %tmp.22;
+        symbol [ maxCadence %maxCadence.4 19 16 26 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 20 12 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_stop" ]
+        %menu.5 = local;
+        symbol [ menu %menu.5 20 16 20 ];
+        symbol [ WatchUi %tmp.25 20 27 34 ];
+        %tmp.25 = getm $.Toybox.WatchUi;
+        symbol [ Menu2 %tmp.26 20 35 40 ];
+        %tmp.26 = getv function ? %tmp.25 :Menu2;
+        %tmp.27 = newd 1;
+        %tmp.29 = const :title;
+        symbol [ title %tmp.29 21 17 22 const ];
+        symbol [ Lang %tmp.30 21 26 30 ];
+        %tmp.30 = getm $.Toybox.Lang;
+        symbol [ format %tmp.31 21 31 37 ];
+        %tmp.31 = getv function %tmp.30 :format;
+        %tmp.32 = "Cadence: $1$ - $2$";
+        %tmp.33 = newa 2;
+        %tmp.34 = lgetv %minCadence.3;
+        symbol [ minCadence %tmp.34 21 61 71 ];
+        %tmp.35 = dup %tmp.33;
+        %tmp.36 = aputv %tmp.35 0 %tmp.34;
+        %tmp.37 = lgetv %maxCadence.4;
+        symbol [ maxCadence %tmp.37 21 73 83 ];
+        %tmp.38 = dup %tmp.36;
+        %tmp.39 = aputv %tmp.38 1 %tmp.37;
+        %tmp.40 = invoke %tmp.30 %tmp.31(%tmp.32, %tmp.39);
+        %tmp.41 = dup %tmp.27;
+        %tmp.42 = aputv %tmp.41 %tmp.29 %tmp.40;
+        %tmp.23 = newc %tmp.26 (%tmp.42);
+        lputv %menu.5 %tmp.23;
+        symbol [ menu %menu.5 20 16 20 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 23 12 ]
+        %tmp.43 = lgetv %menu.5;
+        symbol [ menu %tmp.43 23 12 16 ];
+        symbol [ addItem %tmp.44 23 17 24 ];
+        %tmp.44 = getv function %tmp.43 :addItem;
+        symbol [ WatchUi %tmp.47 23 29 36 ];
+        %tmp.47 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.48 23 37 45 ];
+        %tmp.48 = getv function ? %tmp.47 :MenuItem;
+        %tmp.49 = "Set Min Cadence";
+        %tmp.50 = null;
+        %tmp.52 = const :item_set_min;
+        symbol [ item_set_min %tmp.52 23 72 84 const ];
+        %tmp.53 = null;
+        %tmp.45 = newc %tmp.48 (%tmp.49, %tmp.50, %tmp.52, %tmp.53);
+        invoke %tmp.43 %tmp.44(%tmp.45);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 24 12 ]
+        %tmp.54 = lgetv %menu.5;
+        symbol [ menu %tmp.54 24 12 16 ];
+        symbol [ addItem %tmp.55 24 17 24 ];
+        %tmp.55 = getv function %tmp.54 :addItem;
+        symbol [ WatchUi %tmp.58 24 29 36 ];
+        %tmp.58 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.59 24 37 45 ];
+        %tmp.59 = getv function ? %tmp.58 :MenuItem;
+        %tmp.60 = "Set Max Cadence";
+        %tmp.61 = null;
+        %tmp.63 = const :item_set_max;
+        symbol [ item_set_max %tmp.63 24 72 84 const ];
+        %tmp.64 = null;
+        %tmp.56 = newc %tmp.59 (%tmp.60, %tmp.61, %tmp.63, %tmp.64);
+        invoke %tmp.54 %tmp.55(%tmp.56);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 25 12 ]
+        symbol [ WatchUi %tmp.65 25 12 19 ];
+        %tmp.65 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.66 25 20 28 ];
+        %tmp.66 = getv function %tmp.65 :pushView;
+        %tmp.67 = lgetv %menu.5;
+        symbol [ menu %tmp.67 25 29 33 ];
+        symbol [ SelectCadenceDelegate %tmp.71 25 39 60 ];
+        %tmp.71 = getv ? :SelectCadenceDelegate;
+        %tmp.72 = lgetv %menu.5;
+        symbol [ menu %tmp.72 25 61 65 ];
+        %tmp.68 = newc %tmp.71 (%tmp.72);
+        symbol [ WatchUi %tmp.73 25 68 75 ];
+        %tmp.73 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_BLINK %tmp.74 25 76 87 ];
+        %tmp.74 = getv %tmp.73 :SLIDE_BLINK;
+        invoke %tmp.65 %tmp.66(%tmp.67, %tmp.68, %tmp.74);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_34_26_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_8_28_8_if_end;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_8_28_8_if_else_false:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_26_15_28_8_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 27 12 ]
+        symbol [ WatchUi %tmp.75 27 12 19 ];
+        %tmp.75 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.76 27 20 27 ];
+        %tmp.76 = getv function %tmp.75 :popView;
+        symbol [ WatchUi %tmp.77 27 28 35 ];
+        %tmp.77 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.78 27 36 47 ];
+        %tmp.78 = getv %tmp.77 :SLIDE_RIGHT;
+        invoke %tmp.75 %tmp.76(%tmp.78);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_26_15_28_8_stop:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_16_8_28_8_if_end:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_12_56_29_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 31; @symbol_functiondef = [onBack,31,13,19]; ]
+    function onBack() as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_31_30_33_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc" 32 8 ]
+        symbol [ WatchUi %tmp.1 32 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 32 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 32 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 32 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegate_mc_31_30_33_4_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegate.mc"; @line = 1; ]
+<init> {
+}

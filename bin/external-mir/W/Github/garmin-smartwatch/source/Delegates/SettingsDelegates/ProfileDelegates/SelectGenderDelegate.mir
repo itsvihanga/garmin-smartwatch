@@ -1,0 +1,194 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
+import Toybox.Application;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 6; @symbol_classdef = [SelectGenderDelegate,6,6,26]; @symbol_extends<0> = [WatchUi,6,35,42]; @symbol_extends<1> = [Menu2InputDelegate,6,43,61]; ]
+class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 6; ]
+    <init> {
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 9 8 ]
+        symbol [ Application %tmp.1 9 14 25 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.2 9 26 32 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = as %tmp.3 GarminApp;
+        symbol [ GarminApp %tmp.4 9 38 47 ];
+        putv self :app %tmp.4;
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 8; @position = 16; @symbol_vardef = [_menu,8,16,21]; @symbol_type<0> = [WatchUi,8,25,32]; @symbol_type<1> = [Menu2,8,33,38]; ]
+    private
+    var _menu as WatchUi.Menu2;
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 9; @position = 8; @symbol_vardef = [app,9,8,11]; ]
+    var app;
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 11; @position = 8; @symbol_vardef = [gender,11,8,14]; ]
+    var gender = "Other";
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 13; @symbol_functiondef = [initialize,13,13,23]; @symbol_param<0> = [menu,13,24,28]; @symbol_param<0>_type<0> = [WatchUi,13,32,39]; @symbol_param<0>_type<1> = [Menu2,13,40,45]; ]
+    function initialize(menu as WatchUi.Menu2) as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_13_47_22_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 14 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 14 8 26 ];
+        %tmp.2 = getv ? :Menu2InputDelegate;
+        symbol [ initialize %tmp.3 14 27 37 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 15 8 ]
+        %tmp.4 = lgetv %menu;
+        symbol [ menu %tmp.4 15 16 20 ];
+        symbol [ _menu ? 15 8 13 ];
+        putv self :_menu %tmp.4;
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 18 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_13_47_22_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_13_47_22_4_stop" ]
+        %newTitle.1 = local;
+        symbol [ newTitle %newTitle.1 18 12 20 ];
+        symbol [ Lang %tmp.5 18 23 27 ];
+        %tmp.5 = getm $.Toybox.Lang;
+        symbol [ format %tmp.6 18 28 34 ];
+        %tmp.6 = getv function %tmp.5 :format;
+        %tmp.7 = "Gender: $1$";
+        %tmp.8 = newa 1;
+        symbol [ gender %tmp.10 18 51 57 ];
+        %tmp.10 = getv ? :gender;
+        %tmp.11 = dup %tmp.8;
+        %tmp.12 = aputv %tmp.11 0 %tmp.10;
+        %tmp.13 = invoke %tmp.5 %tmp.6(%tmp.7, %tmp.12);
+        lputv %newTitle.1 %tmp.13;
+        symbol [ newTitle %newTitle.1 18 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 21 8 ]
+        symbol [ _menu %tmp.15 21 8 13 ];
+        %tmp.15 = getv ? :_menu;
+        symbol [ setTitle %tmp.16 21 14 22 ];
+        %tmp.16 = getv function %tmp.15 :setTitle;
+        %tmp.17 = lgetv %newTitle.1;
+        symbol [ newTitle %tmp.17 21 23 31 ];
+        invoke %tmp.15 %tmp.16(%tmp.17);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_13_47_22_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 24; @symbol_functiondef = [onSelect,24,13,21]; @symbol_param<0> = [item,24,22,26]; ]
+    function onSelect(item) as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_24_36_43_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 26 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_24_36_43_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_24_36_43_4_stop" ]
+        %id.1 = local;
+        symbol [ id %id.1 26 12 14 ];
+        %tmp.1 = lgetv %item;
+        symbol [ item %tmp.1 26 17 21 ];
+        symbol [ getId %tmp.2 26 22 27 ];
+        %tmp.2 = getv function %tmp.1 :getId;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %id.1 %tmp.3;
+        symbol [ id %id.1 26 12 14 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 29 8 ]
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_8_40_40_if_stmt:
+        %tmp.4 = lgetv %id.1;
+        symbol [ id %tmp.4 29 12 14 ];
+        %tmp.6 = const :user_male;
+        symbol [ user_male %tmp.6 29 19 28 const ];
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_8_40_40_if_false;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_8_40_40_if_true:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_29_32_8_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 30 12 ]
+        symbol [ System %tmp.8 30 12 18 ];
+        %tmp.8 = getm $.Toybox.System;
+        symbol [ println %tmp.9 30 19 26 ];
+        %tmp.9 = getv function %tmp.8 :println;
+        %tmp.10 = "User Gender: Male";
+        invoke %tmp.8 %tmp.9(%tmp.10);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_29_32_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_8_40_40_if_end;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_8_40_40_if_false:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 33 13 ]
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_13_40_40_if_stmt:
+        %tmp.11 = lgetv %id.1;
+        symbol [ id %tmp.11 33 17 19 ];
+        %tmp.13 = const :user_female;
+        symbol [ user_female %tmp.13 33 24 35 const ];
+        %tmp.14 = eq %tmp.11 %tmp.13;
+        bf %tmp.14 @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_13_40_40_if_false;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_13_40_40_if_true:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_36_36_8_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 34 12 ]
+        symbol [ System %tmp.15 34 12 18 ];
+        %tmp.15 = getm $.Toybox.System;
+        symbol [ println %tmp.16 34 19 26 ];
+        %tmp.16 = getv function %tmp.15 :println;
+        %tmp.17 = "User Gender: Female";
+        invoke %tmp.15 %tmp.16(%tmp.17);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_36_36_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_13_40_40_if_end;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_13_40_40_if_false:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 37 13 ]
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_13_40_40_if_stmt:
+        %tmp.18 = lgetv %id.1;
+        symbol [ id %tmp.18 37 17 19 ];
+        %tmp.20 = const :user_other;
+        symbol [ user_other %tmp.20 37 24 34 const ];
+        %tmp.21 = eq %tmp.18 %tmp.20;
+        bf %tmp.21 @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_13_40_40_if_else_false;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_13_40_40_if_true:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_35_40_8_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 38 12 ]
+        symbol [ System %tmp.22 38 12 18 ];
+        %tmp.22 = getm $.Toybox.System;
+        symbol [ println %tmp.23 38 19 26 ];
+        %tmp.23 = getv function %tmp.22 :println;
+        %tmp.24 = "User Gender: Other";
+        invoke %tmp.22 %tmp.23(%tmp.24);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_35_40_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_13_40_40_if_end;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_13_40_40_if_else_false:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_40_15_40_40_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 40 16 ]
+        symbol [ System %tmp.25 40 16 22 ];
+        %tmp.25 = getm $.Toybox.System;
+        symbol [ println %tmp.26 40 23 30 ];
+        %tmp.26 = getv function %tmp.25 :println;
+        %tmp.27 = "ERROR";
+        invoke %tmp.25 %tmp.26(%tmp.27);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_40_15_40_40_stop:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_37_13_40_40_if_end:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_33_13_40_40_if_end:
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_29_8_40_40_if_end:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 42 8 ]
+        symbol [ WatchUi %tmp.28 42 8 15 ];
+        %tmp.28 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.29 42 16 23 ];
+        %tmp.29 = getv function %tmp.28 :popView;
+        symbol [ WatchUi %tmp.30 42 24 31 ];
+        %tmp.30 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.31 42 32 43 ];
+        %tmp.31 = getv %tmp.30 :SLIDE_RIGHT;
+        invoke %tmp.28 %tmp.29(%tmp.31);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_24_36_43_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 45; @symbol_functiondef = [onMenuItem,45,13,23]; @symbol_param<0> = [item,45,24,28]; @symbol_param<0>_type<0> = [Symbol,45,32,38]; ]
+    function onMenuItem(item as Symbol) as Void {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 48; @symbol_functiondef = [onBack,48,13,19]; ]
+    function onBack() as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_48_30_50_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc" 49 8 ]
+        symbol [ WatchUi %tmp.1 49 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 49 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 49 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 49 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_ProfileDelegates_SelectGenderDelegate_mc_48_30_50_4_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\ProfileDelegates\SelectGenderDelegate.mc"; @line = 1; ]
+<init> {
+}
