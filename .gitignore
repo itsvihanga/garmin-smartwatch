@@ -207,9 +207,9 @@ marimo/_lsp/
 __marimo__/
 
 # Garmin/Monkey C build artifacts
-external-mir/
-internal-mir/
-bin/
-gen/
-*.prg
-*.prg.debug.xml
+# external-mir/
+# internal-mir/
+# bin/
+# gen/
+# *.prg
+# *.prg.debug.xml
