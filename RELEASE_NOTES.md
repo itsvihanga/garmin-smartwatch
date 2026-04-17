@@ -4,7 +4,7 @@
 **Compatible Devices**: Garmin Forerunner 165 / 165 Music  
 **App Type**: Watch App  
 **Build Date**: 26 March 2026  
-**PRG File**: `bin/app.prg` (153 KB)  
+**PRG File**: `bin/v1.prg` (153 KB)  
 **Minimum API Level**: 5.2.0  
 
 ---
@@ -105,7 +105,4 @@ It turns the watch's built-in cadence sensor into a real-time running coach — 
 
 ---
 
-### Credits
 
-Concept by **Dr Jason Bonacci** and **Dr Joel Fuller**.  
-Developed as a research-aligned running efficiency tool for rehabilitation and performance training.
