@@ -95,6 +95,7 @@ class GarminApp extends Application.AppBase {
     private var _sessionDistance = null; // centimeters
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
+    private var _linkedTemperature = "--";
 
     function initialize() {
         AppBase.initialize();
@@ -956,6 +957,34 @@ _cadenceAvgCount = 0;
             return _finalCQ.toString() + "%";
         }
     }
+
+    function getAveragePace() as String {
+    if (_sessionDuration == null || _sessionDistance == null || _sessionDistance <= 0) {
+        return "--";
+    }
+
+    var totalSeconds = _sessionDuration / 1000.0;
+    var distanceKm = _sessionDistance / 100000.0;
+
+    if (distanceKm <= 0) {
+        return "--";
+    }
+
+    var paceSecondsPerKm = totalSeconds / distanceKm;
+    var minutesPart = (paceSecondsPerKm / 60).toNumber();
+    var secondsPart = (paceSecondsPerKm % 60).toNumber();
+
+    return minutesPart.format("%02d") + ":" + secondsPart.format("%02d") + "/km";
+    }
+
+    function setLinkedTemperature(value as String) as Void {
+    _linkedTemperature = value;
+    }
+    
+    function getLinkedTemperature() as String {
+    return _linkedTemperature;
+    }
+
 
     // Activity metrics getters
     /*

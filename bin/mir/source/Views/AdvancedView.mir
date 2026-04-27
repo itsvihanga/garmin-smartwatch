@@ -1,0 +1,2254 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Activity,3,14,22]; ]
+import Toybox.Activity;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Lang,4,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Timer,5,14,19]; ]
+import Toybox.Timer;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [System,6,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 7; @symbol_importdef<0> = [Toybox,7,7,13]; @symbol_importdef<1> = [Attention,7,14,23]; ]
+import Toybox.Attention;
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 9; @symbol_classdef = [AdvancedView,9,6,18]; @symbol_extends<0> = [WatchUi,9,27,34]; @symbol_extends<1> = [View,9,35,39]; ]
+class AdvancedView extends WatchUi.View {
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 9; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 10; @position = 10; @symbol_constdef = [MAX_BARS,10,10,18]; ]
+    const MAX_BARS = 280;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 11; @position = 10; @symbol_constdef = [MAX_CADENCE_DISPLAY,11,10,29]; ]
+    const MAX_CADENCE_DISPLAY = 200;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 14; @position = 10; @symbol_constdef = [COLOR_BELOW_FAR,14,10,25]; ]
+    const COLOR_BELOW_FAR = 0x969696;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 15; @position = 10; @symbol_constdef = [COLOR_BELOW_NEAR,15,10,26]; ]
+    const COLOR_BELOW_NEAR = 0x0CC0DF;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 16; @position = 10; @symbol_constdef = [COLOR_IN_ZONE,16,10,23]; ]
+    const COLOR_IN_ZONE = 0x00BF63;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 17; @position = 10; @symbol_constdef = [COLOR_ABOVE_NEAR,17,10,26]; ]
+    const COLOR_ABOVE_NEAR = 0xFF751F;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 18; @position = 10; @symbol_constdef = [COLOR_ABOVE_FAR,18,10,25]; ]
+    const COLOR_ABOVE_FAR = 0xFF0000;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 20; @position = 10; @symbol_constdef = [COLOR_TEXT_MUTED,20,10,26]; ]
+    const COLOR_TEXT_MUTED = 0x969696;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 21; @position = 10; @symbol_constdef = [COLOR_CHART_BORDER,21,10,28]; ]
+    const COLOR_CHART_BORDER = 0x969696;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 23; @position = 16; @symbol_vardef = [_simulationTimer,23,16,32]; ]
+    private
+    var _simulationTimer;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 26; @position = 16; @symbol_vardef = [_lastZoneState,26,16,30]; ]
+    private
+    var _lastZoneState = 0;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 27; @position = 16; @symbol_vardef = [_alertStartTime,27,16,31]; ]
+    private
+    var _alertStartTime = null;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 28; @position = 16; @symbol_vardef = [_alertDuration,28,16,30]; ]
+    private
+    var _alertDuration = 180000;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 29; @position = 16; @symbol_vardef = [_alertInterval,29,16,30]; ]
+    private
+    var _alertInterval = 30000;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 30; @position = 16; @symbol_vardef = [_lastAlertTime,30,16,30]; ]
+    private
+    var _lastAlertTime = 0;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 31; @position = 16; @symbol_vardef = [_pendingSecondVibe,31,16,34]; ]
+    private
+    var _pendingSecondVibe = false;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 32; @position = 16; @symbol_vardef = [_secondVibeTime,32,16,31]; ]
+    private
+    var _secondVibeTime = 0;
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 34; @symbol_functiondef = [initialize,34,13,23]; ]
+    function initialize() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_34_26_36_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 35 8 ]
+        symbol [ View %tmp.2 35 8 12 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 35 13 23 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_34_26_36_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 38; @symbol_functiondef = [onShow,38,13,19]; ]
+    function onShow() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_38_30_41_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 39 8 ]
+        symbol [ Timer %tmp.3 39 31 36 ];
+        %tmp.3 = getm $.Toybox.Timer;
+        symbol [ Timer %tmp.4 39 37 42 ];
+        %tmp.4 = getv function ? %tmp.3 :Timer;
+        %tmp.1 = newc %tmp.4 ();
+        symbol [ _simulationTimer ? 39 8 24 ];
+        putv self :_simulationTimer %tmp.1;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 40 8 ]
+        symbol [ _simulationTimer %tmp.6 40 8 24 ];
+        %tmp.6 = getv ? :_simulationTimer;
+        symbol [ start %tmp.7 40 25 30 ];
+        %tmp.7 = getv function %tmp.6 :start;
+        %tmp.8 = self;
+        symbol [ method %tmp.9 40 31 37 ];
+        %tmp.9 = getv function %tmp.8 :method;
+        %tmp.11 = const :refreshScreen;
+        symbol [ refreshScreen %tmp.11 40 39 52 const ];
+        %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
+        %tmp.13 = 1000;
+        %tmp.14 = true;
+        invoke %tmp.6 %tmp.7(%tmp.12, %tmp.13, %tmp.14);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_38_30_41_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 43; @symbol_functiondef = [onHide,43,13,19]; ]
+    function onHide() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_43_30_51_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 44 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_8_47_8_if_stmt:
+        symbol [ _simulationTimer %tmp.2 44 12 28 ];
+        %tmp.2 = getv ? :_simulationTimer;
+        %tmp.3 = null;
+        %tmp.4 = ne %tmp.2 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_8_47_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_8_47_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_38_47_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 45 12 ]
+        symbol [ _simulationTimer %tmp.6 45 12 28 ];
+        %tmp.6 = getv ? :_simulationTimer;
+        %tmp.7 = as %tmp.6 { (!Null) };
+        symbol [ stop %tmp.8 45 29 33 ];
+        %tmp.8 = getv function %tmp.7 :stop;
+        invoke %tmp.7 %tmp.8();
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 46 12 ]
+        %tmp.9 = null;
+        symbol [ _simulationTimer ? 46 12 28 ];
+        putv self :_simulationTimer %tmp.9;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_38_47_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_8_47_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_44_8_47_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 49 8 ]
+        %tmp.10 = null;
+        symbol [ _alertStartTime ? 49 8 23 ];
+        putv self :_alertStartTime %tmp.10;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 50 8 ]
+        %tmp.11 = 0;
+        symbol [ _lastAlertTime ? 50 8 22 ];
+        putv self :_lastAlertTime %tmp.11;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_43_30_51_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 53; @symbol_functiondef = [onUpdate,53,13,21]; @symbol_param<0> = [dc,53,22,24]; @symbol_param<0>_type<0> = [Dc,53,28,30]; ]
+    function onUpdate(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_53_40_63_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 55 8 ]
+        %tmp.1 = self;
+        symbol [ checkCadenceZone %tmp.2 55 8 24 ];
+        %tmp.2 = getv function %tmp.1 :checkCadenceZone;
+        invoke %tmp.1 %tmp.2();
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 58 8 ]
+        %tmp.3 = self;
+        symbol [ checkPendingVibration %tmp.4 58 8 29 ];
+        %tmp.4 = getv function %tmp.3 :checkPendingVibration;
+        invoke %tmp.3 %tmp.4();
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 60 8 ]
+        symbol [ View %tmp.6 60 8 12 ];
+        %tmp.6 = getv ? :View;
+        symbol [ onUpdate %tmp.7 60 13 21 ];
+        %tmp.7 = getv function %tmp.6 :onUpdate;
+        %tmp.8 = lgetv %dc;
+        symbol [ dc %tmp.8 60 22 24 ];
+        invoke %tmp.6 %tmp.7(%tmp.8);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 62 8 ]
+        %tmp.9 = self;
+        symbol [ drawElements %tmp.10 62 8 20 ];
+        %tmp.10 = getv function %tmp.9 :drawElements;
+        %tmp.11 = lgetv %dc;
+        symbol [ dc %tmp.11 62 21 23 ];
+        invoke %tmp.9 %tmp.10(%tmp.11);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_53_40_63_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 64; @symbol_functiondef = [refreshScreen,64,9,22]; ]
+    function refreshScreen() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_64_33_73_0_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 65 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_64_33_73_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_64_33_73_0_stop" ]
+        %info.1 = local;
+        symbol [ info %info.1 65 8 12 ];
+        symbol [ Activity %tmp.1 65 15 23 ];
+        %tmp.1 = getm $.Toybox.Activity;
+        symbol [ getActivityInfo %tmp.2 65 24 39 ];
+        %tmp.2 = getv function %tmp.1 :getActivityInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %info.1 %tmp.3;
+        symbol [ info %info.1 65 8 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 66 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_64_33_73_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_64_33_73_0_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 66 8 11 ];
+        %tmp.4 = self;
+        symbol [ getApp %tmp.5 66 14 20 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %app.2 %tmp.6;
+        symbol [ app %app.2 66 8 11 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 68 4 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_4_70_4_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_8_68_47_begin:
+        %tmp.7 = lgetv %info.1;
+        symbol [ info %tmp.7 68 8 12 ];
+        %tmp.8 = null;
+        %tmp.9 = ne %tmp.7 %tmp.8;
+        bf %tmp.9 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_4_70_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_24_68_47_true:
+        %tmp.10 = lgetv %info.1;
+        symbol [ info %tmp.10 68 24 28 ];
+        %tmp.11 = as %tmp.10 { (!Null) };
+        symbol [ currentCadence %tmp.12 68 29 43 ];
+        %tmp.12 = getv %tmp.11 :currentCadence;
+        %tmp.13 = null;
+        %tmp.14 = ne %tmp.12 %tmp.13;
+        push %tmp.14;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_24_68_47_end:
+        %tmp.15 = phi [%tmp.9 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_8_68_47_begin] [%tmp.14 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_24_68_47_true] [%tmp.15 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_24_68_47_end];
+        bf %tmp.15 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_4_70_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_4_70_4_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_53_70_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 69 8 ]
+        %tmp.16 = lgetv %app.2;
+        symbol [ app %tmp.16 69 8 11 ];
+        symbol [ updateCadenceHistory %tmp.17 69 12 32 ];
+        %tmp.17 = getv function %tmp.16 :updateCadenceHistory;
+        %tmp.18 = lgetv %info.1;
+        symbol [ info %tmp.18 69 33 37 ];
+        %tmp.19 = as %tmp.18 { (!Null) };
+        symbol [ currentCadence %tmp.20 69 38 52 ];
+        %tmp.20 = getv %tmp.19 :currentCadence;
+        symbol [ toFloat %tmp.21 69 53 60 ];
+        %tmp.21 = getv function %tmp.20 :toFloat;
+        %tmp.22 = invoke %tmp.20 %tmp.21();
+        invoke %tmp.16 %tmp.17(%tmp.22);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_53_70_4_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_4_70_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_68_4_70_4_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 72 4 ]
+        symbol [ WatchUi %tmp.23 72 4 11 ];
+        %tmp.23 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.24 72 12 25 ];
+        %tmp.24 = getv function %tmp.23 :requestUpdate;
+        invoke %tmp.23 %tmp.24();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_64_33_73_0_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 75; @symbol_functiondef = [checkPendingVibration,75,13,34]; ]
+    function checkPendingVibration() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_75_45_87_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 76 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_8_86_8_if_stmt:
+        symbol [ _pendingSecondVibe %tmp.2 76 12 30 ];
+        %tmp.2 = getv ? :_pendingSecondVibe;
+        bf %tmp.2 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_8_86_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_8_86_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_32_86_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 77 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_32_86_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_32_86_8_stop" ]
+        %currentTime.1 = local;
+        symbol [ currentTime %currentTime.1 77 16 27 ];
+        symbol [ System %tmp.3 77 30 36 ];
+        %tmp.3 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.4 77 37 45 ];
+        %tmp.4 = getv function %tmp.3 :getTimer;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        lputv %currentTime.1 %tmp.5;
+        symbol [ currentTime %currentTime.1 77 16 27 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 78 12 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_12_85_12_if_stmt:
+        %tmp.6 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.6 78 16 27 ];
+        symbol [ _secondVibeTime %tmp.8 78 31 46 ];
+        %tmp.8 = getv ? :_secondVibeTime;
+        %tmp.9 = gte %tmp.6 %tmp.8;
+        bf %tmp.9 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_12_85_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_12_85_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_48_85_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 80 16 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_16_83_16_if_stmt:
+        symbol [ Attention %tmp.10 80 20 29 ];
+        %tmp.10 = getm $.Toybox.Attention;
+        %tmp.12 = const :vibrate;
+        symbol [ vibrate %tmp.12 80 35 42 const ];
+        %tmp.13 = canhazplz %tmp.10 %tmp.12;
+        bf %tmp.13 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_16_83_16_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_16_83_16_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_44_83_16_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 81 20 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_44_83_16_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_44_83_16_stop" ]
+        %vibeData.2 = local;
+        symbol [ vibeData %vibeData.2 81 24 32 ];
+        %tmp.14 = newa 1;
+        symbol [ Attention %tmp.17 81 40 49 ];
+        %tmp.17 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.18 81 50 61 ];
+        %tmp.18 = getv function ? %tmp.17 :VibeProfile;
+        %tmp.19 = 50;
+        %tmp.20 = 200;
+        %tmp.15 = newc %tmp.18 (%tmp.19, %tmp.20);
+        %tmp.21 = dup %tmp.14;
+        %tmp.22 = aputv %tmp.21 0 %tmp.15;
+        lputv %vibeData.2 %tmp.22;
+        symbol [ vibeData %vibeData.2 81 24 32 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 82 20 ]
+        symbol [ Attention %tmp.23 82 20 29 ];
+        %tmp.23 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.24 82 30 37 ];
+        %tmp.24 = getv function %tmp.23 :vibrate;
+        %tmp.25 = lgetv %vibeData.2;
+        symbol [ vibeData %tmp.25 82 38 46 ];
+        invoke %tmp.23 %tmp.24(%tmp.25);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_44_83_16_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_16_83_16_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_80_16_83_16_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 84 16 ]
+        %tmp.26 = false;
+        symbol [ _pendingSecondVibe ? 84 16 34 ];
+        putv self :_pendingSecondVibe %tmp.26;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_48_85_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_12_85_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_78_12_85_12_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_32_86_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_8_86_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_76_8_86_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_75_45_87_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 89; @symbol_functiondef = [triggerSingleVibration,89,13,35]; ]
+    function triggerSingleVibration() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_89_46_94_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 90 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_8_93_8_if_stmt:
+        symbol [ Attention %tmp.1 90 12 21 ];
+        %tmp.1 = getm $.Toybox.Attention;
+        %tmp.3 = const :vibrate;
+        symbol [ vibrate %tmp.3 90 27 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_8_93_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_8_93_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_36_93_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 91 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_36_93_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_36_93_8_stop" ]
+        %vibeData.1 = local;
+        symbol [ vibeData %vibeData.1 91 16 24 ];
+        %tmp.5 = newa 1;
+        symbol [ Attention %tmp.8 91 32 41 ];
+        %tmp.8 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.9 91 42 53 ];
+        %tmp.9 = getv function ? %tmp.8 :VibeProfile;
+        %tmp.10 = 50;
+        %tmp.11 = 200;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11);
+        %tmp.12 = dup %tmp.5;
+        %tmp.13 = aputv %tmp.12 0 %tmp.6;
+        lputv %vibeData.1 %tmp.13;
+        symbol [ vibeData %vibeData.1 91 16 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 92 12 ]
+        symbol [ Attention %tmp.14 92 12 21 ];
+        %tmp.14 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.15 92 22 29 ];
+        %tmp.15 = getv function %tmp.14 :vibrate;
+        %tmp.16 = lgetv %vibeData.1;
+        symbol [ vibeData %tmp.16 92 30 38 ];
+        invoke %tmp.14 %tmp.15(%tmp.16);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_36_93_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_8_93_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_90_8_93_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_89_46_94_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 96; @symbol_functiondef = [triggerDoubleVibration,96,13,35]; ]
+    function triggerDoubleVibration() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_96_46_106_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 97 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_8_105_8_if_stmt:
+        symbol [ Attention %tmp.1 97 12 21 ];
+        %tmp.1 = getm $.Toybox.Attention;
+        %tmp.3 = const :vibrate;
+        symbol [ vibrate %tmp.3 97 27 34 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_8_105_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_8_105_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_36_105_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 99 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_36_105_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_36_105_8_stop" ]
+        %vibeData.1 = local;
+        symbol [ vibeData %vibeData.1 99 16 24 ];
+        %tmp.5 = newa 1;
+        symbol [ Attention %tmp.8 99 32 41 ];
+        %tmp.8 = getm $.Toybox.Attention;
+        symbol [ VibeProfile %tmp.9 99 42 53 ];
+        %tmp.9 = getv function ? %tmp.8 :VibeProfile;
+        %tmp.10 = 50;
+        %tmp.11 = 200;
+        %tmp.6 = newc %tmp.9 (%tmp.10, %tmp.11);
+        %tmp.12 = dup %tmp.5;
+        %tmp.13 = aputv %tmp.12 0 %tmp.6;
+        lputv %vibeData.1 %tmp.13;
+        symbol [ vibeData %vibeData.1 99 16 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 100 12 ]
+        symbol [ Attention %tmp.14 100 12 21 ];
+        %tmp.14 = getm $.Toybox.Attention;
+        symbol [ vibrate %tmp.15 100 22 29 ];
+        %tmp.15 = getv function %tmp.14 :vibrate;
+        %tmp.16 = lgetv %vibeData.1;
+        symbol [ vibeData %tmp.16 100 30 38 ];
+        invoke %tmp.14 %tmp.15(%tmp.16);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 103 12 ]
+        %tmp.17 = true;
+        symbol [ _pendingSecondVibe ? 103 12 30 ];
+        putv self :_pendingSecondVibe %tmp.17;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 104 12 ]
+        symbol [ System %tmp.18 104 30 36 ];
+        %tmp.18 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.19 104 37 45 ];
+        %tmp.19 = getv function %tmp.18 :getTimer;
+        %tmp.20 = invoke %tmp.18 %tmp.19();
+        %tmp.21 = 240;
+        %tmp.22 = add %tmp.20 %tmp.21;
+        symbol [ _secondVibeTime ? 104 12 27 ];
+        putv self :_secondVibeTime %tmp.22;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_36_105_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_8_105_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_97_8_105_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_96_46_106_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 108; @symbol_functiondef = [checkAndTriggerAlerts,108,13,34]; ]
+    function checkAndTriggerAlerts() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 110 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_8_112_8_if_stmt:
+        symbol [ _alertStartTime %tmp.2 110 12 27 ];
+        %tmp.2 = getv ? :_alertStartTime;
+        %tmp.3 = null;
+        %tmp.4 = eq %tmp.2 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_8_112_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_8_112_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_37_112_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 111 12 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_37_112_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_8_112_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_110_8_112_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 114 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_stop" ]
+        %currentTime.1 = local;
+        symbol [ currentTime %currentTime.1 114 12 23 ];
+        symbol [ System %tmp.5 114 26 32 ];
+        %tmp.5 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.6 114 33 41 ];
+        %tmp.6 = getv function %tmp.5 :getTimer;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %currentTime.1 %tmp.7;
+        symbol [ currentTime %currentTime.1 114 12 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 115 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_stop" ]
+        %elapsed.2 = local;
+        symbol [ elapsed %elapsed.2 115 12 19 ];
+        %tmp.8 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.8 115 22 33 ];
+        symbol [ _alertStartTime %tmp.10 115 36 51 ];
+        %tmp.10 = getv ? :_alertStartTime;
+        %tmp.11 = sub %tmp.8 %tmp.10;
+        lputv %elapsed.2 %tmp.11;
+        symbol [ elapsed %elapsed.2 115 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 118 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_8_122_8_if_stmt:
+        %tmp.12 = lgetv %elapsed.2;
+        symbol [ elapsed %tmp.12 118 12 19 ];
+        symbol [ _alertDuration %tmp.14 118 23 37 ];
+        %tmp.14 = getv ? :_alertDuration;
+        %tmp.15 = gte %tmp.12 %tmp.14;
+        bf %tmp.15 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_8_122_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_8_122_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_39_122_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 119 12 ]
+        %tmp.16 = null;
+        symbol [ _alertStartTime ? 119 12 27 ];
+        putv self :_alertStartTime %tmp.16;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 120 12 ]
+        %tmp.17 = 0;
+        symbol [ _lastAlertTime ? 120 12 26 ];
+        putv self :_lastAlertTime %tmp.17;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 121 12 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_39_122_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_8_122_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_118_8_122_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 125 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_stop" ]
+        %timeSinceLastAlert.3 = local;
+        symbol [ timeSinceLastAlert %timeSinceLastAlert.3 125 12 30 ];
+        %tmp.18 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.18 125 33 44 ];
+        symbol [ _lastAlertTime %tmp.20 125 47 61 ];
+        %tmp.20 = getv ? :_lastAlertTime;
+        %tmp.21 = sub %tmp.18 %tmp.20;
+        lputv %timeSinceLastAlert.3 %tmp.21;
+        symbol [ timeSinceLastAlert %timeSinceLastAlert.3 125 12 30 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 126 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_8_135_8_if_stmt:
+        %tmp.22 = lgetv %timeSinceLastAlert.3;
+        symbol [ timeSinceLastAlert %tmp.22 126 12 30 ];
+        symbol [ _alertInterval %tmp.24 126 34 48 ];
+        %tmp.24 = getv ? :_alertInterval;
+        %tmp.25 = gte %tmp.22 %tmp.24;
+        bf %tmp.25 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_8_135_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_8_135_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_50_135_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 127 12 ]
+        %tmp.26 = lgetv %currentTime.1;
+        symbol [ currentTime %tmp.26 127 29 40 ];
+        symbol [ _lastAlertTime ? 127 12 26 ];
+        putv self :_lastAlertTime %tmp.26;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 130 12 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_12_134_12_if_stmt:
+        symbol [ _lastZoneState %tmp.28 130 16 30 ];
+        %tmp.28 = getv ? :_lastZoneState;
+        %tmp.29 = -1;
+        %tmp.30 = eq %tmp.28 %tmp.29;
+        bf %tmp.30 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_12_134_12_if_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_12_134_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_38_132_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 131 16 ]
+        %tmp.31 = self;
+        symbol [ triggerSingleVibration %tmp.32 131 16 38 ];
+        %tmp.32 = getv function %tmp.31 :triggerSingleVibration;
+        invoke %tmp.31 %tmp.32();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_38_132_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_12_134_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_12_134_12_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 132 19 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_19_134_12_if_stmt:
+        symbol [ _lastZoneState %tmp.34 132 23 37 ];
+        %tmp.34 = getv ? :_lastZoneState;
+        %tmp.35 = 1;
+        %tmp.36 = eq %tmp.34 %tmp.35;
+        bf %tmp.36 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_19_134_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_19_134_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_44_134_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 133 16 ]
+        %tmp.37 = self;
+        symbol [ triggerDoubleVibration %tmp.38 133 16 38 ];
+        %tmp.38 = getv function %tmp.37 :triggerDoubleVibration;
+        invoke %tmp.37 %tmp.38();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_44_134_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_19_134_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_132_19_134_12_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_130_12_134_12_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_50_135_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_8_135_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_126_8_135_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_108_45_136_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 138; @symbol_functiondef = [checkCadenceZone,138,13,29]; ]
+    function checkCadenceZone() as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 139 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_stop" ]
+        %info.1 = local;
+        symbol [ info %info.1 139 12 16 ];
+        symbol [ Activity %tmp.1 139 19 27 ];
+        %tmp.1 = getm $.Toybox.Activity;
+        symbol [ getActivityInfo %tmp.2 139 28 43 ];
+        %tmp.2 = getv function %tmp.1 :getActivityInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %info.1 %tmp.3;
+        symbol [ info %info.1 139 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 140 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 140 12 15 ];
+        %tmp.4 = self;
+        symbol [ getApp %tmp.5 140 18 24 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %app.2 %tmp.6;
+        symbol [ app %app.2 140 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 141 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_stop" ]
+        %minZone.3 = local;
+        symbol [ minZone %minZone.3 141 12 19 ];
+        %tmp.7 = lgetv %app.2;
+        symbol [ app %tmp.7 141 22 25 ];
+        symbol [ getMinCadence %tmp.8 141 26 39 ];
+        %tmp.8 = getv function %tmp.7 :getMinCadence;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        lputv %minZone.3 %tmp.9;
+        symbol [ minZone %minZone.3 141 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 142 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_stop" ]
+        %maxZone.4 = local;
+        symbol [ maxZone %maxZone.4 142 12 19 ];
+        %tmp.10 = lgetv %app.2;
+        symbol [ app %tmp.10 142 22 25 ];
+        symbol [ getMaxCadence %tmp.11 142 26 39 ];
+        %tmp.11 = getv function %tmp.10 :getMaxCadence;
+        %tmp.12 = invoke %tmp.10 %tmp.11();
+        lputv %maxZone.4 %tmp.12;
+        symbol [ maxZone %maxZone.4 142 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 145 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_stop" ]
+        %newZoneState.5 = local;
+        symbol [ newZoneState %newZoneState.5 145 12 24 ];
+        %tmp.13 = 0;
+        lputv %newZoneState.5 %tmp.13;
+        symbol [ newZoneState %newZoneState.5 145 12 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 146 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_8_155_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_12_146_51_begin:
+        %tmp.14 = lgetv %info.1;
+        symbol [ info %tmp.14 146 12 16 ];
+        %tmp.15 = null;
+        %tmp.16 = ne %tmp.14 %tmp.15;
+        bf %tmp.16 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_8_155_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_28_146_51_true:
+        %tmp.17 = lgetv %info.1;
+        symbol [ info %tmp.17 146 28 32 ];
+        %tmp.18 = as %tmp.17 { (!Null) };
+        symbol [ currentCadence %tmp.19 146 33 47 ];
+        %tmp.19 = getv %tmp.18 :currentCadence;
+        %tmp.20 = null;
+        %tmp.21 = ne %tmp.19 %tmp.20;
+        push %tmp.21;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_28_146_51_end:
+        %tmp.22 = phi [%tmp.16 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_12_146_51_begin] [%tmp.21 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_28_146_51_true] [%tmp.22 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_28_146_51_end];
+        bf %tmp.22 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_8_155_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_8_155_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_57_155_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 147 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_57_155_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_57_155_8_stop" ]
+        %c.6 = local;
+        symbol [ c %c.6 147 16 17 ];
+        %tmp.23 = lgetv %info.1;
+        symbol [ info %tmp.23 147 20 24 ];
+        %tmp.24 = as %tmp.23 { (!Null) };
+        symbol [ currentCadence %tmp.25 147 25 39 ];
+        %tmp.25 = getv %tmp.24 :currentCadence;
+        lputv %c.6 %tmp.25;
+        symbol [ c %c.6 147 16 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 148 12 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_12_154_12_if_stmt:
+        %tmp.26 = lgetv %c.6;
+        symbol [ c %tmp.26 148 16 17 ];
+        %tmp.27 = lgetv %minZone.3;
+        symbol [ minZone %tmp.27 148 20 27 ];
+        %tmp.28 = lt %tmp.26 %tmp.27;
+        bf %tmp.28 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_12_154_12_if_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_12_154_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_29_150_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 149 16 ]
+        %tmp.29 = -1;
+        lputv %newZoneState.5 %tmp.29;
+        symbol [ newZoneState %newZoneState.5 149 16 28 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_29_150_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_12_154_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_12_154_12_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 150 19 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_19_154_12_if_stmt:
+        %tmp.30 = lgetv %c.6;
+        symbol [ c %tmp.30 150 23 24 ];
+        %tmp.31 = lgetv %maxZone.4;
+        symbol [ maxZone %tmp.31 150 27 34 ];
+        %tmp.32 = gt %tmp.30 %tmp.31;
+        bf %tmp.32 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_19_154_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_19_154_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_36_152_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 151 16 ]
+        %tmp.33 = 1;
+        lputv %newZoneState.5 %tmp.33;
+        symbol [ newZoneState %newZoneState.5 151 16 28 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_36_152_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_19_154_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_19_154_12_if_else_false:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_152_19_154_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 153 16 ]
+        %tmp.34 = 0;
+        lputv %newZoneState.5 %tmp.34;
+        symbol [ newZoneState %newZoneState.5 153 16 28 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_152_19_154_12_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_150_19_154_12_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_148_12_154_12_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_57_155_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_8_155_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_146_8_155_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 158 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_8_178_8_if_stmt:
+        %tmp.35 = lgetv %newZoneState.5;
+        symbol [ newZoneState %tmp.35 158 12 24 ];
+        symbol [ _lastZoneState %tmp.37 158 28 42 ];
+        %tmp.37 = getv ? :_lastZoneState;
+        %tmp.38 = ne %tmp.35 %tmp.37;
+        bf %tmp.38 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_8_178_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_8_178_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_44_175_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 159 12 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_12_173_12_if_stmt:
+        %tmp.39 = lgetv %newZoneState.5;
+        symbol [ newZoneState %tmp.39 159 16 28 ];
+        %tmp.40 = -1;
+        %tmp.41 = eq %tmp.39 %tmp.40;
+        bf %tmp.41 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_12_173_12_if_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_12_173_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_36_164_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 161 16 ]
+        symbol [ System %tmp.42 161 34 40 ];
+        %tmp.42 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.43 161 41 49 ];
+        %tmp.43 = getv function %tmp.42 :getTimer;
+        %tmp.44 = invoke %tmp.42 %tmp.43();
+        symbol [ _alertStartTime ? 161 16 31 ];
+        putv self :_alertStartTime %tmp.44;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 162 16 ]
+        symbol [ System %tmp.45 162 33 39 ];
+        %tmp.45 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.46 162 40 48 ];
+        %tmp.46 = getv function %tmp.45 :getTimer;
+        %tmp.47 = invoke %tmp.45 %tmp.46();
+        symbol [ _lastAlertTime ? 162 16 30 ];
+        putv self :_lastAlertTime %tmp.47;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 163 16 ]
+        %tmp.48 = self;
+        symbol [ triggerSingleVibration %tmp.49 163 16 38 ];
+        %tmp.49 = getv function %tmp.48 :triggerSingleVibration;
+        invoke %tmp.48 %tmp.49();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_36_164_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_12_173_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_12_173_12_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 164 19 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_19_173_12_if_stmt:
+        %tmp.50 = lgetv %newZoneState.5;
+        symbol [ newZoneState %tmp.50 164 23 35 ];
+        %tmp.51 = 1;
+        %tmp.52 = eq %tmp.50 %tmp.51;
+        bf %tmp.52 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_19_173_12_if_else_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_19_173_12_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_42_169_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 166 16 ]
+        symbol [ System %tmp.53 166 34 40 ];
+        %tmp.53 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.54 166 41 49 ];
+        %tmp.54 = getv function %tmp.53 :getTimer;
+        %tmp.55 = invoke %tmp.53 %tmp.54();
+        symbol [ _alertStartTime ? 166 16 31 ];
+        putv self :_alertStartTime %tmp.55;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 167 16 ]
+        symbol [ System %tmp.56 167 33 39 ];
+        %tmp.56 = getm $.Toybox.System;
+        symbol [ getTimer %tmp.57 167 40 48 ];
+        %tmp.57 = getv function %tmp.56 :getTimer;
+        %tmp.58 = invoke %tmp.56 %tmp.57();
+        symbol [ _lastAlertTime ? 167 16 30 ];
+        putv self :_lastAlertTime %tmp.58;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 168 16 ]
+        %tmp.59 = self;
+        symbol [ triggerDoubleVibration %tmp.60 168 16 38 ];
+        %tmp.60 = getv function %tmp.59 :triggerDoubleVibration;
+        invoke %tmp.59 %tmp.60();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_42_169_12_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_19_173_12_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_19_173_12_if_else_false:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_169_19_173_12_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 171 16 ]
+        %tmp.61 = null;
+        symbol [ _alertStartTime ? 171 16 31 ];
+        putv self :_alertStartTime %tmp.61;
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 172 16 ]
+        %tmp.62 = 0;
+        symbol [ _lastAlertTime ? 172 16 30 ];
+        putv self :_lastAlertTime %tmp.62;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_169_19_173_12_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_164_19_173_12_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_159_12_173_12_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 174 12 ]
+        %tmp.63 = lgetv %newZoneState.5;
+        symbol [ newZoneState %tmp.63 174 29 41 ];
+        symbol [ _lastZoneState ? 174 12 26 ];
+        putv self :_lastZoneState %tmp.63;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_44_175_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_8_178_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_8_178_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_175_15_178_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 177 12 ]
+        %tmp.64 = self;
+        symbol [ checkAndTriggerAlerts %tmp.65 177 12 33 ];
+        %tmp.65 = getv function %tmp.64 :checkAndTriggerAlerts;
+        invoke %tmp.64 %tmp.65();
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_175_15_178_8_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_158_8_178_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_138_40_179_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 181; @symbol_functiondef = [drawElements,181,13,25]; @symbol_param<0> = [dc,181,26,28]; @symbol_param<0>_type<0> = [Dc,181,32,34]; ]
+    function drawElements(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 182 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 182 12 17 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 182 20 22 ];
+        symbol [ getWidth %tmp.2 182 23 31 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 182 12 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 183 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %height.2 = local;
+        symbol [ height %height.2 183 12 18 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 183 21 23 ];
+        symbol [ getHeight %tmp.5 183 24 33 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %height.2 %tmp.6;
+        symbol [ height %height.2 183 12 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 184 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %info.3 = local;
+        symbol [ info %info.3 184 12 16 ];
+        symbol [ Activity %tmp.7 184 19 27 ];
+        %tmp.7 = getm $.Toybox.Activity;
+        symbol [ getActivityInfo %tmp.8 184 28 43 ];
+        %tmp.8 = getv function %tmp.7 :getActivityInfo;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        lputv %info.3 %tmp.9;
+        symbol [ info %info.3 184 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 185 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %app.4 = local;
+        symbol [ app %app.4 185 12 15 ];
+        %tmp.10 = self;
+        symbol [ getApp %tmp.11 185 18 24 ];
+        %tmp.11 = getv function %tmp.10 :getApp;
+        %tmp.12 = invoke %tmp.10 %tmp.11();
+        lputv %app.4 %tmp.12;
+        symbol [ app %app.4 185 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 188 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_8_196_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_12_188_46_begin:
+        %tmp.13 = lgetv %info.3;
+        symbol [ info %tmp.13 188 12 16 ];
+        %tmp.14 = null;
+        %tmp.15 = ne %tmp.13 %tmp.14;
+        bf %tmp.15 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_8_196_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_28_188_46_true:
+        %tmp.16 = lgetv %info.3;
+        symbol [ info %tmp.16 188 28 32 ];
+        %tmp.17 = as %tmp.16 { (!Null) };
+        symbol [ timerTime %tmp.18 188 33 42 ];
+        %tmp.18 = getv %tmp.17 :timerTime;
+        %tmp.19 = null;
+        %tmp.20 = ne %tmp.18 %tmp.19;
+        push %tmp.20;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_28_188_46_end:
+        %tmp.21 = phi [%tmp.15 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_12_188_46_begin] [%tmp.20 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_28_188_46_true] [%tmp.21 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_28_188_46_end];
+        bf %tmp.21 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_8_196_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_8_196_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 189 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_stop" ]
+        %seconds.5 = local;
+        symbol [ seconds %seconds.5 189 16 23 ];
+        %tmp.22 = lgetv %info.3;
+        symbol [ info %tmp.22 189 26 30 ];
+        %tmp.23 = as %tmp.22 { (!Null) };
+        symbol [ timerTime %tmp.24 189 31 40 ];
+        %tmp.24 = getv %tmp.23 :timerTime;
+        %tmp.25 = 1000;
+        %tmp.26 = div %tmp.24 %tmp.25;
+        lputv %seconds.5 %tmp.26;
+        symbol [ seconds %seconds.5 189 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 190 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_stop" ]
+        %hours.6 = local;
+        symbol [ hours %hours.6 190 16 21 ];
+        %tmp.27 = lgetv %seconds.5;
+        symbol [ seconds %tmp.27 190 24 31 ];
+        %tmp.28 = 3600;
+        %tmp.29 = div %tmp.27 %tmp.28;
+        lputv %hours.6 %tmp.29;
+        symbol [ hours %hours.6 190 16 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 191 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_stop" ]
+        %minutes.7 = local;
+        symbol [ minutes %minutes.7 191 16 23 ];
+        %tmp.30 = lgetv %seconds.5;
+        symbol [ seconds %tmp.30 191 27 34 ];
+        %tmp.31 = 3600;
+        %tmp.32 = mod %tmp.30 %tmp.31;
+        %tmp.33 = 60;
+        %tmp.34 = div %tmp.32 %tmp.33;
+        lputv %minutes.7 %tmp.34;
+        symbol [ minutes %minutes.7 191 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 193 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_stop" ]
+        %timeStr.8 = local;
+        symbol [ timeStr %timeStr.8 193 16 23 ];
+        %tmp.35 = lgetv %hours.6;
+        symbol [ hours %tmp.35 193 26 31 ];
+        symbol [ format %tmp.36 193 32 38 ];
+        %tmp.36 = getv function %tmp.35 :format;
+        %tmp.37 = "%01d";
+        %tmp.38 = invoke %tmp.35 %tmp.36(%tmp.37);
+        %tmp.39 = ":";
+        %tmp.40 = add %tmp.38 %tmp.39;
+        %tmp.41 = lgetv %minutes.7;
+        symbol [ minutes %tmp.41 193 55 62 ];
+        symbol [ format %tmp.42 193 63 69 ];
+        %tmp.42 = getv function %tmp.41 :format;
+        %tmp.43 = "%02d";
+        %tmp.44 = invoke %tmp.41 %tmp.42(%tmp.43);
+        %tmp.45 = add %tmp.40 %tmp.44;
+        lputv %timeStr.8 %tmp.45;
+        symbol [ timeStr %timeStr.8 193 16 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 194 12 ]
+        %tmp.46 = lgetv %dc;
+        symbol [ dc %tmp.46 194 12 14 ];
+        symbol [ setColor %tmp.47 194 15 23 ];
+        %tmp.47 = getv function %tmp.46 :setColor;
+        %tmp.48 = 0xFFF813;
+        symbol [ Graphics %tmp.49 194 34 42 ];
+        %tmp.49 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.50 194 43 60 ];
+        %tmp.50 = getv %tmp.49 :COLOR_TRANSPARENT;
+        invoke %tmp.46 %tmp.47(%tmp.48, %tmp.50);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 195 12 ]
+        %tmp.51 = lgetv %dc;
+        symbol [ dc %tmp.51 195 12 14 ];
+        symbol [ drawText %tmp.52 195 15 23 ];
+        %tmp.52 = getv function %tmp.51 :drawText;
+        %tmp.53 = lgetv %width.1;
+        symbol [ width %tmp.53 195 24 29 ];
+        %tmp.54 = 2;
+        %tmp.55 = div %tmp.53 %tmp.54;
+        %tmp.56 = 3;
+        symbol [ Graphics %tmp.57 195 38 46 ];
+        %tmp.57 = getm $.Toybox.Graphics;
+        symbol [ FONT_LARGE %tmp.58 195 47 57 ];
+        %tmp.58 = getv %tmp.57 :FONT_LARGE;
+        %tmp.59 = lgetv %timeStr.8;
+        symbol [ timeStr %tmp.59 195 59 66 ];
+        symbol [ Graphics %tmp.60 195 68 76 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.61 195 77 96 ];
+        %tmp.61 = getv %tmp.60 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.51 %tmp.52(%tmp.55, %tmp.56, %tmp.58, %tmp.59, %tmp.61);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_52_196_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_8_196_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_188_8_196_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 199 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %hrX.9 = local;
+        symbol [ hrX %hrX.9 199 12 15 ];
+        %tmp.62 = lgetv %width.1;
+        symbol [ width %tmp.62 199 18 23 ];
+        %tmp.63 = 4;
+        %tmp.64 = div %tmp.62 %tmp.63;
+        lputv %hrX.9 %tmp.64;
+        symbol [ hrX %hrX.9 199 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 200 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %hrY.10 = local;
+        symbol [ hrY %hrY.10 200 12 15 ];
+        %tmp.65 = lgetv %height.2;
+        symbol [ height %tmp.65 200 19 25 ];
+        %tmp.66 = 2;
+        %tmp.67 = mul %tmp.65 %tmp.66;
+        %tmp.68 = 7;
+        %tmp.69 = div %tmp.67 %tmp.68;
+        lputv %hrY.10 %tmp.69;
+        symbol [ hrY %hrY.10 200 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 201 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %circleRadius.11 = local;
+        symbol [ circleRadius %circleRadius.11 201 12 24 ];
+        %tmp.70 = 42;
+        lputv %circleRadius.11 %tmp.70;
+        symbol [ circleRadius %circleRadius.11 201 12 24 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 203 8 ]
+        %tmp.71 = lgetv %dc;
+        symbol [ dc %tmp.71 203 8 10 ];
+        symbol [ setColor %tmp.72 203 11 19 ];
+        %tmp.72 = getv function %tmp.71 :setColor;
+        %tmp.73 = 0x9D0000;
+        symbol [ Graphics %tmp.74 203 30 38 ];
+        %tmp.74 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.75 203 39 56 ];
+        %tmp.75 = getv %tmp.74 :COLOR_TRANSPARENT;
+        invoke %tmp.71 %tmp.72(%tmp.73, %tmp.75);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 204 8 ]
+        %tmp.76 = lgetv %dc;
+        symbol [ dc %tmp.76 204 8 10 ];
+        symbol [ fillCircle %tmp.77 204 11 21 ];
+        %tmp.77 = getv function %tmp.76 :fillCircle;
+        %tmp.78 = lgetv %hrX.9;
+        symbol [ hrX %tmp.78 204 22 25 ];
+        %tmp.79 = lgetv %hrY.10;
+        symbol [ hrY %tmp.79 204 27 30 ];
+        %tmp.80 = lgetv %circleRadius.11;
+        symbol [ circleRadius %tmp.80 204 32 44 ];
+        invoke %tmp.76 %tmp.77(%tmp.78, %tmp.79, %tmp.80);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 206 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_8_210_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_12_206_53_begin:
+        %tmp.81 = lgetv %info.3;
+        symbol [ info %tmp.81 206 12 16 ];
+        %tmp.82 = null;
+        %tmp.83 = ne %tmp.81 %tmp.82;
+        bf %tmp.83 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_8_210_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_28_206_53_true:
+        %tmp.84 = lgetv %info.3;
+        symbol [ info %tmp.84 206 28 32 ];
+        %tmp.85 = as %tmp.84 { (!Null) };
+        symbol [ currentHeartRate %tmp.86 206 33 49 ];
+        %tmp.86 = getv %tmp.85 :currentHeartRate;
+        %tmp.87 = null;
+        %tmp.88 = ne %tmp.86 %tmp.87;
+        push %tmp.88;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_28_206_53_end:
+        %tmp.89 = phi [%tmp.83 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_12_206_53_begin] [%tmp.88 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_28_206_53_true] [%tmp.89 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_28_206_53_end];
+        bf %tmp.89 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_8_210_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_8_210_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_59_210_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 207 12 ]
+        %tmp.90 = lgetv %dc;
+        symbol [ dc %tmp.90 207 12 14 ];
+        symbol [ setColor %tmp.91 207 15 23 ];
+        %tmp.91 = getv function %tmp.90 :setColor;
+        %tmp.92 = 0xFFFFFF;
+        symbol [ Graphics %tmp.93 207 34 42 ];
+        %tmp.93 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.94 207 43 60 ];
+        %tmp.94 = getv %tmp.93 :COLOR_TRANSPARENT;
+        invoke %tmp.90 %tmp.91(%tmp.92, %tmp.94);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 208 12 ]
+        %tmp.95 = lgetv %dc;
+        symbol [ dc %tmp.95 208 12 14 ];
+        symbol [ drawText %tmp.96 208 15 23 ];
+        %tmp.96 = getv function %tmp.95 :drawText;
+        %tmp.97 = lgetv %hrX.9;
+        symbol [ hrX %tmp.97 208 24 27 ];
+        %tmp.98 = lgetv %hrY.10;
+        symbol [ hrY %tmp.98 208 29 32 ];
+        %tmp.99 = 25;
+        %tmp.100 = sub %tmp.98 %tmp.99;
+        symbol [ Graphics %tmp.101 208 39 47 ];
+        %tmp.101 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.102 208 48 57 ];
+        %tmp.102 = getv %tmp.101 :FONT_TINY;
+        %tmp.103 = lgetv %info.3;
+        symbol [ info %tmp.103 208 59 63 ];
+        %tmp.104 = as %tmp.103 { (!Null) };
+        symbol [ currentHeartRate %tmp.105 208 64 80 ];
+        %tmp.105 = getv %tmp.104 :currentHeartRate;
+        symbol [ toString %tmp.106 208 81 89 ];
+        %tmp.106 = getv function %tmp.105 :toString;
+        %tmp.107 = invoke %tmp.105 %tmp.106();
+        symbol [ Graphics %tmp.108 208 93 101 ];
+        %tmp.108 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.109 208 102 121 ];
+        %tmp.109 = getv %tmp.108 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.95 %tmp.96(%tmp.97, %tmp.100, %tmp.102, %tmp.107, %tmp.109);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 209 12 ]
+        %tmp.110 = lgetv %dc;
+        symbol [ dc %tmp.110 209 12 14 ];
+        symbol [ drawText %tmp.111 209 15 23 ];
+        %tmp.111 = getv function %tmp.110 :drawText;
+        %tmp.112 = lgetv %hrX.9;
+        symbol [ hrX %tmp.112 209 24 27 ];
+        %tmp.113 = lgetv %hrY.10;
+        symbol [ hrY %tmp.113 209 29 32 ];
+        %tmp.114 = 8;
+        %tmp.115 = add %tmp.113 %tmp.114;
+        symbol [ Graphics %tmp.116 209 38 46 ];
+        %tmp.116 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.117 209 47 57 ];
+        %tmp.117 = getv %tmp.116 :FONT_XTINY;
+        %tmp.118 = "bpm";
+        symbol [ Graphics %tmp.119 209 66 74 ];
+        %tmp.119 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.120 209 75 94 ];
+        %tmp.120 = getv %tmp.119 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.110 %tmp.111(%tmp.112, %tmp.115, %tmp.117, %tmp.118, %tmp.120);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_59_210_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_8_210_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_206_8_210_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 213 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %distX.12 = local;
+        symbol [ distX %distX.12 213 12 17 ];
+        %tmp.121 = lgetv %width.1;
+        symbol [ width %tmp.121 213 21 26 ];
+        %tmp.122 = 3;
+        %tmp.123 = mul %tmp.121 %tmp.122;
+        %tmp.124 = 4;
+        %tmp.125 = div %tmp.123 %tmp.124;
+        lputv %distX.12 %tmp.125;
+        symbol [ distX %distX.12 213 12 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 214 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %distY.13 = local;
+        symbol [ distY %distY.13 214 12 17 ];
+        %tmp.126 = lgetv %hrY.10;
+        symbol [ hrY %tmp.126 214 20 23 ];
+        lputv %distY.13 %tmp.126;
+        symbol [ distY %distY.13 214 12 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 216 8 ]
+        %tmp.127 = lgetv %dc;
+        symbol [ dc %tmp.127 216 8 10 ];
+        symbol [ setColor %tmp.128 216 11 19 ];
+        %tmp.128 = getv function %tmp.127 :setColor;
+        %tmp.129 = 0x1D5E11;
+        symbol [ Graphics %tmp.130 216 30 38 ];
+        %tmp.130 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.131 216 39 56 ];
+        %tmp.131 = getv %tmp.130 :COLOR_TRANSPARENT;
+        invoke %tmp.127 %tmp.128(%tmp.129, %tmp.131);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 217 8 ]
+        %tmp.132 = lgetv %dc;
+        symbol [ dc %tmp.132 217 8 10 ];
+        symbol [ fillCircle %tmp.133 217 11 21 ];
+        %tmp.133 = getv function %tmp.132 :fillCircle;
+        %tmp.134 = lgetv %distX.12;
+        symbol [ distX %tmp.134 217 22 27 ];
+        %tmp.135 = lgetv %distY.13;
+        symbol [ distY %tmp.135 217 29 34 ];
+        %tmp.136 = lgetv %circleRadius.11;
+        symbol [ circleRadius %tmp.136 217 36 48 ];
+        invoke %tmp.132 %tmp.133(%tmp.134, %tmp.135, %tmp.136);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 219 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_8_224_8_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_12_219_52_begin:
+        %tmp.137 = lgetv %info.3;
+        symbol [ info %tmp.137 219 12 16 ];
+        %tmp.138 = null;
+        %tmp.139 = ne %tmp.137 %tmp.138;
+        bf %tmp.139 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_8_224_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_28_219_52_true:
+        %tmp.140 = lgetv %info.3;
+        symbol [ info %tmp.140 219 28 32 ];
+        %tmp.141 = as %tmp.140 { (!Null) };
+        symbol [ elapsedDistance %tmp.142 219 33 48 ];
+        %tmp.142 = getv %tmp.141 :elapsedDistance;
+        %tmp.143 = null;
+        %tmp.144 = ne %tmp.142 %tmp.143;
+        push %tmp.144;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_28_219_52_end:
+        %tmp.145 = phi [%tmp.139 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_12_219_52_begin] [%tmp.144 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_28_219_52_true] [%tmp.145 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_28_219_52_end];
+        bf %tmp.145 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_8_224_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_8_224_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_58_224_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 220 12 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_58_224_8_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_58_224_8_stop" ]
+        %distanceKm.14 = local;
+        symbol [ distanceKm %distanceKm.14 220 16 26 ];
+        %tmp.146 = lgetv %info.3;
+        symbol [ info %tmp.146 220 29 33 ];
+        %tmp.147 = as %tmp.146 { (!Null) };
+        symbol [ elapsedDistance %tmp.148 220 34 49 ];
+        %tmp.148 = getv %tmp.147 :elapsedDistance;
+        %tmp.149 = 100000.0;
+        %tmp.150 = div %tmp.148 %tmp.149;
+        lputv %distanceKm.14 %tmp.150;
+        symbol [ distanceKm %distanceKm.14 220 16 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 221 12 ]
+        %tmp.151 = lgetv %dc;
+        symbol [ dc %tmp.151 221 12 14 ];
+        symbol [ setColor %tmp.152 221 15 23 ];
+        %tmp.152 = getv function %tmp.151 :setColor;
+        %tmp.153 = 0xFFFFFF;
+        symbol [ Graphics %tmp.154 221 34 42 ];
+        %tmp.154 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.155 221 43 60 ];
+        %tmp.155 = getv %tmp.154 :COLOR_TRANSPARENT;
+        invoke %tmp.151 %tmp.152(%tmp.153, %tmp.155);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 222 12 ]
+        %tmp.156 = lgetv %dc;
+        symbol [ dc %tmp.156 222 12 14 ];
+        symbol [ drawText %tmp.157 222 15 23 ];
+        %tmp.157 = getv function %tmp.156 :drawText;
+        %tmp.158 = lgetv %distX.12;
+        symbol [ distX %tmp.158 222 24 29 ];
+        %tmp.159 = lgetv %distY.13;
+        symbol [ distY %tmp.159 222 31 36 ];
+        %tmp.160 = 25;
+        %tmp.161 = sub %tmp.159 %tmp.160;
+        symbol [ Graphics %tmp.162 222 43 51 ];
+        %tmp.162 = getm $.Toybox.Graphics;
+        symbol [ FONT_TINY %tmp.163 222 52 61 ];
+        %tmp.163 = getv %tmp.162 :FONT_TINY;
+        %tmp.164 = lgetv %distanceKm.14;
+        symbol [ distanceKm %tmp.164 222 63 73 ];
+        symbol [ format %tmp.165 222 74 80 ];
+        %tmp.165 = getv function %tmp.164 :format;
+        %tmp.166 = "%.2f";
+        %tmp.167 = invoke %tmp.164 %tmp.165(%tmp.166);
+        symbol [ Graphics %tmp.168 222 90 98 ];
+        %tmp.168 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.169 222 99 118 ];
+        %tmp.169 = getv %tmp.168 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.156 %tmp.157(%tmp.158, %tmp.161, %tmp.163, %tmp.167, %tmp.169);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 223 12 ]
+        %tmp.170 = lgetv %dc;
+        symbol [ dc %tmp.170 223 12 14 ];
+        symbol [ drawText %tmp.171 223 15 23 ];
+        %tmp.171 = getv function %tmp.170 :drawText;
+        %tmp.172 = lgetv %distX.12;
+        symbol [ distX %tmp.172 223 24 29 ];
+        %tmp.173 = lgetv %distY.13;
+        symbol [ distY %tmp.173 223 31 36 ];
+        %tmp.174 = 8;
+        %tmp.175 = add %tmp.173 %tmp.174;
+        symbol [ Graphics %tmp.176 223 42 50 ];
+        %tmp.176 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.177 223 51 61 ];
+        %tmp.177 = getv %tmp.176 :FONT_XTINY;
+        %tmp.178 = "km";
+        symbol [ Graphics %tmp.179 223 69 77 ];
+        %tmp.179 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.180 223 78 97 ];
+        %tmp.180 = getv %tmp.179 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.170 %tmp.171(%tmp.172, %tmp.175, %tmp.177, %tmp.178, %tmp.180);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_58_224_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_8_224_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_219_8_224_8_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 228 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %idealMinCadence.15 = local;
+        symbol [ idealMinCadence %idealMinCadence.15 228 12 27 ];
+        %tmp.181 = lgetv %app.4;
+        symbol [ app %tmp.181 228 30 33 ];
+        symbol [ getMinCadence %tmp.182 228 34 47 ];
+        %tmp.182 = getv function %tmp.181 :getMinCadence;
+        %tmp.183 = invoke %tmp.181 %tmp.182();
+        lputv %idealMinCadence.15 %tmp.183;
+        symbol [ idealMinCadence %idealMinCadence.15 228 12 27 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 229 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %idealMaxCadence.16 = local;
+        symbol [ idealMaxCadence %idealMaxCadence.16 229 12 27 ];
+        %tmp.184 = lgetv %app.4;
+        symbol [ app %tmp.184 229 30 33 ];
+        symbol [ getMaxCadence %tmp.185 229 34 47 ];
+        %tmp.185 = getv function %tmp.184 :getMaxCadence;
+        %tmp.186 = invoke %tmp.184 %tmp.185();
+        lputv %idealMaxCadence.16 %tmp.186;
+        symbol [ idealMaxCadence %idealMaxCadence.16 229 12 27 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 231 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %cadenceY.17 = local;
+        symbol [ cadenceY %cadenceY.17 231 12 20 ];
+        %tmp.187 = lgetv %height.2;
+        symbol [ height %tmp.187 231 23 29 ];
+        %tmp.188 = 0.37;
+        %tmp.189 = mul %tmp.187 %tmp.188;
+        lputv %cadenceY.17 %tmp.189;
+        symbol [ cadenceY %cadenceY.17 231 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 232 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %cadenceRangeY.18 = local;
+        symbol [ cadenceRangeY %cadenceRangeY.18 232 12 25 ];
+        %tmp.190 = lgetv %height.2;
+        symbol [ height %tmp.190 232 28 34 ];
+        %tmp.191 = 0.43;
+        %tmp.192 = mul %tmp.190 %tmp.191;
+        lputv %cadenceRangeY.18 %tmp.192;
+        symbol [ cadenceRangeY %cadenceRangeY.18 232 12 25 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 233 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %chartDurationY.19 = local;
+        symbol [ chartDurationY %chartDurationY.19 233 12 26 ];
+        %tmp.193 = lgetv %height.2;
+        symbol [ height %tmp.193 233 29 35 ];
+        %tmp.194 = 0.85;
+        %tmp.195 = mul %tmp.193 %tmp.194;
+        lputv %chartDurationY.19 %tmp.195;
+        symbol [ chartDurationY %chartDurationY.19 233 12 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 235 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_8_238_4_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_12_235_51_begin:
+        %tmp.196 = lgetv %info.3;
+        symbol [ info %tmp.196 235 12 16 ];
+        %tmp.197 = null;
+        %tmp.198 = ne %tmp.196 %tmp.197;
+        bf %tmp.198 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_8_238_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_28_235_51_true:
+        %tmp.199 = lgetv %info.3;
+        symbol [ info %tmp.199 235 28 32 ];
+        %tmp.200 = as %tmp.199 { (!Null) };
+        symbol [ currentCadence %tmp.201 235 33 47 ];
+        %tmp.201 = getv %tmp.200 :currentCadence;
+        %tmp.202 = null;
+        %tmp.203 = ne %tmp.201 %tmp.202;
+        push %tmp.203;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_28_235_51_end:
+        %tmp.204 = phi [%tmp.198 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_12_235_51_begin] [%tmp.203 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_28_235_51_true] [%tmp.204 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_28_235_51_end];
+        bf %tmp.204 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_8_238_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_8_238_4_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_57_238_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 236 8 ]
+        %tmp.205 = lgetv %dc;
+        symbol [ dc %tmp.205 236 8 10 ];
+        symbol [ setColor %tmp.206 236 11 19 ];
+        %tmp.206 = getv function %tmp.205 :setColor;
+        %tmp.207 = self;
+        symbol [ getCadenceZoneColor %tmp.208 236 20 39 ];
+        %tmp.208 = getv function %tmp.207 :getCadenceZoneColor;
+        %tmp.209 = lgetv %info.3;
+        symbol [ info %tmp.209 236 40 44 ];
+        %tmp.210 = as %tmp.209 { (!Null) };
+        symbol [ currentCadence %tmp.211 236 45 59 ];
+        %tmp.211 = getv %tmp.210 :currentCadence;
+        %tmp.212 = lgetv %idealMinCadence.15;
+        symbol [ idealMinCadence %tmp.212 236 61 76 ];
+        %tmp.213 = lgetv %idealMaxCadence.16;
+        symbol [ idealMaxCadence %tmp.213 236 78 93 ];
+        %tmp.214 = invoke %tmp.207 %tmp.208(%tmp.211, %tmp.212, %tmp.213);
+        symbol [ Graphics %tmp.215 236 96 104 ];
+        %tmp.215 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.216 236 105 122 ];
+        %tmp.216 = getv %tmp.215 :COLOR_TRANSPARENT;
+        invoke %tmp.205 %tmp.206(%tmp.214, %tmp.216);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 237 8 ]
+        %tmp.217 = lgetv %dc;
+        symbol [ dc %tmp.217 237 8 10 ];
+        symbol [ drawText %tmp.218 237 11 19 ];
+        %tmp.218 = getv function %tmp.217 :drawText;
+        %tmp.219 = lgetv %width.1;
+        symbol [ width %tmp.219 237 20 25 ];
+        %tmp.220 = 2;
+        %tmp.221 = div %tmp.219 %tmp.220;
+        %tmp.222 = lgetv %cadenceY.17;
+        symbol [ cadenceY %tmp.222 237 31 39 ];
+        symbol [ Graphics %tmp.223 237 41 49 ];
+        %tmp.223 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.224 237 50 60 ];
+        %tmp.224 = getv %tmp.223 :FONT_XTINY;
+        %tmp.225 = lgetv %info.3;
+        symbol [ info %tmp.225 237 62 66 ];
+        %tmp.226 = as %tmp.225 { (!Null) };
+        symbol [ currentCadence %tmp.227 237 67 81 ];
+        %tmp.227 = getv %tmp.226 :currentCadence;
+        symbol [ toString %tmp.228 237 82 90 ];
+        %tmp.228 = getv function %tmp.227 :toString;
+        %tmp.229 = invoke %tmp.227 %tmp.228();
+        %tmp.230 = " spm";
+        %tmp.231 = add %tmp.229 %tmp.230;
+        symbol [ Graphics %tmp.232 237 103 111 ];
+        %tmp.232 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.233 237 112 131 ];
+        %tmp.233 = getv %tmp.232 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.217 %tmp.218(%tmp.221, %tmp.222, %tmp.224, %tmp.231, %tmp.233);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_57_238_4_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_8_238_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_235_8_238_4_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 241 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %minZone.20 = local;
+        symbol [ minZone %minZone.20 241 12 19 ];
+        %tmp.234 = lgetv %app.4;
+        symbol [ app %tmp.234 241 22 25 ];
+        symbol [ getMinCadence %tmp.235 241 26 39 ];
+        %tmp.235 = getv function %tmp.234 :getMinCadence;
+        %tmp.236 = invoke %tmp.234 %tmp.235();
+        lputv %minZone.20 %tmp.236;
+        symbol [ minZone %minZone.20 241 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 242 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %maxZone.21 = local;
+        symbol [ maxZone %maxZone.21 242 12 19 ];
+        %tmp.237 = lgetv %app.4;
+        symbol [ app %tmp.237 242 22 25 ];
+        symbol [ getMaxCadence %tmp.238 242 26 39 ];
+        %tmp.238 = getv function %tmp.237 :getMaxCadence;
+        %tmp.239 = invoke %tmp.237 %tmp.238();
+        lputv %maxZone.21 %tmp.239;
+        symbol [ maxZone %maxZone.21 242 12 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 243 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %zoneText.22 = local;
+        symbol [ zoneText %zoneText.22 243 12 20 ];
+        %tmp.240 = "Target: ";
+        %tmp.241 = lgetv %minZone.20;
+        symbol [ minZone %tmp.241 243 36 43 ];
+        symbol [ toString %tmp.242 243 44 52 ];
+        %tmp.242 = getv function %tmp.241 :toString;
+        %tmp.243 = invoke %tmp.241 %tmp.242();
+        %tmp.244 = add %tmp.240 %tmp.243;
+        %tmp.245 = "-";
+        %tmp.246 = add %tmp.244 %tmp.245;
+        %tmp.247 = lgetv %maxZone.21;
+        symbol [ maxZone %tmp.247 243 63 70 ];
+        symbol [ toString %tmp.248 243 71 79 ];
+        %tmp.248 = getv function %tmp.247 :toString;
+        %tmp.249 = invoke %tmp.247 %tmp.248();
+        %tmp.250 = add %tmp.246 %tmp.249;
+        %tmp.251 = " spm";
+        %tmp.252 = add %tmp.250 %tmp.251;
+        lputv %zoneText.22 %tmp.252;
+        symbol [ zoneText %zoneText.22 243 12 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 245 8 ]
+        %tmp.253 = lgetv %dc;
+        symbol [ dc %tmp.253 245 8 10 ];
+        symbol [ setColor %tmp.254 245 11 19 ];
+        %tmp.254 = getv function %tmp.253 :setColor;
+        %tmp.255 = 0x969696;
+        symbol [ Graphics %tmp.256 245 30 38 ];
+        %tmp.256 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.257 245 39 56 ];
+        %tmp.257 = getv %tmp.256 :COLOR_TRANSPARENT;
+        invoke %tmp.253 %tmp.254(%tmp.255, %tmp.257);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 246 8 ]
+        %tmp.258 = lgetv %dc;
+        symbol [ dc %tmp.258 246 8 10 ];
+        symbol [ drawText %tmp.259 246 11 19 ];
+        %tmp.259 = getv function %tmp.258 :drawText;
+        %tmp.260 = lgetv %width.1;
+        symbol [ width %tmp.260 246 20 25 ];
+        %tmp.261 = 2;
+        %tmp.262 = div %tmp.260 %tmp.261;
+        %tmp.263 = lgetv %cadenceRangeY.18;
+        symbol [ cadenceRangeY %tmp.263 246 31 44 ];
+        symbol [ Graphics %tmp.264 246 46 54 ];
+        %tmp.264 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.265 246 55 65 ];
+        %tmp.265 = getv %tmp.264 :FONT_XTINY;
+        %tmp.266 = lgetv %zoneText.22;
+        symbol [ zoneText %tmp.266 246 67 75 ];
+        symbol [ Graphics %tmp.267 246 77 85 ];
+        %tmp.267 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.268 246 86 105 ];
+        %tmp.268 = getv %tmp.267 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.258 %tmp.259(%tmp.262, %tmp.263, %tmp.265, %tmp.266, %tmp.268);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 248 8 ]
+        %tmp.269 = self;
+        symbol [ drawChart %tmp.270 248 8 17 ];
+        %tmp.270 = getv function %tmp.269 :drawChart;
+        %tmp.271 = lgetv %dc;
+        symbol [ dc %tmp.271 248 18 20 ];
+        invoke %tmp.269 %tmp.270(%tmp.271);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 250 8 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop" ]
+        %string.23 = local;
+        symbol [ string %string.23 250 12 18 ];
+        %tmp.272 = lgetv %app.4;
+        symbol [ app %tmp.272 250 22 25 ];
+        symbol [ getChartDuration %tmp.273 250 26 42 ];
+        %tmp.273 = getv function %tmp.272 :getChartDuration;
+        %tmp.274 = invoke %tmp.272 %tmp.273();
+        lputv %string.23 %tmp.274;
+        symbol [ string %string.23 250 12 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 252 8 ]
+        %tmp.275 = lgetv %dc;
+        symbol [ dc %tmp.275 252 8 10 ];
+        symbol [ setColor %tmp.276 252 11 19 ];
+        %tmp.276 = getv function %tmp.275 :setColor;
+        %tmp.277 = 0x969696;
+        symbol [ Graphics %tmp.278 252 30 38 ];
+        %tmp.278 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.279 252 39 56 ];
+        %tmp.279 = getv %tmp.278 :COLOR_TRANSPARENT;
+        invoke %tmp.275 %tmp.276(%tmp.277, %tmp.279);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 253 8 ]
+        %tmp.280 = lgetv %dc;
+        symbol [ dc %tmp.280 253 8 10 ];
+        symbol [ drawText %tmp.281 253 11 19 ];
+        %tmp.281 = getv function %tmp.280 :drawText;
+        %tmp.282 = lgetv %width.1;
+        symbol [ width %tmp.282 253 20 25 ];
+        %tmp.283 = 2;
+        %tmp.284 = div %tmp.282 %tmp.283;
+        %tmp.285 = lgetv %chartDurationY.19;
+        symbol [ chartDurationY %tmp.285 253 31 45 ];
+        symbol [ Graphics %tmp.286 253 47 55 ];
+        %tmp.286 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.287 253 56 66 ];
+        %tmp.287 = getv %tmp.286 :FONT_XTINY;
+        %tmp.288 = "Last ";
+        %tmp.289 = lgetv %string.23;
+        symbol [ string %tmp.289 253 78 84 ];
+        %tmp.290 = add %tmp.288 %tmp.289;
+        symbol [ Graphics %tmp.291 253 86 94 ];
+        %tmp.291 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.292 253 95 114 ];
+        %tmp.292 = getv %tmp.291 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.280 %tmp.281(%tmp.284, %tmp.285, %tmp.287, %tmp.290, %tmp.292);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_181_44_254_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 266; @symbol_functiondef = [drawChart,266,13,22]; @symbol_param<0> = [dc,266,23,25]; @symbol_param<0>_type<0> = [Dc,266,29,31]; ]
+    function drawChart(dc as Dc) as Void {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 267 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %width.1 = local;
+        symbol [ width %width.1 267 8 13 ];
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 267 16 18 ];
+        symbol [ getWidth %tmp.2 267 19 27 ];
+        %tmp.2 = getv function %tmp.1 :getWidth;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %width.1 %tmp.3;
+        symbol [ width %width.1 267 8 13 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 268 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %height.2 = local;
+        symbol [ height %height.2 268 8 14 ];
+        %tmp.4 = lgetv %dc;
+        symbol [ dc %tmp.4 268 17 19 ];
+        symbol [ getHeight %tmp.5 268 20 29 ];
+        %tmp.5 = getv function %tmp.4 :getHeight;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        lputv %height.2 %tmp.6;
+        symbol [ height %height.2 268 8 14 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 270 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %margin.3 = local;
+        symbol [ margin %margin.3 270 8 14 ];
+        %tmp.7 = lgetv %width.1;
+        symbol [ width %tmp.7 270 17 22 ];
+        %tmp.8 = 0.1;
+        %tmp.9 = mul %tmp.7 %tmp.8;
+        lputv %margin.3 %tmp.9;
+        symbol [ margin %margin.3 270 8 14 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 271 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %marginLeftRightMultiplier.4 = local;
+        symbol [ marginLeftRightMultiplier %marginLeftRightMultiplier.4 271 8 33 ];
+        %tmp.10 = 1.38;
+        lputv %marginLeftRightMultiplier.4 %tmp.10;
+        symbol [ marginLeftRightMultiplier %marginLeftRightMultiplier.4 271 8 33 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 272 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %marginBottomMultiplier.5 = local;
+        symbol [ marginBottomMultiplier %marginBottomMultiplier.5 272 8 30 ];
+        %tmp.11 = 1.6;
+        lputv %marginBottomMultiplier.5 %tmp.11;
+        symbol [ marginBottomMultiplier %marginBottomMultiplier.5 272 8 30 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 274 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %chartLeft.6 = local;
+        symbol [ chartLeft %chartLeft.6 274 8 17 ];
+        %tmp.12 = lgetv %margin.3;
+        symbol [ margin %tmp.12 274 20 26 ];
+        %tmp.13 = lgetv %marginLeftRightMultiplier.4;
+        symbol [ marginLeftRightMultiplier %tmp.13 274 29 54 ];
+        %tmp.14 = mul %tmp.12 %tmp.13;
+        lputv %chartLeft.6 %tmp.14;
+        symbol [ chartLeft %chartLeft.6 274 8 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 275 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %chartRight.7 = local;
+        symbol [ chartRight %chartRight.7 275 8 18 ];
+        %tmp.15 = lgetv %width.1;
+        symbol [ width %tmp.15 275 21 26 ];
+        %tmp.16 = lgetv %chartLeft.6;
+        symbol [ chartLeft %tmp.16 275 29 38 ];
+        %tmp.17 = sub %tmp.15 %tmp.16;
+        lputv %chartRight.7 %tmp.17;
+        symbol [ chartRight %chartRight.7 275 8 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 276 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %chartTop.8 = local;
+        symbol [ chartTop %chartTop.8 276 8 16 ];
+        %tmp.18 = lgetv %height.2;
+        symbol [ height %tmp.18 276 19 25 ];
+        %tmp.19 = 0.5;
+        %tmp.20 = mul %tmp.18 %tmp.19;
+        lputv %chartTop.8 %tmp.20;
+        symbol [ chartTop %chartTop.8 276 8 16 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 277 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %chartBottom.9 = local;
+        symbol [ chartBottom %chartBottom.9 277 8 19 ];
+        %tmp.21 = lgetv %height.2;
+        symbol [ height %tmp.21 277 22 28 ];
+        %tmp.22 = lgetv %margin.3;
+        symbol [ margin %tmp.22 277 31 37 ];
+        %tmp.23 = lgetv %marginBottomMultiplier.5;
+        symbol [ marginBottomMultiplier %tmp.23 277 40 62 ];
+        %tmp.24 = mul %tmp.22 %tmp.23;
+        %tmp.25 = sub %tmp.21 %tmp.24;
+        lputv %chartBottom.9 %tmp.25;
+        symbol [ chartBottom %chartBottom.9 277 8 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 278 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %chartWidth.10 = local;
+        symbol [ chartWidth %chartWidth.10 278 8 18 ];
+        %tmp.26 = lgetv %chartRight.7;
+        symbol [ chartRight %tmp.26 278 21 31 ];
+        %tmp.27 = lgetv %chartLeft.6;
+        symbol [ chartLeft %tmp.27 278 34 43 ];
+        %tmp.28 = sub %tmp.26 %tmp.27;
+        lputv %chartWidth.10 %tmp.28;
+        symbol [ chartWidth %chartWidth.10 278 8 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 279 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %chartHeight.11 = local;
+        symbol [ chartHeight %chartHeight.11 279 8 19 ];
+        %tmp.29 = lgetv %chartBottom.9;
+        symbol [ chartBottom %tmp.29 279 22 33 ];
+        %tmp.30 = lgetv %chartTop.8;
+        symbol [ chartTop %tmp.30 279 36 44 ];
+        %tmp.31 = sub %tmp.29 %tmp.30;
+        lputv %chartHeight.11 %tmp.31;
+        symbol [ chartHeight %chartHeight.11 279 8 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 280 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %quarterChartHeight.12 = local;
+        symbol [ quarterChartHeight %quarterChartHeight.12 280 8 26 ];
+        %tmp.32 = lgetv %chartHeight.11;
+        symbol [ chartHeight %tmp.32 280 29 40 ];
+        %tmp.33 = 4;
+        %tmp.34 = div %tmp.32 %tmp.33;
+        lputv %quarterChartHeight.12 %tmp.34;
+        symbol [ quarterChartHeight %quarterChartHeight.12 280 8 26 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 282 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %barZoneLeft.13 = local;
+        symbol [ barZoneLeft %barZoneLeft.13 282 8 19 ];
+        %tmp.35 = lgetv %chartLeft.6;
+        symbol [ chartLeft %tmp.35 282 22 31 ];
+        %tmp.36 = 1;
+        %tmp.37 = add %tmp.35 %tmp.36;
+        lputv %barZoneLeft.13 %tmp.37;
+        symbol [ barZoneLeft %barZoneLeft.13 282 8 19 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 283 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %barZoneRight.14 = local;
+        symbol [ barZoneRight %barZoneRight.14 283 8 20 ];
+        %tmp.38 = lgetv %chartRight.7;
+        symbol [ chartRight %tmp.38 283 23 33 ];
+        %tmp.39 = 1;
+        %tmp.40 = sub %tmp.38 %tmp.39;
+        lputv %barZoneRight.14 %tmp.40;
+        symbol [ barZoneRight %barZoneRight.14 283 8 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 284 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %barZoneWidth.15 = local;
+        symbol [ barZoneWidth %barZoneWidth.15 284 8 20 ];
+        %tmp.41 = lgetv %barZoneRight.14;
+        symbol [ barZoneRight %tmp.41 284 23 35 ];
+        %tmp.42 = lgetv %barZoneLeft.13;
+        symbol [ barZoneLeft %tmp.42 284 38 49 ];
+        %tmp.43 = sub %tmp.41 %tmp.42;
+        lputv %barZoneWidth.15 %tmp.43;
+        symbol [ barZoneWidth %barZoneWidth.15 284 8 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 285 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %barZoneBottom.16 = local;
+        symbol [ barZoneBottom %barZoneBottom.16 285 8 21 ];
+        %tmp.44 = lgetv %chartBottom.9;
+        symbol [ chartBottom %tmp.44 285 24 35 ];
+        %tmp.45 = 1;
+        %tmp.46 = sub %tmp.44 %tmp.45;
+        lputv %barZoneBottom.16 %tmp.46;
+        symbol [ barZoneBottom %barZoneBottom.16 285 8 21 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 287 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %nLine.17 = local;
+        symbol [ nLine %nLine.17 287 8 13 ];
+        %tmp.47 = 3;
+        lputv %nLine.17 %tmp.47;
+        symbol [ nLine %nLine.17 287 8 13 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 288 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %lineLength.18 = local;
+        symbol [ lineLength %lineLength.18 288 8 18 ];
+        %tmp.48 = 6;
+        lputv %lineLength.18 %tmp.48;
+        symbol [ lineLength %lineLength.18 288 8 18 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 289 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %line1x1.19 = local;
+        symbol [ line1x1 %line1x1.19 289 8 15 ];
+        %tmp.49 = lgetv %chartLeft.6;
+        symbol [ chartLeft %tmp.49 289 18 27 ];
+        %tmp.50 = lgetv %lineLength.18;
+        symbol [ lineLength %tmp.50 289 30 40 ];
+        %tmp.51 = sub %tmp.49 %tmp.50;
+        lputv %line1x1.19 %tmp.51;
+        symbol [ line1x1 %line1x1.19 289 8 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 290 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %line1x2.20 = local;
+        symbol [ line1x2 %line1x2.20 290 8 15 ];
+        %tmp.52 = lgetv %chartLeft.6;
+        symbol [ chartLeft %tmp.52 290 18 27 ];
+        lputv %line1x2.20 %tmp.52;
+        symbol [ line1x2 %line1x2.20 290 8 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 291 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %line2x1.21 = local;
+        symbol [ line2x1 %line2x1.21 291 8 15 ];
+        %tmp.53 = lgetv %chartRight.7;
+        symbol [ chartRight %tmp.53 291 18 28 ];
+        %tmp.54 = 1;
+        %tmp.55 = sub %tmp.53 %tmp.54;
+        lputv %line2x1.21 %tmp.55;
+        symbol [ line2x1 %line2x1.21 291 8 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 292 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %line2x2.22 = local;
+        symbol [ line2x2 %line2x2.22 292 8 15 ];
+        %tmp.56 = lgetv %chartRight.7;
+        symbol [ chartRight %tmp.56 292 18 28 ];
+        %tmp.57 = lgetv %lineLength.18;
+        symbol [ lineLength %tmp.57 292 31 41 ];
+        %tmp.58 = add %tmp.56 %tmp.57;
+        lputv %line2x2.22 %tmp.58;
+        symbol [ line2x2 %line2x2.22 292 8 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 293 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %lineY.23 = local;
+        symbol [ lineY %lineY.23 293 8 13 ];
+        %tmp.59 = lgetv %chartTop.8;
+        symbol [ chartTop %tmp.59 293 16 24 ];
+        %tmp.60 = lgetv %quarterChartHeight.12;
+        symbol [ quarterChartHeight %tmp.60 293 27 45 ];
+        %tmp.61 = add %tmp.59 %tmp.60;
+        lputv %lineY.23 %tmp.61;
+        symbol [ lineY %lineY.23 293 8 13 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 295 4 ]
+        %tmp.62 = lgetv %dc;
+        symbol [ dc %tmp.62 295 4 6 ];
+        symbol [ setColor %tmp.63 295 7 15 ];
+        %tmp.63 = getv function %tmp.62 :setColor;
+        %tmp.64 = 0x969696;
+        symbol [ Graphics %tmp.65 295 26 34 ];
+        %tmp.65 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.66 295 35 52 ];
+        %tmp.66 = getv %tmp.65 :COLOR_TRANSPARENT;
+        invoke %tmp.62 %tmp.63(%tmp.64, %tmp.66);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 296 4 ]
+        %tmp.67 = lgetv %dc;
+        symbol [ dc %tmp.67 296 4 6 ];
+        symbol [ drawRectangle %tmp.68 296 7 20 ];
+        %tmp.68 = getv function %tmp.67 :drawRectangle;
+        %tmp.69 = lgetv %chartLeft.6;
+        symbol [ chartLeft %tmp.69 296 21 30 ];
+        %tmp.70 = lgetv %chartTop.8;
+        symbol [ chartTop %tmp.70 296 32 40 ];
+        %tmp.71 = lgetv %chartWidth.10;
+        symbol [ chartWidth %tmp.71 296 42 52 ];
+        %tmp.72 = lgetv %chartHeight.11;
+        symbol [ chartHeight %tmp.72 296 54 65 ];
+        invoke %tmp.67 %tmp.68(%tmp.69, %tmp.70, %tmp.71, %tmp.72);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 298 4 ]
+        for @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_test @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_incr @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_init:
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_begin" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_end" ]
+        %i.24 = local;
+        symbol [ i %i.24 298 13 14 ];
+        %tmp.73 = 0;
+        lputv %i.24 %tmp.73;
+        symbol [ i %i.24 298 13 14 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_test:
+        %tmp.74 = lgetv %i.24;
+        symbol [ i %tmp.74 298 20 21 ];
+        %tmp.75 = lgetv %nLine.17;
+        symbol [ nLine %tmp.75 298 24 29 ];
+        %tmp.76 = lt %tmp.74 %tmp.75;
+        bf %tmp.76 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_begin:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_36_302_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 299 8 ]
+        %tmp.77 = lgetv %dc;
+        symbol [ dc %tmp.77 299 8 10 ];
+        symbol [ drawLine %tmp.78 299 11 19 ];
+        %tmp.78 = getv function %tmp.77 :drawLine;
+        %tmp.79 = lgetv %line1x1.19;
+        symbol [ line1x1 %tmp.79 299 20 27 ];
+        %tmp.80 = lgetv %lineY.23;
+        symbol [ lineY %tmp.80 299 29 34 ];
+        %tmp.81 = lgetv %line1x2.20;
+        symbol [ line1x2 %tmp.81 299 36 43 ];
+        %tmp.82 = lgetv %lineY.23;
+        symbol [ lineY %tmp.82 299 45 50 ];
+        invoke %tmp.77 %tmp.78(%tmp.79, %tmp.80, %tmp.81, %tmp.82);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 300 8 ]
+        %tmp.83 = lgetv %dc;
+        symbol [ dc %tmp.83 300 8 10 ];
+        symbol [ drawLine %tmp.84 300 11 19 ];
+        %tmp.84 = getv function %tmp.83 :drawLine;
+        %tmp.85 = lgetv %line2x1.21;
+        symbol [ line2x1 %tmp.85 300 20 27 ];
+        %tmp.86 = lgetv %lineY.23;
+        symbol [ lineY %tmp.86 300 29 34 ];
+        %tmp.87 = lgetv %line2x2.22;
+        symbol [ line2x2 %tmp.87 300 36 43 ];
+        %tmp.88 = lgetv %lineY.23;
+        symbol [ lineY %tmp.88 300 45 50 ];
+        invoke %tmp.83 %tmp.84(%tmp.85, %tmp.86, %tmp.87, %tmp.88);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 301 8 ]
+        %tmp.89 = lgetv %lineY.23;
+        symbol [ lineY %tmp.89 301 8 13 ];
+        %tmp.90 = lgetv %quarterChartHeight.12;
+        symbol [ quarterChartHeight %tmp.90 301 17 35 ];
+        %tmp.91 = add %tmp.89 %tmp.90;
+        lputv %lineY.23 %tmp.91;
+        symbol [ lineY %lineY.23 301 8 13 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_36_302_4_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_incr:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 298 ]
+        %tmp.94 = lgetv %i.24;
+        symbol [ i %tmp.94 298 31 32 ];
+        %tmp.95 = add %tmp.94 1;
+        lputv %i.24 %tmp.95;
+        symbol [ i %i.24 298 31 32 ];
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_test;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_298_4_302_4_for_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 304 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %app.25 = local;
+        symbol [ app %app.25 304 8 11 ];
+        %tmp.96 = self;
+        symbol [ getApp %tmp.97 304 14 20 ];
+        %tmp.97 = getv function %tmp.96 :getApp;
+        %tmp.98 = invoke %tmp.96 %tmp.97();
+        lputv %app.25 %tmp.98;
+        symbol [ app %app.25 304 8 11 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 305 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %idealMinCadence.26 = local;
+        symbol [ idealMinCadence %idealMinCadence.26 305 8 23 ];
+        %tmp.99 = lgetv %app.25;
+        symbol [ app %tmp.99 305 26 29 ];
+        symbol [ getMinCadence %tmp.100 305 30 43 ];
+        %tmp.100 = getv function %tmp.99 :getMinCadence;
+        %tmp.101 = invoke %tmp.99 %tmp.100();
+        lputv %idealMinCadence.26 %tmp.101;
+        symbol [ idealMinCadence %idealMinCadence.26 305 8 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 306 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %idealMaxCadence.27 = local;
+        symbol [ idealMaxCadence %idealMaxCadence.27 306 8 23 ];
+        %tmp.102 = lgetv %app.25;
+        symbol [ app %tmp.102 306 26 29 ];
+        symbol [ getMaxCadence %tmp.103 306 30 43 ];
+        %tmp.103 = getv function %tmp.102 :getMaxCadence;
+        %tmp.104 = invoke %tmp.102 %tmp.103();
+        lputv %idealMaxCadence.27 %tmp.104;
+        symbol [ idealMaxCadence %idealMaxCadence.27 306 8 23 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 307 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %cadenceHistory.28 = local;
+        symbol [ cadenceHistory %cadenceHistory.28 307 8 22 ];
+        %tmp.105 = lgetv %app.25;
+        symbol [ app %tmp.105 307 25 28 ];
+        symbol [ getCadenceHistory %tmp.106 307 29 46 ];
+        %tmp.106 = getv function %tmp.105 :getCadenceHistory;
+        %tmp.107 = invoke %tmp.105 %tmp.106();
+        lputv %cadenceHistory.28 %tmp.107;
+        symbol [ cadenceHistory %cadenceHistory.28 307 8 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 309 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %cadenceIndex.29 = local;
+        symbol [ cadenceIndex %cadenceIndex.29 309 8 20 ];
+        %tmp.108 = lgetv %app.25;
+        symbol [ app %tmp.108 309 23 26 ];
+        symbol [ getCadenceIndex %tmp.109 309 27 42 ];
+        %tmp.109 = getv function %tmp.108 :getCadenceIndex;
+        %tmp.110 = invoke %tmp.108 %tmp.109();
+        lputv %cadenceIndex.29 %tmp.110;
+        symbol [ cadenceIndex %cadenceIndex.29 309 8 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 310 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %cadenceCount.30 = local;
+        symbol [ cadenceCount %cadenceCount.30 310 8 20 ];
+        %tmp.111 = lgetv %app.25;
+        symbol [ app %tmp.111 310 23 26 ];
+        symbol [ getCadenceCount %tmp.112 310 27 42 ];
+        %tmp.112 = getv function %tmp.111 :getCadenceCount;
+        %tmp.113 = invoke %tmp.111 %tmp.112();
+        lputv %cadenceCount.30 %tmp.113;
+        symbol [ cadenceCount %cadenceCount.30 310 8 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 312 4 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_4_314_4_if_stmt:
+        %tmp.114 = lgetv %cadenceCount.30;
+        symbol [ cadenceCount %tmp.114 312 8 20 ];
+        %tmp.115 = 0;
+        %tmp.116 = eq %tmp.114 %tmp.115;
+        bf %tmp.116 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_4_314_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_4_314_4_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_27_314_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 313 8 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_27_314_4_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_4_314_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_312_4_314_4_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 317 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %selectedBars.31 = local;
+        symbol [ selectedBars %selectedBars.31 317 8 20 ];
+        %tmp.117 = lgetv %app.25;
+        symbol [ app %tmp.117 317 23 26 ];
+        symbol [ getChartBarCount %tmp.118 317 27 43 ];
+        %tmp.118 = getv function %tmp.117 :getChartBarCount;
+        %tmp.119 = invoke %tmp.117 %tmp.118();
+        lputv %selectedBars.31 %tmp.119;
+        symbol [ selectedBars %selectedBars.31 317 8 20 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 318 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %numBars.32 = local;
+        symbol [ numBars %numBars.32 318 8 15 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_begin:
+        %tmp.120 = lgetv %cadenceCount.30;
+        symbol [ cadenceCount %tmp.120 318 19 31 ];
+        %tmp.121 = lgetv %selectedBars.31;
+        symbol [ selectedBars %tmp.121 318 34 46 ];
+        %tmp.122 = lt %tmp.120 %tmp.121;
+        bf %tmp.122 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_else_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_true:
+        %tmp.123 = lgetv %cadenceCount.30;
+        symbol [ cadenceCount %tmp.123 318 50 62 ];
+        push %tmp.123;
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_else_false:
+        %tmp.124 = lgetv %selectedBars.31;
+        symbol [ selectedBars %tmp.124 318 65 77 ];
+        push %tmp.124;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_end:
+        %tmp.125 = phi [%tmp.122 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_begin] [%tmp.123 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_true] [%tmp.124 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_else_false] [%tmp.125 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_318_18_318_65_end];
+        lputv %numBars.32 %tmp.125;
+        symbol [ numBars %numBars.32 318 8 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 320 0 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_0_320_28_if_stmt:
+        %tmp.126 = lgetv %numBars.32;
+        symbol [ numBars %tmp.126 320 4 11 ];
+        %tmp.127 = 0;
+        %tmp.128 = lte %tmp.126 %tmp.127;
+        bf %tmp.128 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_0_320_28_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_0_320_28_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_18_320_28_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 320 20 ]
+        ret ?;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_18_320_28_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_0_320_28_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_320_0_320_28_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 322 0 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %barWidth.33 = local;
+        symbol [ barWidth %barWidth.33 322 4 12 ];
+        %tmp.129 = lgetv %barZoneWidth.15;
+        symbol [ barZoneWidth %tmp.129 322 16 28 ];
+        %tmp.130 = lgetv %numBars.32;
+        symbol [ numBars %tmp.130 322 31 38 ];
+        %tmp.131 = div %tmp.129 %tmp.130;
+        symbol [ toNumber %tmp.132 322 40 48 ];
+        %tmp.132 = getv function %tmp.131 :toNumber;
+        %tmp.133 = invoke %tmp.131 %tmp.132();
+        lputv %barWidth.33 %tmp.133;
+        symbol [ barWidth %barWidth.33 322 4 12 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 323 0 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_0_325_0_if_stmt:
+        %tmp.134 = lgetv %barWidth.33;
+        symbol [ barWidth %tmp.134 323 4 12 ];
+        %tmp.135 = 2;
+        %tmp.136 = lt %tmp.134 %tmp.135;
+        bf %tmp.136 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_0_325_0_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_0_325_0_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_18_325_0_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 324 4 ]
+        %tmp.137 = 2;
+        lputv %barWidth.33 %tmp.137;
+        symbol [ barWidth %barWidth.33 324 4 12 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_18_325_0_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_0_325_0_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_323_0_325_0_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 327 0 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop" ]
+        %startIndex.34 = local;
+        symbol [ startIndex %startIndex.34 327 4 14 ];
+        %tmp.138 = lgetv %cadenceIndex.29;
+        symbol [ cadenceIndex %tmp.138 327 18 30 ];
+        %tmp.139 = lgetv %numBars.32;
+        symbol [ numBars %tmp.139 327 33 40 ];
+        %tmp.140 = sub %tmp.138 %tmp.139;
+        symbol [ MAX_BARS %tmp.142 327 43 51 ];
+        %tmp.142 = getv ? :MAX_BARS;
+        %tmp.143 = add %tmp.140 %tmp.142;
+        symbol [ MAX_BARS %tmp.145 327 55 63 ];
+        %tmp.145 = getv ? :MAX_BARS;
+        %tmp.146 = mod %tmp.143 %tmp.145;
+        lputv %startIndex.34 %tmp.146;
+        symbol [ startIndex %startIndex.34 327 4 14 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 329 0 ]
+        for @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_test @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_incr @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_init:
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_begin" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_end" ]
+        %i.35 = local;
+        symbol [ i %i.35 329 9 10 ];
+        %tmp.147 = 0;
+        lputv %i.35 %tmp.147;
+        symbol [ i %i.35 329 9 10 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_test:
+        %tmp.148 = lgetv %i.35;
+        symbol [ i %tmp.148 329 16 17 ];
+        %tmp.149 = lgetv %numBars.32;
+        symbol [ numBars %tmp.149 329 20 27 ];
+        %tmp.150 = lt %tmp.148 %tmp.149;
+        bf %tmp.150 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_begin:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 330 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_stop" ]
+        %index.36 = local;
+        symbol [ index %index.36 330 8 13 ];
+        %tmp.151 = lgetv %startIndex.34;
+        symbol [ startIndex %tmp.151 330 17 27 ];
+        %tmp.152 = lgetv %i.35;
+        symbol [ i %tmp.152 330 30 31 ];
+        %tmp.153 = add %tmp.151 %tmp.152;
+        symbol [ MAX_BARS %tmp.155 330 35 43 ];
+        %tmp.155 = getv ? :MAX_BARS;
+        %tmp.156 = mod %tmp.153 %tmp.155;
+        lputv %index.36 %tmp.156;
+        symbol [ index %index.36 330 8 13 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 331 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_stop" ]
+        %cadence.37 = local;
+        symbol [ cadence %cadence.37 331 8 15 ];
+        %tmp.157 = lgetv %cadenceHistory.28;
+        symbol [ cadenceHistory %tmp.157 331 18 32 ];
+        %tmp.158 = lgetv %index.36;
+        symbol [ index %tmp.158 331 33 38 ];
+        %tmp.159 = agetv %tmp.157 %tmp.158;
+        lputv %cadence.37 %tmp.159;
+        symbol [ cadence %cadence.37 331 8 15 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 333 4 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_4_335_4_if_stmt:
+        %tmp.160 = lgetv %cadence.37;
+        symbol [ cadence %tmp.160 333 8 15 ];
+        %tmp.161 = null;
+        %tmp.162 = eq %tmp.160 %tmp.161;
+        bf %tmp.162 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_4_335_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_4_335_4_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_25_335_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 334 8 ]
+        %tmp.163 = 0;
+        lputv %cadence.37 %tmp.163;
+        symbol [ cadence %cadence.37 334 8 15 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_25_335_4_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_4_335_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_333_4_335_4_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 337 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_stop" ]
+        %barHeight.38 = local;
+        symbol [ barHeight %barHeight.38 337 8 17 ];
+        %tmp.164 = lgetv %cadence.37;
+        symbol [ cadence %tmp.164 337 22 29 ];
+        symbol [ MAX_CADENCE_DISPLAY %tmp.166 337 32 51 ];
+        %tmp.166 = getv ? :MAX_CADENCE_DISPLAY;
+        %tmp.167 = div %tmp.164 %tmp.166;
+        %tmp.168 = lgetv %chartHeight.11;
+        symbol [ chartHeight %tmp.168 337 55 66 ];
+        %tmp.169 = mul %tmp.167 %tmp.168;
+        symbol [ toNumber %tmp.170 337 68 76 ];
+        %tmp.170 = getv function %tmp.169 :toNumber;
+        %tmp.171 = invoke %tmp.169 %tmp.170();
+        lputv %barHeight.38 %tmp.171;
+        symbol [ barHeight %barHeight.38 337 8 17 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 338 4 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_4_340_0_if_stmt:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_8_338_35_begin:
+        %tmp.172 = lgetv %barHeight.38;
+        symbol [ barHeight %tmp.172 338 8 17 ];
+        %tmp.173 = 1;
+        %tmp.174 = lt %tmp.172 %tmp.173;
+        bf %tmp.174 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_4_340_0_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_25_338_35_true:
+        %tmp.175 = lgetv %cadence.37;
+        symbol [ cadence %tmp.175 338 25 32 ];
+        %tmp.176 = 0;
+        %tmp.177 = gt %tmp.175 %tmp.176;
+        push %tmp.177;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_25_338_35_end:
+        %tmp.178 = phi [%tmp.174 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_8_338_35_begin] [%tmp.177 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_25_338_35_true] [%tmp.178 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_25_338_35_end];
+        bf %tmp.178 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_4_340_0_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_4_340_0_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_38_340_0_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 339 4 ]
+        %tmp.179 = 1;
+        lputv %barHeight.38 %tmp.179;
+        symbol [ barHeight %barHeight.38 339 4 13 ];
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_38_340_0_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_4_340_0_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_338_4_340_0_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 342 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_stop" ]
+        %x.39 = local;
+        symbol [ x %x.39 342 8 9 ];
+        %tmp.180 = lgetv %barZoneLeft.13;
+        symbol [ barZoneLeft %tmp.180 342 12 23 ];
+        %tmp.181 = lgetv %i.35;
+        symbol [ i %tmp.181 342 26 27 ];
+        %tmp.182 = lgetv %barWidth.33;
+        symbol [ barWidth %tmp.182 342 30 38 ];
+        %tmp.183 = mul %tmp.181 %tmp.182;
+        %tmp.184 = add %tmp.180 %tmp.183;
+        lputv %x.39 %tmp.184;
+        symbol [ x %x.39 342 8 9 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 343 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_stop" ]
+        %y.40 = local;
+        symbol [ y %y.40 343 8 9 ];
+        %tmp.185 = lgetv %barZoneBottom.16;
+        symbol [ barZoneBottom %tmp.185 343 12 25 ];
+        %tmp.186 = lgetv %barHeight.38;
+        symbol [ barHeight %tmp.186 343 28 37 ];
+        %tmp.187 = sub %tmp.185 %tmp.186;
+        lputv %y.40 %tmp.187;
+        symbol [ y %y.40 343 8 9 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 345 4 ]
+        %tmp.188 = lgetv %dc;
+        symbol [ dc %tmp.188 345 4 6 ];
+        symbol [ setColor %tmp.189 345 7 15 ];
+        %tmp.189 = getv function %tmp.188 :setColor;
+        %tmp.190 = self;
+        symbol [ getCadenceZoneColor %tmp.191 345 16 35 ];
+        %tmp.191 = getv function %tmp.190 :getCadenceZoneColor;
+        %tmp.192 = lgetv %cadence.37;
+        symbol [ cadence %tmp.192 345 36 43 ];
+        %tmp.193 = lgetv %idealMinCadence.26;
+        symbol [ idealMinCadence %tmp.193 345 45 60 ];
+        %tmp.194 = lgetv %idealMaxCadence.27;
+        symbol [ idealMaxCadence %tmp.194 345 62 77 ];
+        %tmp.195 = invoke %tmp.190 %tmp.191(%tmp.192, %tmp.193, %tmp.194);
+        symbol [ Graphics %tmp.196 345 80 88 ];
+        %tmp.196 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.197 345 89 106 ];
+        %tmp.197 = getv %tmp.196 :COLOR_TRANSPARENT;
+        invoke %tmp.188 %tmp.189(%tmp.195, %tmp.197);
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 346 4 ]
+        %tmp.198 = lgetv %dc;
+        symbol [ dc %tmp.198 346 4 6 ];
+        symbol [ fillRectangle %tmp.199 346 7 20 ];
+        %tmp.199 = getv function %tmp.198 :fillRectangle;
+        %tmp.200 = lgetv %x.39;
+        symbol [ x %tmp.200 346 21 22 ];
+        %tmp.201 = lgetv %y.40;
+        symbol [ y %tmp.201 346 24 25 ];
+        %tmp.202 = lgetv %barWidth.33;
+        symbol [ barWidth %tmp.202 346 27 35 ];
+        %tmp.203 = 1;
+        %tmp.204 = sub %tmp.202 %tmp.203;
+        %tmp.205 = lgetv %barHeight.38;
+        symbol [ barHeight %tmp.205 346 41 50 ];
+        invoke %tmp.198 %tmp.199(%tmp.200, %tmp.201, %tmp.204, %tmp.205);
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_34_347_0_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_incr:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 329 ]
+        %tmp.208 = lgetv %i.35;
+        symbol [ i %tmp.208 329 29 30 ];
+        %tmp.209 = add %tmp.208 1;
+        lputv %i.35 %tmp.209;
+        symbol [ i %i.35 329 29 30 ];
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_test;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_329_0_347_0_for_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_266_41_349_0_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 351; @symbol_functiondef = [getCadenceZoneColor,351,13,32]; @symbol_param<0> = [cadence,351,33,40]; @symbol_param<0>_type<0> = [Number,351,44,50]; @symbol_param<1> = [idealMinCadence,351,52,67]; @symbol_param<1>_type<0> = [Number,351,71,77]; @symbol_param<2> = [idealMaxCadence,351,79,94]; @symbol_param<2>_type<0> = [Number,351,98,104]; @symbol_return<0> = [Number,351,109,115]; ]
+    function getCadenceZoneColor(cadence as Number, idealMinCadence as Number, idealMaxCadence as Number) as Number {
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_351_116_369_0_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 352 4 ]
+        [ "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_351_116_369_0_start" "W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_351_116_369_0_stop" ]
+        %colorThreshold.1 = local;
+        symbol [ colorThreshold %colorThreshold.1 352 8 22 ];
+        %tmp.1 = 20;
+        lputv %colorThreshold.1 %tmp.1;
+        symbol [ colorThreshold %colorThreshold.1 352 8 22 ];
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 354 4 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_4_366_4_if_stmt:
+        %tmp.2 = lgetv %cadence;
+        symbol [ cadence %tmp.2 354 8 15 ];
+        %tmp.3 = lgetv %idealMinCadence;
+        symbol [ idealMinCadence %tmp.3 354 18 33 ];
+        %tmp.4 = lt %tmp.2 %tmp.3;
+        bf %tmp.4 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_4_366_4_if_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_4_366_4_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_35_360_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 355 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_8_359_8_if_stmt:
+        %tmp.5 = lgetv %cadence;
+        symbol [ cadence %tmp.5 355 12 19 ];
+        %tmp.6 = lgetv %idealMinCadence;
+        symbol [ idealMinCadence %tmp.6 355 23 38 ];
+        %tmp.7 = lgetv %colorThreshold.1;
+        symbol [ colorThreshold %tmp.7 355 41 55 ];
+        %tmp.8 = sub %tmp.6 %tmp.7;
+        %tmp.9 = gte %tmp.5 %tmp.8;
+        bf %tmp.9 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_8_359_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_8_359_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_57_357_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 356 12 ]
+        symbol [ COLOR_BELOW_NEAR %tmp.11 356 19 35 ];
+        %tmp.11 = getv ? :COLOR_BELOW_NEAR;
+        ret %tmp.11;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_57_357_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_8_359_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_8_359_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_357_15_359_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 358 12 ]
+        symbol [ COLOR_BELOW_FAR %tmp.13 358 19 34 ];
+        %tmp.13 = getv ? :COLOR_BELOW_FAR;
+        ret %tmp.13;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_357_15_359_8_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_355_8_359_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_35_360_4_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_4_366_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_4_366_4_if_false:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 360 11 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_11_366_4_if_stmt:
+        %tmp.14 = lgetv %cadence;
+        symbol [ cadence %tmp.14 360 15 22 ];
+        %tmp.15 = lgetv %idealMaxCadence;
+        symbol [ idealMaxCadence %tmp.15 360 25 40 ];
+        %tmp.16 = gt %tmp.14 %tmp.15;
+        bf %tmp.16 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_11_366_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_11_366_4_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_42_366_4_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 361 8 ]
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_8_365_8_if_stmt:
+        %tmp.17 = lgetv %cadence;
+        symbol [ cadence %tmp.17 361 12 19 ];
+        %tmp.18 = lgetv %idealMaxCadence;
+        symbol [ idealMaxCadence %tmp.18 361 22 37 ];
+        %tmp.19 = lgetv %colorThreshold.1;
+        symbol [ colorThreshold %tmp.19 361 40 54 ];
+        %tmp.20 = add %tmp.18 %tmp.19;
+        %tmp.21 = lt %tmp.17 %tmp.20;
+        bf %tmp.21 @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_8_365_8_if_else_false;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_8_365_8_if_true:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_56_363_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 362 12 ]
+        symbol [ COLOR_ABOVE_NEAR %tmp.23 362 19 35 ];
+        %tmp.23 = getv ? :COLOR_ABOVE_NEAR;
+        ret %tmp.23;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_56_363_8_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_8_365_8_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_8_365_8_if_else_false:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_363_15_365_8_start:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 364 12 ]
+        symbol [ COLOR_ABOVE_FAR %tmp.25 364 19 34 ];
+        %tmp.25 = getv ? :COLOR_ABOVE_FAR;
+        ret %tmp.25;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_363_15_365_8_stop:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_361_8_365_8_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_42_366_4_stop:
+        goto @W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_11_366_4_if_end;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_360_11_366_4_if_end:
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_354_4_366_4_if_end:
+[ "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc" 368 4 ]
+        symbol [ COLOR_IN_ZONE %tmp.27 368 11 24 ];
+        %tmp.27 = getv ? :COLOR_IN_ZONE;
+        ret %tmp.27;
+W__Github_garmin_smartwatch_source_Views_AdvancedView_mc_351_116_369_0_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Views\AdvancedView.mc"; @line = 1; ]
+<init> {
+}

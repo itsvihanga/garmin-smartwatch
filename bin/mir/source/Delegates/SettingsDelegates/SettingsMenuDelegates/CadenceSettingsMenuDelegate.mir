@@ -1,0 +1,285 @@
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
+import Toybox.Application;
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 6; @symbol_classdef = [CadenceSettingsMenuDelegate,6,6,33]; @symbol_extends<0> = [WatchUi,6,42,49]; @symbol_extends<1> = [BehaviorDelegate,6,50,66]; ]
+class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; ]
+    function initialize() as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_8_26_10_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 9 8 ]
+        symbol [ BehaviorDelegate %tmp.2 9 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 9 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_8_26_10_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 13; @symbol_functiondef = [onBack,13,13,19]; @symbol_return<0> = [Boolean,13,25,32]; ]
+    function onBack() as Boolean {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_13_33_18_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 14 8 ]
+        symbol [ System %tmp.1 14 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 14 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "Back pressed: Returning to main view";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 16 8 ]
+        symbol [ WatchUi %tmp.4 16 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.5 16 16 24 ];
+        %tmp.5 = getv function %tmp.4 :pushView;
+        symbol [ SimpleView %tmp.9 16 29 39 ];
+        %tmp.9 = getv ? :SimpleView;
+        %tmp.6 = newc %tmp.9 ();
+        symbol [ SimpleViewDelegate %tmp.13 16 47 65 ];
+        %tmp.13 = getv ? :SimpleViewDelegate;
+        %tmp.10 = newc %tmp.13 ();
+        symbol [ WatchUi %tmp.14 16 69 76 ];
+        %tmp.14 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.15 16 77 87 ];
+        %tmp.15 = getv %tmp.14 :SLIDE_DOWN;
+        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 17 8 ]
+        %tmp.16 = true;
+        ret %tmp.16;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_13_33_18_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 21; @symbol_functiondef = [onSelect,21,13,21]; @symbol_return<0> = [Boolean,21,27,34]; ]
+    function onSelect() as Boolean {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_21_35_27_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 22 8 ]
+        symbol [ System %tmp.1 22 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 22 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "Select/Tap pressed: Opening cadence settings";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 25 8 ]
+        %tmp.4 = self;
+        symbol [ pushCadenceMenu %tmp.5 25 8 23 ];
+        %tmp.5 = getv function %tmp.4 :pushCadenceMenu;
+        invoke %tmp.4 %tmp.5();
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 26 8 ]
+        %tmp.6 = true;
+        ret %tmp.6;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_21_35_27_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 30; @symbol_functiondef = [onNextPage,30,13,23]; @symbol_return<0> = [Boolean,30,29,36]; ]
+    function onNextPage() as Boolean {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_30_37_37_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 31 8 ]
+        symbol [ System %tmp.1 31 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 31 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "Down button pressed";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 34 8 ]
+        symbol [ WatchUi %tmp.4 34 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.5 34 16 24 ];
+        %tmp.5 = getv function %tmp.4 :pushView;
+        symbol [ BarChartSettingsMenuView %tmp.9 34 29 53 ];
+        %tmp.9 = getv ? :BarChartSettingsMenuView;
+        %tmp.6 = newc %tmp.9 ();
+        symbol [ BarChartSettingsMenuDelegate %tmp.13 34 61 89 ];
+        %tmp.13 = getv ? :BarChartSettingsMenuDelegate;
+        %tmp.10 = newc %tmp.13 ();
+        symbol [ WatchUi %tmp.14 34 93 100 ];
+        %tmp.14 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.15 34 101 109 ];
+        %tmp.15 = getv %tmp.14 :SLIDE_UP;
+        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 36 8 ]
+        %tmp.16 = true;
+        ret %tmp.16;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_30_37_37_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 40; @symbol_functiondef = [onPreviousPage,40,13,27]; @symbol_return<0> = [Boolean,40,33,40]; ]
+    function onPreviousPage() as Boolean {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_40_41_47_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 41 8 ]
+        symbol [ System %tmp.1 41 8 14 ];
+        %tmp.1 = getm $.Toybox.System;
+        symbol [ println %tmp.2 41 15 22 ];
+        %tmp.2 = getv function %tmp.1 :println;
+        %tmp.3 = "Up button pressed";
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 44 8 ]
+        symbol [ WatchUi %tmp.4 44 8 15 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.5 44 16 24 ];
+        %tmp.5 = getv function %tmp.4 :pushView;
+        symbol [ ProfileSettingsMenuView %tmp.9 44 29 52 ];
+        %tmp.9 = getv ? :ProfileSettingsMenuView;
+        %tmp.6 = newc %tmp.9 ();
+        symbol [ ProfileSettingsMenuDelegate %tmp.13 44 60 87 ];
+        %tmp.13 = getv ? :ProfileSettingsMenuDelegate;
+        %tmp.10 = newc %tmp.13 ();
+        symbol [ WatchUi %tmp.14 44 91 98 ];
+        %tmp.14 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.15 44 99 109 ];
+        %tmp.15 = getv %tmp.14 :SLIDE_DOWN;
+        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 46 8 ]
+        %tmp.16 = true;
+        ret %tmp.16;
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_40_41_47_4_stop:
+    }
+    [ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 50; @symbol_functiondef = [pushCadenceMenu,50,13,28]; ]
+    function pushCadenceMenu() as Void {
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_start:
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 53 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 53 12 15 ];
+        symbol [ Application %tmp.1 53 18 29 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.2 53 30 36 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = as %tmp.3 GarminApp;
+        symbol [ GarminApp %tmp.4 53 42 51 ];
+        lputv %app.1 %tmp.4;
+        symbol [ app %app.1 53 12 15 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 54 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_stop" ]
+        %minCadence.2 = local;
+        symbol [ minCadence %minCadence.2 54 12 22 ];
+        %tmp.5 = lgetv %app.1;
+        symbol [ app %tmp.5 54 25 28 ];
+        symbol [ getMinCadence %tmp.6 54 29 42 ];
+        %tmp.6 = getv function %tmp.5 :getMinCadence;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        lputv %minCadence.2 %tmp.7;
+        symbol [ minCadence %minCadence.2 54 12 22 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 55 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_stop" ]
+        %maxCadence.3 = local;
+        symbol [ maxCadence %maxCadence.3 55 12 22 ];
+        %tmp.8 = lgetv %app.1;
+        symbol [ app %tmp.8 55 25 28 ];
+        symbol [ getMaxCadence %tmp.9 55 29 42 ];
+        %tmp.9 = getv function %tmp.8 :getMaxCadence;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %maxCadence.3 %tmp.10;
+        symbol [ maxCadence %maxCadence.3 55 12 22 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 57 8 ]
+        [ "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_start" "W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_stop" ]
+        %menu.4 = local;
+        symbol [ menu %menu.4 57 12 16 ];
+        symbol [ WatchUi %tmp.13 57 23 30 ];
+        %tmp.13 = getm $.Toybox.WatchUi;
+        symbol [ Menu2 %tmp.14 57 31 36 ];
+        %tmp.14 = getv function ? %tmp.13 :Menu2;
+        %tmp.15 = newd 1;
+        %tmp.17 = const :title;
+        symbol [ title %tmp.17 58 13 18 const ];
+        symbol [ Lang %tmp.18 58 22 26 ];
+        %tmp.18 = getm $.Toybox.Lang;
+        symbol [ format %tmp.19 58 27 33 ];
+        %tmp.19 = getv function %tmp.18 :format;
+        %tmp.20 = "Cadence: $1$ - $2$";
+        %tmp.21 = newa 2;
+        %tmp.22 = lgetv %minCadence.2;
+        symbol [ minCadence %tmp.22 58 57 67 ];
+        %tmp.23 = dup %tmp.21;
+        %tmp.24 = aputv %tmp.23 0 %tmp.22;
+        %tmp.25 = lgetv %maxCadence.3;
+        symbol [ maxCadence %tmp.25 58 69 79 ];
+        %tmp.26 = dup %tmp.24;
+        %tmp.27 = aputv %tmp.26 1 %tmp.25;
+        %tmp.28 = invoke %tmp.18 %tmp.19(%tmp.20, %tmp.27);
+        %tmp.29 = dup %tmp.15;
+        %tmp.30 = aputv %tmp.29 %tmp.17 %tmp.28;
+        %tmp.11 = newc %tmp.14 (%tmp.30);
+        lputv %menu.4 %tmp.11;
+        symbol [ menu %menu.4 57 12 16 ];
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 61 8 ]
+        %tmp.31 = lgetv %menu.4;
+        symbol [ menu %tmp.31 61 8 12 ];
+        symbol [ addItem %tmp.32 61 13 20 ];
+        %tmp.32 = getv function %tmp.31 :addItem;
+        symbol [ WatchUi %tmp.35 61 25 32 ];
+        %tmp.35 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.36 61 33 41 ];
+        %tmp.36 = getv function ? %tmp.35 :MenuItem;
+        symbol [ WatchUi %tmp.37 61 42 49 ];
+        %tmp.37 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.38 61 50 62 ];
+        %tmp.38 = getv function %tmp.37 :loadResource;
+        symbol [ Rez %tmp.40 61 63 66 ];
+        %tmp.40 = getv ? :Rez;
+        symbol [ Strings %tmp.41 61 67 74 ];
+        %tmp.41 = getv %tmp.40 :Strings;
+        symbol [ menu_set_min %tmp.42 61 75 87 ];
+        %tmp.42 = getv %tmp.41 :menu_set_min;
+        %tmp.43 = invoke %tmp.37 %tmp.38(%tmp.42);
+        %tmp.44 = null;
+        %tmp.46 = const :item_set_min;
+        symbol [ item_set_min %tmp.46 61 97 109 const ];
+        %tmp.47 = null;
+        %tmp.33 = newc %tmp.36 (%tmp.43, %tmp.44, %tmp.46, %tmp.47);
+        invoke %tmp.31 %tmp.32(%tmp.33);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 62 8 ]
+        %tmp.48 = lgetv %menu.4;
+        symbol [ menu %tmp.48 62 8 12 ];
+        symbol [ addItem %tmp.49 62 13 20 ];
+        %tmp.49 = getv function %tmp.48 :addItem;
+        symbol [ WatchUi %tmp.52 62 25 32 ];
+        %tmp.52 = getm $.Toybox.WatchUi;
+        symbol [ MenuItem %tmp.53 62 33 41 ];
+        %tmp.53 = getv function ? %tmp.52 :MenuItem;
+        symbol [ WatchUi %tmp.54 62 42 49 ];
+        %tmp.54 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.55 62 50 62 ];
+        %tmp.55 = getv function %tmp.54 :loadResource;
+        symbol [ Rez %tmp.57 62 63 66 ];
+        %tmp.57 = getv ? :Rez;
+        symbol [ Strings %tmp.58 62 67 74 ];
+        %tmp.58 = getv %tmp.57 :Strings;
+        symbol [ menu_set_max %tmp.59 62 75 87 ];
+        %tmp.59 = getv %tmp.58 :menu_set_max;
+        %tmp.60 = invoke %tmp.54 %tmp.55(%tmp.59);
+        %tmp.61 = null;
+        %tmp.63 = const :item_set_max;
+        symbol [ item_set_max %tmp.63 62 97 109 const ];
+        %tmp.64 = null;
+        %tmp.50 = newc %tmp.53 (%tmp.60, %tmp.61, %tmp.63, %tmp.64);
+        invoke %tmp.48 %tmp.49(%tmp.50);
+[ "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc" 64 8 ]
+        symbol [ WatchUi %tmp.65 64 8 15 ];
+        %tmp.65 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.66 64 16 24 ];
+        %tmp.66 = getv function %tmp.65 :pushView;
+        %tmp.67 = lgetv %menu.4;
+        symbol [ menu %tmp.67 64 25 29 ];
+        symbol [ SelectCadenceDelegate %tmp.71 64 35 56 ];
+        %tmp.71 = getv ? :SelectCadenceDelegate;
+        %tmp.72 = lgetv %menu.4;
+        symbol [ menu %tmp.72 64 57 61 ];
+        %tmp.68 = newc %tmp.71 (%tmp.72);
+        symbol [ WatchUi %tmp.73 64 64 71 ];
+        %tmp.73 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_LEFT %tmp.74 64 72 82 ];
+        %tmp.74 = getv %tmp.73 :SLIDE_LEFT;
+        invoke %tmp.65 %tmp.66(%tmp.67, %tmp.68, %tmp.74);
+W__Github_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_CadenceSettingsMenuDelegate_mc_50_39_66_4_stop:
+    }
+}
+[ @file = "W:\Github\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\CadenceSettingsMenuDelegate.mc"; @line = 1; ]
+<init> {
+}
