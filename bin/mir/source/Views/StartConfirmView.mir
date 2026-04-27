@@ -1,55 +1,55 @@
-[ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
 import Toybox.Graphics;
-[ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 3; @symbol_usingdef<0> = [Rez,3,6,9]; ]
+[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 3; @symbol_usingdef<0> = [Rez,3,6,9]; ]
 using Rez;
-[ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 5; @symbol_classdef = [StartConfirmView,5,6,22]; @symbol_extends<0> = [WatchUi,5,31,38]; @symbol_extends<1> = [View,5,39,43]; ]
+[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 5; @symbol_classdef = [StartConfirmView,5,6,22]; @symbol_extends<0> = [WatchUi,5,31,38]; @symbol_extends<1> = [View,5,39,43]; ]
 class StartConfirmView extends WatchUi.View {
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 5; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 5; ]
     <init> {
     }
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 5; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 5; ]
     static
     <init> {
     }
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 7; @position = 16; @symbol_vardef = [_selectedOption,7,16,31]; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 7; @position = 16; @symbol_vardef = [_selectedOption,7,16,31]; ]
     private
     var _selectedOption = 0;
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
     function initialize() as Void {
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_9_26_11_4_start:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 10 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_9_26_11_4_start:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 10 8 ]
         symbol [ View %tmp.2 10 8 12 ];
         %tmp.2 = getv ? :View;
         symbol [ initialize %tmp.3 10 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_9_26_11_4_stop:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_9_26_11_4_stop:
     }
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 13; @symbol_functiondef = [setSelectedOption,13,13,30]; @symbol_param<0> = [value,13,31,36]; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 13; @symbol_functiondef = [setSelectedOption,13,13,30]; @symbol_param<0> = [value,13,31,36]; ]
     function setSelectedOption(value) {
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_13_38_15_4_start:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 14 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_13_38_15_4_start:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 14 8 ]
         %tmp.1 = lgetv %value;
         symbol [ value %tmp.1 14 26 31 ];
         symbol [ _selectedOption ? 14 8 23 ];
         putv self :_selectedOption %tmp.1;
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_13_38_15_4_stop:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_13_38_15_4_stop:
     }
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 17; @symbol_functiondef = [getSelectedOption,17,13,30]; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 17; @symbol_functiondef = [getSelectedOption,17,13,30]; ]
     function getSelectedOption() {
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_17_33_19_4_start:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 18 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_17_33_19_4_start:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 18 8 ]
         symbol [ _selectedOption %tmp.2 18 15 30 ];
         %tmp.2 = getv ? :_selectedOption;
         ret %tmp.2;
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_17_33_19_4_stop:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_17_33_19_4_stop:
     }
-    [ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 21; @symbol_functiondef = [onUpdate,21,13,21]; @symbol_param<0> = [dc,21,22,24]; ]
+    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 21; @symbol_functiondef = [onUpdate,21,13,21]; @symbol_param<0> = [dc,21,22,24]; ]
     function onUpdate(dc) {
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 23 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 23 8 ]
         %tmp.1 = lgetv %dc;
         symbol [ dc %tmp.1 23 8 10 ];
         symbol [ setColor %tmp.2 23 11 19 ];
@@ -63,14 +63,14 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         symbol [ COLOR_BLACK %tmp.6 23 57 68 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 24 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 24 8 ]
         %tmp.7 = lgetv %dc;
         symbol [ dc %tmp.7 24 8 10 ];
         symbol [ clear %tmp.8 24 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 26 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 26 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %width.1 = local;
         symbol [ width %width.1 26 12 17 ];
         %tmp.9 = lgetv %dc;
@@ -80,8 +80,8 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.11 = invoke %tmp.9 %tmp.10();
         lputv %width.1 %tmp.11;
         symbol [ width %width.1 26 12 17 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 28 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 28 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %tickIcon.2 = local;
         symbol [ tickIcon %tickIcon.2 28 12 20 ];
         symbol [ WatchUi %tmp.12 28 23 30 ];
@@ -97,8 +97,8 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.17 = invoke %tmp.12 %tmp.13(%tmp.16);
         lputv %tickIcon.2 %tmp.17;
         symbol [ tickIcon %tickIcon.2 28 12 20 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 29 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 29 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %crossIcon.3 = local;
         symbol [ crossIcon %crossIcon.3 29 12 21 ];
         symbol [ WatchUi %tmp.18 29 24 31 ];
@@ -114,8 +114,8 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.23 = invoke %tmp.18 %tmp.19(%tmp.22);
         lputv %crossIcon.3 %tmp.23;
         symbol [ crossIcon %crossIcon.3 29 12 21 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 30 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 30 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %recIcon.4 = local;
         symbol [ recIcon %recIcon.4 30 12 19 ];
         symbol [ WatchUi %tmp.24 30 22 29 ];
@@ -131,7 +131,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.29 = invoke %tmp.24 %tmp.25(%tmp.28);
         lputv %recIcon.4 %tmp.29;
         symbol [ recIcon %recIcon.4 30 12 19 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 33 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 33 8 ]
         %tmp.30 = lgetv %dc;
         symbol [ dc %tmp.30 33 8 10 ];
         symbol [ setColor %tmp.31 33 11 19 ];
@@ -145,7 +145,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         symbol [ COLOR_TRANSPARENT %tmp.35 33 51 68 ];
         %tmp.35 = getv %tmp.34 :COLOR_TRANSPARENT;
         invoke %tmp.30 %tmp.31(%tmp.33, %tmp.35);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 36 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 36 8 ]
         %tmp.36 = lgetv %dc;
         symbol [ dc %tmp.36 36 8 10 ];
         symbol [ drawBitmap %tmp.37 36 11 21 ];
@@ -160,7 +160,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.44 = lgetv %recIcon.4;
         symbol [ recIcon %tmp.44 36 42 49 ];
         invoke %tmp.36 %tmp.37(%tmp.42, %tmp.43, %tmp.44);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 38 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 38 8 ]
         %tmp.45 = lgetv %dc;
         symbol [ dc %tmp.45 38 8 10 ];
         symbol [ drawText %tmp.46 38 11 19 ];
@@ -180,7 +180,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         symbol [ TEXT_JUSTIFY_CENTER %tmp.55 38 90 109 ];
         %tmp.55 = getv %tmp.54 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.45 %tmp.46(%tmp.49, %tmp.50, %tmp.52, %tmp.53, %tmp.55);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 39 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 39 8 ]
         %tmp.56 = lgetv %dc;
         symbol [ dc %tmp.56 39 8 10 ];
         symbol [ drawText %tmp.57 39 11 19 ];
@@ -200,22 +200,22 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         symbol [ TEXT_JUSTIFY_CENTER %tmp.66 39 93 112 ];
         %tmp.66 = getv %tmp.65 :TEXT_JUSTIFY_CENTER;
         invoke %tmp.56 %tmp.57(%tmp.60, %tmp.61, %tmp.63, %tmp.64, %tmp.66);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 41 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 41 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %yesY.5 = local;
         symbol [ yesY %yesY.5 41 12 16 ];
         %tmp.67 = 220;
         lputv %yesY.5 %tmp.67;
         symbol [ yesY %yesY.5 41 12 16 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 42 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 42 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %noY.6 = local;
         symbol [ noY %noY.6 42 12 15 ];
         %tmp.68 = 280;
         lputv %noY.6 %tmp.68;
         symbol [ noY %noY.6 42 12 15 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 45 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 45 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %pointerX.7 = local;
         symbol [ pointerX %pointerX.7 45 12 20 ];
         %tmp.69 = lgetv %width.1;
@@ -226,8 +226,8 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.73 = sub %tmp.71 %tmp.72;
         lputv %pointerX.7 %tmp.73;
         symbol [ pointerX %pointerX.7 45 12 20 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 47 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 47 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %iconX.8 = local;
         symbol [ iconX %iconX.8 47 12 17 ];
         %tmp.74 = lgetv %width.1;
@@ -238,8 +238,8 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.78 = sub %tmp.76 %tmp.77;
         lputv %iconX.8 %tmp.78;
         symbol [ iconX %iconX.8 47 12 17 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 49 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 49 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %textX.9 = local;
         symbol [ textX %textX.9 49 12 17 ];
         %tmp.79 = lgetv %width.1;
@@ -250,14 +250,14 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.83 = add %tmp.81 %tmp.82;
         lputv %textX.9 %tmp.83;
         symbol [ textX %textX.9 49 12 17 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 51 8 ]
-        [ "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 51 8 ]
+        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop" ]
         %iconOffsetY.10 = local;
         symbol [ iconOffsetY %iconOffsetY.10 51 12 23 ];
         %tmp.84 = 14;
         lputv %iconOffsetY.10 %tmp.84;
         symbol [ iconOffsetY %iconOffsetY.10 51 12 23 ];
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 55 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 55 8 ]
         %tmp.85 = lgetv %dc;
         symbol [ dc %tmp.85 55 8 10 ];
         symbol [ setColor %tmp.86 55 11 19 ];
@@ -271,7 +271,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         symbol [ COLOR_TRANSPARENT %tmp.90 55 51 68 ];
         %tmp.90 = getv %tmp.89 :COLOR_TRANSPARENT;
         invoke %tmp.85 %tmp.86(%tmp.88, %tmp.90);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 58 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 58 8 ]
         %tmp.91 = lgetv %dc;
         symbol [ dc %tmp.91 58 8 10 ];
         symbol [ drawBitmap %tmp.92 58 11 21 ];
@@ -286,7 +286,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.97 = lgetv %tickIcon.2;
         symbol [ tickIcon %tmp.97 58 49 57 ];
         invoke %tmp.91 %tmp.92(%tmp.93, %tmp.96, %tmp.97);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 60 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 60 8 ]
         %tmp.98 = lgetv %dc;
         symbol [ dc %tmp.98 60 8 10 ];
         symbol [ drawText %tmp.99 60 11 19 ];
@@ -310,16 +310,16 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_start:
         %tmp.108 = getv %tmp.107 :TEXT_JUSTIFY_VCENTER;
         %tmp.109 = bitor %tmp.106 %tmp.108;
         invoke %tmp.98 %tmp.99(%tmp.100, %tmp.101, %tmp.103, %tmp.104, %tmp.109);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 63 8 ]
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_stmt:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 63 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_stmt:
         symbol [ _selectedOption %tmp.111 63 12 27 ];
         %tmp.111 = getv ? :_selectedOption;
         %tmp.112 = 0;
         %tmp.113 = eq %tmp.111 %tmp.112;
-        bf %tmp.113 @W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end;
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_true:
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_34_66_8_start:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 64 12 ]
+        bf %tmp.113 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end;
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_true:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_34_66_8_start:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 64 12 ]
         %tmp.114 = lgetv %dc;
         symbol [ dc %tmp.114 64 12 14 ];
         symbol [ setColor %tmp.115 64 15 23 ];
@@ -333,7 +333,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_34_66_8_start:
         symbol [ COLOR_TRANSPARENT %tmp.119 64 55 72 ];
         %tmp.119 = getv %tmp.118 :COLOR_TRANSPARENT;
         invoke %tmp.114 %tmp.115(%tmp.117, %tmp.119);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 65 12 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 65 12 ]
         %tmp.120 = lgetv %dc;
         symbol [ dc %tmp.120 65 12 14 ];
         symbol [ drawText %tmp.121 65 15 23 ];
@@ -357,10 +357,10 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_34_66_8_start:
         %tmp.130 = getv %tmp.129 :TEXT_JUSTIFY_VCENTER;
         %tmp.131 = bitor %tmp.128 %tmp.130;
         invoke %tmp.120 %tmp.121(%tmp.122, %tmp.123, %tmp.125, %tmp.126, %tmp.131);
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_34_66_8_stop:
-        goto @W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end;
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 69 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_34_66_8_stop:
+        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end;
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 69 8 ]
         %tmp.132 = lgetv %dc;
         symbol [ dc %tmp.132 69 8 10 ];
         symbol [ setColor %tmp.133 69 11 19 ];
@@ -374,7 +374,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end:
         symbol [ COLOR_TRANSPARENT %tmp.137 69 51 68 ];
         %tmp.137 = getv %tmp.136 :COLOR_TRANSPARENT;
         invoke %tmp.132 %tmp.133(%tmp.135, %tmp.137);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 72 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 72 8 ]
         %tmp.138 = lgetv %dc;
         symbol [ dc %tmp.138 72 8 10 ];
         symbol [ drawBitmap %tmp.139 72 11 21 ];
@@ -389,7 +389,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end:
         %tmp.144 = lgetv %crossIcon.3;
         symbol [ crossIcon %tmp.144 72 48 57 ];
         invoke %tmp.138 %tmp.139(%tmp.140, %tmp.143, %tmp.144);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 74 8 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 74 8 ]
         %tmp.145 = lgetv %dc;
         symbol [ dc %tmp.145 74 8 10 ];
         symbol [ drawText %tmp.146 74 11 19 ];
@@ -413,16 +413,16 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_63_8_66_8_if_end:
         %tmp.155 = getv %tmp.154 :TEXT_JUSTIFY_VCENTER;
         %tmp.156 = bitor %tmp.153 %tmp.155;
         invoke %tmp.145 %tmp.146(%tmp.147, %tmp.148, %tmp.150, %tmp.151, %tmp.156);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 77 8 ]
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_stmt:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 77 8 ]
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_stmt:
         symbol [ _selectedOption %tmp.158 77 12 27 ];
         %tmp.158 = getv ? :_selectedOption;
         %tmp.159 = 1;
         %tmp.160 = eq %tmp.158 %tmp.159;
-        bf %tmp.160 @W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_end;
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_true:
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_34_80_8_start:
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 78 12 ]
+        bf %tmp.160 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_end;
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_true:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_34_80_8_start:
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 78 12 ]
         %tmp.161 = lgetv %dc;
         symbol [ dc %tmp.161 78 12 14 ];
         symbol [ setColor %tmp.162 78 15 23 ];
@@ -436,7 +436,7 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_34_80_8_start:
         symbol [ COLOR_TRANSPARENT %tmp.166 78 53 70 ];
         %tmp.166 = getv %tmp.165 :COLOR_TRANSPARENT;
         invoke %tmp.161 %tmp.162(%tmp.164, %tmp.166);
-[ "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc" 79 12 ]
+[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc" 79 12 ]
         %tmp.167 = lgetv %dc;
         symbol [ dc %tmp.167 79 12 14 ];
         symbol [ drawText %tmp.168 79 15 23 ];
@@ -460,12 +460,12 @@ W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_34_80_8_start:
         %tmp.177 = getv %tmp.176 :TEXT_JUSTIFY_VCENTER;
         %tmp.178 = bitor %tmp.175 %tmp.177;
         invoke %tmp.167 %tmp.168(%tmp.169, %tmp.170, %tmp.172, %tmp.173, %tmp.178);
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_34_80_8_stop:
-        goto @W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_end;
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_end:
-W__Github_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_34_80_8_stop:
+        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_end;
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_77_8_80_8_if_end:
+C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_StartConfirmView_mc_21_26_81_4_stop:
     }
 }
-[ @file = "W:\Github\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 1; ]
+[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\StartConfirmView.mc"; @line = 1; ]
 <init> {
 }
