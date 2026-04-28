@@ -22,6 +22,7 @@ class GarminApp extends Application.AppBase {
     const PROP_CHART_DURATION = "chartDuration";
     const PROP_MIN_CADENCE = "minCadence";
     const PROP_MAX_CADENCE = "maxCadence";
+    const PROP_VIBRATION_ENABLED = "vibrationEnabled";
 
     var globalTimer;
     var activitySession; // Garmin activity recording session
@@ -35,12 +36,12 @@ class GarminApp extends Application.AppBase {
     
     private var _sessionState as SessionState = IDLE;
     
-    enum {
-        FifteenminChart = 3,
-        ThirtyminChart = 6, 
-        OneHourChart = 13,
-        TwoHourChart = 26
-    }
+   enum {
+    FifteenminChart = 5,    // was 3
+    ThirtyminChart = 10,    // was 6 
+    OneHourChart = 20,      // was 13
+    TwoHourChart = 40       // was 26
+}
 
     const CHART_ENUM_NAMES = {
         FifteenminChart => "15 Minutes",
@@ -61,14 +62,15 @@ class GarminApp extends Application.AppBase {
         Other
     }
 
-    private var _userHeight = 170;
-    private var _userSpeed = 10;
-    private var _experienceLvl = Beginner;
-    private var _userGender = Male;
-    private var _chartDuration = ThirtyminChart as Number;
+    var _userHeight = 170;
+    var _userSpeed = 10.0;
+    var _experienceLvl = 1.00;
+    var _userGender = 0;
+    var _chartDuration = ThirtyminChart as Number;
+    private var _vibrationEnabled = true;
 
-    private var _idealMinCadence = 120;
-    private var _idealMaxCadence = 150;
+    var _idealMinCadence = 120;
+    var _idealMaxCadence = 150;
 
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
     private var _cadenceIndex = 0;
@@ -106,7 +108,7 @@ class GarminApp extends Application.AppBase {
         //Logger.logMemoryStats("Startup");
         
         // Load saved settings from persistent storage
-        //loadSettings();
+        loadSettings();
         
         globalTimer = new Timer.Timer();
         globalTimer.start(method(:updateCadenceBarAvg),1000,true);
@@ -127,6 +129,7 @@ class GarminApp extends Application.AppBase {
         }
         
         //Logger.logMemoryStats("Shutdown");
+        saveSettings();
     }
 
     function startRecording() as Void {
@@ -283,33 +286,66 @@ class GarminApp extends Application.AppBase {
     //     // resetSession();
     // }
 
-    function saveSession() as Void {
+    // function saveSession() as Void {
 
-    if (_sessionState != STOPPED) {
-        System.println("[INFO] Cannot save - session not stopped");
-        return;
-    }
+    // if (_sessionState != STOPPED) {
+    //     System.println("[INFO] Cannot save - session not stopped");
+    //     return;
+    // }
 
-    System.println("[INFO] Saving activity session");
+    // System.println("[INFO] Saving activity session");
     
-    if (activitySession != null) {
-        activitySession.save();
-        activitySession = null;
-    }
+    // if (activitySession != null) {
+    //     activitySession.save();
+    //     activitySession = null;
+    // }
 
-    // 🔥 STORE DATA HERE
-    if (_sessionStartTime != null) {
-        _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
-    }
+    // // 🔥 STORE DATA HERE
+    // if (_sessionStartTime != null) {
+    //     _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
+    // }
 
-    // Distance & HR already captured in captureActivityMetrics()
+    // // Distance & HR already captured in captureActivityMetrics()
 
-    System.println("[SAVE] Duration stored: " + _sessionDuration);
-    System.println("[SAVE] Distance stored: " + _sessionDistance);
+    // System.println("[SAVE] Duration stored: " + _sessionDuration);
+    // System.println("[SAVE] Distance stored: " + _sessionDistance);
 
-    // ❌ REMOVE RESET HERE
-    // resetSession();
-    }
+    // // ❌ REMOVE RESET HERE
+    // // resetSession();
+    // }
+
+        function saveSession() as Void {
+
+            if (_sessionState != STOPPED) {
+                System.println("[INFO] Cannot save - session not stopped");
+                return;
+            }
+
+            System.println("[INFO] Saving activity session");
+            
+            if (activitySession != null) {
+                activitySession.save();
+                activitySession = null;
+            }
+
+            // // STORE DATA
+            // if (_sessionStartTime != null) {
+            //     _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
+            // }
+            if (_sessionDuration == null) {
+            System.println("[WARN] No duration captured");
+            }
+
+            System.println("[SAVE] Duration stored: " + _sessionDuration);
+            System.println("[SAVE] Distance stored: " + _sessionDistance);
+
+           
+           // resetSession();
+
+            System.println("[INFO] Ready for summary view");
+        }
+
+
 
     function discardSession() as Void {
         if (_sessionState != STOPPED) {
@@ -345,6 +381,8 @@ class GarminApp extends Application.AppBase {
         _sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
+        _sessionDuration = null;
+        _sessionDistance = null;
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -636,6 +674,13 @@ class GarminApp extends Application.AppBase {
         return _idealMinCadence;
     }
     
+        function getVibrationEnabled() as Boolean {
+        return _vibrationEnabled;
+    }
+
+    function setVibrationEnabled(enabled as Boolean) as Void {
+        _vibrationEnabled = enabled;
+    }
     function getMaxCadence() as Number {
         return _idealMaxCadence;    
     }
@@ -662,20 +707,46 @@ class GarminApp extends Application.AppBase {
         return _cadenceCount;
     }
 
-    function setChartDuration(value as Number) as Void {
+ function setChartDuration(value as Number) as Void {
     _chartDuration = value;
 
-    // Reset rolling average buffer to match new duration
+    // reset averaging buffer
     _cadenceBarAvg = new [_chartDuration];
     _cadenceAvgIndex = 0;
     _cadenceAvgCount = 0;
 
-    System.println(CHART_ENUM_NAMES[_chartDuration] + " selected.");
+    // reset visible chart history too
+    _cadenceHistory = new [MAX_BARS];
+    _cadenceIndex = 0;
+    _cadenceCount = 0;
+
+    saveSettings();
+
+    System.println("Chart changed to: " + getChartDuration());
+    System.println("Bar count set to: " + _chartDuration.toString());
 }
     
-    function getChartDuration() as String{
-        return CHART_ENUM_NAMES[_chartDuration];
+   function getChartDuration() as String {
+    if (_chartDuration == 5) {
+        return "15 min";
+    } else if (_chartDuration == 10) {
+        return "30 min";
+    } else if (_chartDuration == 20) {
+        return "1 hour";
+    } else if (_chartDuration == 40) {
+        return "2 hours";
+    } else if (_chartDuration == 3) {
+        return "15 min";
+    } else if (_chartDuration == 6) {
+        return "30 min";
+    } else if (_chartDuration == 13) {
+        return "1 hour";
+    } else if (_chartDuration == 26) {
+        return "2 hours";
     }
+
+    return "Unknown";
+}
     
     function getUserGender() as String {
         return _userGender;
@@ -743,6 +814,56 @@ class GarminApp extends Application.AppBase {
     function getSessionDuration() {
     return _sessionDuration;
     }
+
+// --- SETTINGS MANAGEMENT ---
+
+    function saveSettings() {
+    var s = Application.Storage;
+    // Logic Guard for Cadence
+    if (_idealMaxCadence <= _idealMinCadence) { _idealMaxCadence = _idealMinCadence + 5; }
+
+    s.setValue("cad_min", _idealMinCadence);
+    s.setValue("cad_max", _idealMaxCadence);
+    s.setValue("u_height", _userHeight);
+    s.setValue("u_speed", _userSpeed);
+    s.setValue("u_exp", _experienceLvl);
+    s.setValue("u_gen", _userGender);
+    s.setValue("u_dur", _chartDuration);
+    
+    System.println("--- DISK SYNC COMPLETE ---");
+}
+
+function loadSettings() {
+    var s = Application.Storage;
+    var val;
+
+    val = s.getValue("cad_min"); if (val != null) { _idealMinCadence = val; }
+    val = s.getValue("cad_max"); if (val != null) { _idealMaxCadence = val; }
+    val = s.getValue("u_height"); if (val != null) { _userHeight = val; }
+    val = s.getValue("u_speed"); if (val != null) { _userSpeed = val; }
+    val = s.getValue("u_exp"); if (val != null) { _experienceLvl = val; }
+    val = s.getValue("u_gen"); if (val != null) { _userGender = val; }
+val = s.getValue("u_dur");
+if (val != null) {
+    if (val == 3) {
+        _chartDuration = 5;
+    } else if (val == 6) {
+        _chartDuration = 10;
+    } else if (val == 13) {
+        _chartDuration = 20;
+    } else if (val == 26) {
+        _chartDuration = 40;
+    } else {
+        _chartDuration = val;
+    }
+}
+
+_cadenceBarAvg = new [_chartDuration];
+_cadenceAvgIndex = 0;
+_cadenceAvgCount = 0;
+
+    System.println("[LOADED] G:" + _userGender + " | S:" + _userSpeed + " | E:" + _experienceLvl );
+}
 
 
     // function getSessionDuration() as Number {

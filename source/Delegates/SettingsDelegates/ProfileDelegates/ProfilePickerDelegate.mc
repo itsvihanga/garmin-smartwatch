@@ -1,36 +1,36 @@
 import Toybox.WatchUi;
-import Toybox.System;
 import Toybox.Application;
-import Toybox.Lang;
 
 class ProfilePickerDelegate extends WatchUi.PickerDelegate {
+    private var _type;
 
-    private var _typeId;
-
-    function initialize(typeId) {
+    function initialize(type) {
         PickerDelegate.initialize();
-        _typeId = typeId;
+        _type = type;
     }
 
-    function onAccept(values as Array) as Boolean {
-        var pickedValue = values[0]; // Gets the "selected" value
-        
-        //var app = Application.getApp();
+    function onAccept(values) {
+        var app = Application.getApp() as GarminApp;
+        var selectedValue = values[0];
 
-        if (_typeId == :prof_height) {
-            System.println("Height Saved: " + pickedValue);
-            //app.setUserHeight(pickedValue);
-        }
-        else if (_typeId == :prof_speed) {
-             System.println("Speed Saved: " + pickedValue);
-             //app.setUserSpeed(pickedValue);
+        if (_type == :prof_height) {
+            app._userHeight = selectedValue;
+        } 
+        else if (_type == :prof_speed || _type == :profile_speed) { 
+            app._userSpeed = selectedValue;
+            System.println("Speed saved to App: " + selectedValue);
         }
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }
 
-    function onCancel() as Boolean {
+    function onCancel() {
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        return true; // This lets the watch know the "Back" event is handled
+    }
+
+    function onBack() {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
     }

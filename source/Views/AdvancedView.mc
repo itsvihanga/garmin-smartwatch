@@ -38,6 +38,7 @@ class AdvancedView extends WatchUi.View {
     function onShow() as Void {
         _simulationTimer = new Timer.Timer();
         _simulationTimer.start(method(:refreshScreen), 1000, true);
+        System.println("[AdvancedView] screen opened");
     }
 
     function onHide() as Void {
@@ -48,6 +49,7 @@ class AdvancedView extends WatchUi.View {
         // Reset alert state
         _alertStartTime = null;
         _lastAlertTime = 0;
+        _pendingSecondVibe = false;
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -72,40 +74,73 @@ function refreshScreen() as Void {
     WatchUi.requestUpdate();
 }
     
-    function checkPendingVibration() as Void {
-        if (_pendingSecondVibe) {
-            var currentTime = System.getTimer();
-            if (currentTime >= _secondVibeTime) {
-                // Trigger second vibration
-                if (Attention has :vibrate) {
-                    var vibeData = [new Attention.VibeProfile(50, 200)];
-                    Attention.vibrate(vibeData);
-                }
-                _pendingSecondVibe = false;
-            }
-        }
+
+   function checkPendingVibration() as Void {
+    if (!_pendingSecondVibe) {
+        return;
     }
+
+    // If user turned vibration off before second buzz plays, cancel it
+    if (!isHapticEnabled()) {
+        _pendingSecondVibe = false;
+        return;
+    }
+
+    var currentTime = System.getTimer();
+    if (currentTime >= _secondVibeTime) {
+        if (Attention has :vibrate) {
+            var vibeData = [new Attention.VibeProfile(50, 200)];
+            Attention.vibrate(vibeData);
+        }
+        _pendingSecondVibe = false;
+    }
+}
+
+    function isHapticEnabled() as Boolean {
+    var app = getApp();
+
+    // Change this getter name if your app uses a different one
+    if (app has :getVibrationEnabled) {
+        return app.getVibrationEnabled();
+    }
+
+    // Safe fallback if setting does not exist yet
+    return true;
+}
+
     
     function triggerSingleVibration() as Void {
-        if (Attention has :vibrate) {
-            var vibeData = [new Attention.VibeProfile(50, 200)];
-            Attention.vibrate(vibeData);
-        }
+    if (!isHapticEnabled()) {
+        return;
     }
+
+    if (Attention has :vibrate) {
+        var vibeData = [new Attention.VibeProfile(50, 200)];
+        Attention.vibrate(vibeData);
+    }
+}
     
     function triggerDoubleVibration() as Void {
-        if (Attention has :vibrate) {
-            // First vibration
-            var vibeData = [new Attention.VibeProfile(50, 200)];
-            Attention.vibrate(vibeData);
-            
-            // Schedule second vibration after 240ms
-            _pendingSecondVibe = true;
-            _secondVibeTime = System.getTimer() + 240;
-        }
+    if (!isHapticEnabled()) {
+        _pendingSecondVibe = false;
+        return;
     }
+
+    if (Attention has :vibrate) {
+        // First vibration
+        var vibeData = [new Attention.VibeProfile(50, 200)];
+        Attention.vibrate(vibeData);
+
+        // Schedule second vibration after 240ms
+        _pendingSecondVibe = true;
+        _secondVibeTime = System.getTimer() + 240;
+    }
+}
     
     function checkAndTriggerAlerts() as Void {
+        var app = Application.getApp();
+        var isVibrationOn = app.getVibrationEnabled();
+
         // Only check if we're in an alert period
         if (_alertStartTime == null) {
             return;
@@ -126,16 +161,38 @@ function refreshScreen() as Void {
         if (timeSinceLastAlert >= _alertInterval) {
             _lastAlertTime = currentTime;
             
-            // Trigger the appropriate vibration
+            // Trigger the appropriate vibration and popup menu
             if (_lastZoneState == -1) {
-                triggerSingleVibration();
+            // push the popup alert 
+                WatchUi.pushView(
+                    new CadenceAlertView("Increase Cadence", isVibrationOn),
+                    new CadenceAlertDelegate(),
+                    WatchUi.SLIDE_IMMEDIATE
+                );
+                // if vibrations is on, trigger the vibration for the alert
+                if (isVibrationOn){
+                    triggerSingleVibration();
+                }
             } else if (_lastZoneState == 1) {
-                triggerDoubleVibration();
+                WatchUi.pushView(
+                    new CadenceAlertView("Increase Cadence", isVibrationOn),
+                    new CadenceAlertDelegate(),
+                    WatchUi.SLIDE_IMMEDIATE
+                );
+                if (isVibrationOn){
+                    triggerDoubleVibration();
+                }
             }
         }
     }
     
     function checkCadenceZone() as Void {
+
+// Alert mappings:
+// - Below target cadence  -> single vibration
+// - Above target cadence  -> double vibration
+// - Back inside zone      -> stop alert cycle
+
         var info = Activity.getActivityInfo();
         var app = getApp();
         var minZone = app.getMinCadence();
@@ -246,11 +303,11 @@ function refreshScreen() as Void {
         dc.drawText(width / 2, cadenceRangeY, Graphics.FONT_XTINY, zoneText, Graphics.TEXT_JUSTIFY_CENTER);
 
         drawChart(dc);
+    var string  = app.getChartDuration();
 
-        var string  = app.getChartDuration();
+    dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
+    dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
 
-        dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width / 2, chartDurationY, Graphics.FONT_XTINY, "Last " + string, Graphics.TEXT_JUSTIFY_CENTER);
     }
 
 

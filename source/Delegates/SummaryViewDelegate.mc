@@ -8,18 +8,36 @@ class SummaryViewDelegate extends WatchUi.BehaviorDelegate {
         BehaviorDelegate.initialize();
     }
 
-    // SELECT or any key to dismiss and return to SimpleView
+    // // SELECT or any key to dismiss and return to SimpleView
+    // function onSelect() as Boolean {
+    //     System.println("[SUMMARY] Returning to main view");
+    //     // switches view to the simple view (restarting the app from the beginning)
+    //     WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+    //     return true;
+    // }
+
     function onSelect() as Boolean {
-        System.println("[SUMMARY] Returning to main view");
-        // switches view to the simple view (restarting the app from the beginning)
-        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
-        return true;
+    System.println("[SUMMARY] Returning to main view");
+
+    var app = getApp();
+    app.resetSession(); // RESET HERE
+
+    WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+    return true;
     }
 
     
+    // function onBack() as Boolean {  
+    //     WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+    //     return true;
+    // }
+
     function onBack() as Boolean {  
-        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
-        return true;
+    var app = getApp();
+    app.resetSession(); // RESET HERE
+
+    WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+    return true;
     }
 
     // Swipe left to dismiss

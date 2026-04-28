@@ -6,11 +6,14 @@ import Toybox.Graphics;
 
 class SelectProfileDelegate extends WatchUi.Menu2InputDelegate { 
 
-    //private var _menu as WatchUi.Menu2;
+    private var _menu as WatchUi.Menu2;
 
     function initialize(menu as WatchUi.Menu2) {
         Menu2InputDelegate.initialize();
-        //_menu = menu;
+        _menu = menu;
+        
+        // 1. REVERT TITLE: Remove the speed from here
+        _menu.setTitle("Profile Settings"); 
     }
 
     function onSelect(item) as Void {
@@ -40,10 +43,8 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     function heightPicker() as Void {
-        //var app = Application.getApp();
-        //var currentHeight = app.getUserHeight();
-        var currentHeight = null;
-        if (currentHeight == null) { currentHeight = 175; } // Default 175 cm
+        var app = Application.getApp();
+        var currentHeight = app.getUserHeight();
 
         var factory = new ProfilePickerFactory(100, 250, 1, {:label=>" cm"});
 
@@ -58,21 +59,32 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     }
 
     function speedPicker() as Void {
-        //var app = Application.getApp();
-        //var currentSpeed = app.getUserSpeed();
-        var currentSpeed = null;
-        if (currentSpeed == null) { currentSpeed = 10; } // Default 10 km/h
+    // 1. Get the real app instance and the saved speed
+    var app = Application.getApp() as GarminApp;
+    var currentSpeed = app._userSpeed;
 
-                var factory = new ProfilePickerFactory(5, 30, 1, {:label=>" km/h"});
+    // 2. Safety Check: If the app just installed and storage is empty
+    if (currentSpeed == null) { 
+        currentSpeed = 10; 
+    }
 
-        var picker = new WatchUi.Picker({
-            :title => new WatchUi.Text({:text=>"Set Speed", :locX=>WatchUi.LAYOUT_HALIGN_CENTER, :locY=>WatchUi.LAYOUT_VALIGN_BOTTOM, :color=>Graphics.COLOR_WHITE}),
-            :pattern => [factory],
-            :defaults => [factory.getIndex(currentSpeed)]
-        });
+    // 3. Initialize the factory with your range (5 to 30)
+    // Note: Ensure your factory constructor saves 5 as '_start' and 1 as '_increment'
+    var factory = new ProfilePickerFactory(5, 30, 1, {:label=>" km/h"});
 
-        WatchUi.pushView(picker, new ProfilePickerDelegate(:prof_speed), WatchUi.SLIDE_LEFT);
+    var picker = new WatchUi.Picker({
+        :title => new WatchUi.Text({
+            :text=>"Set Speed", 
+            :locX=>WatchUi.LAYOUT_HALIGN_CENTER, 
+            :locY=>WatchUi.LAYOUT_VALIGN_BOTTOM, 
+            :color=>Graphics.COLOR_WHITE
+        }),
+        :pattern => [factory],
+        // 4. CALL YOUR GETINDEX: This maps '17' to the correct scroll position
+        :defaults => [factory.getIndex(currentSpeed)]
+    });
 
+    WatchUi.pushView(picker, new ProfilePickerDelegate(:prof_speed), WatchUi.SLIDE_LEFT);
     }
 
     function experienceMenu() as Void {

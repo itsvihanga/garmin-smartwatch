@@ -14,32 +14,36 @@ class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
         Menu2InputDelegate.initialize();
         _menu = menu;
 
-                // need if statements to display experiencelvl string instead of float values
-        var newTitle = Lang.format("Gender: $1$", [gender]);
-        
-        // This updates the UI when the cadence is changed
-        _menu.setTitle(newTitle);
+        var currentGender = app._userGender;
+        var genderLabel = "Other";
+
+        if (currentGender == 0) {
+            genderLabel = "Male";
+            // Focus the first item
+            _menu.setFocus(0); 
+        } else if (currentGender == 1) {
+            genderLabel = "Female";
+            // Focus the second item
+            _menu.setFocus(1); 
+        } else {
+            _menu.setFocus(2);
+        }
+
+        _menu.setTitle("Gender: " + genderLabel);
     }
 
-    function onSelect(item) as Void {
-
+    function onSelect(item) {
+        System.println("DEBUG: I clicked on " + item.getId());
         var id = item.getId();
-        
-        //Try to change cadence range based off menu selection
-        if (id == :user_male){
-            System.println("User Gender: Male");
-            //app.setUserGender("Male");
-        } 
-        else if (id == :user_female){
-            System.println("User Gender: Female");
-            //app.setUserGender("Female");
-        } 
-        else if (id == :user_other){
-            System.println("User Gender: Other");
-            //app.setUserGender("Other");
-        } else {System.println("ERROR");}
+        var app = Application.getApp() as GarminApp;
 
+        if (id == :user_male) { app._userGender = 0; }
+        else if (id == :user_female) { app._userGender = 1; }
+        else { app._userGender = 2; }
+
+        System.println("Gender updated to: " + app._userGender);
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
+        //return true;
     }
 
     function onMenuItem(item as Symbol) as Void {}

@@ -12,19 +12,12 @@ class BarChartSettingsMenuView extends WatchUi.View {
         // Makes screen black and clears it
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-
-        // gets screen dimensions
-        var width = dc.getWidth();
-        var height = dc.getHeight();
-
+        var centerX = dc.getWidth() / 2;
+        var centerY = dc.getHeight() / 2;
+        var lineSpacing = 50; // Adjust this based on font size
         // draws "Settings" text in the center of the screen
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            width / 2,
-            height / 2,
-            Graphics.FONT_MEDIUM,
-            "Change bar chart length",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
+        dc.drawText(centerX, centerY - (lineSpacing/2), Graphics.FONT_MEDIUM, "Change", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX, centerY + (lineSpacing/2), Graphics.FONT_MEDIUM, "Bar Chart Length", Graphics.TEXT_JUSTIFY_CENTER);
     }
 }

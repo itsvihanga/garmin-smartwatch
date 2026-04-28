@@ -5,52 +5,91 @@ import Toybox.Application;
 
 class AdvancedViewDelegate extends WatchUi.BehaviorDelegate { 
 
+    private var _upPressStartTime = 0;
+    private var _lastUpReleaseTime = 0;
+    private var _doubleClickThreshold = 600;
+    private var _longPressThreshold = 800;
+
     function initialize(view as AdvancedView) {
         BehaviorDelegate.initialize();
     }
 
+    function getTimeMs() as Number {
+        return System.getTimer();
+    }
+
     function onMenu() as Boolean {
-        // Create programmatic Menu2 instead of XML-based menu
-        var app = Application.getApp() as GarminApp;
-        var minCadence = app.getMinCadence();
-        var maxCadence = app.getMaxCadence();
-        
-        var menu = new WatchUi.Menu2({
-            :title => Lang.format("Cadence: $1$ - $2$", [minCadence, maxCadence])
-        });
-        
-        menu.addItem(new WatchUi.MenuItem("Set Min Cadence", null, :item_set_min, null));
-        menu.addItem(new WatchUi.MenuItem("Set Max Cadence", null, :item_set_max, null));
-        
-        WatchUi.pushView(menu, new SelectCadenceDelegate(menu), WatchUi.SLIDE_BLINK);
-        
+        // Open settings menu from advanced view long press UP
+        pushSettingsView();
+        _lastUpReleaseTime = 0; 
         return true;
     }
 
-    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
+    function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
         var key = keyEvent.getKey();
 
-        // Scroll down to SimpleView (completing the loop)
-        if(key == WatchUi.KEY_DOWN) {
-            WatchUi.switchToView(
-                new SimpleView(),
-                new SimpleViewDelegate(),
-                WatchUi.SLIDE_DOWN
-            );
-            return true;
-        }
-        
-        // UP button - Back to SimpleView
         if (key == WatchUi.KEY_UP) {
-            WatchUi.switchToView(
-                new SimpleView(),
-                new SimpleViewDelegate(),
-                WatchUi.SLIDE_UP
-            );
+            _upPressStartTime = getTimeMs();
             return true;
         }
 
         return false;
+    }
+
+    function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
+        var key = keyEvent.getKey();
+        var currentTime = getTimeMs();
+
+        if (key == WatchUi.KEY_UP) {
+            var pressDuration = currentTime - _upPressStartTime;
+
+            // 1. IS IT A LONG PRESS?
+            if (pressDuration >= _longPressThreshold) {
+                System.println("[AdvancedView] Long press UP -> Settings");
+                pushSettingsView();
+                _lastUpReleaseTime = 0; 
+                return true;
+            }
+
+            // 2. IS IT A DOUBLE CLICK?
+            if (_lastUpReleaseTime != 0 && (currentTime - _lastUpReleaseTime) < _doubleClickThreshold) {
+                System.println("[AdvancedView] Double click UP -> Vibration Toggle");
+                toggleVibration();
+                _lastUpReleaseTime = 0; 
+                return true;
+            }
+
+            // 3. IT IS A SINGLE CLICK (Wait for double, or let them swipe/press down to leave)
+            System.println("[AdvancedView] Single click UP -> Waiting for double...");
+            _lastUpReleaseTime = currentTime;
+            return true;
+        }
+
+        // HANDLE DOWN BUTTON (Single click to go back to SimpleView)
+        if (key == WatchUi.KEY_DOWN) {
+            pushSimpleView();
+            return true;
+        }
+
+        return false;
+    }
+
+    function toggleVibration() as Void {
+        var app = Application.getApp() as GarminApp;
+        
+        var enabled = app.getVibrationEnabled();
+        var newEnabled = !enabled;
+        
+        app.setVibrationEnabled(newEnabled);
+
+        System.println("[AdvancedView] Vibration toggled: " + newEnabled.toString());
+
+        // Push the VibrationView using the boolean (since your initialize expects true/false)
+        WatchUi.pushView(
+            new VibrationView(newEnabled),
+            new WatchUi.BehaviorDelegate(), // basic delegate so it can auto-close or be backed out of
+            WatchUi.SLIDE_IMMEDIATE
+        );
     }
 
     function onSwipe(swipeEvent as WatchUi.SwipeEvent) as Boolean {
@@ -59,7 +98,7 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
         // Swipe DOWN - Back to SimpleView
         if (direction == WatchUi.SWIPE_DOWN) {
             System.println("[UI] Swiped down to SimpleView");
-            WatchUi.popView(WatchUi.SLIDE_UP);
+            pushSimpleView();
             return true;
         }
 
@@ -73,17 +112,15 @@ class AdvancedViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onBack() as Boolean {
-        // Back button disabled - no input
+        pushSimpleView();
         return true;
     }
 
     function pushSettingsView() as Void {
-        var settingsMenu = new WatchUi.Menu2({ :title => "Settings" });
-        settingsMenu.addItem(new WatchUi.MenuItem("Profile", null, :set_profile, null));
-        settingsMenu.addItem(new WatchUi.MenuItem("Customization", null, :cust_options, null));
-        settingsMenu.addItem(new WatchUi.MenuItem("Feedback", null, :feedback_options, null));
-        settingsMenu.addItem(new WatchUi.MenuItem("Cadence Range", null, :cadence_range, null));
+        WatchUi.switchToView(new SettingsView(), new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
+    }
 
-        WatchUi.pushView(settingsMenu, new SettingsMenuDelegate(), WatchUi.SLIDE_UP);
+    function pushSimpleView() as Void {
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_UP);
     }
 }

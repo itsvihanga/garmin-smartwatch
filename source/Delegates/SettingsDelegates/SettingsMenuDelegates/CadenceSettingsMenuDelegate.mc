@@ -19,10 +19,12 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the SELECT/START button (or screen tap)
     function onSelect() as Boolean {
-        System.println("Select/Tap pressed: Opening cadence settings");
-        
-        // Push the cadence settings
-        pushCadenceMenu();
+        System.println("Select pressed: Opening CadenceMinView");
+        WatchUi.switchToView(
+            new CadenceMinView(),
+            new CadenceMinDelegate(),
+            WatchUi.SLIDE_UP
+        );
         return true;
     }
 
@@ -41,7 +43,7 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
-        WatchUi.pushView(new ProfileSettingsMenuView(), new ProfileSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.pushView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
         
         return true; 
     }
