@@ -18,7 +18,6 @@ jobs:
           - fenix7x
           - fr165
           - fr165m
-          - fr235
           - fr245
           - fr255
           - fr255m
