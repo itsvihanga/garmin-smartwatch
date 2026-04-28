@@ -1,0 +1,73 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: Build (${{ matrix.device }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        device:
+          - fenix7
+          - fenix7pro
+          - fenix7s
+          - fenix7x
+          - fr165
+          - fr165m
+          - fr235
+          - fr245
+          - fr255
+          - fr255m
+          - fr255s
+          - fr255sm
+          - fr265
+          - fr265s
+          - fr955
+          - vivoactive5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Connect IQ SDK
+        id: sdk-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/connectiq-sdk
+          key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
+
+      - name: Install Connect IQ SDK
+        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        run: |
+          wget -q "${{ secrets.CIQ_SDK_URL }}" -O /tmp/ciq-sdk.zip
+          mkdir -p ~/connectiq-sdk
+          unzip -q /tmp/ciq-sdk.zip -d ~/connectiq-sdk
+
+      - name: Add SDK to PATH
+        run: |
+          MONKEYC_BIN=$(find ~/connectiq-sdk -name "monkeyc" | head -1 | xargs dirname)
+          echo "$MONKEYC_BIN" >> $GITHUB_PATH
+
+      - name: Write developer key
+        run: echo "${{ secrets.DEVELOPER_KEY_B64 }}" | base64 --decode > developer_key.der
+
+      - name: Build
+        run: |
+          mkdir -p bin
+          monkeyc \
+            -o bin/garminsmartwatch_${{ matrix.device }}.prg \
+            -f monkey.jungle \
+            -y developer_key.der \
+            -d ${{ matrix.device }} \
+            --release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.device }}
+          path: bin/garminsmartwatch_${{ matrix.device }}.prg
+          retention-days: 30
