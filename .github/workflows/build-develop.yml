@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - develop
-      - 'feature/**'
-  pull_request:
-    branches:
-      - develop
 
 jobs:
   build:
@@ -23,7 +19,6 @@ jobs:
           - fenix7x
           - fr165
           - fr165m
-          - fr235
           - fr245
           - fr255
           - fr255m
@@ -56,13 +51,6 @@ jobs:
         run: |
           MONKEYC_BIN=$(find ~/connectiq-sdk -name "monkeyc" | head -1 | xargs dirname)
           echo "$MONKEYC_BIN" >> $GITHUB_PATH
-
-      - name: Download device definitions
-        run: |
-          SDK_DIR=$(find ~/connectiq-sdk -name "monkeyc" | head -1 | xargs dirname | xargs dirname)
-          mkdir -p $SDK_DIR/devices
-          wget -q "https://developer.garmin.com/downloads/connect-iq/devices/${{ matrix.device }}.zip" -O /tmp/device.zip
-          unzip -q /tmp/device.zip -d $SDK_DIR/devices || true
 
       - name: Write developer key
         run: echo "${{ secrets.DEVELOPER_KEY_B64 }}" | base64 --decode > developer_key.der
