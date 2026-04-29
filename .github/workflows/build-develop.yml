@@ -13,21 +13,7 @@ jobs:
       fail-fast: false
       matrix:
         device:
-          - fenix7
-          - fenix7pro
-          - fenix7s
-          - fenix7x
-          - fr165
-          - fr165m
-          - fr245
-          - fr255
-          - fr255m
-          - fr255s
-          - fr255sm
-          - fr265
-          - fr265s
-          - fr955
-          - vivoactive5
+          - venu2
 
     steps:
       - name: Checkout
