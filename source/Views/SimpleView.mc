@@ -192,8 +192,8 @@ class SimpleView extends WatchUi.View {
         }
 
         // Show whether current cadence is inside configured zone
-        var minZone = getApp().getMinCadence();
-        var maxZone = getApp().getMaxCadence();
+        var minZone = getApp().getCalculatedMinCadence();
+        var maxZone = getApp().getCalculatedMaxCadence();
         var zoneText = "";
         if (info != null && info.currentCadence != null) {
             var c = info.currentCadence;

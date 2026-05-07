@@ -13,7 +13,7 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     function onBack() as Boolean {
         System.println("Back pressed: Returning to main view");
 
-        WatchUi.pushView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
         return true;
     }
 
@@ -30,7 +30,7 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Down button pressed");
         
         // Push the cadence settings view
-        WatchUi.pushView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
         
         return true; 
     }
@@ -40,7 +40,7 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
-        WatchUi.pushView(new BarChartSettingsMenuView(), new BarChartSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new BarChartSettingsMenuView(), new BarChartSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
         
         return true; 
     }
