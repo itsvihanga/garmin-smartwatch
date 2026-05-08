@@ -100,7 +100,7 @@ function onUpdate(dc as Dc) as Void {
     drawRow(dc, width, startY + gap, timeStr, _iconTime, "TIME");
     drawRow(dc, width, startY + gap * 2, paceStr, _iconDistance, "PACE");
     drawRow(dc, width, startY + gap * 3, cadenceStr, _iconCadence, "CADENCE");
-    drawRow(dc, width, startY + gap * 4, cqStr + "%", _iconSteps, "QUALITY");
+    drawRow(dc, width, startY + gap * 4, cqStr , _iconSteps, "QUALITY");
     drawRow(dc, width, startY + gap * 5, km.format("%.2f") + " km", _iconDistance, "DISTANCE");
 
 

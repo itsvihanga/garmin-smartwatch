@@ -414,31 +414,28 @@ class GarminApp extends Application.AppBase {
         }
     }
 
-    function updateCadenceBarAvg() as Void {
-        // CRITICAL: Only collect data when RECORDING
-        if (_sessionState != RECORDING) { 
-            return;
-        }
-      
-        var info = Activity.getActivityInfo();
-    
-        if (info != null && info.currentCadence != null) {
-            var newCadence = info.currentCadence;
-            _cadenceBarAvg[_cadenceAvgIndex] = newCadence.toFloat();
-            _cadenceAvgIndex = (_cadenceAvgIndex + 1) % _chartDuration;
-            if (_cadenceAvgCount < _chartDuration) { 
-                _cadenceAvgCount++; 
-            }
-            else {
-                var barAvg = 0.0;
-                for(var i = 0; i < _chartDuration; i++){
-                    barAvg += _cadenceBarAvg[i];
-                }
-                updateCadenceHistory(barAvg / _chartDuration);
-                _cadenceAvgCount = 0;
-            }
-        }
+   function updateCadenceBarAvg() as Void {
+    if (_sessionState != RECORDING) { 
+        return;
     }
+
+    var info = Activity.getActivityInfo();
+
+    if (info == null) {
+        System.println("[DEBUG] Activity info is null");
+        return;
+    }
+
+   if (info.currentCadence == null) {
+    System.println("[DEBUG] currentCadence is null - using test cadence 100");
+    updateCadenceHistory(100.0);
+    return;
+}
+
+    System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
+
+    updateCadenceHistory(info.currentCadence.toFloat());
+}
 
     function updateCadenceHistory(newCadence as Float) as Void {
         _cadenceHistory[_cadenceIndex] = newCadence;
@@ -949,13 +946,13 @@ _cadenceAvgCount = 0;
         return Activity.getActivityInfo() != null;
     }
 
-    function getfinalQC() as String{
-        if (_finalCQ == null) {
-            return "N/A";
-        }else{
-            return _finalCQ.toString() + "%";
-        }
+   function getfinalQC() as String {
+    if (_finalCQ == null) {
+        return "N/A";
+    } else {
+        return _finalCQ.format("%d") + "%";
     }
+}
 
     // Activity metrics getters
     /*
