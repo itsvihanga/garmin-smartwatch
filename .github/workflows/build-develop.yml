@@ -52,6 +52,10 @@ jobs:
         run: |
           MONKEYC_BIN=$(find ~/connectiq-sdk -name "monkeyc" | head -1 | xargs dirname)
           echo "$MONKEYC_BIN" >> $GITHUB_PATH
+          chmod +x "$MONKEYC_BIN/monkeyc"
+
+      - name: Verify SDK version
+        run: monkeyc --version
 
       - name: Write developer key
         run: echo "${{ secrets.DEVELOPER_KEY_B64 }}" | base64 --decode > developer_key.der
