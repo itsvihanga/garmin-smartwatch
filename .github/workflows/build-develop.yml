@@ -64,25 +64,45 @@ jobs:
           echo "value=${VER}" >> $GITHUB_OUTPUT
           echo "Connect IQ SDK: ${VER}"
 
+      - name: Show SDK structure (diagnostic)
+        run: |
+          echo "=== Top-level SDK contents ==="
+          ls "$HOME/connectiq-sdk/"
+          echo ""
+          SDK_ROOT=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs dirname | xargs dirname 2>/dev/null)
+          if [ -n "$SDK_ROOT" ]; then
+            echo "=== SDK root: $SDK_ROOT ==="
+            ls "$SDK_ROOT"
+          fi
+
       - name: Verify device support
         run: |
           DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
-          if [ -z "$DEVICES_DIR" ]; then
-            echo "::error title=SDK invalid::devices/ directory not found in SDK."
-            echo "::error::Your CIQ_SDK_URL must point to Connect IQ SDK 4.2.4 or later."
+          DEVICES_XML=$(find "$HOME/connectiq-sdk" -name "devices.xml" -type f | head -1)
+
+          if [ -n "$DEVICES_DIR" ]; then
+            echo "Found devices/ directory: $DEVICES_DIR"
+            REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
+            MISSING=()
+            for d in "${REQUIRED[@]}"; do
+              [[ ! -d "$DEVICES_DIR/$d" ]] && MISSING+=("$d")
+            done
+            if [[ ${#MISSING[@]} -gt 0 ]]; then
+              echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
+              echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+              exit 1
+            fi
+            echo "All 16 devices confirmed in SDK ${{ steps.version.outputs.value }} ✓"
+          elif [ -n "$DEVICES_XML" ]; then
+            echo "::error title=SDK too old::Your SDK uses the old devices.xml format (found at $DEVICES_XML)"
+            echo "::error::SDK ${{ steps.version.outputs.value }} is too old. Download SDK 4.2.4+ from developer.garmin.com/connect-iq/sdk and update CIQ_SDK_URL."
+            exit 1
+          else
+            echo "::error::No device definitions found at all. SDK extraction may have failed."
+            echo "=== Full SDK tree (debug) ==="
+            find "$HOME/connectiq-sdk" -maxdepth 4 | head -60
             exit 1
           fi
-          REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
-          MISSING=()
-          for d in "${REQUIRED[@]}"; do
-            [[ ! -d "$DEVICES_DIR/$d" ]] && MISSING+=("$d")
-          done
-          if [[ ${#MISSING[@]} -gt 0 ]]; then
-            echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
-            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
-            exit 1
-          fi
-          echo "All 16 devices confirmed in SDK ${{ steps.version.outputs.value }} ✓"
 
   # ── 2. Parallel builds — one job per device ──────────────────────────────────
   build:
