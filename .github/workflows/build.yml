@@ -31,7 +31,7 @@ jobs:
           SDK_URL: ${{ secrets.CIQ_SDK_URL }}
         run: |
           if [ -z "$SDK_URL" ]; then
-            echo "::error title=Missing secret::CIQ_SDK_URL is not configured."
+            echo "::error::CIQ_SDK_URL is not configured."
             exit 1
           fi
           wget -q --show-progress "$SDK_URL" -O /tmp/sdk.zip
@@ -40,13 +40,14 @@ jobs:
 
       - name: Add SDK to PATH
         run: |
-          BIN=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs dirname)
-          if [ -z "$BIN" ]; then
-            echo "::error::monkeyc binary not found. SDK may be corrupted."
+          MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
+          if [ -z "$MONKEYC" ]; then
+            echo "::error::monkeyc not found in $HOME/connectiq-sdk"
+            find "$HOME/connectiq-sdk" -maxdepth 4 | head -40
             exit 1
           fi
-          chmod +x "$BIN/monkeyc"
-          echo "$BIN" >> $GITHUB_PATH
+          chmod +x "$MONKEYC"
+          echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
 
       - name: Read SDK version
         id: version
@@ -58,22 +59,29 @@ jobs:
       - name: Verify device support
         run: |
           DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
-          if [ -z "$DEVICES_DIR" ]; then
-            echo "::error title=SDK invalid::devices/ directory not found."
+          DEVICES_XML=$(find "$HOME/connectiq-sdk" -name "devices.xml" -type f | head -1)
+
+          if [ -n "$DEVICES_DIR" ]; then
+            REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
+            MISSING=()
+            for d in "${REQUIRED[@]}"; do
+              [[ ! -d "$DEVICES_DIR/$d" ]] && MISSING+=("$d")
+            done
+            if [[ ${#MISSING[@]} -gt 0 ]]; then
+              echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
+              echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+              exit 1
+            fi
+            echo "All 16 devices confirmed ✓"
+          elif [ -n "$DEVICES_XML" ]; then
+            echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} uses old devices.xml format."
             echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
             exit 1
-          fi
-          REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
-          MISSING=()
-          for d in "${REQUIRED[@]}"; do
-            [[ ! -d "$DEVICES_DIR/$d" ]] && MISSING+=("$d")
-          done
-          if [[ ${#MISSING[@]} -gt 0 ]]; then
-            echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
-            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+          else
+            echo "::error::No device definitions found."
+            find "$HOME/connectiq-sdk" -maxdepth 4 | head -60
             exit 1
           fi
-          echo "All 16 devices confirmed ✓"
 
   # ── 2. Parallel builds ───────────────────────────────────────────────────────
   build:
@@ -106,16 +114,30 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Restore SDK cache
+        id: cache
         uses: actions/cache@v4
         with:
           path: ~/connectiq-sdk
           key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
 
+      - name: Install SDK (cache miss fallback)
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          SDK_URL: ${{ secrets.CIQ_SDK_URL }}
+        run: |
+          wget -q "$SDK_URL" -O /tmp/sdk.zip
+          mkdir -p "$HOME/connectiq-sdk"
+          unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
+
       - name: Add SDK to PATH
         run: |
-          BIN=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs dirname)
-          chmod +x "$BIN/monkeyc"
-          echo "$BIN" >> $GITHUB_PATH
+          MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
+          if [ -z "$MONKEYC" ]; then
+            echo "::error::monkeyc not found — SDK install failed."
+            exit 1
+          fi
+          chmod +x "$MONKEYC"
+          echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
 
       - name: Write developer key
         env:
@@ -149,7 +171,7 @@ jobs:
           path: bin/garminsmartwatch_${{ matrix.device }}.prg
           retention-days: 30
 
-  # ── 3. Build report ──────────────────────────────────────────────────────────
+  # ── 3. Report ────────────────────────────────────────────────────────────────
   report:
     name: Build Report
     runs-on: ubuntu-latest
@@ -175,7 +197,7 @@ jobs:
           | **Actor** | @${{ github.actor }} |
           | **Overall status** | **${BUILD_RESULT}** |
 
-          Artifacts are retained for **30 days**.
+          Artifacts retained for **30 days**.
           SUMMARY
 
       - name: Fail if builds failed
