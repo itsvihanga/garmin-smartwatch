@@ -55,7 +55,10 @@ jobs:
           chmod +x "$MONKEYC_BIN/monkeyc"
 
       - name: Verify SDK version
-        run: monkeyc --version
+        run: |
+          monkeyc --version
+          echo "--- Supported devices in this SDK ---"
+          ls "$(find ~/connectiq-sdk -name "devices" -type d | head -1)" 2>/dev/null || echo "ERROR: devices directory not found"
 
       - name: Write developer key
         run: echo "${{ secrets.DEVELOPER_KEY_B64 }}" | base64 --decode > developer_key.der
