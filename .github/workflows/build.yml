@@ -69,13 +69,13 @@ jobs:
             done
             if [[ ${#MISSING[@]} -gt 0 ]]; then
               echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
-              echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+              echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 9.1.0."
               exit 1
             fi
             echo "All 16 devices confirmed ✓"
           elif [ -n "$DEVICES_XML" ]; then
             echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} uses old devices.xml format."
-            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 9.1.0."
             exit 1
           else
             echo "::error::No device definitions found."

@@ -45,6 +45,16 @@ jobs:
           mkdir -p "$HOME/connectiq-sdk"
           unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
 
+          # Detect if the URL points to the SDK Manager instead of the actual SDK
+          if find "$HOME/connectiq-sdk" -name "sdkmanager" -type f | grep -q .; then
+            if ! find "$HOME/connectiq-sdk" -name "monkeyc" -type f | grep -q .; then
+              echo "::error title=Wrong URL::CIQ_SDK_URL points to the SDK Manager, not the SDK."
+              echo "::error::The SDK Manager is a GUI installer app — it does not contain monkeyc."
+              echo "::error::FIX: Open SDK Manager on your local machine, install SDK 9.1.0, zip the installed folder, upload to GitHub Releases, update CIQ_SDK_URL with that zip URL."
+              exit 1
+            fi
+          fi
+
       - name: Add SDK to PATH
         run: |
           MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
@@ -83,13 +93,13 @@ jobs:
             done
             if [[ ${#MISSING[@]} -gt 0 ]]; then
               echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
-              echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+              echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 9.1.0."
               exit 1
             fi
             echo "All 16 devices confirmed in SDK ${{ steps.version.outputs.value }} ✓"
           elif [ -n "$DEVICES_XML" ]; then
             echo "::error title=SDK too old::SDK uses old devices.xml format — version ${{ steps.version.outputs.value }} is too old."
-            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
+            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 9.1.0."
             exit 1
           else
             echo "::error::No device definitions found. SDK extraction may have failed."

@@ -82,7 +82,7 @@ jobs:
             fi
             echo "All 16 devices confirmed ✓"
           elif [ -n "$DEVICES_XML" ]; then
-            echo "::error::SDK ${{ steps.version.outputs.value }} is too old (devices.xml format). Update to 4.2.4+."
+            echo "::error::SDK ${{ steps.version.outputs.value }} is too old (devices.xml format). Update to 9.1.0."
             exit 1
           else
             echo "::error::No device definitions found."
