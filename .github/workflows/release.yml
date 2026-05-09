@@ -4,13 +4,90 @@ on:
   push:
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.3)'
+        required: true
+
+env:
+  SDK_PATH: ~/connectiq-sdk
 
 jobs:
-  build:
-    name: Build (${{ matrix.device }})
+  # ── 1. SDK validation ────────────────────────────────────────────────────────
+  validate-sdk:
+    name: Validate SDK
     runs-on: ubuntu-latest
+    outputs:
+      sdk-version: ${{ steps.version.outputs.value }}
+      release-tag: ${{ steps.tag.outputs.value }}
+
+    steps:
+      - name: Resolve release tag
+        id: tag
+        run: |
+          TAG="${{ inputs.tag || github.ref_name }}"
+          echo "value=${TAG}" >> $GITHUB_OUTPUT
+          echo "Release tag: ${TAG}"
+
+      - name: Restore SDK cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.SDK_PATH }}
+          key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
+
+      - name: Install SDK
+        if: steps.cache.outputs.cache-hit != 'true'
+        env:
+          SDK_URL: ${{ secrets.CIQ_SDK_URL }}
+        run: |
+          if [ -z "$SDK_URL" ]; then
+            echo "::error title=Missing secret::CIQ_SDK_URL is not configured."
+            exit 1
+          fi
+          wget -q --show-progress "$SDK_URL" -O /tmp/sdk.zip
+          mkdir -p "${{ env.SDK_PATH }}"
+          unzip -q /tmp/sdk.zip -d "${{ env.SDK_PATH }}"
+
+      - name: Add SDK to PATH
+        run: |
+          BIN=$(find "${{ env.SDK_PATH }}" -name "monkeyc" -type f | head -1 | xargs dirname)
+          chmod +x "$BIN/monkeyc"
+          echo "$BIN" >> $GITHUB_PATH
+
+      - name: Read SDK version
+        id: version
+        run: |
+          VER=$(monkeyc --version 2>&1 | grep -oP '\d+\.\d+\.\d+' | head -1)
+          echo "value=${VER}" >> $GITHUB_OUTPUT
+          echo "Connect IQ SDK: ${VER}"
+
+      - name: Verify device support
+        run: |
+          DEVICES_DIR=$(find "${{ env.SDK_PATH }}" -name "devices" -type d | head -1)
+          if [ -z "$DEVICES_DIR" ]; then
+            echo "::error::SDK devices/ directory missing."
+            exit 1
+          fi
+          REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
+          MISSING=()
+          for d in "${REQUIRED[@]}"; do
+            [[ ! -d "$DEVICES_DIR/$d" ]] && MISSING+=("$d")
+          done
+          if [[ ${#MISSING[@]} -gt 0 ]]; then
+            echo "::error title=SDK too old::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
+            exit 1
+          fi
+          echo "All 16 devices confirmed ✓"
+
+  # ── 2. Build all devices in parallel ─────────────────────────────────────────
+  build:
+    name: Build / ${{ matrix.device }}
+    runs-on: ubuntu-latest
+    needs: validate-sdk
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         device:
           - fenix7
@@ -20,6 +97,7 @@ jobs:
           - fr165
           - fr165m
           - fr245
+          - fr245m
           - fr255
           - fr255m
           - fr255s
@@ -33,62 +111,116 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache Connect IQ SDK
-        id: sdk-cache
+      - name: Restore SDK cache
         uses: actions/cache@v4
         with:
-          path: ~/connectiq-sdk
+          path: ${{ env.SDK_PATH }}
           key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
-
-      - name: Install Connect IQ SDK
-        if: steps.sdk-cache.outputs.cache-hit != 'true'
-        run: |
-          wget -q "${{ secrets.CIQ_SDK_URL }}" -O /tmp/ciq-sdk.zip
-          mkdir -p ~/connectiq-sdk
-          unzip -q /tmp/ciq-sdk.zip -d ~/connectiq-sdk
 
       - name: Add SDK to PATH
         run: |
-          MONKEYC_BIN=$(find ~/connectiq-sdk -name "monkeyc" | head -1 | xargs dirname)
-          echo "$MONKEYC_BIN" >> $GITHUB_PATH
+          BIN=$(find "${{ env.SDK_PATH }}" -name "monkeyc" -type f | head -1 | xargs dirname)
+          chmod +x "$BIN/monkeyc"
+          echo "$BIN" >> $GITHUB_PATH
 
       - name: Write developer key
-        run: echo "${{ secrets.DEVELOPER_KEY_B64 }}" | base64 --decode > developer_key.der
+        env:
+          KEY_B64: ${{ secrets.DEVELOPER_KEY_B64 }}
+        run: |
+          if [ -z "$KEY_B64" ]; then
+            echo "::error::DEVELOPER_KEY_B64 is not configured."
+            exit 1
+          fi
+          echo "$KEY_B64" | base64 --decode > developer_key.der
 
-      - name: Build
+      - name: Compile
+        id: compile
         run: |
           mkdir -p bin
           monkeyc \
-            -o bin/garminsmartwatch_${{ matrix.device }}.prg \
+            -o "bin/garminsmartwatch_${{ matrix.device }}.prg" \
             -f monkey.jungle \
             -y developer_key.der \
-            -d ${{ matrix.device }} \
+            -d "${{ matrix.device }}" \
             --release
+          SIZE=$(stat -c%s "bin/garminsmartwatch_${{ matrix.device }}.prg")
+          echo "size=${SIZE}" >> $GITHUB_OUTPUT
+          echo "garminsmartwatch_${{ matrix.device }}.prg — ${SIZE} bytes ✓"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.device }}
+          name: release-${{ matrix.device }}
           path: bin/garminsmartwatch_${{ matrix.device }}.prg
           retention-days: 1
 
+  # ── 3. Publish GitHub Release ─────────────────────────────────────────────────
   release:
-    name: Create GitHub Release
-    needs: build
+    name: Publish Release
     runs-on: ubuntu-latest
+    needs: [validate-sdk, build]
     permissions:
       contents: write
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Download all build artifacts
         uses: actions/download-artifact@v4
         with:
-          path: artifacts/
+          pattern: release-*
+          path: release/
           merge-multiple: true
+
+      - name: Verify all 16 .prg files present
+        run: |
+          COUNT=$(ls release/*.prg 2>/dev/null | wc -l)
+          echo "Found ${COUNT} .prg files:"
+          ls -lh release/*.prg
+          if [[ "$COUNT" -ne 16 ]]; then
+            echo "::error::Expected 16 .prg files, found ${COUNT}. Some builds may have failed."
+            exit 1
+          fi
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Release ${{ github.ref_name }}
-          files: artifacts/*.prg
+          tag_name: ${{ needs.validate-sdk.outputs.release-tag }}
+          name: Release ${{ needs.validate-sdk.outputs.release-tag }}
+          files: release/*.prg
           generate_release_notes: true
+          body: |
+            ## Garmin Smartwatch — ${{ needs.validate-sdk.outputs.release-tag }}
+
+            Built with Connect IQ SDK `${{ needs.validate-sdk.outputs.sdk-version }}`.
+
+            ### Supported Devices
+            | Device Family | Models |
+            |---|---|
+            | Fenix 7 | fenix7, fenix7pro, fenix7s, fenix7x |
+            | Forerunner 165 | fr165, fr165m |
+            | Forerunner 245 | fr245, fr245m |
+            | Forerunner 255 | fr255, fr255m, fr255s, fr255sm |
+            | Forerunner 265 | fr265, fr265s |
+            | Forerunner 955 | fr955 |
+            | Vivo Active 5 | vivoactive5 |
+
+            ### Install
+            Download the `.prg` file for your device, sideload it using Garmin Express or the Connect IQ app.
+
+      - name: Write release summary
+        run: |
+          cat >> $GITHUB_STEP_SUMMARY << SUMMARY
+          # ✅ Release Published — ${{ needs.validate-sdk.outputs.release-tag }}
+
+          | | |
+          |---|---|
+          | **Tag** | \`${{ needs.validate-sdk.outputs.release-tag }}\` |
+          | **SDK** | \`${{ needs.validate-sdk.outputs.sdk-version }}\` |
+          | **Devices** | 16 |
+          | **Actor** | @${{ github.actor }} |
+
+          SUMMARY
