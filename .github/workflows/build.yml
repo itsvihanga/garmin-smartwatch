@@ -19,6 +19,7 @@ jobs:
           - fr165
           - fr165m
           - fr245
+          - fr245m
           - fr255
           - fr255m
           - fr255s
