@@ -45,12 +45,33 @@ jobs:
           mkdir -p "$HOME/connectiq-sdk"
           unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
 
-          # Detect if the URL points to the SDK Manager instead of the actual SDK
-          if find "$HOME/connectiq-sdk" -name "sdkmanager" -type f | grep -q .; then
-            if ! find "$HOME/connectiq-sdk" -name "monkeyc" -type f | grep -q .; then
-              echo "::error title=Wrong URL::CIQ_SDK_URL points to the SDK Manager, not the SDK."
-              echo "::error::The SDK Manager is a GUI installer app — it does not contain monkeyc."
-              echo "::error::FIX: Open SDK Manager on your local machine, install SDK 9.1.0, zip the installed folder, upload to GitHub Releases, update CIQ_SDK_URL with that zip URL."
+          # If we got the SDK Manager instead of the SDK, use it to download the real SDK
+          if find "$HOME/connectiq-sdk" -name "sdkmanager" -type f | grep -q . && \
+             ! find "$HOME/connectiq-sdk" -name "monkeyc" -type f | grep -q .; then
+
+            echo "SDK Manager detected — using it to download SDK ${{ vars.CIQ_SDK_VERSION }}..."
+            SDKMGR=$(find "$HOME/connectiq-sdk" -name "sdkmanager" -type f | head -1)
+            chmod +x "$SDKMGR"
+
+            # SDK Manager installs to ~/.Garmin/ConnectIQ/Sdks/
+            mkdir -p "$HOME/.Garmin/ConnectIQ/Sdks"
+
+            # Run headless install
+            "$SDKMGR" --headless 2>&1 &
+            SDKMGR_PID=$!
+            sleep 5
+            kill $SDKMGR_PID 2>/dev/null || true
+
+            # Check where the SDK was installed
+            SDK_INSTALL=$(find "$HOME/.Garmin/ConnectIQ/Sdks" -name "monkeyc" -type f 2>/dev/null | head -1 | xargs -I{} dirname {} | xargs -I{} dirname {})
+
+            if [ -n "$SDK_INSTALL" ]; then
+              echo "SDK found at $SDK_INSTALL — linking to connectiq-sdk/"
+              cp -r "$SDK_INSTALL/"* "$HOME/connectiq-sdk/"
+            else
+              echo "::error::SDK Manager headless install did not produce the SDK."
+              echo "::error::You need to upload the actual SDK zip (not the SDK Manager)."
+              echo "::error::On your local machine: run SDK Manager → install SDK 9.1.0 → zip the folder at ~/.Garmin/ConnectIQ/Sdks/connectiq-sdk-lin-9.1.0-XXXX/ → upload that zip to GitHub Releases."
               exit 1
             fi
           fi
