@@ -10,9 +10,6 @@ on:
         description: 'Release tag (e.g. v1.0.3)'
         required: true
 
-env:
-  SDK_PATH: ~/connectiq-sdk
-
 jobs:
   # ── 1. SDK validation ────────────────────────────────────────────────────────
   validate-sdk:
@@ -34,7 +31,7 @@ jobs:
         id: cache
         uses: actions/cache@v4
         with:
-          path: ${{ env.SDK_PATH }}
+          path: ~/connectiq-sdk
           key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
 
       - name: Install SDK
@@ -47,12 +44,16 @@ jobs:
             exit 1
           fi
           wget -q --show-progress "$SDK_URL" -O /tmp/sdk.zip
-          mkdir -p "${{ env.SDK_PATH }}"
-          unzip -q /tmp/sdk.zip -d "${{ env.SDK_PATH }}"
+          mkdir -p "$HOME/connectiq-sdk"
+          unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
 
       - name: Add SDK to PATH
         run: |
-          BIN=$(find "${{ env.SDK_PATH }}" -name "monkeyc" -type f | head -1 | xargs dirname)
+          BIN=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs dirname)
+          if [ -z "$BIN" ]; then
+            echo "::error::monkeyc binary not found. SDK may be corrupted."
+            exit 1
+          fi
           chmod +x "$BIN/monkeyc"
           echo "$BIN" >> $GITHUB_PATH
 
@@ -65,9 +66,10 @@ jobs:
 
       - name: Verify device support
         run: |
-          DEVICES_DIR=$(find "${{ env.SDK_PATH }}" -name "devices" -type d | head -1)
+          DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
           if [ -z "$DEVICES_DIR" ]; then
-            echo "::error::SDK devices/ directory missing."
+            echo "::error title=SDK invalid::devices/ directory not found."
+            echo "::error::Update CIQ_SDK_URL to Connect IQ SDK 4.2.4 or later."
             exit 1
           fi
           REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
@@ -114,12 +116,12 @@ jobs:
       - name: Restore SDK cache
         uses: actions/cache@v4
         with:
-          path: ${{ env.SDK_PATH }}
+          path: ~/connectiq-sdk
           key: connectiq-sdk-${{ vars.CIQ_SDK_VERSION }}
 
       - name: Add SDK to PATH
         run: |
-          BIN=$(find "${{ env.SDK_PATH }}" -name "monkeyc" -type f | head -1 | xargs dirname)
+          BIN=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs dirname)
           chmod +x "$BIN/monkeyc"
           echo "$BIN" >> $GITHUB_PATH
 
@@ -181,7 +183,7 @@ jobs:
           echo "Found ${COUNT} .prg files:"
           ls -lh release/*.prg
           if [[ "$COUNT" -ne 16 ]]; then
-            echo "::error::Expected 16 .prg files, found ${COUNT}. Some builds may have failed."
+            echo "::error::Expected 16 .prg files, found ${COUNT}."
             exit 1
           fi
 
@@ -209,7 +211,7 @@ jobs:
             | Vivo Active 5 | vivoactive5 |
 
             ### Install
-            Download the `.prg` file for your device, sideload it using Garmin Express or the Connect IQ app.
+            Download the `.prg` file for your device and sideload via Garmin Express or the Connect IQ app.
 
       - name: Write release summary
         run: |
@@ -222,5 +224,4 @@ jobs:
           | **SDK** | \`${{ needs.validate-sdk.outputs.sdk-version }}\` |
           | **Devices** | 16 |
           | **Actor** | @${{ github.actor }} |
-
           SUMMARY
