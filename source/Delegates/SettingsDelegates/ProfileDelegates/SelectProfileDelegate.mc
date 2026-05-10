@@ -46,7 +46,7 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
         var app = Application.getApp();
         var currentHeight = app.getUserHeight();
         //var currentHeight = null;
-        if (currentHeight == null) { currentHeight = 175; } // Default 175 cm
+        
 
         var factory = new ProfilePickerFactory(100, 250, 1, {:label=>" cm"});
 

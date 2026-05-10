@@ -291,7 +291,7 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, icon a
         );
         
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        var targetText = app.getMinCadence().toString() + "-" + app.getMaxCadence().toString() + " spm";
+       var targetText = app.getCalculatedMinCadence().toString() +"-" +app.getCalculatedMaxCadence().toString() +" spm";
         dc.drawText(
             width - 15,
             yPos,
