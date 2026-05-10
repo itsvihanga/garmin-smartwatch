@@ -11,7 +11,7 @@ class CadenceAlertView extends WatchUi.View {
     private var _vibrationEnabled as Boolean;
     private var _closeTimer as Timer.Timer?;
 
-    function initialize(message as String, vibrationEnabled as Boolean) {
+    function initialize(message as String, vibrationEnabled as Boolean, view as String) {
         View.initialize();
         _message = message;
         _vibrationEnabled = vibrationEnabled;

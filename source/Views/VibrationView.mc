@@ -27,6 +27,7 @@ class VibrationView extends WatchUi.View {
 
     function closeMessage() as Void {
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+
     }
 
     // function onUpdate(dc as Dc) as Void {

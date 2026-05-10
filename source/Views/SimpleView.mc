@@ -8,334 +8,220 @@ import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
+    // UI Drawables
     private var _cadenceDisplay;
-    private var _refreshTimer;
+    private var _cadenceZoneDisplay;
     private var _heartrateDisplay;
     private var _distanceDisplay;
     private var _timeDisplay;
-    private var _cadenceZoneDisplay;
-    private var _lastZoneState = 0; // -1 = below, 0 = inside, 1 = above
-    private var _cqDisplay;
-    private var _paceDisplay; 
-    //private var _hardcoreDisplay;
+    private var _paceDisplay;
     
-    // Vibration alert tracking (no extra timers needed!)
+    // Logic & Timer Variables
+    private var _refreshTimer;
+    private var _lastZoneState = 0; 
     private var _alertStartTime = null;
-    private var _alertDuration = 180000; // 3 minutes in milliseconds
-    private var _alertInterval = 30000; // 30 seconds in milliseconds
+    private var _alertDuration = 180000; // 3 minutes
+    private var _alertInterval = 30000; // 30 seconds
     private var _lastAlertTime = 0;
+    
     private var _pendingSecondVibe = false;
     private var _secondVibeTime = 0;
 
-
     function initialize() {
-    WatchUi.View.initialize();
+        WatchUi.View.initialize();
     }
     
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
+    function onLayout(dc as Dc) as Void {
+        setLayout(Rez.Layouts.MainLayout(dc));
+        
+        // Link UI variables to layout IDs
+        _cadenceDisplay = findDrawableById("cadence_text");
+        _cadenceZoneDisplay = findDrawableById("cadence_zone");
+        _heartrateDisplay = findDrawableById("heartrate_text");
+        _distanceDisplay = findDrawableById("distance_text"); // Restored
+        _timeDisplay = findDrawableById("time_text");
+        _paceDisplay = findDrawableById("pace_text"); 
+
+        var _spmLabel = findDrawableById("spm_label") as WatchUi.Text;
+        if (_spmLabel != null) { _spmLabel.setText("SPM"); }
+    }
+
     function onShow() as Void {
-        _refreshTimer = new Timer.Timer();
-        _refreshTimer.start(method(:refreshScreen), 1000, true);
+        // Start the logic loop and keep it alive across views
+        if (_refreshTimer == null) {
+            _refreshTimer = new Timer.Timer();
+            _refreshTimer.start(method(:refreshScreen), 1000, true);
+        }
     }
 
-    // Update the view
-    function onUpdate(dc as Dc) as Void {
-        //update the display for current cadence
-        displayCadence();
-        
-        // Check for pending second vibration
-        checkPendingVibration();
-        
-        // Draw recording indicator
-        drawRecordingIndicator(dc);
-
-         // Call the parent onUpdate function to redraw the layout
-        View.onUpdate(dc); 
-
-        //Draw dividing lines
-        drawDividers(dc);
-    
-    }
-
-    // Called when this View is removed from the screen. Save the
-    // state of this View here. This includes freeing resources from
-    // memory.
     function onHide() as Void {
+// CRITICAL: Stop the timer to prevent "Timer Limit" crashes
         if (_refreshTimer != null) {
             _refreshTimer.stop();
             _refreshTimer = null;
         }
-        // Reset alert state
-        _alertStartTime = null;
-        _lastAlertTime = 0;
     }
-    
 
-    function refreshScreen() as Void{
+    // --- Logic Loop (The "Heartbeat") ---
+    function refreshScreen() as Void {
+        var info = Activity.getActivityInfo();
+        
+        // 1. Update internal state (Zone checking)
+        updateCadenceLogic(info);
+        
+        // 2. Check for recurring alerts
+        checkAndTriggerAlerts();
+        
+        // 3. Request UI draw
         WatchUi.requestUpdate();
     }
-    
-    function checkPendingVibration() as Void {
-        if (_pendingSecondVibe) {
-            var currentTime = System.getTimer();
-            if (currentTime >= _secondVibeTime) {
-                // Trigger second vibration
-                if (Attention has :vibrate) {
-                    var vibeData = [new Attention.VibeProfile(50, 200)];
-                    Attention.vibrate(vibeData);
-                }
-                _pendingSecondVibe = false;
+
+    // --- Drawing Loop (The "Face") ---
+    function onUpdate(dc as Dc) as Void {
+        updateDisplayStrings();
+        checkPendingVibration();
+        drawRecordingIndicator(dc);
+        
+        View.onUpdate(dc); 
+        drawDividers(dc);
+    }
+
+    function updateCadenceLogic(info) as Void {
+        var minZone = Application.getApp().getCalculatedMinCadence();
+        var maxZone = Application.getApp().getCalculatedMaxCadence();
+        
+        var newZoneState = 0;
+        if (info != null && info.currentCadence != null) {
+            var c = info.currentCadence;
+            if (c < minZone) { newZoneState = -1; }
+            else if (c > maxZone) { newZoneState = 1; }
+        }
+
+        if (newZoneState != _lastZoneState) {
+            if (newZoneState != 0) {
+                _alertStartTime = System.getTimer();
+                _lastAlertTime = System.getTimer();
+            } else {
+                _alertStartTime = null;
             }
+            _lastZoneState = newZoneState;
+        }
+    }
+
+    function checkAndTriggerAlerts() as Void {
+        if (_alertStartTime == null) { return; }
+        
+        var currentTime = System.getTimer();
+        if (currentTime - _alertStartTime >= _alertDuration) {
+            _alertStartTime = null;
+            return;
+        }
+        
+        if (currentTime - _lastAlertTime >= _alertInterval) {
+            _lastAlertTime = currentTime;
+
+            var app = Application.getApp();
+            var isVibrationOn = app.getVibrationEnabled();
+            var msg = (_lastZoneState == -1) ? "Increase Cadence" : "Decrease Cadence";
+
+            WatchUi.pushView(
+                new CadenceAlertView(msg, isVibrationOn, "SimpleView"),
+                new CadenceAlertDelegate(),
+                WatchUi.SLIDE_IMMEDIATE
+            );
+
+            if (isVibrationOn) {
+                if (_lastZoneState == -1) { triggerSingleVibration(); }
+                else { triggerDoubleVibration(); }
+            }
+        }
+    }
+
+    function updateDisplayStrings() as Void {
+        var info = Activity.getActivityInfo();
+        var app = Application.getApp();
+        
+        // Cadence
+        if (_cadenceDisplay != null) {
+            _cadenceDisplay.setText(info != null && info.currentCadence != null ? info.currentCadence.toString() : "--");
+        }
+
+        // Zone Info
+        if (_cadenceZoneDisplay != null) {
+            var min = app.getCalculatedMinCadence();
+            var max = app.getCalculatedMaxCadence();
+            _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
+        }
+
+        // Heartrate
+        if (_heartrateDisplay != null) {
+            _heartrateDisplay.setText(info != null && info.currentHeartRate != null ? info.currentHeartRate.toString() : "--");
+        }
+
+        // --- DISTANCE (RESTORED) ---
+        if (_distanceDisplay != null) {
+            if (info != null && info.elapsedDistance != null) {
+                var distanceKm = info.elapsedDistance / 1000.0; // Meters to Kilometers
+                _distanceDisplay.setText(distanceKm.format("%.2f") + " KM");
+            } else {
+                _distanceDisplay.setText("-- KM");
+            }
+        }
+
+        // Time
+        if (_timeDisplay != null && info != null && info.timerTime != null) {
+            var s = info.timerTime / 1000;
+            _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
+        }
+        
+        // Pace
+        if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
+            var pace = (1000.0 / info.currentSpeed).toNumber();
+            _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d") + " min/km");
+        } else if (_paceDisplay != null) {
+            _paceDisplay.setText("--:-- min/km");
+        }
+    }
+
+    // --- Helpers ---
+    function checkPendingVibration() as Void {
+        if (_pendingSecondVibe && System.getTimer() >= _secondVibeTime) {
+            if (Attention has :vibrate) {
+                Attention.vibrate([new Attention.VibeProfile(50, 200)]);
+            }
+            _pendingSecondVibe = false;
         }
     }
     
     function triggerSingleVibration() as Void {
         if (Attention has :vibrate) {
-            var vibeData = [new Attention.VibeProfile(50, 200)];
-            Attention.vibrate(vibeData);
+            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
         }
     }
     
     function triggerDoubleVibration() as Void {
         if (Attention has :vibrate) {
-            // First vibration
-            var vibeData = [new Attention.VibeProfile(50, 200)];
-            Attention.vibrate(vibeData);
-            
-            // Schedule second vibration after 240ms
+            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
             _pendingSecondVibe = true;
             _secondVibeTime = System.getTimer() + 240;
         }
     }
-    
-    function checkAndTriggerAlerts() as Void {
-        var app = Application.getApp();
-        var isVibrationOn = app.getVibrationEnabled();
-        // Only check if we're in an alert period
-        if (_alertStartTime == null) {
-            return;
-        }
-        
-        var currentTime = System.getTimer();
-        var elapsed = currentTime - _alertStartTime;
-        
-        // Stop alerting after 3 minutes
-        if (elapsed >= _alertDuration) {
-            _alertStartTime = null;
-            _lastAlertTime = 0;
-            return;
-        }
-        
-        // Check if it's time for the next alert (every 30 seconds)
-        var timeSinceLastAlert = currentTime - _lastAlertTime;
-        if (timeSinceLastAlert >= _alertInterval) {
-            _lastAlertTime = currentTime;
-
-            // Trigger the appropriate vibration and popup menu
-            if (_lastZoneState == -1) {
-            // push the popup alert 
-                WatchUi.pushView(
-                    new CadenceAlertView("Increase Cadence", isVibrationOn),
-                    new CadenceAlertDelegate(),
-                    WatchUi.SLIDE_IMMEDIATE
-                );
-                // if vibrations is on, trigger the vibration for the alert
-                if (isVibrationOn){
-                    triggerSingleVibration();
-                }
-            } else if (_lastZoneState == 1) {
-                WatchUi.pushView(
-                    new CadenceAlertView("Increase Cadence", isVibrationOn),
-                    new CadenceAlertDelegate(),
-                    WatchUi.SLIDE_IMMEDIATE
-                );
-                if (isVibrationOn){
-                    triggerDoubleVibration();
-                }
-            }
-
-        }
-    }
 
     function drawRecordingIndicator(dc as Dc) as Void {
-        var app = getApp();
-        
+        var app = Application.getApp();
         if (app.isActivityRecording()) {
-            // Draw a red recording indicator in top-right corner
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-            var width = dc.getWidth();
-            var radius = 8;
-            dc.fillCircle(width - 15, 15, radius);
-            
-            // Add "REC" text next to the indicator
-            dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(width - 35, 5, Graphics.FONT_TINY, "REC", Graphics.TEXT_JUSTIFY_RIGHT);
-        } else {
-            // Draw instruction text at bottom
-            dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-            var width = dc.getWidth();
-            var height = dc.getHeight();
-            dc.drawText(width / 2, height - 25, Graphics.FONT_TINY, "Press SELECT to start", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.fillCircle(dc.getWidth() - 15, 15, 8);
         }
     }
 
-    function displayCadence() as Void{
-        var info = Activity.getActivityInfo();
-        
-
-        if (info != null && info.currentCadence != null){
-            _cadenceDisplay.setText(info.currentCadence.toString());
-        }else{
-            _cadenceDisplay.setText("--");
-        }
-
-        // Show whether current cadence is inside configured zone
-        var minZone = getApp().getCalculatedMinCadence();
-        var maxZone = getApp().getCalculatedMaxCadence();
-        var zoneText = "";
-        if (info != null && info.currentCadence != null) {
-            var c = info.currentCadence;
-            if (c >= minZone && c <= maxZone) {
-                zoneText = (WatchUi.loadResource(Rez.Strings.zone_in) as String) + " (" + minZone.toString() + "-" + maxZone.toString() + ")";
-            } else {
-                zoneText = (WatchUi.loadResource(Rez.Strings.zone_out) as String) + " (" + minZone.toString() + "-" + maxZone.toString() + ")";
-            }
-        } else {
-            zoneText = "(" + minZone.toString() + "-" + maxZone.toString() + ")";
-        }
-        if (_cadenceZoneDisplay != null) {
-            _cadenceZoneDisplay.setText(zoneText);
-        }
-
-        // Trigger haptic on zone crossing with timed alerts
-        var newZoneState = 0;
-        if (info != null && info.currentCadence != null) {
-            var c = info.currentCadence;
-            if (c < minZone) {
-                newZoneState = -1;
-            } else if (c > maxZone) {
-                newZoneState = 1;
-            } else {
-                newZoneState = 0;
-            }
-        }
-
-        if (newZoneState != _lastZoneState) {
-            if (newZoneState == -1) {
-                // Below minimum - start alert cycle and show popup
-                _alertStartTime = System.getTimer();
-                _lastAlertTime = System.getTimer();
-                triggerSingleVibration();
-            } else if (newZoneState == 1) {
-                // Above maximum - start alert cycle and show popup
-                _alertStartTime = System.getTimer();
-                _lastAlertTime = System.getTimer();
-                triggerDoubleVibration();
-            } else {
-                // Back in zone - stop alerts
-                _alertStartTime = null;
-                _lastAlertTime = 0;
-            }
-            _lastZoneState = newZoneState;
-        } else {
-            // Still out of zone - check if we need to alert again
-            checkAndTriggerAlerts();
-        }
-
-        if (info != null && info.currentHeartRate != null){
-            _heartrateDisplay.setText(info.currentHeartRate.toString());
-        }else{
-            _heartrateDisplay.setText("--");
-        }
-
-        // Display distance in kilometers with 2 decimal places
-        if (info != null && info.elapsedDistance != null){
-            var distanceKm = info.elapsedDistance / 100000.0; // Convert centimeters to kilometers
-            _distanceDisplay.setText(distanceKm.format("%.2f") + " KM");
-        }else{
-            _distanceDisplay.setText("-- KM");
-        }
-
-        // Display elapsed time in HH:MM:SS format
-        if (info != null && info.timerTime != null){
-            var seconds = info.timerTime / 1000; // Convert milliseconds to seconds
-            var hours = seconds / 3600;
-            var minutes = (seconds % 3600) / 60;
-            var secs = seconds % 60;
-            _timeDisplay.setText(hours.format("%02d") + ":" + minutes.format("%02d") + ":" + secs.format("%02d"));
-        }else{
-            _timeDisplay.setText("--:--:--");
-        }
-
-        /// --- Cadence Quality (Easter Egg) ---
-        if (_cqDisplay != null) {
-            var app = getApp();
-            var frozenCQ = app.getFinalCadenceQuality();
-
-            //if (frozenCQ != null) {
-            //    _cqDisplay.setText("CQ: " + frozenCQ.format("%d") + "%");
-            //} else {
-            //    var cq = app.computeCadenceQualityScore();
-//
-            //    if (cq < 0) {
-            //        _cqDisplay.setText("CQ: --%");
-            //    } else {
-            //        _cqDisplay.setText("CQ: " + cq.format("%d") + "%");
-            //    }
-            //}
-        }
-
-        // --- Pace Display ---
-        if (info != null && info.currentSpeed != null) {
-            if (info.currentSpeed > 0) {
-                var paceSecPerKm = (1000.0 / info.currentSpeed).toNumber();
-                var paceMin = paceSecPerKm / 60;
-                var paceSec = paceSecPerKm % 60;
-                _paceDisplay.setText(paceMin.format("%d") + ":" + paceSec.format("%02d") + " min/km");
-            } else {
-                _paceDisplay.setText("--:-- min/km");
-        }
-        } else {
-            _paceDisplay.setText("--:-- min/km");
-        }
-        
-    }
-    
-    // Draw horizontal dividers to separate sections of the display
     function drawDividers(dc as Dc) as Void {
-        var width = dc.getWidth();
-        var height = dc.getHeight();
-    
+        var w = dc.getWidth();
+        var h = dc.getHeight();
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        // Line under time
-        dc.drawLine(20, height * 0.22, width - 20, height * 0.22);
-        // Line under SPM/cadence
-        dc.drawLine(20, height * 0.43, width - 20, height * 0.43);
-        // Line under CQ/distance row
-        dc.drawLine(20, height * 0.60, width - 20, height * 0.60);
-        // Line under HR/pace row
-        dc.drawLine(20, height * 0.78, width - 20, height * 0.78);
+        dc.drawLine(20, h * 0.22, w - 20, h * 0.22);
+        dc.drawLine(20, h * 0.43, w - 20, h * 0.43);
+        dc.drawLine(20, h * 0.60, w - 20, h * 0.60);
+        dc.drawLine(20, h * 0.78, w - 20, h * 0.78);
     }
-
-    // Load your resources here
-    function onLayout(dc as Dc) as Void {
-        setLayout(Rez.Layouts.MainLayout(dc));
-        _cadenceDisplay = findDrawableById("cadence_text");
-        _cadenceZoneDisplay = findDrawableById("cadence_zone");
-        _heartrateDisplay = findDrawableById("heartrate_text");
-        _distanceDisplay = findDrawableById("distance_text");
-        _timeDisplay = findDrawableById("time_text");
-        _cqDisplay = findDrawableById("cq_text");
-        _paceDisplay = findDrawableById("pace_text"); 
-        //_hardcoreDisplay = findDrawableById("hardcore_text");
-        
-        var _spmLabel = findDrawableById("spm_label") as WatchUi.Text;
-            if (_spmLabel != null) {
-            _spmLabel.setText("SPM");
-            }
-        
-    }
-
 }

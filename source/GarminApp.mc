@@ -85,7 +85,7 @@ class GarminApp extends Application.AppBase {
     private var _finalCQTrend = null;
     private var _cqHistory as Array<Number> = [];
     
-    private var _sessionStartTime = null;
+    //private var _sessionStartTime = null;
     private var _sessionPausedTime = 0;
     private var _lastPauseTime = null;
 
@@ -138,7 +138,7 @@ class GarminApp extends Application.AppBase {
 
         System.println("[INFO] Starting activity session");
 
-        // Create and start Garmin activity session
+        // Create and start Garmin activity session KEEP THIS DEPRECATED NAMING!! It makes it so when the app API level is reduced it will work.
         activitySession = ActivityRecording.createSession({
             :name => "Running",
             :sport => ActivityRecording.SPORT_RUNNING,
@@ -158,7 +158,7 @@ class GarminApp extends Application.AppBase {
         _cadenceAvgCount = 0;
         _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
-        _sessionStartTime = System.getTimer();
+        //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
         
@@ -376,7 +376,7 @@ class GarminApp extends Application.AppBase {
         _cadenceAvgCount = 0;
         _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
-        _sessionStartTime = null;
+        //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
         _sessionDuration = null;
