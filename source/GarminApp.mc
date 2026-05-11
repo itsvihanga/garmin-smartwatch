@@ -983,3 +983,4 @@ _cadenceAvgCount = 0;
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }
+
