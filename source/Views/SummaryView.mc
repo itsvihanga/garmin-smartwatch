@@ -33,11 +33,9 @@ function onUpdate(dc as Dc) as Void {
     }
 
     var centerX = width / 2;
-
-    // ✅ PUSH EVERYTHING LOWER + MORE SPACE
-    var titleY = 30;
-    var startY = 30;
-    var gap = 30; 
+    var titleY = (height * 0.08).toNumber();
+    var gap = (height * 0.14).toNumber();
+    var startY = (height * 0.10).toNumber(); 
 
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
 
@@ -101,19 +99,23 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, iconTy
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
     if (iconType == :time) {
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
         dc.drawCircle(iconX, iconY, 12);
         dc.drawLine(iconX, iconY, iconX, iconY - 8);
         dc.drawLine(iconX, iconY, iconX + 6, iconY);
     } else if (iconType == :pace) {
+        dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         var pts = [[iconX+4, iconY-11], [iconX-3, iconY], [iconX+2, iconY], [iconX-4, iconY+11], [iconX+5, iconY-1], [iconX, iconY-1]];
         for (var i = 0; i < pts.size() - 1; i++) {
             dc.drawLine(pts[i][0], pts[i][1], pts[i+1][0], pts[i+1][1]);
         }
     } else if (iconType == :cadence) {
+        dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
         dc.fillRectangle(iconX - 9, iconY - 5,  4, 10);
         dc.fillRectangle(iconX - 2, iconY - 10, 4, 15);
         dc.fillRectangle(iconX + 5, iconY - 7,  4, 12);
     } else if (iconType == :quality) {
+        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
         dc.drawArc(iconX, iconY - 3, 8, Graphics.ARC_CLOCKWISE, 0, 180);
         dc.drawLine(iconX - 8, iconY - 3, iconX - 8, iconY + 2);
         dc.drawLine(iconX + 8, iconY - 3, iconX + 8, iconY + 2);
@@ -121,10 +123,12 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, iconTy
         dc.drawLine(iconX, iconY + 5, iconX, iconY + 9);
         dc.drawLine(iconX - 5, iconY + 9, iconX + 5, iconY + 9);
     } else if (iconType == :distance) {
+        dc.setColor(Graphics.COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
         dc.drawLine(iconX - 10, iconY, iconX + 10, iconY);
         dc.drawLine(iconX + 5, iconY - 5, iconX + 10, iconY);
         dc.drawLine(iconX + 5, iconY + 5, iconX + 10, iconY);
     }
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
     dc.drawText(leftMargin + 35, y, Graphics.FONT_XTINY, label, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
     dc.drawText(rightMargin, y, Graphics.FONT_XTINY, value, Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
