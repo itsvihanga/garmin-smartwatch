@@ -68,13 +68,16 @@ jobs:
       - name: Verify device support
         run: |
           DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
+          DEVICE_REF=$(find "$HOME/connectiq-sdk" -type d -name "device-reference" | head -1)
           DEVICES_XML=$(find "$HOME/connectiq-sdk" -name "devices.xml" -type f | head -1)
+          # SDK 9.x uses resources/device-reference/ instead of devices/
+          CHECK_DIR="${DEVICES_DIR:-$DEVICE_REF}"
 
-          if [ -n "$DEVICES_DIR" ]; then
+          if [ -n "$CHECK_DIR" ]; then
             REQUIRED=(fenix7 fenix7pro fenix7s fenix7x fr165 fr165m fr245 fr245m fr255 fr255m fr255s fr255sm fr265 fr265s fr955 vivoactive5)
             MISSING=()
             for d in "${REQUIRED[@]}"; do
-              [[ ! -d "$DEVICES_DIR/$d" ]] && MISSING+=("$d")
+              [[ ! -d "$CHECK_DIR/$d" ]] && MISSING+=("$d")
             done
             if [[ ${#MISSING[@]} -gt 0 ]]; then
               echo "::error::SDK ${{ steps.version.outputs.value }} does not support: ${MISSING[*]}"
