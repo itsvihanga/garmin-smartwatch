@@ -23,6 +23,7 @@ class GarminApp extends Application.AppBase {
     const PROP_MIN_CADENCE = "minCadence";
     const PROP_MAX_CADENCE = "maxCadence";
     const PROP_VIBRATION_ENABLED = "vibrationEnabled";
+    const PROP_SUMMARY_ENABLED = "summaryEnabled";
 
     var globalTimer;
     var activitySession; // Garmin activity recording session
@@ -68,6 +69,7 @@ class GarminApp extends Application.AppBase {
     var _userGender = 0;
     var _chartDuration = ThirtyminChart as Number;
     private var _vibrationEnabled = true;
+    private var _summaryEnabled = true;
 
     var _targetCadence = 160;
 
@@ -700,6 +702,16 @@ class GarminApp extends Application.AppBase {
     function setVibrationEnabled(enabled as Boolean) as Void {
         _vibrationEnabled = enabled;
     }
+
+    function getSummaryEnabled() as Boolean {
+        return _summaryEnabled;
+    }
+
+    function setSummaryEnabled(enabled as Boolean) as Void {
+        _summaryEnabled = enabled;
+        saveSettings();
+        System.println("[SETTINGS] Summary view enabled: " + enabled.toString());
+    }
     
     function getCadenceHistory() as Array<Float?> {
         return _cadenceHistory;
@@ -832,6 +844,7 @@ class GarminApp extends Application.AppBase {
     s.setValue("u_exp", _experienceLvl);
     s.setValue("u_gen", _userGender);
     s.setValue("u_dur", _chartDuration);
+    s.setValue(PROP_SUMMARY_ENABLED, _summaryEnabled);
     
     System.println("--- DISK SYNC COMPLETE ---");
 }
@@ -849,6 +862,7 @@ function loadSettings() {
     val = s.getValue("u_speed"); if (val != null) { _userSpeed = val; }
     val = s.getValue("u_exp"); if (val != null) { _experienceLvl = val; }
     val = s.getValue("u_gen"); if (val != null) { _userGender = val; }
+    val = s.getValue(PROP_SUMMARY_ENABLED); if (val != null) { _summaryEnabled = val; }
     val = s.getValue("u_dur");
 
 if (val != null) {

@@ -19,9 +19,15 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the SELECT/START button (or screen tap)
     function onSelect() as Boolean {
-        System.println("Select/Tap pressed: toggle summary on/off   ");
-        
-        // Logic to toggle summary on/off would go here
+        System.println("Select/Tap pressed: opening summary view preference");
+
+        var promptView = new SummaryPromptView();
+        WatchUi.pushView(
+            promptView,
+            new SummaryPromptDelegate(promptView),
+            WatchUi.SLIDE_UP
+        );
+
         return true;
     }
 

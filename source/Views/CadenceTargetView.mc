@@ -18,14 +18,19 @@ class CadenceTargetView extends WatchUi.View {
 
         var app = Application.getApp() as GarminApp;
         var targetCadence = app.getTargetCadence();
-       //var targetCadence = 160;
+        //var targetCadence = 160;
+
+        var centerX = width / 2;
+        var titleY = (height * 0.34).toNumber();
+        var valueY = (height * 0.56).toNumber();
+        var unitY = (height * 0.69).toNumber();
 
         // Title
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
         dc.drawText(
-            width / 2,
-            height / 3,
+            centerX,
+            titleY,
             Graphics.FONT_MEDIUM,
             "Target Cadence",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
@@ -35,9 +40,9 @@ class CadenceTargetView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
 
         dc.drawText(
-            width / 2,
-            height / 2,
-            Graphics.FONT_NUMBER_HOT,
+            centerX,
+            valueY,
+            Graphics.FONT_NUMBER_MILD,
             targetCadence.toString(),
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
@@ -46,8 +51,8 @@ class CadenceTargetView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
 
         dc.drawText(
-            width / 2,
-            (height / 2) + 50,
+            centerX,
+            unitY,
             Graphics.FONT_SMALL,
             "spm",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
