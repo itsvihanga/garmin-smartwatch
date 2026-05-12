@@ -43,7 +43,7 @@ jobs:
           MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
           if [ -z "$MONKEYC" ]; then
             echo "::error::monkeyc not found in $HOME/connectiq-sdk"
-            find "$HOME/connectiq-sdk" -maxdepth 4 | head -40
+            find "$HOME/connectiq-sdk" -type d -maxdepth 4
             exit 1
           fi
           chmod +x "$MONKEYC"
@@ -79,7 +79,7 @@ jobs:
             exit 1
           else
             echo "::error::No device definitions found."
-            find "$HOME/connectiq-sdk" -maxdepth 4 | head -60
+            find "$HOME/connectiq-sdk" -type d -maxdepth 4
             exit 1
           fi
 

@@ -45,9 +45,9 @@ jobs:
           mkdir -p "$HOME/connectiq-sdk"
           unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
 
-          # If we got the SDK Manager instead of the SDK, use it to download the real SDK
+          # If we got the SDK Manager (or a partial SDK missing device defs), use it to complete the install
           if find "$HOME/connectiq-sdk" -name "sdkmanager" -type f | grep -q . && \
-             ! find "$HOME/connectiq-sdk" -name "monkeyc" -type f | grep -q .; then
+             ! find "$HOME/connectiq-sdk" -name "devices" -type d | grep -q .; then
 
             echo "SDK Manager detected — using it to download SDK ${{ vars.CIQ_SDK_VERSION }}..."
             SDKMGR=$(find "$HOME/connectiq-sdk" -name "sdkmanager" -type f | head -1)
@@ -124,7 +124,7 @@ jobs:
             exit 1
           else
             echo "::error::No device definitions found. SDK extraction may have failed."
-            find "$HOME/connectiq-sdk" -maxdepth 4 | head -60
+            find "$HOME/connectiq-sdk" -type d -maxdepth 4
             exit 1
           fi
 
