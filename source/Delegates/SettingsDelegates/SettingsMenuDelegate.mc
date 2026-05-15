@@ -18,13 +18,19 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     }
 
     // Handles the SELECT/START button (or screen tap)
-    function onSelect() as Boolean {
-        System.println("Select/Tap pressed: Opening cadence settings");
-        
-        // Push the cadence settings view
-        WatchUi.pushView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
-        return true;
-    }
+   function onSelect() as Boolean {
+    System.println("Select/Tap pressed: Opening reset settings");
+
+    var resetView = new ResetSettingsView();
+
+    WatchUi.pushView(
+        resetView,
+        new ResetSettingsDelegate(resetView),
+        WatchUi.SLIDE_UP
+    );
+
+    return true;
+}
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {

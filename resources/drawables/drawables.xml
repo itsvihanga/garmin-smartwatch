@@ -10,4 +10,6 @@
     <bitmap id="TickIcon" filename="Tick_Icon.png" />
     <bitmap id="CrossIcon" filename="Cross_Icon.png" />
     <bitmap id="RecIcon" filename="Rec_Icon.png" />
+    <bitmap id="ResetIcon" filename="reset_icon.png" />
+    <bitmap id="CheckMarkIcon" filename="check_mark.png" />
 </drawables>
