@@ -97,22 +97,28 @@ jobs:
 
       - name: Show SDK structure
         run: |
-          echo "=== SDK root ==="
           SDK_ROOT=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs -I{} dirname {} | xargs -I{} dirname {})
+          echo "=== SDK root ==="
           ls "$SDK_ROOT"
-          echo "=== devices/ contents (compiler spec files) ==="
-          DEVDIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
-          if [ -n "$DEVDIR" ]; then ls "$DEVDIR"; else echo "(no devices/ dir found)"; fi
+          echo "=== share/ contents ==="
+          if [ -d "$SDK_ROOT/share" ]; then ls "$SDK_ROOT/share"; else echo "(no share/ dir)"; fi
+          echo "=== share/devices/ contents (SDK 9.x device specs) ==="
+          if [ -d "$SDK_ROOT/share/devices" ]; then ls "$SDK_ROOT/share/devices" | head -20; else echo "(no share/devices/ dir)"; fi
           echo "=== file type of monkeyc binary ==="
           MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
           file "$MONKEYC"
+          echo "=== monkeyc script (first 20 lines) ==="
+          head -20 "$MONKEYC"
 
       - name: Verify device support
         run: |
-          DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
-          DEVICE_REF=$(find "$HOME/connectiq-sdk" -type d -name "device-reference" | head -1)
-          DEVICES_XML=$(find "$HOME/connectiq-sdk" -name "devices.xml" -type f | head -1)
-          # SDK 9.x uses resources/device-reference/ instead of devices/
+          SDK_ROOT=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs -I{} dirname {} | xargs -I{} dirname {})
+          # SDK 7.x and earlier: devices/ at root
+          # SDK 8.x/9.x: devices/ moved to share/devices/
+          # Fallback: resources/device-reference/ (UI reference only, not compiler specs)
+          DEVICES_DIR=$(find "$SDK_ROOT" -maxdepth 2 -name "devices" -type d | head -1)
+          DEVICE_REF=$(find "$SDK_ROOT" -type d -name "device-reference" | head -1)
+          DEVICES_XML=$(find "$SDK_ROOT" -name "devices.xml" -type f | head -1)
           CHECK_DIR="${DEVICES_DIR:-$DEVICE_REF}"
 
           if [ -n "$CHECK_DIR" ]; then
