@@ -29,14 +29,24 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         env:
           SDK_URL: ${{ secrets.CIQ_SDK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [ -z "$SDK_URL" ]; then
             echo "::error::CIQ_SDK_URL is not configured."
             exit 1
           fi
-          wget -q --show-progress "$SDK_URL" -O /tmp/sdk.zip
+          echo "Downloading SDK…"
+          wget -q \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$SDK_URL" -O /tmp/sdk.archive
+          echo "Download complete ($(du -sh /tmp/sdk.archive | cut -f1))"
           mkdir -p "$HOME/connectiq-sdk"
-          unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
+          if file /tmp/sdk.archive | grep -q "gzip\|tar"; then
+            tar -xzf /tmp/sdk.archive -C "$HOME/connectiq-sdk" --strip-components=1
+          else
+            unzip -q /tmp/sdk.archive -d "$HOME/connectiq-sdk"
+          fi
 
       - name: Add SDK to PATH
         run: |
