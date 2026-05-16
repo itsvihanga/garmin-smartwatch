@@ -302,12 +302,21 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
              System.println("[UI] Activity saved");
             _parentDelegate.setMenuActive(false);
 
-            // SHOW SUMMARY SCREEN ON SAVE
-             WatchUi.switchToView(
-             new SummaryView(),
-             new SummaryViewDelegate(),
-             WatchUi.SLIDE_UP
-            );
+            if (app.getSummaryEnabled()) {
+                // SHOW SUMMARY SCREEN ON SAVE
+                WatchUi.switchToView(
+                    new SummaryView(),
+                    new SummaryViewDelegate(),
+                    WatchUi.SLIDE_UP
+                );
+            } else {
+                System.println("[UI] Summary screen skipped by user preference");
+                WatchUi.switchToView(
+                    new SimpleView(),
+                    new SimpleViewDelegate(),
+                    WatchUi.SLIDE_DOWN
+                );
+            }
         } else if (id == :discard_session) {
             app.discardSession();
             System.println("[UI] Activity discarded");
