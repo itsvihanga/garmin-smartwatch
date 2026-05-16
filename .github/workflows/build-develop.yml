@@ -211,10 +211,18 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         env:
           SDK_URL: ${{ secrets.CIQ_SDK_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          wget -q "$SDK_URL" -O /tmp/sdk.zip
+          wget -q \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$SDK_URL" -O /tmp/sdk.archive
           mkdir -p "$HOME/connectiq-sdk"
-          unzip -q /tmp/sdk.zip -d "$HOME/connectiq-sdk"
+          if file /tmp/sdk.archive | grep -qE "gzip|tar"; then
+            tar -xzf /tmp/sdk.archive -C "$HOME/connectiq-sdk" --strip-components=1
+          else
+            unzip -q /tmp/sdk.archive -d "$HOME/connectiq-sdk"
+          fi
 
       - name: Add SDK to PATH
         run: |
@@ -224,7 +232,20 @@ jobs:
             exit 1
           fi
           chmod +x "$MONKEYC"
+          echo "MONKEYC_PATH=$MONKEYC" >> $GITHUB_ENV
           echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
+
+      - name: Diagnose monkeyc
+        run: |
+          echo "=== monkeyc location ==="
+          which monkeyc || echo "monkeyc not in PATH"
+          echo "=== java version ==="
+          java -version 2>&1 || echo "java not found"
+          echo "=== SDK structure ==="
+          SDK_ROOT=$(dirname "$(which monkeyc)")
+          ls "$SDK_ROOT"
+          echo "=== device recognition test ==="
+          monkeyc -d "${{ matrix.device }}" -f /nonexistent.jungle 2>&1 || true
 
       - name: Write developer key
         env:
