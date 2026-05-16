@@ -98,6 +98,23 @@ jobs:
           chmod +x "$MONKEYC"
           echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
 
+      - name: Install device profiles
+        env:
+          DEVICES_URL: ${{ secrets.CIQ_DEVICES_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$DEVICES_URL" ]; then
+            echo "::error::CIQ_DEVICES_URL is not configured."
+            exit 1
+          fi
+          mkdir -p "$HOME/.Garmin/ConnectIQ"
+          wget -q \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$DEVICES_URL" -O /tmp/devices.tar.gz
+          tar -xzf /tmp/devices.tar.gz -C "$HOME/.Garmin/ConnectIQ"
+          echo "Device profiles installed: $(ls "$HOME/.Garmin/ConnectIQ/Devices/" | wc -l) devices"
+
       - name: Read SDK version
         id: version
         run: |
@@ -234,6 +251,23 @@ jobs:
           chmod +x "$MONKEYC"
           echo "MONKEYC_PATH=$MONKEYC" >> $GITHUB_ENV
           echo "$(dirname "$MONKEYC")" >> $GITHUB_PATH
+
+      - name: Install device profiles
+        env:
+          DEVICES_URL: ${{ secrets.CIQ_DEVICES_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -z "$DEVICES_URL" ]; then
+            echo "::error::CIQ_DEVICES_URL is not configured."
+            exit 1
+          fi
+          mkdir -p "$HOME/.Garmin/ConnectIQ"
+          wget -q \
+            --header="Authorization: token $GITHUB_TOKEN" \
+            --header="Accept: application/octet-stream" \
+            "$DEVICES_URL" -O /tmp/devices.tar.gz
+          tar -xzf /tmp/devices.tar.gz -C "$HOME/.Garmin/ConnectIQ"
+          echo "Device profiles installed: $(ls "$HOME/.Garmin/ConnectIQ/Devices/" | wc -l) devices"
 
       - name: Diagnose monkeyc
         run: |
