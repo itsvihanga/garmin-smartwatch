@@ -133,13 +133,17 @@ jobs:
 
       - name: Test device recognition
         run: |
-          RESULT=$(monkeyc -d fenix7 -f /nonexistent.jungle 2>&1 || true)
-          if echo "$RESULT" | grep -qi "invalid device"; then
-            echo "::error::monkeyc cannot recognize device IDs — the SDK zip is missing device compiler definitions."
-            echo "::error::The 'devices/' directory with per-device spec files is absent from the extracted SDK."
-            echo "::error::Fix: download the full Connect IQ SDK 9.1.0 zip from developer.garmin.com,"
-            echo "::error::extract it, confirm it contains a 'devices/' folder with per-device subdirectories,"
-            echo "::error::then zip the entire extracted SDK and upload it as CIQ_SDK_URL."
+          FAILED=()
+          for PROBE in fenix7 fr265 vivoactive5; do
+            RESULT=$(monkeyc -d "$PROBE" -f /nonexistent.jungle 2>&1 || true)
+            if echo "$RESULT" | grep -qi "invalid device"; then
+              FAILED+=("$PROBE")
+            fi
+          done
+          if [[ ${#FAILED[@]} -gt 0 ]]; then
+            echo "::error::monkeyc does not recognize: ${FAILED[*]}"
+            echo "::error::The SDK binary is too old. Update CIQ_SDK_URL to Connect IQ SDK 9.1.0"
+            echo "::error::and bump CIQ_SDK_VERSION to bust the cache."
             exit 1
           fi
           echo "Device recognition test passed ✓"
