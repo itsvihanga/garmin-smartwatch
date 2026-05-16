@@ -69,10 +69,25 @@ jobs:
             exit 1
           fi
           mkdir -p "$HOME/.Garmin/ConnectIQ"
-          wget -q \
+          echo "Downloading device profiles…"
+          HTTP_CODE=$(wget \
+            --server-response \
             --header="Authorization: token $GITHUB_TOKEN" \
             --header="Accept: application/octet-stream" \
-            "$DEVICES_URL" -O /tmp/devices.tar.gz
+            "$DEVICES_URL" -O /tmp/devices.tar.gz 2>&1 \
+            | awk '/^  HTTP/{print $2}' | tail -1)
+          echo "HTTP status: ${HTTP_CODE}"
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "::error::Device profile download failed (HTTP ${HTTP_CODE}). Check CIQ_DEVICES_URL secret."
+            echo "First 200 bytes of response:"
+            head -c 200 /tmp/devices.tar.gz | cat -v
+            exit 1
+          fi
+          if ! file /tmp/devices.tar.gz | grep -qE "gzip|tar"; then
+            echo "::error::Downloaded file is not a valid tar.gz:"
+            file /tmp/devices.tar.gz
+            exit 1
+          fi
           tar -xzf /tmp/devices.tar.gz -C "$HOME/.Garmin/ConnectIQ"
           echo "Device profiles installed: $(ls "$HOME/.Garmin/ConnectIQ/Devices/" | wc -l) devices"
 
@@ -222,10 +237,25 @@ jobs:
             exit 1
           fi
           mkdir -p "$HOME/.Garmin/ConnectIQ"
-          wget -q \
+          echo "Downloading device profiles…"
+          HTTP_CODE=$(wget \
+            --server-response \
             --header="Authorization: token $GITHUB_TOKEN" \
             --header="Accept: application/octet-stream" \
-            "$DEVICES_URL" -O /tmp/devices.tar.gz
+            "$DEVICES_URL" -O /tmp/devices.tar.gz 2>&1 \
+            | awk '/^  HTTP/{print $2}' | tail -1)
+          echo "HTTP status: ${HTTP_CODE}"
+          if [ "${HTTP_CODE}" != "200" ]; then
+            echo "::error::Device profile download failed (HTTP ${HTTP_CODE}). Check CIQ_DEVICES_URL secret."
+            echo "First 200 bytes of response:"
+            head -c 200 /tmp/devices.tar.gz | cat -v
+            exit 1
+          fi
+          if ! file /tmp/devices.tar.gz | grep -qE "gzip|tar"; then
+            echo "::error::Downloaded file is not a valid tar.gz:"
+            file /tmp/devices.tar.gz
+            exit 1
+          fi
           tar -xzf /tmp/devices.tar.gz -C "$HOME/.Garmin/ConnectIQ"
           echo "Device profiles installed: $(ls "$HOME/.Garmin/ConnectIQ/Devices/" | wc -l) devices"
 
