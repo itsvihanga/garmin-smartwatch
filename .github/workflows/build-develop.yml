@@ -131,6 +131,19 @@ jobs:
             exit 1
           fi
 
+      - name: Test device recognition
+        run: |
+          RESULT=$(monkeyc -d fenix7 -f /nonexistent.jungle 2>&1 || true)
+          if echo "$RESULT" | grep -qi "invalid device"; then
+            echo "::error::monkeyc cannot recognize device IDs — the SDK zip is missing device compiler definitions."
+            echo "::error::The 'devices/' directory with per-device spec files is absent from the extracted SDK."
+            echo "::error::Fix: download the full Connect IQ SDK 9.1.0 zip from developer.garmin.com,"
+            echo "::error::extract it, confirm it contains a 'devices/' folder with per-device subdirectories,"
+            echo "::error::then zip the entire extracted SDK and upload it as CIQ_SDK_URL."
+            exit 1
+          fi
+          echo "Device recognition test passed ✓"
+
   # ── 2. Parallel builds ───────────────────────────────────────────────────────
   build:
     name: Build / ${{ matrix.device }}
