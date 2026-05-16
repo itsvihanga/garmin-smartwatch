@@ -57,9 +57,12 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
         System.println("Up button pressed");
 
+        var view = new ResetSettingsView();
+        var delegate = new ResetSettingsDelegate(view);
+        
         WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+            view,
+            delegate,
             WatchUi.SLIDE_DOWN
         );
 
