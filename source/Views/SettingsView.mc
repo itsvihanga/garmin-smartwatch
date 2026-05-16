@@ -8,23 +8,36 @@ class SettingsView extends WatchUi.View {
     }
 
     function onUpdate(dc as Dc) as Void {
-        
-        // Makes screen black and clears it
+
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
-        // gets screen dimensions
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        // draws "Settings" text in the center of the screen
+        var centerX = width / 2;
+        var centerY = height / 2;
+
+        var icon = WatchUi.loadResource(Rez.Drawables.SettingsIcon);
+
+        var iconX = centerX - (icon.getWidth() / 2);
+        var iconY = centerY - 70;
+
+        dc.drawBitmap(iconX, iconY, icon);
+
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+
+        dc.drawText(centerX - 1, centerY + 20, Graphics.FONT_LARGE, "Settings", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(centerX + 1, centerY + 20, Graphics.FONT_LARGE, "Settings", Graphics.TEXT_JUSTIFY_CENTER);
+
+        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+
         dc.drawText(
-            width / 2,
-            height / 2,
-            Graphics.FONT_MEDIUM,
-            "Settings",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+            centerX,
+            centerY + 90,
+            Graphics.FONT_XTINY,
+            "Tap to Open",
+            Graphics.TEXT_JUSTIFY_CENTER
         );
     }
 }

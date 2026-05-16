@@ -2,7 +2,7 @@
 <layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
    <!-- Pace Icon -->
 <bitmap id="pace_icon" 
-    x="50%"
+    x="12%"
     y="62%"
     filename="../drawables/shoe_icon.png" />
 
@@ -26,13 +26,13 @@
 <!-- Heart Rate Icon -->
 <bitmap id="heartrate_icon" 
     x="10%" 
-    y="63%"
+    y="46%"
     filename="../drawables/heart-rate.png" />
 
 <!-- Heart Rate Text -->
 <label id="heartrate_text"
     x="33%"
-    y="63%"
+    y="46%"
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"
     color="Gfx.COLOR_RED" />
@@ -63,7 +63,7 @@
 
 <!-- Pace Text-->
 <label id="pace_text"
-    x="78%"
+    x="58%"
     y="63%"
     font="Gfx.FONT_SMALL"
     justification="Gfx.TEXT_JUSTIFY_CENTER"

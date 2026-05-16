@@ -45,6 +45,8 @@ class SelectProfileDelegate extends WatchUi.Menu2InputDelegate {
     function heightPicker() as Void {
         var app = Application.getApp();
         var currentHeight = app.getUserHeight();
+        //var currentHeight = null;
+        
 
         var factory = new ProfilePickerFactory(100, 250, 1, {:label=>" cm"});
 

@@ -13,16 +13,14 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     function onBack() as Boolean{
         System.println("Back pressed: Returning to main view");
 
-        WatchUi.pushView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
         return true;
     }
 
     // Handles the SELECT/START button (or screen tap)
     function onSelect() as Boolean {
-        System.println("Select/Tap pressed: Opening bar chart settings");
-        
-        // Push the bar chart settings
-        pushBarChartMenu();
+        System.println("Select button pressed: Opening bar chart settings");
+        WatchUi.pushView(new BarChartSelectView(), new SelectBarChartDelegate(), WatchUi.SLIDE_LEFT);
         return true;
     }
 
@@ -31,7 +29,7 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Down button pressed");
         
         // Push the cadence settings view
-        WatchUi.pushView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_UP);
         
         return true; 
     }
@@ -41,23 +39,10 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
-        WatchUi.pushView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
         
         return true; 
     }
 
 
-    function pushBarChartMenu() as Void {
-        var menu = new WatchUi.Menu2({
-            :title => "Bar Chart Length:"
-        });
-
-        menu.addItem(new WatchUi.MenuItem("15 Minute", null, :chart_15m, null));
-        menu.addItem(new WatchUi.MenuItem("30 Minute", null, :chart_30m, null));
-        menu.addItem(new WatchUi.MenuItem("1 Hour", null, :chart_1h, null));
-        menu.addItem(new WatchUi.MenuItem("2 Hour", null, :chart_2h, null));
-
-        //pushes the view to the screen with the relevent delegate
-        WatchUi.pushView(menu, new SelectBarChartDelegate(menu), WatchUi.SLIDE_LEFT);
-    }
 }

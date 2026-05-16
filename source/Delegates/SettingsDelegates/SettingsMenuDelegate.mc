@@ -13,31 +13,25 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     function onBack() as Boolean{
         System.println("Back pressed: Returning to main view");
 
-        WatchUi.pushView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
         return true;
     }
 
     // Handles the SELECT/START button (or screen tap)
-   function onSelect() as Boolean {
-    System.println("Select/Tap pressed: Opening reset settings");
-
-    var resetView = new ResetSettingsView();
-
-    WatchUi.pushView(
-        resetView,
-        new ResetSettingsDelegate(resetView),
-        WatchUi.SLIDE_UP
-    );
-
-    return true;
-}
+    function onSelect() as Boolean {
+        System.println("Select/Tap pressed: Opening cadence settings");
+        
+        // Push the cadence settings view
+        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        return true;
+    }
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
         System.println("Down button pressed");
         
         // Push the cadence settings view
-        WatchUi.pushView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
         
         return true; 
     }
@@ -47,7 +41,7 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
-        WatchUi.pushView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
         
         return true; 
     }
