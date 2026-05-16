@@ -56,6 +56,18 @@ jobs:
           echo "value=${VER}" >> $GITHUB_OUTPUT
           echo "Connect IQ SDK: ${VER}"
 
+      - name: Show SDK structure
+        run: |
+          echo "=== SDK root ==="
+          SDK_ROOT=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1 | xargs -I{} dirname {} | xargs -I{} dirname {})
+          ls "$SDK_ROOT"
+          echo "=== devices/ contents (compiler spec files) ==="
+          DEVDIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
+          if [ -n "$DEVDIR" ]; then ls "$DEVDIR"; else echo "(no devices/ dir found)"; fi
+          echo "=== file type of monkeyc binary ==="
+          MONKEYC=$(find "$HOME/connectiq-sdk" -name "monkeyc" -type f | head -1)
+          file "$MONKEYC"
+
       - name: Verify device support
         run: |
           DEVICES_DIR=$(find "$HOME/connectiq-sdk" -name "devices" -type d | head -1)
