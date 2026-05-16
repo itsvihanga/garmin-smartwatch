@@ -14,4 +14,6 @@
     <bitmap id="SummaryIcon" filename="summary_icon.png"/>
     <bitmap id="SetCadenceIcon" filename="set_cadence_icon.png"/>
     <bitmap id="SettingsIcon" filename="settings_icon.png"/>
+    <bitmap id="ResetIcon" filename="reset_icon.png" />
+    <bitmap id="CheckMarkIcon" filename="check_mark.png" />
 </drawables>
