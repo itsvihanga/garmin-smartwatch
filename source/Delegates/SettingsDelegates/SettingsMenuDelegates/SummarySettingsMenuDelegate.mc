@@ -13,24 +13,31 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     function onBack() as Boolean {
         System.println("Back pressed: Returning to main view");
 
-        WatchUi.pushView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new SimpleView(), new SimpleViewDelegate(), WatchUi.SLIDE_DOWN);
         return true;
     }
 
     // Handles the SELECT/START button (or screen tap)
     function onSelect() as Boolean {
-        System.println("Select/Tap pressed: toggle summary on/off   ");
-        
-        // Logic to toggle summary on/off would go here
+        System.println("Select/Tap pressed: opening summary view preference");
+
+        var promptView = new SummaryPromptView();
+        WatchUi.pushView(
+            promptView,
+            new SummaryPromptDelegate(promptView),
+            WatchUi.SLIDE_UP
+        );
+
         return true;
     }
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
         System.println("Down button pressed");
-        
+        var view = new ResetSettingsView();
+        var delegate = new ResetSettingsDelegate(view);
         // Push the cadence settings view
-        WatchUi.pushView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(view, delegate, WatchUi.SLIDE_UP);
         
         return true; 
     }
@@ -40,7 +47,7 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
-        WatchUi.pushView(new BarChartSettingsMenuView(), new BarChartSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
+        WatchUi.switchToView(new BarChartSettingsMenuView(), new BarChartSettingsMenuDelegate(), WatchUi.SLIDE_DOWN);
         
         return true; 
     }

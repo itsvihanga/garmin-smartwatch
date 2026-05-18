@@ -6,21 +6,8 @@ import Toybox.WatchUi;
 
 class SummaryView extends WatchUi.View {
 
-    private var _iconDistance;
-    private var _iconCadence;
-    private var _iconHR;
-    private var _iconSteps;
-    private var _iconTime;
-
     function initialize() {
         View.initialize();
-
-        // Load icons for summary view
-        _iconDistance = Application.loadResource(Rez.Drawables.IconDistance);
-        _iconCadence = Application.loadResource(Rez.Drawables.IconCadence);
-        _iconHR = Application.loadResource(Rez.Drawables.IconHeartRate);
-        _iconSteps = Application.loadResource(Rez.Drawables.IconSteps);
-        _iconTime = Application.loadResource(Rez.Drawables.IconTime);
     }
 
 function onUpdate(dc as Dc) as Void {
@@ -46,11 +33,9 @@ function onUpdate(dc as Dc) as Void {
     }
 
     var centerX = width / 2;
-
-    // ✅ PUSH EVERYTHING LOWER + MORE SPACE
-    var titleY = 40;
-    var startY = 60;
-    var gap = 28;  
+    var titleY = (height * 0.08).toNumber();
+    var gap = (height * 0.14).toNumber();
+    var startY = (height * 0.10).toNumber(); 
 
     dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_BLACK);
 
@@ -64,9 +49,6 @@ function onUpdate(dc as Dc) as Void {
     var duration = app.getSessionDuration();
     var distance = app.getSessionDistance();
     var hr = app.getAvgHeartRate();
-    var pace = app.getAveragePace();
-    var qcScore = app.getfinalQC();
-    var temperature = app.getLinkedTemperature();
 
     if (duration == null) { duration = 0; }
     if (distance == null) { distance = 0; }
@@ -85,31 +67,70 @@ function onUpdate(dc as Dc) as Void {
     // ===== METRICS =====
     var km = distance / 100000.0;
 
-        drawRow(dc, width, startY + gap, timeStr, _iconTime, "TIME");
-        drawRow(dc, width, startY + gap * 2, km.format("%.2f"), _iconDistance, "DISTANCE");
-        drawRow(dc, width, startY + gap * 3, "--", _iconCadence, "CADENCE");
-        drawRow(dc, width, startY + gap * 4, hr + "", _iconHR, "BPM (AVG)");
-        drawRow(dc, width, startY + gap * 5, "--", _iconSteps, "STEPS");
+    var paceStr = "--";
+    if (km > 0.0 && seconds > 0) {
+        var paceSeconds = (seconds / km).toNumber();
+        var paceMin = paceSeconds / 60;
+        var paceSec = paceSeconds % 60;
+        paceStr = paceMin.format("%d") + ":" + paceSec.format("%02d") + "/km";
+    }
 
-        drawRow(dc, width, startY + gap * 6, pace, _iconCadence, "AVG PACE");
-        drawRow(dc, width, startY + gap * 7, qcScore, _iconHR, "QC SCORE");
-        drawRow(dc, width, startY + gap * 8, temperature, _iconSteps, "TEMP");
+    // Get average cadence
+    var avgCadence = app.getAverageCadence();
+    var cadenceStr = avgCadence > 0 ? avgCadence.format("%.0f") + " SPM" : "--";
+
+    // Get CQ score
+    var cqStr = app.getfinalQC();
+
+    drawRow(dc, width, startY + gap,     timeStr,                   :time,     "TIME");
+    drawRow(dc, width, startY + gap * 2, paceStr,                   :pace,     "PACE");
+    drawRow(dc, width, startY + gap * 3, cadenceStr,                :cadence,  "CADENCE");
+    drawRow(dc, width, startY + gap * 4, cqStr,                     :quality,  "QUALITY");
+    drawRow(dc, width, startY + gap * 5, km.format("%.2f") + " km", :distance, "DISTANCE");
+
 }
 
+function drawRow(dc as Dc, width as Number, y as Number, value as String, iconType as Symbol, label as String) as Void {
+    var leftMargin = 10;
+    var rightMargin = width - 15;
+    var iconX = leftMargin + 15;
+    var iconY = y;
 
-// 🔥 UPDATED ROW (ALL TINY + MORE SPACING FRIENDLY)
-function drawRow(dc as Dc, width as Number, y as Number, value as String, icon as Graphics.BitmapType, label as String) as Void {
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-    var leftMargin = 40;
-    var rightMargin = width - 40;
+    if (iconType == :time) {
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.drawCircle(iconX, iconY, 12);
+        dc.drawLine(iconX, iconY, iconX, iconY - 8);
+        dc.drawLine(iconX, iconY, iconX + 6, iconY);
+    } else if (iconType == :pace) {
+        dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+        var pts = [[iconX+4, iconY-11], [iconX-3, iconY], [iconX+2, iconY], [iconX-4, iconY+11], [iconX+5, iconY-1], [iconX, iconY-1]];
+        for (var i = 0; i < pts.size() - 1; i++) {
+            dc.drawLine(pts[i][0], pts[i][1], pts[i+1][0], pts[i+1][1]);
+        }
+    } else if (iconType == :cadence) {
+        dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(iconX - 9, iconY - 5,  4, 10);
+        dc.fillRectangle(iconX - 2, iconY - 10, 4, 15);
+        dc.fillRectangle(iconX + 5, iconY - 7,  4, 12);
+    } else if (iconType == :quality) {
+        dc.setColor(Graphics.COLOR_YELLOW, Graphics.COLOR_TRANSPARENT);
+        dc.drawArc(iconX, iconY - 3, 8, Graphics.ARC_CLOCKWISE, 0, 180);
+        dc.drawLine(iconX - 8, iconY - 3, iconX - 8, iconY + 2);
+        dc.drawLine(iconX + 8, iconY - 3, iconX + 8, iconY + 2);
+        dc.drawLine(iconX - 5, iconY + 5, iconX + 5, iconY + 5);
+        dc.drawLine(iconX, iconY + 5, iconX, iconY + 9);
+        dc.drawLine(iconX - 5, iconY + 9, iconX + 5, iconY + 9);
+    } else if (iconType == :distance) {
+        dc.setColor(Graphics.COLOR_ORANGE, Graphics.COLOR_TRANSPARENT);
+        dc.drawLine(iconX - 10, iconY, iconX + 10, iconY);
+        dc.drawLine(iconX + 5, iconY - 5, iconX + 10, iconY);
+        dc.drawLine(iconX + 5, iconY + 5, iconX + 10, iconY);
+    }
+    dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-    // Drawing the icon: Subtracting 24 from Y pushes the top-left corner of the icon up, to center the icon in line with the text (icon is 50x50).
-    dc.drawBitmap(leftMargin, y - 24, icon);
-
-    // Drawing the label: We add VCENTER so the vertical middle of the text lines up exactly with our y coordinate.
-    dc.drawText(leftMargin + 50, y, Graphics.FONT_XTINY, label, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
-
-    // Drawing the value: Also using VCENTER to keep the number on the same line as the label and icon.
+    dc.drawText(leftMargin + 35, y, Graphics.FONT_XTINY, label, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
     dc.drawText(rightMargin, y, Graphics.FONT_XTINY, value, Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
 }
 
@@ -281,7 +302,7 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, icon a
         );
         
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        var targetText = app.getMinCadence().toString() + "-" + app.getMaxCadence().toString() + " spm";
+       var targetText = app.getCalculatedMinCadence().toString() +"-" +app.getCalculatedMaxCadence().toString() +" spm";
         dc.drawText(
             width - 15,
             yPos,

@@ -14,27 +14,72 @@ The goal is to support **cadence awareness and consistency during runs** without
 
 ## ✨ Core Features
 
-### 🏃‍♂️ Custom Cadence Zone
-- User-defined **minimum and maximum cadence**
-- Clear **in-zone / out-of-zone** visual feedback
+### 🏃‍♂️ Target Cadence
+- User-defined **target cadence value**
+- The app automatically creates a ±5spm tolerance zone around this value
+- Clear **in-zone / out-of-zone** visual feedback via cadence graph colour coding:
+    - 🔴 Red = below target
+    - 🟢 Green = within range
 
 ### 🔔 Real-Time Alerts
-- Visual indicators
-- Haptic alerts when cadence drops below or exceeds the target range
+- Visual popup when cadence crosses zone boundaries, displaying:
+    - Elapsed timer
+    - Yellow warning triangle
+    - "Increase Cadence" or "Decrease Cadence" message
+    - Vibration ON/OFF status
+    - Auto-dismisses after 3 seconds
+- Haptic alerts when cadence drops below the target zone
+- Single vibration for low cadence
 
 ### 📊 Live Run Metrics
 - Cadence  
 - Heart rate  
 - Distance  
-- Elapsed time  
+- Elapsed time
+- Pace (min/km)
 
-### ⏺️ Activity Interaction
-- Explicit start / stop cadence monitoring
-- Visual indicator when monitoring is active
-- No background execution unless explicitly started by the user
+### ⏺️ Activity Recording Flow
+- From the main screen, tap the screen to be prompted to start a recording
+- Press START to begin recording, or BACK to cancel
+- Tap the screen again during a recording to open the recording menu (Resume / Pause / Stop)
+- Selecting Stop prompts you to save the activity (yes/no)
+- Selecting Yes takes you to the summary screen
+
+### 📋 Summary Screen
+- Displayed after saving a completed activity, showing:
+    - Time
+    - Pace
+    - Distance
+    - Average cadence
+    - Cadence Quality
+
+### 🔕 Vibration Toggle
+- Double tap the UP button on the main screen to quickly toggle haptic alerts on or off
+- Full-screen feedback confirms the new state:
+    - 🟢 Green = vibration ON
+    - 🔴 Red = vibration OFF
+- Pending vibrations are cancelled immediately when disabled
 
 ---
 
+### ⚙️ Settings Menu
+- Accessible by holding the UP button from the main screen. Scroll between the following screens using UP/DOWN:
+
+### 🎯 Set Cadence Target
+- Set your target cadence value in spm (steps per minute)
+- Use UP/DOWN to adjust the value by ±1
+- Press START to confirm
+
+### 📊 Change Bar Chart Length
+- Set the duration of the cadence bar chart displayed during a run
+- Options: 15 min, 30 min, 1 hour, 2 hours
+- Use UP/DOWN to cycle through options
+- Press START to confirm
+
+### 👁️ Summary View ON/OFF
+- Toggle the post-run summary screen on or off
+
+---
 ## 🧠 Experimental Feature: Cadence Quality (CQ)
 
 This project includes an **experimental metric** called **Cadence Quality (CQ)**, designed to provide a **higher-level assessment of cadence consistency** over the course of a run.
@@ -222,10 +267,3 @@ If fr165 is not available in your SDK version, a similar device (e.g. venu2) can
 - Cadence Quality is experimental and intended for exploration and research
 - Thresholds, confidence bands, and weightings are configurable
 - The system is designed for iteration, validation, and future expansion
-## Emulator Screenshots
-
-### Forerunner 235
-![Forerunner 235](screenshots/fr235.png)
-
-### Forerunner 245
-![Forerunner 245](screenshots/fr245.png)

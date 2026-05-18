@@ -211,8 +211,8 @@ external-mir/
 internal-mir/
 bin/
 gen/
-# *.prg
-# *.prg.debug.xml
+*.prg
+*.prg.debug.xml
 
 developer_key
 developer_key.der
