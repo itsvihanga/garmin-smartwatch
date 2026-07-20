@@ -895,13 +895,10 @@ if (val != null) {
 // function resetAllSettings() as Void {
 //     System.println("[RESET] Resetting all settings to default");
 
-<<<<<<< Updated upstream
     var _idealMinCadence = 120;
     var _idealMaxCadence = 150;
-=======
 //     _idealMinCadence = 120;
 //     _idealMaxCadence = 150;
->>>>>>> Stashed changes
 
 //     _chartDuration = ThirtyminChart as Number;
 
