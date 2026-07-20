@@ -891,34 +891,39 @@ if (val != null) {
 );
 }
 
-//reset all settings
-function resetAllSettings() as Void {
-    System.println("[RESET] Resetting all settings to default");
+// //reset all settings
+// function resetAllSettings() as Void {
+//     System.println("[RESET] Resetting all settings to default");
 
+<<<<<<< Updated upstream
     var _idealMinCadence = 120;
     var _idealMaxCadence = 150;
+=======
+//     _idealMinCadence = 120;
+//     _idealMaxCadence = 150;
+>>>>>>> Stashed changes
 
-    _chartDuration = ThirtyminChart as Number;
+//     _chartDuration = ThirtyminChart as Number;
 
-    _userHeight = 170;
-    _userSpeed = 10.0;
-    _experienceLvl = 1.00;
-    _userGender = 0;
+//     _userHeight = 170;
+//     _userSpeed = 10.0;
+//     _experienceLvl = 1.00;
+//     _userGender = 0;
 
-    _vibrationEnabled = true;
+//     _vibrationEnabled = true;
 
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
+//     _cadenceBarAvg = new [_chartDuration];
+//     _cadenceAvgIndex = 0;
+//     _cadenceAvgCount = 0;
 
-    _cadenceHistory = new [MAX_BARS];
-    _cadenceIndex = 0;
-    _cadenceCount = 0;
+//     _cadenceHistory = new [MAX_BARS];
+//     _cadenceIndex = 0;
+//     _cadenceCount = 0;
 
-    saveSettings();
+//     saveSettings();
 
-    System.println("[RESET] All settings reset complete");
-}
+//     System.println("[RESET] All settings reset complete");
+// }
 
 
     // function getSessionDuration() as Number {
