@@ -1,39 +1,39 @@
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
 import Toybox.Graphics;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
 import Toybox.System;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Time,4,14,18]; ]
 import Toybox.Time;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Time,5,14,18]; @symbol_importdef<2> = [Gregorian,5,19,28]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [Time,5,14,18]; @symbol_importdef<2> = [Gregorian,5,19,28]; ]
 import Toybox.Time.Gregorian;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [Lang,6,14,18]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 6; @symbol_importdef<0> = [Toybox,6,7,13]; @symbol_importdef<1> = [Lang,6,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 8; @symbol_classdef = [TimeView,8,6,14]; @symbol_extends<0> = [WatchUi,8,23,30]; @symbol_extends<1> = [View,8,31,35]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 8; @symbol_classdef = [TimeView,8,6,14]; @symbol_extends<0> = [WatchUi,8,23,30]; @symbol_extends<1> = [View,8,31,35]; ]
 class TimeView extends WatchUi.View {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 8; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 8; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 8; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 8; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; ]
     function initialize() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_11_26_13_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 12 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_11_26_13_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 12 8 ]
         symbol [ View %tmp.2 12 8 12 ];
         %tmp.2 = getv ? :View;
         symbol [ initialize %tmp.3 12 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_11_26_13_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_11_26_13_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 16; @symbol_functiondef = [onLayout,16,13,21]; @symbol_param<0> = [dc,16,22,24]; @symbol_param<0>_type<0> = [Dc,16,28,30]; ]
     function onLayout(dc as Dc) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_16_40_18_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 17 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_16_40_18_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 17 8 ]
         %tmp.1 = self;
         symbol [ setLayout %tmp.2 17 8 17 ];
         %tmp.2 = getv function %tmp.1 :setLayout;
@@ -47,16 +47,16 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_16_40_
         symbol [ dc %tmp.7 17 40 42 ];
         %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
         invoke %tmp.1 %tmp.2(%tmp.8);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_16_40_18_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_16_40_18_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 23; @symbol_functiondef = [onShow,23,13,19]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 23; @symbol_functiondef = [onShow,23,13,19]; ]
     function onShow() as Void {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 28; @symbol_functiondef = [onUpdate,28,13,21]; @symbol_param<0> = [dc,28,22,24]; @symbol_param<0>_type<0> = [Dc,28,28,30]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 28; @symbol_functiondef = [onUpdate,28,13,21]; @symbol_param<0> = [dc,28,22,24]; @symbol_param<0>_type<0> = [Dc,28,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 29 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 29 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
         %date.1 = local;
         symbol [ date %date.1 29 12 16 ];
         symbol [ Gregorian %tmp.1 29 19 28 ];
@@ -75,8 +75,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_
         %tmp.8 = invoke %tmp.1 %tmp.2(%tmp.5, %tmp.7);
         lputv %date.1 %tmp.8;
         symbol [ date %date.1 29 12 16 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 30 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 30 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
         %dayNames.2 = local;
         symbol [ dayNames %dayNames.2 30 12 20 ];
         %tmp.9 = newa 7;
@@ -103,8 +103,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_
         %tmp.30 = aputv %tmp.29 6 %tmp.28;
         lputv %dayNames.2 %tmp.30;
         symbol [ dayNames %dayNames.2 30 12 20 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 31 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 31 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
         %monthNames.3 = local;
         symbol [ monthNames %monthNames.3 31 12 22 ];
         %tmp.31 = newa 12;
@@ -146,7 +146,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_
         %tmp.67 = aputv %tmp.66 11 %tmp.65;
         lputv %monthNames.3 %tmp.67;
         symbol [ monthNames %monthNames.3 31 12 22 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 34 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 34 8 ]
         symbol [ View %tmp.69 34 9 13 ];
         %tmp.69 = getv ? :View;
         symbol [ findDrawableById %tmp.70 34 14 30 ];
@@ -191,8 +191,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_
         %tmp.96 = agetv %tmp.91 %tmp.95;
         %tmp.97 = add %tmp.90 %tmp.96;
         invoke %tmp.73 %tmp.74(%tmp.97);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 38 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 38 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
         %hour12.4 = local;
         symbol [ hour12 %hour12.4 38 12 18 ];
         %tmp.98 = lgetv %date.1;
@@ -203,46 +203,46 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_
         %tmp.101 = mod %tmp.99 %tmp.100;
         lputv %hour12.4 %tmp.101;
         symbol [ hour12 %hour12.4 38 12 18 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 39 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 39 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_stmt:
         %tmp.102 = lgetv %hour12.4;
         symbol [ hour12 %tmp.102 39 12 18 ];
         %tmp.103 = 0;
         %tmp.104 = eq %tmp.102 %tmp.103;
-        bf %tmp.104 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_25_41_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 40 12 ]
+        bf %tmp.104 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_25_41_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 40 12 ]
         %tmp.105 = 12;
         lputv %hour12.4 %tmp.105;
         symbol [ hour12 %hour12.4 40 12 18 ];
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_25_41_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 42 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_25_41_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_39_8_41_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 42 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop" ]
         %ampm.5 = local;
         symbol [ ampm %ampm.5 42 12 16 ];
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_begin:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_begin:
         %tmp.106 = lgetv %date.1;
         symbol [ date %tmp.106 42 20 24 ];
         symbol [ hour %tmp.107 42 25 29 ];
         %tmp.107 = getv %tmp.106 :hour;
         %tmp.108 = 12;
         %tmp.109 = lt %tmp.107 %tmp.108;
-        bf %tmp.109 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_else_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_true:
+        bf %tmp.109 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_else_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_true:
         %tmp.110 = "AM";
         push %tmp.110;
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_else_false:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_else_false:
         %tmp.111 = "PM";
         push %tmp.111;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_end:
-        %tmp.112 = phi [%tmp.109 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_begin] [%tmp.110 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_true] [%tmp.111 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_else_false] [%tmp.112 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_end];
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_end:
+        %tmp.112 = phi [%tmp.109 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_begin] [%tmp.110 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_true] [%tmp.111 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_else_false] [%tmp.112 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_42_45_end];
         lputv %ampm.5 %tmp.112;
         symbol [ ampm %ampm.5 42 12 16 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 43 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 43 8 ]
         symbol [ View %tmp.114 43 9 13 ];
         %tmp.114 = getv ? :View;
         symbol [ findDrawableById %tmp.115 43 14 30 ];
@@ -272,7 +272,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_
         %tmp.130 = invoke %tmp.127 %tmp.128(%tmp.129);
         %tmp.131 = add %tmp.125 %tmp.130;
         invoke %tmp.118 %tmp.119(%tmp.131);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 46 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 46 8 ]
         symbol [ View %tmp.133 46 9 13 ];
         %tmp.133 = getv ? :View;
         symbol [ findDrawableById %tmp.134 46 14 30 ];
@@ -287,7 +287,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_
         %tmp.139 = lgetv %ampm.5;
         symbol [ ampm %tmp.139 46 64 68 ];
         invoke %tmp.137 %tmp.138(%tmp.139);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 51 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc" 51 8 ]
         symbol [ View %tmp.141 51 8 12 ];
         %tmp.141 = getv ? :View;
         symbol [ onUpdate %tmp.142 51 13 21 ];
@@ -295,18 +295,18 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_42_19_
         %tmp.143 = lgetv %dc;
         symbol [ dc %tmp.143 51 22 24 ];
         invoke %tmp.141 %tmp.142(%tmp.143);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_TimeView_mc_28_40_52_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 57; @symbol_functiondef = [onHide,57,13,19]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 57; @symbol_functiondef = [onHide,57,13,19]; ]
     function onHide() as Void {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 61; @symbol_functiondef = [onExitSleep,61,13,24]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 61; @symbol_functiondef = [onExitSleep,61,13,24]; ]
     function onExitSleep() as Void {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 66; @symbol_functiondef = [onEnterSleep,66,13,25]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 66; @symbol_functiondef = [onEnterSleep,66,13,25]; ]
     function onEnterSleep() as Void {
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 1; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\TimeView.mc"; @line = 1; ]
 <init> {
 }

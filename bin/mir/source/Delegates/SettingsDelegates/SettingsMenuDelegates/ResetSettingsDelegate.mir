@@ -1,0 +1,347 @@
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [WatchUi,1,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 4; @symbol_classdef = [ResetSettingsDelegate,4,6,27]; @symbol_extends<0> = [WatchUi,4,36,43]; @symbol_extends<1> = [BehaviorDelegate,4,44,60]; ]
+class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 6; @position = 16; @symbol_vardef = [_view,6,16,21]; ]
+    private
+    var _view;
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; @symbol_param<0> = [view,8,24,28]; ]
+    function initialize(view) as Void {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_8_30_11_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 9 8 ]
+        symbol [ BehaviorDelegate %tmp.2 9 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 9 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 10 8 ]
+        %tmp.4 = lgetv %view;
+        symbol [ view %tmp.4 10 16 20 ];
+        symbol [ _view ? 10 8 13 ];
+        putv self :_view %tmp.4;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_8_30_11_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 13; @symbol_functiondef = [onSelect,13,13,21]; ]
+    function onSelect() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_13_24_16_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 14 8 ]
+        symbol [ _view %tmp.2 14 8 13 ];
+        %tmp.2 = getv ? :_view;
+        symbol [ selectCurrentOption %tmp.3 14 14 33 ];
+        %tmp.3 = getv function %tmp.2 :selectCurrentOption;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 15 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_13_24_16_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 18; @symbol_functiondef = [onTap,18,13,18]; @symbol_param<0> = [evt,18,19,22]; ]
+    function onTap(evt) {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_18_24_21_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 19 8 ]
+        symbol [ _view %tmp.2 19 8 13 ];
+        %tmp.2 = getv ? :_view;
+        symbol [ selectCurrentOption %tmp.3 19 14 33 ];
+        %tmp.3 = getv function %tmp.2 :selectCurrentOption;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 20 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_18_24_21_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 24; @symbol_functiondef = [onNextPage,24,13,23]; ]
+    function onNextPage() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_24_26_27_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 25 8 ]
+        %tmp.1 = self;
+        symbol [ handleDown %tmp.2 25 8 18 ];
+        %tmp.2 = getv function %tmp.1 :handleDown;
+        invoke %tmp.1 %tmp.2();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 26 8 ]
+        %tmp.3 = true;
+        ret %tmp.3;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_24_26_27_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 30; @symbol_functiondef = [onPreviousPage,30,13,27]; ]
+    function onPreviousPage() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_30_30_33_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 31 8 ]
+        %tmp.1 = self;
+        symbol [ handleUp %tmp.2 31 8 16 ];
+        %tmp.2 = getv function %tmp.1 :handleUp;
+        invoke %tmp.1 %tmp.2();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 32 8 ]
+        %tmp.3 = true;
+        ret %tmp.3;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_30_30_33_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 36; @symbol_functiondef = [onKey,36,13,18]; @symbol_param<0> = [keyEvent,36,19,27]; ]
+    function onKey(keyEvent) {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_36_29_55_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 37 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_36_29_55_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_36_29_55_4_stop" ]
+        %key.1 = local;
+        symbol [ key %key.1 37 12 15 ];
+        %tmp.1 = lgetv %keyEvent;
+        symbol [ keyEvent %tmp.1 37 18 26 ];
+        symbol [ getKey %tmp.2 37 27 33 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %key.1 %tmp.3;
+        symbol [ key %key.1 37 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 39 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_8_42_8_if_stmt:
+        %tmp.4 = lgetv %key.1;
+        symbol [ key %tmp.4 39 12 15 ];
+        symbol [ WatchUi %tmp.5 39 19 26 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.6 39 27 33 ];
+        %tmp.6 = getv %tmp.5 :KEY_UP;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_8_42_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_8_42_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_35_42_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 40 12 ]
+        %tmp.8 = self;
+        symbol [ handleUp %tmp.9 40 12 20 ];
+        %tmp.9 = getv function %tmp.8 :handleUp;
+        invoke %tmp.8 %tmp.9();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 41 12 ]
+        %tmp.10 = true;
+        ret %tmp.10;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_35_42_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_8_42_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_39_8_42_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 44 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_8_47_8_if_stmt:
+        %tmp.11 = lgetv %key.1;
+        symbol [ key %tmp.11 44 12 15 ];
+        symbol [ WatchUi %tmp.12 44 19 26 ];
+        %tmp.12 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.13 44 27 35 ];
+        %tmp.13 = getv %tmp.12 :KEY_DOWN;
+        %tmp.14 = eq %tmp.11 %tmp.13;
+        bf %tmp.14 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_8_47_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_8_47_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_37_47_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 45 12 ]
+        %tmp.15 = self;
+        symbol [ handleDown %tmp.16 45 12 22 ];
+        %tmp.16 = getv function %tmp.15 :handleDown;
+        invoke %tmp.15 %tmp.16();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 46 12 ]
+        %tmp.17 = true;
+        ret %tmp.17;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_37_47_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_8_47_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_44_8_47_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 49 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_12_49_83_begin:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_12_49_55_begin:
+        %tmp.18 = lgetv %key.1;
+        symbol [ key %tmp.18 49 12 15 ];
+        symbol [ WatchUi %tmp.19 49 19 26 ];
+        %tmp.19 = getm $.Toybox.WatchUi;
+        symbol [ KEY_ENTER %tmp.20 49 27 36 ];
+        %tmp.20 = getv %tmp.19 :KEY_ENTER;
+        %tmp.21 = eq %tmp.18 %tmp.20;
+        bt %tmp.21 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_true;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_40_49_55_false:
+        %tmp.22 = lgetv %key.1;
+        symbol [ key %tmp.22 49 40 43 ];
+        symbol [ WatchUi %tmp.23 49 47 54 ];
+        %tmp.23 = getm $.Toybox.WatchUi;
+        symbol [ KEY_START %tmp.24 49 55 64 ];
+        %tmp.24 = getv %tmp.23 :KEY_START;
+        %tmp.25 = eq %tmp.22 %tmp.24;
+        push %tmp.25;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_40_49_55_end:
+        %tmp.26 = phi [%tmp.21 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_12_49_55_begin] [%tmp.25 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_40_49_55_false] [%tmp.26 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_40_49_55_end];
+        bt %tmp.26 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_true;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_68_49_83_false:
+        %tmp.27 = lgetv %key.1;
+        symbol [ key %tmp.27 49 68 71 ];
+        symbol [ WatchUi %tmp.28 49 75 82 ];
+        %tmp.28 = getm $.Toybox.WatchUi;
+        symbol [ KEY_MENU %tmp.29 49 83 91 ];
+        %tmp.29 = getv %tmp.28 :KEY_MENU;
+        %tmp.30 = eq %tmp.27 %tmp.29;
+        push %tmp.30;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_68_49_83_end:
+        %tmp.31 = phi [%tmp.26 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_12_49_83_begin] [%tmp.30 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_68_49_83_false] [%tmp.31 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_68_49_83_end];
+        bf %tmp.31 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_93_52_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 50 12 ]
+        symbol [ _view %tmp.33 50 12 17 ];
+        %tmp.33 = getv ? :_view;
+        symbol [ selectCurrentOption %tmp.34 50 18 37 ];
+        %tmp.34 = getv function %tmp.33 :selectCurrentOption;
+        invoke %tmp.33 %tmp.34();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 51 12 ]
+        %tmp.35 = true;
+        ret %tmp.35;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_93_52_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_49_8_52_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 54 8 ]
+        %tmp.36 = false;
+        ret %tmp.36;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_36_29_55_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 57; @symbol_functiondef = [handleUp,57,13,21]; ]
+    function handleUp() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_57_24_76_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 59 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_8_62_8_if_stmt:
+        symbol [ _view %tmp.2 59 12 17 ];
+        %tmp.2 = getv ? :_view;
+        symbol [ isConfirmScreen %tmp.3 59 18 33 ];
+        %tmp.3 = getv function %tmp.2 :isConfirmScreen;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        bf %tmp.4 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_8_62_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_8_62_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_37_62_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 60 12 ]
+        symbol [ _view %tmp.6 60 12 17 ];
+        %tmp.6 = getv ? :_view;
+        symbol [ moveSelectionUp %tmp.7 60 18 33 ];
+        %tmp.7 = getv function %tmp.6 :moveSelectionUp;
+        invoke %tmp.6 %tmp.7();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 61 12 ]
+        ret ?;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_37_62_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_8_62_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_59_8_62_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 65 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_8_75_8_if_stmt:
+        symbol [ _view %tmp.9 65 12 17 ];
+        %tmp.9 = getv ? :_view;
+        symbol [ isOpenScreen %tmp.10 65 18 30 ];
+        %tmp.10 = getv function %tmp.9 :isOpenScreen;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        bf %tmp.11 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_8_75_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_8_75_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_34_75_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 66 12 ]
+        symbol [ System %tmp.12 66 12 18 ];
+        %tmp.12 = getm $.Toybox.System;
+        symbol [ println %tmp.13 66 19 26 ];
+        %tmp.13 = getv function %tmp.12 :println;
+        %tmp.14 = "UP pressed from Reset: Summary Settings";
+        invoke %tmp.12 %tmp.13(%tmp.14);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 68 12 ]
+        symbol [ WatchUi %tmp.15 68 12 19 ];
+        %tmp.15 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.16 68 20 28 ];
+        %tmp.16 = getv function %tmp.15 :pushView;
+        symbol [ SummarySettingsMenuView %tmp.20 69 20 43 ];
+        %tmp.20 = getv ? :SummarySettingsMenuView;
+        %tmp.17 = newc %tmp.20 ();
+        symbol [ SummarySettingsMenuDelegate %tmp.24 70 20 47 ];
+        %tmp.24 = getv ? :SummarySettingsMenuDelegate;
+        %tmp.21 = newc %tmp.24 ();
+        symbol [ WatchUi %tmp.25 71 16 23 ];
+        %tmp.25 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.26 71 24 34 ];
+        %tmp.26 = getv %tmp.25 :SLIDE_DOWN;
+        invoke %tmp.15 %tmp.16(%tmp.17, %tmp.21, %tmp.26);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 74 12 ]
+        ret ?;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_34_75_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_8_75_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_65_8_75_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_57_24_76_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 78; @symbol_functiondef = [handleDown,78,13,23]; ]
+    function handleDown() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_78_26_97_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 80 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_8_83_8_if_stmt:
+        symbol [ _view %tmp.2 80 12 17 ];
+        %tmp.2 = getv ? :_view;
+        symbol [ isConfirmScreen %tmp.3 80 18 33 ];
+        %tmp.3 = getv function %tmp.2 :isConfirmScreen;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        bf %tmp.4 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_8_83_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_8_83_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_37_83_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 81 12 ]
+        symbol [ _view %tmp.6 81 12 17 ];
+        %tmp.6 = getv ? :_view;
+        symbol [ moveSelectionDown %tmp.7 81 18 35 ];
+        %tmp.7 = getv function %tmp.6 :moveSelectionDown;
+        invoke %tmp.6 %tmp.7();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 82 12 ]
+        ret ?;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_37_83_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_8_83_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_80_8_83_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 86 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_8_96_8_if_stmt:
+        symbol [ _view %tmp.9 86 12 17 ];
+        %tmp.9 = getv ? :_view;
+        symbol [ isOpenScreen %tmp.10 86 18 30 ];
+        %tmp.10 = getv function %tmp.9 :isOpenScreen;
+        %tmp.11 = invoke %tmp.9 %tmp.10();
+        bf %tmp.11 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_8_96_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_8_96_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_34_96_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 87 12 ]
+        symbol [ System %tmp.12 87 12 18 ];
+        %tmp.12 = getm $.Toybox.System;
+        symbol [ println %tmp.13 87 19 26 ];
+        %tmp.13 = getv function %tmp.12 :println;
+        %tmp.14 = "DOWN pressed from Reset: Cadence Settings";
+        invoke %tmp.12 %tmp.13(%tmp.14);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 89 12 ]
+        symbol [ WatchUi %tmp.15 89 12 19 ];
+        %tmp.15 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.16 89 20 28 ];
+        %tmp.16 = getv function %tmp.15 :pushView;
+        symbol [ CadenceSettingsMenuView %tmp.20 90 20 43 ];
+        %tmp.20 = getv ? :CadenceSettingsMenuView;
+        %tmp.17 = newc %tmp.20 ();
+        symbol [ CadenceSettingsMenuDelegate %tmp.24 91 20 47 ];
+        %tmp.24 = getv ? :CadenceSettingsMenuDelegate;
+        %tmp.21 = newc %tmp.24 ();
+        symbol [ WatchUi %tmp.25 92 16 23 ];
+        %tmp.25 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.26 92 24 32 ];
+        %tmp.26 = getv %tmp.25 :SLIDE_UP;
+        invoke %tmp.15 %tmp.16(%tmp.17, %tmp.21, %tmp.26);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 95 12 ]
+        ret ?;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_34_96_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_8_96_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_86_8_96_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_78_26_97_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 99; @symbol_functiondef = [onBack,99,13,19]; ]
+    function onBack() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_99_22_102_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 100 8 ]
+        symbol [ _view %tmp.2 100 8 13 ];
+        %tmp.2 = getv ? :_view;
+        symbol [ handleBack %tmp.3 100 14 24 ];
+        %tmp.3 = getv function %tmp.2 :handleBack;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc" 101 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_ResetSettingsDelegate_mc_99_22_102_4_stop:
+    }
+}
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\ResetSettingsDelegate.mc"; @line = 1; ]
+<init> {
+}

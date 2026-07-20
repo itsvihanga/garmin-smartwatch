@@ -37,12 +37,12 @@ class GarminApp extends Application.AppBase {
     
     private var _sessionState as SessionState = IDLE;
     
-   enum {
-    FifteenminChart = 5,    // was 3
-    ThirtyminChart = 10,    // was 6 
-    OneHourChart = 20,      // was 13
-    TwoHourChart = 40       // was 26
-}
+    enum ChartDuration {
+        FifteenminChart = 5,    // was 3
+        ThirtyminChart = 10,    // was 6 
+        OneHourChart = 20,      // was 13
+        TwoHourChart = 40       // was 26
+    }
 
     const CHART_ENUM_NAMES = {
         FifteenminChart => "15 Minutes",
@@ -50,14 +50,15 @@ class GarminApp extends Application.AppBase {
         OneHourChart => "1 Hour",
         TwoHourChart => "2 Hours"
     };
+    //reset all settings
 
-    enum {
+    enum ExperienceLevel {
         Beginner = 1.06,
         Intermediate = 1.04,
         Advanced = 1.02
     }
 
-    enum {
+    enum GenderType {
         Male,
         Female,
         Other
@@ -888,35 +889,41 @@ if (val != null) {
     "[CADENCE] Target: " +
     _targetCadence.toString()
 );
-
-//reset all settings
-function resetAllSettings() as Void {
-    System.println("[RESET] Resetting all settings to default");
-
-    _idealMinCadence = 120;
-    _idealMaxCadence = 150;
-
-    _chartDuration = ThirtyminChart as Number;
-
-    _userHeight = 170;
-    _userSpeed = 10.0;
-    _experienceLvl = 1.00;
-    _userGender = 0;
-
-    _vibrationEnabled = true;
-
-    _cadenceBarAvg = new [_chartDuration];
-    _cadenceAvgIndex = 0;
-    _cadenceAvgCount = 0;
-
-    _cadenceHistory = new [MAX_BARS];
-    _cadenceIndex = 0;
-    _cadenceCount = 0;
-
-    saveSettings();
-
-    System.println("[RESET] All settings reset complete");
 }
+
+// //reset all settings
+// function resetAllSettings() as Void {
+//     System.println("[RESET] Resetting all settings to default");
+
+<<<<<<< Updated upstream
+    var _idealMinCadence = 120;
+    var _idealMaxCadence = 150;
+=======
+//     _idealMinCadence = 120;
+//     _idealMaxCadence = 150;
+>>>>>>> Stashed changes
+
+//     _chartDuration = ThirtyminChart as Number;
+
+//     _userHeight = 170;
+//     _userSpeed = 10.0;
+//     _experienceLvl = 1.00;
+//     _userGender = 0;
+
+//     _vibrationEnabled = true;
+
+//     _cadenceBarAvg = new [_chartDuration];
+//     _cadenceAvgIndex = 0;
+//     _cadenceAvgCount = 0;
+
+//     _cadenceHistory = new [MAX_BARS];
+//     _cadenceIndex = 0;
+//     _cadenceCount = 0;
+
+//     saveSettings();
+
+//     System.println("[RESET] All settings reset complete");
+// }
 
 
     // function getSessionDuration() as Number {
@@ -933,7 +940,6 @@ function resetAllSettings() as Void {
         
     //     return totalTime / 1000;
     // }
-}
 
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];

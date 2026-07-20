@@ -72,15 +72,15 @@ function onUpdate(dc as Dc) as Void {
     // ===== METRICS =====
     var km = distance / 100000.0;
 
-        drawRow(dc, width, startY + gap, timeStr, _iconTime, "TIME");
-        drawRow(dc, width, startY + gap * 2, km.format("%.2f"), _iconDistance, "DISTANCE");
-        drawRow(dc, width, startY + gap * 3, "--", _iconCadence, "CADENCE");
-        drawRow(dc, width, startY + gap * 4, hr + "", _iconHR, "BPM (AVG)");
-        drawRow(dc, width, startY + gap * 5, "--", _iconSteps, "STEPS");
+        drawRow(dc, width, startY + gap, timeStr, :time, "TIME");
+        drawRow(dc, width, startY + gap * 2, km.format("%.2f"), :distance, "DISTANCE");
+        drawRow(dc, width, startY + gap * 3, "--", :cadence, "CADENCE");
+        drawRow(dc, width, startY + gap * 4, hr + "", :quality, "BPM (AVG)");
+        drawRow(dc, width, startY + gap * 5, "--", :distance, "STEPS");
 
-        drawRow(dc, width, startY + gap * 6, pace, _iconCadence, "AVG PACE");
-        drawRow(dc, width, startY + gap * 7, qcScore, _iconHR, "QC SCORE");
-        drawRow(dc, width, startY + gap * 8, temperature, _iconSteps, "TEMP");
+        drawRow(dc, width, startY + gap * 6, pace, :pace, "AVG PACE");
+        drawRow(dc, width, startY + gap * 7, qcScore, :quality, "QC SCORE");
+        drawRow(dc, width, startY + gap * 8, temperature, :distance, "TEMP");
 }
 
 function drawRow(dc as Dc, width as Number, y as Number, value as String, iconType as Symbol, label as String) as Void {

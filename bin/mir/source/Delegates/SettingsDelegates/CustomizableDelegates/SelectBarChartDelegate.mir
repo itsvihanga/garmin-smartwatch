@@ -1,344 +1,278 @@
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
-import Toybox.System;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
 import Toybox.Application;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 6; @symbol_classdef = [SelectBarChartDelegate,6,6,28]; @symbol_extends<0> = [WatchUi,6,37,44]; @symbol_extends<1> = [Menu2InputDelegate,6,45,63]; ]
-class SelectBarChartDelegate extends WatchUi.Menu2InputDelegate {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 6; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 6; @symbol_classdef = [SelectBarChartDelegate,6,6,28]; @symbol_extends<0> = [WatchUi,6,37,44]; @symbol_extends<1> = [BehaviorDelegate,6,45,61]; ]
+class SelectBarChartDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 6; ]
     <init> {
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 9 8 ]
-        symbol [ Application %tmp.1 9 14 25 ];
-        %tmp.1 = getm $.Toybox.Application;
-        symbol [ getApp %tmp.2 9 26 32 ];
-        %tmp.2 = getv function %tmp.1 :getApp;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        %tmp.4 = as %tmp.3 GarminApp;
-        symbol [ GarminApp %tmp.4 9 38 47 ];
-        putv self :app %tmp.4;
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 8 16 ]
+        %tmp.1 = newa 4;
+        %tmp.2 = 5;
+        %tmp.3 = dup %tmp.1;
+        %tmp.4 = aputv %tmp.3 0 %tmp.2;
+        %tmp.5 = 10;
+        %tmp.6 = dup %tmp.4;
+        %tmp.7 = aputv %tmp.6 1 %tmp.5;
+        %tmp.8 = 20;
+        %tmp.9 = dup %tmp.7;
+        %tmp.10 = aputv %tmp.9 2 %tmp.8;
+        %tmp.11 = 40;
+        %tmp.12 = dup %tmp.10;
+        %tmp.13 = aputv %tmp.12 3 %tmp.11;
+        putv self :_options %tmp.13;
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 6; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 6; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 8; @position = 16; @symbol_vardef = [_menu,8,16,21]; @symbol_type<0> = [WatchUi,8,25,32]; @symbol_type<1> = [Menu2,8,33,38]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 8; @position = 16; @symbol_vardef = [_options,8,16,24]; @symbol_type<0> = [Array,8,28,33]; @symbol_type<1> = [Number,8,34,40]; ]
     private
-    var _menu as WatchUi.Menu2;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 9; @position = 8; @symbol_vardef = [app,9,8,11]; ]
-    var app;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 11; @symbol_functiondef = [initialize,11,13,23]; @symbol_param<0> = [menu,11,24,28]; @symbol_param<0>_type<0> = [WatchUi,11,32,39]; @symbol_param<0>_type<1> = [Menu2,11,40,45]; ]
-    function initialize(menu as WatchUi.Menu2) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_11_47_34_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 12 8 ]
-        symbol [ Menu2InputDelegate %tmp.2 12 8 26 ];
-        %tmp.2 = getv ? :Menu2InputDelegate;
-        symbol [ initialize %tmp.3 12 27 37 ];
+    var _options as Array<Number>;
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; ]
+    function initialize() as Void {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_10_26_12_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 11 8 ]
+        symbol [ BehaviorDelegate %tmp.2 11 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 11 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 13 8 ]
-        %tmp.4 = lgetv %menu;
-        symbol [ menu %tmp.4 13 16 20 ];
-        symbol [ _menu ? 13 8 13 ];
-        putv self :_menu %tmp.4;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 16 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_11_47_34_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_11_47_34_4_stop" ]
-        %currentDur.1 = local;
-        symbol [ currentDur %currentDur.1 16 12 22 ];
-        symbol [ app %tmp.6 16 25 28 ];
-        %tmp.6 = getv ? :app;
-        symbol [ _chartDuration %tmp.7 16 29 43 ];
-        %tmp.7 = getv %tmp.6 :_chartDuration;
-        lputv %currentDur.1 %tmp.7;
-        symbol [ currentDur %currentDur.1 16 12 22 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 17 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_11_47_34_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_11_47_34_4_stop" ]
-        %label.2 = local;
-        symbol [ label %label.2 17 12 17 ];
-        %tmp.8 = "30 min";
-        lputv %label.2 %tmp.8;
-        symbol [ label %label.2 17 12 17 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 19 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_8_31_8_if_stmt:
-        %tmp.9 = lgetv %currentDur.1;
-        symbol [ currentDur %tmp.9 19 12 22 ];
-        %tmp.10 = 3;
-        %tmp.11 = eq %tmp.9 %tmp.10;
-        bf %tmp.11 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_8_31_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_8_31_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_29_22_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 20 12 ]
-        %tmp.12 = "15 min";
-        lputv %label.2 %tmp.12;
-        symbol [ label %label.2 20 12 17 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 21 12 ]
-        symbol [ _menu %tmp.14 21 12 17 ];
-        %tmp.14 = getv ? :_menu;
-        symbol [ setFocus %tmp.15 21 18 26 ];
-        %tmp.15 = getv function %tmp.14 :setFocus;
-        %tmp.16 = 0;
-        invoke %tmp.14 %tmp.15(%tmp.16);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_29_22_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_8_31_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_8_31_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 22 15 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_15_31_8_if_stmt:
-        %tmp.17 = lgetv %currentDur.1;
-        symbol [ currentDur %tmp.17 22 19 29 ];
-        %tmp.18 = 6;
-        %tmp.19 = eq %tmp.17 %tmp.18;
-        bf %tmp.19 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_15_31_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_15_31_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_36_25_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 23 12 ]
-        %tmp.20 = "30 min";
-        lputv %label.2 %tmp.20;
-        symbol [ label %label.2 23 12 17 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 24 12 ]
-        symbol [ _menu %tmp.22 24 12 17 ];
-        %tmp.22 = getv ? :_menu;
-        symbol [ setFocus %tmp.23 24 18 26 ];
-        %tmp.23 = getv function %tmp.22 :setFocus;
-        %tmp.24 = 1;
-        invoke %tmp.22 %tmp.23(%tmp.24);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_36_25_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_15_31_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_15_31_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 25 15 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_15_31_8_if_stmt:
-        %tmp.25 = lgetv %currentDur.1;
-        symbol [ currentDur %tmp.25 25 19 29 ];
-        %tmp.26 = 13;
-        %tmp.27 = eq %tmp.25 %tmp.26;
-        bf %tmp.27 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_15_31_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_15_31_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_37_28_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 26 12 ]
-        %tmp.28 = "1 hour";
-        lputv %label.2 %tmp.28;
-        symbol [ label %label.2 26 12 17 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 27 12 ]
-        symbol [ _menu %tmp.30 27 12 17 ];
-        %tmp.30 = getv ? :_menu;
-        symbol [ setFocus %tmp.31 27 18 26 ];
-        %tmp.31 = getv function %tmp.30 :setFocus;
-        %tmp.32 = 2;
-        invoke %tmp.30 %tmp.31(%tmp.32);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_37_28_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_15_31_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_15_31_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 28 15 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_15_31_8_if_stmt:
-        %tmp.33 = lgetv %currentDur.1;
-        symbol [ currentDur %tmp.33 28 19 29 ];
-        %tmp.34 = 26;
-        %tmp.35 = eq %tmp.33 %tmp.34;
-        bf %tmp.35 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_15_31_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_15_31_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_37_31_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 29 12 ]
-        %tmp.36 = "2 hour";
-        lputv %label.2 %tmp.36;
-        symbol [ label %label.2 29 12 17 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 30 12 ]
-        symbol [ _menu %tmp.38 30 12 17 ];
-        %tmp.38 = getv ? :_menu;
-        symbol [ setFocus %tmp.39 30 18 26 ];
-        %tmp.39 = getv function %tmp.38 :setFocus;
-        %tmp.40 = 3;
-        invoke %tmp.38 %tmp.39(%tmp.40);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_37_31_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_15_31_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_28_15_31_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_25_15_31_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_22_15_31_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_8_31_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 33 8 ]
-        symbol [ _menu %tmp.42 33 8 13 ];
-        %tmp.42 = getv ? :_menu;
-        symbol [ setTitle %tmp.43 33 14 22 ];
-        %tmp.43 = getv function %tmp.42 :setTitle;
-        %tmp.44 = "Duration: ";
-        %tmp.45 = lgetv %label.2;
-        symbol [ label %tmp.45 33 38 43 ];
-        %tmp.46 = add %tmp.44 %tmp.45;
-        invoke %tmp.42 %tmp.43(%tmp.46);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_11_47_34_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_10_26_12_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 36; @symbol_functiondef = [onSelect,36,13,21]; @symbol_param<0> = [item,36,22,26]; ]
-    function onSelect(item) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_36_36_62_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 37 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_36_36_62_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_36_36_62_4_stop" ]
-        %id.1 = local;
-        symbol [ id %id.1 37 12 14 ];
-        %tmp.1 = lgetv %item;
-        symbol [ item %tmp.1 37 17 21 ];
-        symbol [ getId %tmp.2 37 22 27 ];
-        %tmp.2 = getv function %tmp.1 :getId;
-        %tmp.3 = invoke %tmp.1 %tmp.2();
-        lputv %id.1 %tmp.3;
-        symbol [ id %id.1 37 12 14 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 40 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_58_8_if_stmt:
-        %tmp.4 = lgetv %id.1;
-        symbol [ id %tmp.4 40 12 14 ];
-        %tmp.6 = const :chart_15m;
-        symbol [ chart_15m %tmp.6 40 19 28 const ];
-        %tmp.7 = eq %tmp.4 %tmp.6;
-        bf %tmp.7 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_58_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_58_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_30_43_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 41 12 ]
-        symbol [ app %tmp.9 41 12 15 ];
-        %tmp.9 = getv ? :app;
-        symbol [ setChartDuration %tmp.10 41 16 32 ];
-        %tmp.10 = getv function %tmp.9 :setChartDuration;
-        %tmp.11 = 3;
-        invoke %tmp.9 %tmp.10(%tmp.11);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 42 12 ]
-        symbol [ System %tmp.12 42 12 18 ];
-        %tmp.12 = getm $.Toybox.System;
-        symbol [ println %tmp.13 42 19 26 ];
-        %tmp.13 = getv function %tmp.12 :println;
-        %tmp.14 = "Chart Duration: Fifteenmin";
-        invoke %tmp.12 %tmp.13(%tmp.14);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_30_43_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_58_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_58_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 44 13 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_13_58_8_if_stmt:
-        %tmp.15 = lgetv %id.1;
-        symbol [ id %tmp.15 44 17 19 ];
-        %tmp.17 = const :chart_30m;
-        symbol [ chart_30m %tmp.17 44 24 33 const ];
-        %tmp.18 = eq %tmp.15 %tmp.17;
-        bf %tmp.18 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_13_58_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_13_58_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_35_47_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 45 12 ]
-        symbol [ app %tmp.20 45 12 15 ];
-        %tmp.20 = getv ? :app;
-        symbol [ setChartDuration %tmp.21 45 16 32 ];
-        %tmp.21 = getv function %tmp.20 :setChartDuration;
-        %tmp.22 = 6;
-        invoke %tmp.20 %tmp.21(%tmp.22);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 46 12 ]
-        symbol [ System %tmp.23 46 12 18 ];
-        %tmp.23 = getm $.Toybox.System;
-        symbol [ println %tmp.24 46 19 26 ];
-        %tmp.24 = getv function %tmp.23 :println;
-        %tmp.25 = "Chart Duration: Thirtymin";
-        invoke %tmp.23 %tmp.24(%tmp.25);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_35_47_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_13_58_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_13_58_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 48 13 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_13_58_8_if_stmt:
-        %tmp.26 = lgetv %id.1;
-        symbol [ id %tmp.26 48 17 19 ];
-        %tmp.28 = const :chart_1h;
-        symbol [ chart_1h %tmp.28 48 24 32 const ];
-        %tmp.29 = eq %tmp.26 %tmp.28;
-        bf %tmp.29 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_13_58_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_13_58_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_34_51_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 49 12 ]
-        symbol [ app %tmp.31 49 12 15 ];
-        %tmp.31 = getv ? :app;
-        symbol [ setChartDuration %tmp.32 49 16 32 ];
-        %tmp.32 = getv function %tmp.31 :setChartDuration;
-        %tmp.33 = 13;
-        invoke %tmp.31 %tmp.32(%tmp.33);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 50 12 ]
-        symbol [ System %tmp.34 50 12 18 ];
-        %tmp.34 = getm $.Toybox.System;
-        symbol [ println %tmp.35 50 19 26 ];
-        %tmp.35 = getv function %tmp.34 :println;
-        %tmp.36 = "Chart Duration: OneHour";
-        invoke %tmp.34 %tmp.35(%tmp.36);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_34_51_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_13_58_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_13_58_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 52 13 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_13_58_8_if_stmt:
-        %tmp.37 = lgetv %id.1;
-        symbol [ id %tmp.37 52 17 19 ];
-        %tmp.39 = const :chart_2h;
-        symbol [ chart_2h %tmp.39 52 24 32 const ];
-        %tmp.40 = eq %tmp.37 %tmp.39;
-        bf %tmp.40 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_13_58_8_if_else_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_13_58_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_34_55_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 53 12 ]
-        symbol [ app %tmp.42 53 12 15 ];
-        %tmp.42 = getv ? :app;
-        symbol [ setChartDuration %tmp.43 53 16 32 ];
-        %tmp.43 = getv function %tmp.42 :setChartDuration;
-        %tmp.44 = 26;
-        invoke %tmp.42 %tmp.43(%tmp.44);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 54 12 ]
-        symbol [ System %tmp.45 54 12 18 ];
-        %tmp.45 = getm $.Toybox.System;
-        symbol [ println %tmp.46 54 19 26 ];
-        %tmp.46 = getv function %tmp.45 :println;
-        %tmp.47 = "Chart Duration: TwoHour";
-        invoke %tmp.45 %tmp.46(%tmp.47);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_34_55_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_13_58_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_13_58_8_if_else_false:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_56_13_58_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 57 12 ]
-        symbol [ System %tmp.48 57 12 18 ];
-        %tmp.48 = getm $.Toybox.System;
-        symbol [ println %tmp.49 57 19 26 ];
-        %tmp.49 = getv function %tmp.48 :println;
-        %tmp.50 = "ERROR";
-        invoke %tmp.48 %tmp.49(%tmp.50);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_56_13_58_8_stop:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_52_13_58_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_48_13_58_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_44_13_58_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_58_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 60 8 ]
-        symbol [ WatchUi %tmp.51 60 8 15 ];
-        %tmp.51 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.52 60 16 29 ];
-        %tmp.52 = getv function %tmp.51 :requestUpdate;
-        invoke %tmp.51 %tmp.52();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 61 8 ]
-        symbol [ WatchUi %tmp.53 61 8 15 ];
-        %tmp.53 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.54 61 16 23 ];
-        %tmp.54 = getv function %tmp.53 :popView;
-        symbol [ WatchUi %tmp.55 61 24 31 ];
-        %tmp.55 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.56 61 32 43 ];
-        %tmp.56 = getv %tmp.55 :SLIDE_RIGHT;
-        invoke %tmp.53 %tmp.54(%tmp.56);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_36_36_62_4_stop:
-    }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 64; @symbol_functiondef = [onMenuItem,64,13,23]; @symbol_param<0> = [item,64,24,28]; @symbol_param<0>_type<0> = [Symbol,64,32,38]; ]
-    function onMenuItem(item as Symbol) as Void {
-    }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 66; @symbol_functiondef = [onBack,66,13,19]; ]
-    function onBack() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_66_30_68_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 67 8 ]
-        symbol [ WatchUi %tmp.1 67 8 15 ];
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 14; @symbol_functiondef = [onBack,14,13,19]; @symbol_return<0> = [Boolean,14,25,32]; ]
+    function onBack() as Boolean {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_14_33_17_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 15 8 ]
+        symbol [ WatchUi %tmp.1 15 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.2 67 16 23 ];
+        symbol [ popView %tmp.2 15 16 23 ];
         %tmp.2 = getv function %tmp.1 :popView;
-        symbol [ WatchUi %tmp.3 67 24 31 ];
+        symbol [ WatchUi %tmp.3 15 24 31 ];
         %tmp.3 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_RIGHT %tmp.4 67 32 43 ];
+        symbol [ SLIDE_RIGHT %tmp.4 15 32 43 ];
         %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
         invoke %tmp.1 %tmp.2(%tmp.4);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_66_30_68_4_stop:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 16 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_14_33_17_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 19; @symbol_functiondef = [onSelect,19,13,21]; @symbol_return<0> = [Boolean,19,27,34]; ]
+    function onSelect() as Boolean {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_35_22_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 20 8 ]
+        symbol [ WatchUi %tmp.1 20 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 20 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 20 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_RIGHT %tmp.4 20 32 43 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_RIGHT;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 21 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_19_35_22_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 24; @symbol_functiondef = [onKey,24,13,18]; @symbol_param<0> = [keyEvent,24,19,27]; @symbol_param<0>_type<0> = [WatchUi,24,31,38]; @symbol_param<0>_type<1> = [KeyEvent,24,39,47]; @symbol_return<0> = [Boolean,24,52,59]; ]
+    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 25 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_stop" ]
+        %key.1 = local;
+        symbol [ key %key.1 25 12 15 ];
+        %tmp.1 = lgetv %keyEvent;
+        symbol [ keyEvent %tmp.1 25 18 26 ];
+        symbol [ getKey %tmp.2 25 27 33 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %key.1 %tmp.3;
+        symbol [ key %key.1 25 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 26 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 26 12 15 ];
+        symbol [ Application %tmp.4 26 18 29 ];
+        %tmp.4 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.5 26 30 36 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = as %tmp.6 GarminApp;
+        symbol [ GarminApp %tmp.7 26 42 51 ];
+        lputv %app.2 %tmp.7;
+        symbol [ app %app.2 26 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 27 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_stop" ]
+        %current.3 = local;
+        symbol [ current %current.3 27 12 19 ];
+        %tmp.8 = lgetv %app.2;
+        symbol [ app %tmp.8 27 22 25 ];
+        symbol [ getChartBarCount %tmp.9 27 26 42 ];
+        %tmp.9 = getv function %tmp.8 :getChartBarCount;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        lputv %current.3 %tmp.10;
+        symbol [ current %current.3 27 12 19 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 28 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_stop" ]
+        %idx.4 = local;
+        symbol [ idx %idx.4 28 12 15 ];
+        symbol [ _options %tmp.12 28 18 26 ];
+        %tmp.12 = getv ? :_options;
+        symbol [ indexOf %tmp.13 28 27 34 ];
+        %tmp.13 = getv function %tmp.12 :indexOf;
+        %tmp.14 = lgetv %current.3;
+        symbol [ current %tmp.14 28 35 42 ];
+        %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
+        lputv %idx.4 %tmp.15;
+        symbol [ idx %idx.4 28 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 30 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_8_38_8_if_stmt:
+        %tmp.16 = lgetv %key.1;
+        symbol [ key %tmp.16 30 12 15 ];
+        symbol [ WatchUi %tmp.17 30 19 26 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.18 30 27 33 ];
+        %tmp.18 = getv %tmp.17 :KEY_UP;
+        %tmp.19 = eq %tmp.16 %tmp.18;
+        bf %tmp.19 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_8_38_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_8_38_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_35_38_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 31 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_12_35_12_if_stmt:
+        %tmp.20 = lgetv %idx.4;
+        symbol [ idx %tmp.20 31 16 19 ];
+        %tmp.21 = 0;
+        %tmp.22 = gt %tmp.20 %tmp.21;
+        bf %tmp.22 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_12_35_12_if_else_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_12_35_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_25_33_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 32 16 ]
+        %tmp.23 = lgetv %app.2;
+        symbol [ app %tmp.23 32 16 19 ];
+        symbol [ setChartDuration %tmp.24 32 20 36 ];
+        %tmp.24 = getv function %tmp.23 :setChartDuration;
+        symbol [ _options %tmp.26 32 37 45 ];
+        %tmp.26 = getv ? :_options;
+        %tmp.27 = lgetv %idx.4;
+        symbol [ idx %tmp.27 32 46 49 ];
+        %tmp.28 = 1;
+        %tmp.29 = sub %tmp.27 %tmp.28;
+        %tmp.30 = agetv %tmp.26 %tmp.29;
+        invoke %tmp.23 %tmp.24(%tmp.30);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_25_33_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_12_35_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_12_35_12_if_else_false:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_33_19_35_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 34 16 ]
+        %tmp.31 = lgetv %app.2;
+        symbol [ app %tmp.31 34 16 19 ];
+        symbol [ setChartDuration %tmp.32 34 20 36 ];
+        %tmp.32 = getv function %tmp.31 :setChartDuration;
+        symbol [ _options %tmp.34 34 37 45 ];
+        %tmp.34 = getv ? :_options;
+        symbol [ _options %tmp.36 34 46 54 ];
+        %tmp.36 = getv ? :_options;
+        symbol [ size %tmp.37 34 55 59 ];
+        %tmp.37 = getv function %tmp.36 :size;
+        %tmp.38 = invoke %tmp.36 %tmp.37();
+        %tmp.39 = 1;
+        %tmp.40 = sub %tmp.38 %tmp.39;
+        %tmp.41 = agetv %tmp.34 %tmp.40;
+        invoke %tmp.31 %tmp.32(%tmp.41);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_33_19_35_12_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_31_12_35_12_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 36 12 ]
+        symbol [ WatchUi %tmp.42 36 12 19 ];
+        %tmp.42 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.43 36 20 33 ];
+        %tmp.43 = getv function %tmp.42 :requestUpdate;
+        invoke %tmp.42 %tmp.43();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 37 12 ]
+        %tmp.44 = true;
+        ret %tmp.44;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_35_38_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_8_38_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_30_8_38_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 40 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_48_8_if_stmt:
+        %tmp.45 = lgetv %key.1;
+        symbol [ key %tmp.45 40 12 15 ];
+        symbol [ WatchUi %tmp.46 40 19 26 ];
+        %tmp.46 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.47 40 27 35 ];
+        %tmp.47 = getv %tmp.46 :KEY_DOWN;
+        %tmp.48 = eq %tmp.45 %tmp.47;
+        bf %tmp.48 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_48_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_48_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_37_48_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 41 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_12_45_12_if_stmt:
+        %tmp.49 = lgetv %idx.4;
+        symbol [ idx %tmp.49 41 16 19 ];
+        symbol [ _options %tmp.51 41 22 30 ];
+        %tmp.51 = getv ? :_options;
+        symbol [ size %tmp.52 41 31 35 ];
+        %tmp.52 = getv function %tmp.51 :size;
+        %tmp.53 = invoke %tmp.51 %tmp.52();
+        %tmp.54 = 1;
+        %tmp.55 = sub %tmp.53 %tmp.54;
+        %tmp.56 = lt %tmp.49 %tmp.55;
+        bf %tmp.56 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_12_45_12_if_else_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_12_45_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_43_43_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 42 16 ]
+        %tmp.57 = lgetv %app.2;
+        symbol [ app %tmp.57 42 16 19 ];
+        symbol [ setChartDuration %tmp.58 42 20 36 ];
+        %tmp.58 = getv function %tmp.57 :setChartDuration;
+        symbol [ _options %tmp.60 42 37 45 ];
+        %tmp.60 = getv ? :_options;
+        %tmp.61 = lgetv %idx.4;
+        symbol [ idx %tmp.61 42 46 49 ];
+        %tmp.62 = 1;
+        %tmp.63 = add %tmp.61 %tmp.62;
+        %tmp.64 = agetv %tmp.60 %tmp.63;
+        invoke %tmp.57 %tmp.58(%tmp.64);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_43_43_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_12_45_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_12_45_12_if_else_false:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_43_19_45_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 44 16 ]
+        %tmp.65 = lgetv %app.2;
+        symbol [ app %tmp.65 44 16 19 ];
+        symbol [ setChartDuration %tmp.66 44 20 36 ];
+        %tmp.66 = getv function %tmp.65 :setChartDuration;
+        symbol [ _options %tmp.68 44 37 45 ];
+        %tmp.68 = getv ? :_options;
+        %tmp.69 = 0;
+        %tmp.70 = agetv %tmp.68 %tmp.69;
+        invoke %tmp.65 %tmp.66(%tmp.70);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_43_19_45_12_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_41_12_45_12_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 46 12 ]
+        symbol [ WatchUi %tmp.71 46 12 19 ];
+        %tmp.71 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.72 46 20 33 ];
+        %tmp.72 = getv function %tmp.71 :requestUpdate;
+        invoke %tmp.71 %tmp.72();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 47 12 ]
+        %tmp.73 = true;
+        ret %tmp.73;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_37_48_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_48_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_40_8_48_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc" 50 8 ]
+        %tmp.74 = false;
+        ret %tmp.74;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CustomizableDelegates_SelectBarChartDelegate_mc_24_60_51_4_stop:
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 1; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CustomizableDelegates\SelectBarChartDelegate.mc"; @line = 1; ]
 <init> {
 }
