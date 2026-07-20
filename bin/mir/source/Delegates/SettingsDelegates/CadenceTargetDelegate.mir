@@ -1,0 +1,223 @@
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
+import Toybox.Application;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 6; @symbol_classdef = [CadenceTargetDelegate,6,6,27]; @symbol_extends<0> = [WatchUi,6,36,43]; @symbol_extends<1> = [BehaviorDelegate,6,44,60]; ]
+class CadenceTargetDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 6; ]
+    <init> {
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 6; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 8; @position = 16; @symbol_vardef = [_target,8,16,23]; @symbol_type<0> = [Number,8,27,33]; ]
+    private
+    var _target as Number;
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 10; @symbol_functiondef = [initialize,10,13,23]; ]
+    function initialize() as Void {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_10_26_16_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 11 8 ]
+        symbol [ BehaviorDelegate %tmp.2 11 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 11 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 13 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_10_26_16_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_10_26_16_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 13 12 15 ];
+        symbol [ Application %tmp.4 13 18 29 ];
+        %tmp.4 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.5 13 30 36 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = as %tmp.6 GarminApp;
+        symbol [ GarminApp %tmp.7 13 42 51 ];
+        lputv %app.1 %tmp.7;
+        symbol [ app %app.1 13 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 15 8 ]
+        %tmp.8 = lgetv %app.1;
+        symbol [ app %tmp.8 15 18 21 ];
+        symbol [ getTargetCadence %tmp.9 15 22 38 ];
+        %tmp.9 = getv function %tmp.8 :getTargetCadence;
+        %tmp.10 = invoke %tmp.8 %tmp.9();
+        symbol [ _target ? 15 8 15 ];
+        putv self :_target %tmp.10;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_10_26_16_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 18; @symbol_functiondef = [onBack,18,13,19]; @symbol_return<0> = [Boolean,18,25,32]; ]
+    function onBack() as Boolean {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_18_33_23_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 20 8 ]
+        symbol [ WatchUi %tmp.1 20 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 20 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 20 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.4 20 32 42 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_DOWN;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 22 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_18_33_23_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 25; @symbol_functiondef = [onSelect,25,13,21]; @symbol_return<0> = [Boolean,25,27,34]; ]
+    function onSelect() as Boolean {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_25_35_34_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 27 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_25_35_34_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_25_35_34_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 27 12 15 ];
+        symbol [ Application %tmp.1 27 18 29 ];
+        %tmp.1 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.2 27 30 36 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = as %tmp.3 GarminApp;
+        symbol [ GarminApp %tmp.4 27 42 51 ];
+        lputv %app.1 %tmp.4;
+        symbol [ app %app.1 27 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 29 8 ]
+        %tmp.5 = lgetv %app.1;
+        symbol [ app %tmp.5 29 8 11 ];
+        symbol [ setTargetCadence %tmp.6 29 12 28 ];
+        %tmp.6 = getv function %tmp.5 :setTargetCadence;
+        symbol [ _target %tmp.8 29 29 36 ];
+        %tmp.8 = getv ? :_target;
+        invoke %tmp.5 %tmp.6(%tmp.8);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 31 8 ]
+        symbol [ WatchUi %tmp.9 31 8 15 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.10 31 16 23 ];
+        %tmp.10 = getv function %tmp.9 :popView;
+        symbol [ WatchUi %tmp.11 31 24 31 ];
+        %tmp.11 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.12 31 32 40 ];
+        %tmp.12 = getv %tmp.11 :SLIDE_UP;
+        invoke %tmp.9 %tmp.10(%tmp.12);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 33 8 ]
+        %tmp.13 = true;
+        ret %tmp.13;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_25_35_34_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 36; @symbol_functiondef = [onKey,36,13,18]; @symbol_param<0> = [keyEvent,36,19,27]; @symbol_param<0>_type<0> = [WatchUi,36,31,38]; @symbol_param<0>_type<1> = [KeyEvent,36,39,47]; @symbol_return<0> = [Boolean,36,52,59]; ]
+    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_36_60_65_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 38 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_36_60_65_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_36_60_65_4_stop" ]
+        %key.1 = local;
+        symbol [ key %key.1 38 12 15 ];
+        %tmp.1 = lgetv %keyEvent;
+        symbol [ keyEvent %tmp.1 38 18 26 ];
+        symbol [ getKey %tmp.2 38 27 33 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %key.1 %tmp.3;
+        symbol [ key %key.1 38 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 40 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_36_60_65_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_36_60_65_4_stop" ]
+        %app.2 = local;
+        symbol [ app %app.2 40 12 15 ];
+        symbol [ Application %tmp.4 40 18 29 ];
+        %tmp.4 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.5 40 30 36 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = as %tmp.6 GarminApp;
+        symbol [ GarminApp %tmp.7 40 42 51 ];
+        lputv %app.2 %tmp.7;
+        symbol [ app %app.2 40 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 42 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_8_51_8_if_stmt:
+        %tmp.8 = lgetv %key.1;
+        symbol [ key %tmp.8 42 12 15 ];
+        symbol [ WatchUi %tmp.9 42 19 26 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.10 42 27 33 ];
+        %tmp.10 = getv %tmp.9 :KEY_UP;
+        %tmp.11 = eq %tmp.8 %tmp.10;
+        bf %tmp.11 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_8_51_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_8_51_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_35_51_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 44 12 ]
+        symbol [ _target %tmp.13 44 22 29 ];
+        %tmp.13 = getv ? :_target;
+        %tmp.14 = 1;
+        %tmp.15 = add %tmp.13 %tmp.14;
+        symbol [ _target ? 44 12 19 ];
+        putv self :_target %tmp.15;
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 46 12 ]
+        %tmp.16 = lgetv %app.2;
+        symbol [ app %tmp.16 46 12 15 ];
+        symbol [ setTargetCadence %tmp.17 46 16 32 ];
+        %tmp.17 = getv function %tmp.16 :setTargetCadence;
+        symbol [ _target %tmp.19 46 33 40 ];
+        %tmp.19 = getv ? :_target;
+        invoke %tmp.16 %tmp.17(%tmp.19);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 48 12 ]
+        symbol [ WatchUi %tmp.20 48 12 19 ];
+        %tmp.20 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.21 48 20 33 ];
+        %tmp.21 = getv function %tmp.20 :requestUpdate;
+        invoke %tmp.20 %tmp.21();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 50 12 ]
+        %tmp.22 = true;
+        ret %tmp.22;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_35_51_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_8_51_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_42_8_51_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 53 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_8_62_8_if_stmt:
+        %tmp.23 = lgetv %key.1;
+        symbol [ key %tmp.23 53 12 15 ];
+        symbol [ WatchUi %tmp.24 53 19 26 ];
+        %tmp.24 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.25 53 27 35 ];
+        %tmp.25 = getv %tmp.24 :KEY_DOWN;
+        %tmp.26 = eq %tmp.23 %tmp.25;
+        bf %tmp.26 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_8_62_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_8_62_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_37_62_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 55 12 ]
+        symbol [ _target %tmp.28 55 22 29 ];
+        %tmp.28 = getv ? :_target;
+        %tmp.29 = 1;
+        %tmp.30 = sub %tmp.28 %tmp.29;
+        symbol [ _target ? 55 12 19 ];
+        putv self :_target %tmp.30;
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 57 12 ]
+        %tmp.31 = lgetv %app.2;
+        symbol [ app %tmp.31 57 12 15 ];
+        symbol [ setTargetCadence %tmp.32 57 16 32 ];
+        %tmp.32 = getv function %tmp.31 :setTargetCadence;
+        symbol [ _target %tmp.34 57 33 40 ];
+        %tmp.34 = getv ? :_target;
+        invoke %tmp.31 %tmp.32(%tmp.34);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 59 12 ]
+        symbol [ WatchUi %tmp.35 59 12 19 ];
+        %tmp.35 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.36 59 20 33 ];
+        %tmp.36 = getv function %tmp.35 :requestUpdate;
+        invoke %tmp.35 %tmp.36();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 61 12 ]
+        %tmp.37 = true;
+        ret %tmp.37;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_37_62_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_8_62_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_53_8_62_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc" 64 8 ]
+        %tmp.38 = false;
+        ret %tmp.38;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_CadenceTargetDelegate_mc_36_60_65_4_stop:
+    }
+}
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\CadenceTargetDelegate.mc"; @line = 1; ]
+<init> {
+}

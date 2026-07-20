@@ -1,31 +1,31 @@
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
 import Toybox.Graphics;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 4; @symbol_classdef = [BarChartSettingsMenuView,4,6,30]; @symbol_extends<0> = [WatchUi,4,39,46]; @symbol_extends<1> = [View,4,47,51]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 4; @symbol_classdef = [BarChartSettingsMenuView,4,6,30]; @symbol_extends<0> = [WatchUi,4,39,46]; @symbol_extends<1> = [View,4,47,51]; ]
 class BarChartSettingsMenuView extends WatchUi.View {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 4; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 4; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 4; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 4; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 6; @symbol_functiondef = [initialize,6,13,23]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 6; @symbol_functiondef = [initialize,6,13,23]; ]
     function initialize() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_6_26_8_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 7 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_6_26_8_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 7 8 ]
         symbol [ View %tmp.2 7 8 12 ];
         %tmp.2 = getv ? :View;
         symbol [ initialize %tmp.3 7 13 23 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_6_26_8_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_6_26_8_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 10; @symbol_functiondef = [onUpdate,10,13,21]; @symbol_param<0> = [dc,10,22,24]; @symbol_param<0>_type<0> = [Dc,10,28,30]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 10; @symbol_functiondef = [onUpdate,10,13,21]; @symbol_param<0> = [dc,10,22,24]; @symbol_param<0>_type<0> = [Dc,10,28,30]; ]
     function onUpdate(dc as Dc) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 13 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 13 8 ]
         %tmp.1 = lgetv %dc;
         symbol [ dc %tmp.1 13 8 10 ];
         symbol [ setColor %tmp.2 13 11 19 ];
@@ -39,110 +39,154 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarC
         symbol [ COLOR_BLACK %tmp.6 13 51 62 ];
         %tmp.6 = getv %tmp.5 :COLOR_BLACK;
         invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 14 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 14 8 ]
         %tmp.7 = lgetv %dc;
         symbol [ dc %tmp.7 14 8 10 ];
         symbol [ clear %tmp.8 14 11 16 ];
         %tmp.8 = getv function %tmp.7 :clear;
         invoke %tmp.7 %tmp.8();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 15 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 16 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_stop" ]
         %centerX.1 = local;
-        symbol [ centerX %centerX.1 15 12 19 ];
+        symbol [ centerX %centerX.1 16 12 19 ];
         %tmp.9 = lgetv %dc;
-        symbol [ dc %tmp.9 15 22 24 ];
-        symbol [ getWidth %tmp.10 15 25 33 ];
+        symbol [ dc %tmp.9 16 22 24 ];
+        symbol [ getWidth %tmp.10 16 25 33 ];
         %tmp.10 = getv function %tmp.9 :getWidth;
         %tmp.11 = invoke %tmp.9 %tmp.10();
         %tmp.12 = 2;
         %tmp.13 = div %tmp.11 %tmp.12;
         lputv %centerX.1 %tmp.13;
-        symbol [ centerX %centerX.1 15 12 19 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 16 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_stop" ]
+        symbol [ centerX %centerX.1 16 12 19 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 17 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_stop" ]
         %centerY.2 = local;
-        symbol [ centerY %centerY.2 16 12 19 ];
+        symbol [ centerY %centerY.2 17 12 19 ];
         %tmp.14 = lgetv %dc;
-        symbol [ dc %tmp.14 16 22 24 ];
-        symbol [ getHeight %tmp.15 16 25 34 ];
+        symbol [ dc %tmp.14 17 22 24 ];
+        symbol [ getHeight %tmp.15 17 25 34 ];
         %tmp.15 = getv function %tmp.14 :getHeight;
         %tmp.16 = invoke %tmp.14 %tmp.15();
         %tmp.17 = 2;
         %tmp.18 = div %tmp.16 %tmp.17;
         lputv %centerY.2 %tmp.18;
-        symbol [ centerY %centerY.2 16 12 19 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 17 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_stop" ]
-        %lineSpacing.3 = local;
-        symbol [ lineSpacing %lineSpacing.3 17 12 23 ];
-        %tmp.19 = 50;
-        lputv %lineSpacing.3 %tmp.19;
-        symbol [ lineSpacing %lineSpacing.3 17 12 23 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 19 8 ]
-        %tmp.20 = lgetv %dc;
-        symbol [ dc %tmp.20 19 8 10 ];
-        symbol [ setColor %tmp.21 19 11 19 ];
-        %tmp.21 = getv function %tmp.20 :setColor;
-        symbol [ Graphics %tmp.22 19 20 28 ];
-        %tmp.22 = getm $.Toybox.Graphics;
-        symbol [ COLOR_WHITE %tmp.23 19 29 40 ];
-        %tmp.23 = getv %tmp.22 :COLOR_WHITE;
-        symbol [ Graphics %tmp.24 19 42 50 ];
-        %tmp.24 = getm $.Toybox.Graphics;
-        symbol [ COLOR_TRANSPARENT %tmp.25 19 51 68 ];
-        %tmp.25 = getv %tmp.24 :COLOR_TRANSPARENT;
-        invoke %tmp.20 %tmp.21(%tmp.23, %tmp.25);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 20 8 ]
+        symbol [ centerY %centerY.2 17 12 19 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 20 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_stop" ]
+        %icon.3 = local;
+        symbol [ icon %icon.3 20 12 16 ];
+        symbol [ WatchUi %tmp.19 20 19 26 ];
+        %tmp.19 = getm $.Toybox.WatchUi;
+        symbol [ loadResource %tmp.20 20 27 39 ];
+        %tmp.20 = getv function %tmp.19 :loadResource;
+        symbol [ Rez %tmp.22 20 40 43 ];
+        %tmp.22 = getv ? :Rez;
+        symbol [ Drawables %tmp.23 20 44 53 ];
+        %tmp.23 = getv %tmp.22 :Drawables;
+        symbol [ BarChartIcon %tmp.24 20 54 66 ];
+        %tmp.24 = getv %tmp.23 :BarChartIcon;
+        %tmp.25 = invoke %tmp.19 %tmp.20(%tmp.24);
+        lputv %icon.3 %tmp.25;
+        symbol [ icon %icon.3 20 12 16 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 21 8 ]
         %tmp.26 = lgetv %dc;
-        symbol [ dc %tmp.26 20 8 10 ];
-        symbol [ drawText %tmp.27 20 11 19 ];
-        %tmp.27 = getv function %tmp.26 :drawText;
+        symbol [ dc %tmp.26 21 8 10 ];
+        symbol [ drawBitmap %tmp.27 21 11 21 ];
+        %tmp.27 = getv function %tmp.26 :drawBitmap;
         %tmp.28 = lgetv %centerX.1;
-        symbol [ centerX %tmp.28 20 20 27 ];
-        %tmp.29 = lgetv %centerY.2;
-        symbol [ centerY %tmp.29 20 29 36 ];
-        %tmp.30 = lgetv %lineSpacing.3;
-        symbol [ lineSpacing %tmp.30 20 40 51 ];
-        %tmp.31 = 2;
-        %tmp.32 = div %tmp.30 %tmp.31;
-        %tmp.33 = sub %tmp.29 %tmp.32;
-        symbol [ Graphics %tmp.34 20 56 64 ];
-        %tmp.34 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.35 20 65 76 ];
-        %tmp.35 = getv %tmp.34 :FONT_MEDIUM;
-        %tmp.36 = "Change";
-        symbol [ Graphics %tmp.37 20 88 96 ];
-        %tmp.37 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.38 20 97 116 ];
-        %tmp.38 = getv %tmp.37 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.26 %tmp.27(%tmp.28, %tmp.33, %tmp.35, %tmp.36, %tmp.38);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 21 8 ]
-        %tmp.39 = lgetv %dc;
-        symbol [ dc %tmp.39 21 8 10 ];
-        symbol [ drawText %tmp.40 21 11 19 ];
-        %tmp.40 = getv function %tmp.39 :drawText;
-        %tmp.41 = lgetv %centerX.1;
-        symbol [ centerX %tmp.41 21 20 27 ];
-        %tmp.42 = lgetv %centerY.2;
-        symbol [ centerY %tmp.42 21 29 36 ];
-        %tmp.43 = lgetv %lineSpacing.3;
-        symbol [ lineSpacing %tmp.43 21 40 51 ];
-        %tmp.44 = 2;
-        %tmp.45 = div %tmp.43 %tmp.44;
-        %tmp.46 = add %tmp.42 %tmp.45;
-        symbol [ Graphics %tmp.47 21 56 64 ];
-        %tmp.47 = getm $.Toybox.Graphics;
-        symbol [ FONT_MEDIUM %tmp.48 21 65 76 ];
-        %tmp.48 = getv %tmp.47 :FONT_MEDIUM;
-        %tmp.49 = "Bar Chart Length";
-        symbol [ Graphics %tmp.50 21 98 106 ];
-        %tmp.50 = getm $.Toybox.Graphics;
-        symbol [ TEXT_JUSTIFY_CENTER %tmp.51 21 107 126 ];
-        %tmp.51 = getv %tmp.50 :TEXT_JUSTIFY_CENTER;
-        invoke %tmp.39 %tmp.40(%tmp.41, %tmp.46, %tmp.48, %tmp.49, %tmp.51);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_22_4_stop:
+        symbol [ centerX %tmp.28 21 22 29 ];
+        %tmp.29 = lgetv %icon.3;
+        symbol [ icon %tmp.29 21 32 36 ];
+        symbol [ getWidth %tmp.30 21 37 45 ];
+        %tmp.30 = getv function %tmp.29 :getWidth;
+        %tmp.31 = invoke %tmp.29 %tmp.30();
+        %tmp.32 = 2;
+        %tmp.33 = div %tmp.31 %tmp.32;
+        %tmp.34 = sub %tmp.28 %tmp.33;
+        %tmp.35 = lgetv %centerY.2;
+        symbol [ centerY %tmp.35 21 53 60 ];
+        %tmp.36 = lgetv %icon.3;
+        symbol [ icon %tmp.36 21 63 67 ];
+        symbol [ getHeight %tmp.37 21 68 77 ];
+        %tmp.37 = getv function %tmp.36 :getHeight;
+        %tmp.38 = invoke %tmp.36 %tmp.37();
+        %tmp.39 = sub %tmp.35 %tmp.38;
+        %tmp.40 = lgetv %icon.3;
+        symbol [ icon %tmp.40 21 81 85 ];
+        invoke %tmp.26 %tmp.27(%tmp.34, %tmp.39, %tmp.40);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 24 8 ]
+        %tmp.41 = lgetv %dc;
+        symbol [ dc %tmp.41 24 8 10 ];
+        symbol [ setColor %tmp.42 24 11 19 ];
+        %tmp.42 = getv function %tmp.41 :setColor;
+        symbol [ Graphics %tmp.43 24 20 28 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.44 24 29 40 ];
+        %tmp.44 = getv %tmp.43 :COLOR_WHITE;
+        symbol [ Graphics %tmp.45 24 42 50 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.46 24 51 68 ];
+        %tmp.46 = getv %tmp.45 :COLOR_TRANSPARENT;
+        invoke %tmp.41 %tmp.42(%tmp.44, %tmp.46);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 25 8 ]
+        %tmp.47 = lgetv %dc;
+        symbol [ dc %tmp.47 25 8 10 ];
+        symbol [ drawText %tmp.48 25 11 19 ];
+        %tmp.48 = getv function %tmp.47 :drawText;
+        %tmp.49 = lgetv %centerX.1;
+        symbol [ centerX %tmp.49 25 20 27 ];
+        %tmp.50 = lgetv %centerY.2;
+        symbol [ centerY %tmp.50 25 29 36 ];
+        %tmp.51 = 10;
+        %tmp.52 = add %tmp.50 %tmp.51;
+        symbol [ Graphics %tmp.53 25 43 51 ];
+        %tmp.53 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.54 25 52 63 ];
+        %tmp.54 = getv %tmp.53 :FONT_MEDIUM;
+        %tmp.55 = "Bar Chart";
+        symbol [ Graphics %tmp.56 25 78 86 ];
+        %tmp.56 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.57 25 87 106 ];
+        %tmp.57 = getv %tmp.56 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.47 %tmp.48(%tmp.49, %tmp.52, %tmp.54, %tmp.55, %tmp.57);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 28 8 ]
+        %tmp.58 = lgetv %dc;
+        symbol [ dc %tmp.58 28 8 10 ];
+        symbol [ setColor %tmp.59 28 11 19 ];
+        %tmp.59 = getv function %tmp.58 :setColor;
+        symbol [ Graphics %tmp.60 28 20 28 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ COLOR_LT_GRAY %tmp.61 28 29 42 ];
+        %tmp.61 = getv %tmp.60 :COLOR_LT_GRAY;
+        symbol [ Graphics %tmp.62 28 44 52 ];
+        %tmp.62 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.63 28 53 70 ];
+        %tmp.63 = getv %tmp.62 :COLOR_TRANSPARENT;
+        invoke %tmp.58 %tmp.59(%tmp.61, %tmp.63);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc" 29 8 ]
+        %tmp.64 = lgetv %dc;
+        symbol [ dc %tmp.64 29 8 10 ];
+        symbol [ drawText %tmp.65 29 11 19 ];
+        %tmp.65 = getv function %tmp.64 :drawText;
+        %tmp.66 = lgetv %centerX.1;
+        symbol [ centerX %tmp.66 29 20 27 ];
+        %tmp.67 = lgetv %centerY.2;
+        symbol [ centerY %tmp.67 29 29 36 ];
+        %tmp.68 = 50;
+        %tmp.69 = add %tmp.67 %tmp.68;
+        symbol [ Graphics %tmp.70 29 43 51 ];
+        %tmp.70 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.71 29 52 62 ];
+        %tmp.71 = getv %tmp.70 :FONT_XTINY;
+        %tmp.72 = "tap to open";
+        symbol [ Graphics %tmp.73 29 79 87 ];
+        %tmp.73 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.74 29 88 107 ];
+        %tmp.74 = getv %tmp.73 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.64 %tmp.65(%tmp.66, %tmp.69, %tmp.71, %tmp.72, %tmp.74);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Views_SettingsViews_BarChartSettingsMenuView_mc_10_40_30_4_stop:
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 1; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Views\SettingsViews\BarChartSettingsMenuView.mc"; @line = 1; ]
 <init> {
 }

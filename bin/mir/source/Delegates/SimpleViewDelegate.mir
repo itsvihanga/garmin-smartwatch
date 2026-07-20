@@ -1,90 +1,90 @@
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
 import Toybox.System;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Timer,4,14,19]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Timer,4,14,19]; ]
 import Toybox.Timer;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 6; @symbol_classdef = [SimpleViewDelegate,6,6,24]; @symbol_extends<0> = [WatchUi,6,33,40]; @symbol_extends<1> = [BehaviorDelegate,6,41,57]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 6; @symbol_classdef = [SimpleViewDelegate,6,6,24]; @symbol_extends<0> = [WatchUi,6,33,40]; @symbol_extends<1> = [BehaviorDelegate,6,41,57]; ]
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 6; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 6; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 6; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 6; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 8; @position = 16; @symbol_vardef = [_currentView,8,16,28]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 8; @position = 16; @symbol_vardef = [_currentView,8,16,28]; ]
     private
     var _currentView = null;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 9; @position = 16; @symbol_vardef = [_initTime,9,16,25]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 9; @position = 16; @symbol_vardef = [_initTime,9,16,25]; ]
     private
     var _initTime = null;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 10; @position = 16; @symbol_vardef = [_menuActive,10,16,27]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 10; @position = 16; @symbol_vardef = [_menuActive,10,16,27]; ]
     private
     var _menuActive = false;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 13; @position = 16; @symbol_vardef = [_lastUpReleaseTime,13,16,34]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 13; @position = 16; @symbol_vardef = [_lastUpReleaseTime,13,16,34]; ]
     private
     var _lastUpReleaseTime = 0;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 14; @position = 16; @symbol_vardef = [_doubleClickThreshold,14,16,37]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 14; @position = 16; @symbol_vardef = [_doubleClickThreshold,14,16,37]; ]
     private
     var _doubleClickThreshold = 600;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 15; @position = 16; @symbol_vardef = [_longPressThreshold,15,16,35]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 15; @position = 16; @symbol_vardef = [_longPressThreshold,15,16,35]; ]
     private
     var _longPressThreshold = 800;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 18; @position = 16; @symbol_vardef = [_longPressTimer,18,16,31]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 18; @position = 16; @symbol_vardef = [_longPressTimer,18,16,31]; ]
     private
     var _longPressTimer = null;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 19; @position = 16; @symbol_vardef = [_handledLongPress,19,16,33]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 19; @position = 16; @symbol_vardef = [_handledLongPress,19,16,33]; ]
     private
     var _handledLongPress = false;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 21; @symbol_functiondef = [initialize,21,13,23]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 21; @symbol_functiondef = [initialize,21,13,23]; ]
     function initialize() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_21_26_24_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 22 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_21_26_24_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 22 8 ]
         symbol [ BehaviorDelegate %tmp.2 22 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
         symbol [ initialize %tmp.3 22 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 23 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 23 8 ]
         %tmp.4 = self;
         symbol [ getTimeMs %tmp.5 23 20 29 ];
         %tmp.5 = getv function %tmp.4 :getTimeMs;
         %tmp.6 = invoke %tmp.4 %tmp.5();
         symbol [ _initTime ? 23 8 17 ];
         putv self :_initTime %tmp.6;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_21_26_24_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_21_26_24_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 26; @symbol_functiondef = [getTimeMs,26,13,22]; @symbol_return<0> = [Number,26,28,34]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 26; @symbol_functiondef = [getTimeMs,26,13,22]; @symbol_return<0> = [Number,26,28,34]; ]
     function getTimeMs() as Number {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_26_35_28_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 27 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_26_35_28_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 27 8 ]
         symbol [ System %tmp.1 27 15 21 ];
         %tmp.1 = getm $.Toybox.System;
         symbol [ getTimer %tmp.2 27 22 30 ];
         %tmp.2 = getv function %tmp.1 :getTimer;
         %tmp.3 = invoke %tmp.1 %tmp.2();
         ret %tmp.3;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_26_35_28_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_26_35_28_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 30; @symbol_functiondef = [onMenu,30,13,19]; @symbol_return<0> = [Boolean,30,25,32]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 30; @symbol_functiondef = [onMenu,30,13,19]; @symbol_return<0> = [Boolean,30,25,32]; ]
     function onMenu() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_30_33_34_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 32 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_30_33_34_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 32 8 ]
         %tmp.1 = 0;
         symbol [ _lastUpReleaseTime ? 32 8 26 ];
         putv self :_lastUpReleaseTime %tmp.1;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 33 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 33 8 ]
         %tmp.2 = true;
         ret %tmp.2;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_30_33_34_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_30_33_34_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 36; @symbol_functiondef = [onSelect,36,13,21]; @symbol_return<0> = [Boolean,36,27,34]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 36; @symbol_functiondef = [onSelect,36,13,21]; @symbol_return<0> = [Boolean,36,27,34]; ]
     function onSelect() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_36_35_51_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 37 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_36_35_51_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 37 8 ]
         symbol [ System %tmp.1 37 8 14 ];
         %tmp.1 = getm $.Toybox.System;
         symbol [ println %tmp.2 37 15 22 ];
@@ -94,15 +94,15 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.5 = getv ? :_menuActive;
         %tmp.6 = add %tmp.3 %tmp.5;
         invoke %tmp.1 %tmp.2(%tmp.6);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 39 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_stmt:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_12_39_61_begin:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 39 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_12_39_61_begin:
         symbol [ _initTime %tmp.8 39 12 21 ];
         %tmp.8 = getv ? :_initTime;
         %tmp.9 = null;
         %tmp.10 = ne %tmp.8 %tmp.9;
-        bf %tmp.10 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_true:
+        bf %tmp.10 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_true:
         %tmp.11 = self;
         symbol [ getTimeMs %tmp.12 39 34 43 ];
         %tmp.12 = getv function %tmp.11 :getTimeMs;
@@ -113,64 +113,64 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.17 = 1000;
         %tmp.18 = lt %tmp.16 %tmp.17;
         push %tmp.18;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_end:
-        %tmp.19 = phi [%tmp.10 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_12_39_61_begin] [%tmp.18 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_true] [%tmp.19 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_end];
-        bf %tmp.19 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_67_42_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 40 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_end:
+        %tmp.19 = phi [%tmp.10 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_12_39_61_begin] [%tmp.18 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_true] [%tmp.19 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_33_39_61_end];
+        bf %tmp.19 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_67_42_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 40 12 ]
         symbol [ System %tmp.20 40 12 18 ];
         %tmp.20 = getm $.Toybox.System;
         symbol [ println %tmp.21 40 19 26 ];
         %tmp.21 = getv function %tmp.20 :println;
         %tmp.22 = "[DEBUG] Ignoring onSelect during initialization";
         invoke %tmp.20 %tmp.21(%tmp.22);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 41 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 41 12 ]
         %tmp.23 = false;
         ret %tmp.23;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_67_42_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 44 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_67_42_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_39_8_42_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 44 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_stmt:
         symbol [ _menuActive %tmp.25 44 12 23 ];
         %tmp.25 = getv ? :_menuActive;
-        bf %tmp.25 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_25_47_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 45 12 ]
+        bf %tmp.25 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_25_47_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 45 12 ]
         symbol [ System %tmp.26 45 12 18 ];
         %tmp.26 = getm $.Toybox.System;
         symbol [ println %tmp.27 45 19 26 ];
         %tmp.27 = getv function %tmp.26 :println;
         %tmp.28 = "[DEBUG] Menu active, letting menu delegate handle it";
         invoke %tmp.26 %tmp.27(%tmp.28);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 46 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 46 12 ]
         %tmp.29 = false;
         ret %tmp.29;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_25_47_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 49 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_25_47_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_44_8_47_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 49 8 ]
         symbol [ System %tmp.30 49 8 14 ];
         %tmp.30 = getm $.Toybox.System;
         symbol [ println %tmp.31 49 15 22 ];
         %tmp.31 = getv function %tmp.30 :println;
         %tmp.32 = "[DEBUG] Handling START/STOP button press";
         invoke %tmp.30 %tmp.31(%tmp.32);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 50 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 50 8 ]
         %tmp.33 = self;
         symbol [ handleStartStopButton %tmp.34 50 15 36 ];
         %tmp.34 = getv function %tmp.33 :handleStartStopButton;
         %tmp.35 = invoke %tmp.33 %tmp.34();
         ret %tmp.35;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_36_35_51_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_36_35_51_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 53; @symbol_functiondef = [handleStartStopButton,53,13,34]; @symbol_return<0> = [Boolean,53,40,47]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 53; @symbol_functiondef = [handleStartStopButton,53,13,34]; @symbol_return<0> = [Boolean,53,40,47]; ]
     function handleStartStopButton() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 54 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 54 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_stop" ]
         %app.1 = local;
         symbol [ app %app.1 54 12 15 ];
         %tmp.1 = self;
@@ -179,18 +179,18 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %app.1 %tmp.3;
         symbol [ app %app.1 54 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 56 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 56 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_stmt:
         %tmp.4 = lgetv %app.1;
         symbol [ app %tmp.4 56 12 15 ];
         symbol [ isIdle %tmp.5 56 16 22 ];
         %tmp.5 = getv function %tmp.4 :isIdle;
         %tmp.6 = invoke %tmp.4 %tmp.5();
-        bf %tmp.6 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 57 12 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_stop" ]
+        bf %tmp.6 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 57 12 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_stop" ]
         %view.2 = local;
         symbol [ view %view.2 57 16 20 ];
         symbol [ StartConfirmView %tmp.10 57 27 43 ];
@@ -198,7 +198,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.7 = newc %tmp.10 ();
         lputv %view.2 %tmp.7;
         symbol [ view %view.2 57 16 20 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 58 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 58 12 ]
         symbol [ WatchUi %tmp.11 58 12 19 ];
         %tmp.11 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.12 58 20 28 ];
@@ -215,94 +215,94 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.20 58 79 87 ];
         %tmp.20 = getv %tmp.19 :SLIDE_UP;
         invoke %tmp.11 %tmp.12(%tmp.13, %tmp.14, %tmp.20);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 59 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 59 12 ]
         symbol [ WatchUi %tmp.21 59 12 19 ];
         %tmp.21 = getm $.Toybox.WatchUi;
         symbol [ requestUpdate %tmp.22 59 20 33 ];
         %tmp.22 = getv function %tmp.21 :requestUpdate;
         invoke %tmp.21 %tmp.22();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 61 13 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_26_60_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_false:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 61 13 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_stmt:
         %tmp.23 = lgetv %app.1;
         symbol [ app %tmp.23 61 17 20 ];
         symbol [ isRecording %tmp.24 61 21 32 ];
         %tmp.24 = getv function %tmp.23 :isRecording;
         %tmp.25 = invoke %tmp.23 %tmp.24();
-        bf %tmp.25 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_36_64_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 62 12 ]
+        bf %tmp.25 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_36_64_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 62 12 ]
         %tmp.26 = true;
         symbol [ _menuActive ? 62 12 23 ];
         putv self :_menuActive %tmp.26;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 63 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 63 12 ]
         %tmp.27 = self;
         symbol [ showActivityControlMenu %tmp.28 63 12 35 ];
         %tmp.28 = getv function %tmp.27 :showActivityControlMenu;
         invoke %tmp.27 %tmp.28();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_36_64_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 65 13 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_36_64_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_false:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 65 13 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_stmt:
         %tmp.29 = lgetv %app.1;
         symbol [ app %tmp.29 65 17 20 ];
         symbol [ isPaused %tmp.30 65 21 29 ];
         %tmp.30 = getv function %tmp.29 :isPaused;
         %tmp.31 = invoke %tmp.29 %tmp.30();
-        bf %tmp.31 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_33_68_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 66 12 ]
+        bf %tmp.31 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_33_68_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 66 12 ]
         %tmp.32 = true;
         symbol [ _menuActive ? 66 12 23 ];
         putv self :_menuActive %tmp.32;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 67 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 67 12 ]
         %tmp.33 = self;
         symbol [ showPausedControlMenu %tmp.34 67 12 33 ];
         %tmp.34 = getv function %tmp.33 :showPausedControlMenu;
         invoke %tmp.33 %tmp.34();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_33_68_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 69 13 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_33_68_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_false:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 69 13 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_stmt:
         %tmp.35 = lgetv %app.1;
         symbol [ app %tmp.35 69 17 20 ];
         symbol [ isStopped %tmp.36 69 21 30 ];
         %tmp.36 = getv function %tmp.35 :isStopped;
         %tmp.37 = invoke %tmp.35 %tmp.36();
-        bf %tmp.37 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_34_72_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 70 12 ]
+        bf %tmp.37 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_34_72_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 70 12 ]
         %tmp.38 = true;
         symbol [ _menuActive ? 70 12 23 ];
         putv self :_menuActive %tmp.38;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 71 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 71 12 ]
         %tmp.39 = self;
         symbol [ showSaveDiscardMenu %tmp.40 71 12 31 ];
         %tmp.40 = getv function %tmp.39 :showSaveDiscardMenu;
         invoke %tmp.39 %tmp.40();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_34_72_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 73 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_34_72_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_69_13_72_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_65_13_72_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_61_13_72_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_56_8_72_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 73 8 ]
         %tmp.41 = true;
         ret %tmp.41;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_53_48_74_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 76; @symbol_functiondef = [onKeyPressed,76,13,25]; @symbol_param<0> = [keyEvent,76,26,34]; @symbol_param<0>_type<0> = [WatchUi,76,38,45]; @symbol_param<0>_type<1> = [KeyEvent,76,46,54]; @symbol_return<0> = [Boolean,76,59,66]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 76; @symbol_functiondef = [onKeyPressed,76,13,25]; @symbol_param<0> = [keyEvent,76,26,34]; @symbol_param<0>_type<0> = [WatchUi,76,38,45]; @symbol_param<0>_type<1> = [KeyEvent,76,46,54]; @symbol_return<0> = [Boolean,76,59,66]; ]
     function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 77 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 77 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_stop" ]
         %key.1 = local;
         symbol [ key %key.1 77 12 15 ];
         %tmp.1 = lgetv %keyEvent;
@@ -312,8 +312,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %key.1 %tmp.3;
         symbol [ key %key.1 77 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 79 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 79 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_stmt:
         %tmp.4 = lgetv %key.1;
         symbol [ key %tmp.4 79 12 15 ];
         symbol [ WatchUi %tmp.5 79 19 26 ];
@@ -321,14 +321,14 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ KEY_UP %tmp.6 79 27 33 ];
         %tmp.6 = getv %tmp.5 :KEY_UP;
         %tmp.7 = eq %tmp.4 %tmp.6;
-        bf %tmp.7 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_35_87_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 81 12 ]
+        bf %tmp.7 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_35_87_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 81 12 ]
         %tmp.8 = false;
         symbol [ _handledLongPress ? 81 12 29 ];
         putv self :_handledLongPress %tmp.8;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 84 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 84 12 ]
         symbol [ Timer %tmp.11 84 34 39 ];
         %tmp.11 = getm $.Toybox.Timer;
         symbol [ Timer %tmp.12 84 40 45 ];
@@ -336,7 +336,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.9 = newc %tmp.12 ();
         symbol [ _longPressTimer ? 84 12 27 ];
         putv self :_longPressTimer %tmp.9;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 85 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 85 12 ]
         symbol [ _longPressTimer %tmp.14 85 12 27 ];
         %tmp.14 = getv ? :_longPressTimer;
         symbol [ start %tmp.15 85 28 33 ];
@@ -351,47 +351,47 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.22 = getv ? :_longPressThreshold;
         %tmp.23 = false;
         invoke %tmp.14 %tmp.15(%tmp.20, %tmp.22, %tmp.23);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 86 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 86 12 ]
         %tmp.24 = true;
         ret %tmp.24;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_35_87_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 89 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_35_87_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_79_8_87_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 89 8 ]
         %tmp.25 = false;
         ret %tmp.25;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_76_67_90_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 93; @symbol_functiondef = [triggerLongPress,93,13,29]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 93; @symbol_functiondef = [triggerLongPress,93,13,29]; ]
     function triggerLongPress() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_93_40_98_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 94 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_93_40_98_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 94 8 ]
         symbol [ System %tmp.1 94 8 14 ];
         %tmp.1 = getm $.Toybox.System;
         symbol [ println %tmp.2 94 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
         %tmp.3 = "[DEBUG] Long press UP detected (Live) -> Settings";
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 95 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 95 8 ]
         %tmp.4 = true;
         symbol [ _handledLongPress ? 95 8 25 ];
         putv self :_handledLongPress %tmp.4;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 96 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 96 8 ]
         %tmp.5 = 0;
         symbol [ _lastUpReleaseTime ? 96 8 26 ];
         putv self :_lastUpReleaseTime %tmp.5;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 97 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 97 8 ]
         %tmp.6 = self;
         symbol [ pushSettingsView %tmp.7 97 8 24 ];
         %tmp.7 = getv function %tmp.6 :pushSettingsView;
         invoke %tmp.6 %tmp.7();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_93_40_98_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_93_40_98_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 100; @symbol_functiondef = [onKeyReleased,100,13,26]; @symbol_param<0> = [keyEvent,100,27,35]; @symbol_param<0>_type<0> = [WatchUi,100,39,46]; @symbol_param<0>_type<1> = [KeyEvent,100,47,55]; @symbol_return<0> = [Boolean,100,60,67]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 100; @symbol_functiondef = [onKeyReleased,100,13,26]; @symbol_param<0> = [keyEvent,100,27,35]; @symbol_param<0>_type<0> = [WatchUi,100,39,46]; @symbol_param<0>_type<1> = [KeyEvent,100,47,55]; @symbol_return<0> = [Boolean,100,60,67]; ]
     function onKeyReleased(keyEvent as WatchUi.KeyEvent) as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 101 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 101 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_stop" ]
         %key.1 = local;
         symbol [ key %key.1 101 12 15 ];
         %tmp.1 = lgetv %keyEvent;
@@ -401,8 +401,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %key.1 %tmp.3;
         symbol [ key %key.1 101 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 102 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 102 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_stop" ]
         %currentTime.2 = local;
         symbol [ currentTime %currentTime.2 102 12 23 ];
         %tmp.4 = self;
@@ -411,8 +411,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %currentTime.2 %tmp.6;
         symbol [ currentTime %currentTime.2 102 12 23 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 105 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 105 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_stmt:
         %tmp.7 = lgetv %key.1;
         symbol [ key %tmp.7 105 12 15 ];
         symbol [ WatchUi %tmp.8 105 19 26 ];
@@ -420,58 +420,58 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ KEY_UP %tmp.9 105 27 33 ];
         %tmp.9 = getv %tmp.8 :KEY_UP;
         %tmp.10 = eq %tmp.7 %tmp.9;
-        bf %tmp.10 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_35_133_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 108 12 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_stmt:
+        bf %tmp.10 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_35_133_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 108 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_stmt:
         symbol [ _longPressTimer %tmp.12 108 16 31 ];
         %tmp.12 = getv ? :_longPressTimer;
         %tmp.13 = null;
         %tmp.14 = ne %tmp.12 %tmp.13;
-        bf %tmp.14 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_41_111_12_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 109 16 ]
+        bf %tmp.14 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_41_111_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 109 16 ]
         symbol [ _longPressTimer %tmp.16 109 16 31 ];
         %tmp.16 = getv ? :_longPressTimer;
         %tmp.17 = as %tmp.16 { (!Null) };
         symbol [ stop %tmp.18 109 32 36 ];
         %tmp.18 = getv function %tmp.17 :stop;
         invoke %tmp.17 %tmp.18();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 110 16 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 110 16 ]
         %tmp.19 = null;
         symbol [ _longPressTimer ? 110 16 31 ];
         putv self :_longPressTimer %tmp.19;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_41_111_12_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 114 12 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_41_111_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_108_12_111_12_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 114 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_stmt:
         symbol [ _handledLongPress %tmp.21 114 16 33 ];
         %tmp.21 = getv ? :_handledLongPress;
-        bf %tmp.21 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_35_117_12_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 115 16 ]
+        bf %tmp.21 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_35_117_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 115 16 ]
         %tmp.22 = false;
         symbol [ _handledLongPress ? 115 16 33 ];
         putv self :_handledLongPress %tmp.22;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 116 16 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 116 16 ]
         %tmp.23 = true;
         ret %tmp.23;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_35_117_12_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 122 12 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_stmt:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_16_122_80_begin:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_35_117_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_114_12_117_12_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 122 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_16_122_80_begin:
         symbol [ _lastUpReleaseTime %tmp.25 122 16 34 ];
         %tmp.25 = getv ? :_lastUpReleaseTime;
         %tmp.26 = 0;
         %tmp.27 = ne %tmp.25 %tmp.26;
-        bf %tmp.27 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_true:
+        bf %tmp.27 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_true:
         %tmp.28 = lgetv %currentTime.2;
         symbol [ currentTime %tmp.28 122 44 55 ];
         symbol [ _lastUpReleaseTime %tmp.30 122 58 76 ];
@@ -481,53 +481,53 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.33 = getv ? :_doubleClickThreshold;
         %tmp.34 = lt %tmp.31 %tmp.33;
         push %tmp.34;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_end:
-        %tmp.35 = phi [%tmp.27 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_16_122_80_begin] [%tmp.34 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_true] [%tmp.35 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_end];
-        bf %tmp.35 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_103_127_12_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 123 16 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_end:
+        %tmp.35 = phi [%tmp.27 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_16_122_80_begin] [%tmp.34 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_true] [%tmp.35 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_43_122_80_end];
+        bf %tmp.35 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_103_127_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 123 16 ]
         symbol [ System %tmp.36 123 16 22 ];
         %tmp.36 = getm $.Toybox.System;
         symbol [ println %tmp.37 123 23 30 ];
         %tmp.37 = getv function %tmp.36 :println;
         %tmp.38 = "[DEBUG] Double click UP detected -> Vibration Toggle";
         invoke %tmp.36 %tmp.37(%tmp.38);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 124 16 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 124 16 ]
         %tmp.39 = self;
         symbol [ toggleVibration %tmp.40 124 16 31 ];
         %tmp.40 = getv function %tmp.39 :toggleVibration;
         invoke %tmp.39 %tmp.40();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 125 16 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 125 16 ]
         %tmp.41 = 0;
         symbol [ _lastUpReleaseTime ? 125 16 34 ];
         putv self :_lastUpReleaseTime %tmp.41;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 126 16 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 126 16 ]
         %tmp.42 = true;
         ret %tmp.42;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_103_127_12_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 130 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_103_127_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_122_12_127_12_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 130 12 ]
         symbol [ System %tmp.43 130 12 18 ];
         %tmp.43 = getm $.Toybox.System;
         symbol [ println %tmp.44 130 19 26 ];
         %tmp.44 = getv function %tmp.43 :println;
         %tmp.45 = "[DEBUG] Single click UP -> Waiting for double...";
         invoke %tmp.43 %tmp.44(%tmp.45);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 131 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 131 12 ]
         %tmp.46 = lgetv %currentTime.2;
         symbol [ currentTime %tmp.46 131 33 44 ];
         symbol [ _lastUpReleaseTime ? 131 12 30 ];
         putv self :_lastUpReleaseTime %tmp.46;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 132 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 132 12 ]
         %tmp.47 = true;
         ret %tmp.47;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_35_133_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 136 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_35_133_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_105_8_133_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 136 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_stmt:
         %tmp.48 = lgetv %key.1;
         symbol [ key %tmp.48 136 12 15 ];
         symbol [ WatchUi %tmp.49 136 19 26 ];
@@ -535,16 +535,16 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ KEY_DOWN %tmp.50 136 27 35 ];
         %tmp.50 = getv %tmp.49 :KEY_DOWN;
         %tmp.51 = eq %tmp.48 %tmp.50;
-        bf %tmp.51 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_37_144_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 137 12 ]
+        bf %tmp.51 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_37_144_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 137 12 ]
         symbol [ AdvancedView %tmp.55 137 31 43 ];
         %tmp.55 = getv ? :AdvancedView;
         %tmp.52 = newc %tmp.55 ();
         symbol [ _currentView ? 137 12 24 ];
         putv self :_currentView %tmp.52;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 138 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 138 12 ]
         symbol [ WatchUi %tmp.56 138 12 19 ];
         %tmp.56 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.57 138 20 28 ];
@@ -561,22 +561,22 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_DOWN %tmp.67 141 24 34 ];
         %tmp.67 = getv %tmp.66 :SLIDE_DOWN;
         invoke %tmp.56 %tmp.57(%tmp.59, %tmp.60, %tmp.67);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 143 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 143 12 ]
         %tmp.68 = true;
         ret %tmp.68;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_37_144_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 146 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_37_144_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_136_8_144_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 146 8 ]
         %tmp.69 = false;
         ret %tmp.69;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_100_68_147_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 149; @symbol_functiondef = [toggleVibration,149,13,28]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 149; @symbol_functiondef = [toggleVibration,149,13,28]; ]
     function toggleVibration() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 150 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 150 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
         %app.1 = local;
         symbol [ app %app.1 150 12 15 ];
         %tmp.1 = self;
@@ -585,8 +585,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %app.1 %tmp.3;
         symbol [ app %app.1 150 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 152 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 152 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
         %enabled.2 = local;
         symbol [ enabled %enabled.2 152 12 19 ];
         %tmp.4 = lgetv %app.1;
@@ -596,8 +596,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %enabled.2 %tmp.6;
         symbol [ enabled %enabled.2 152 12 19 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 153 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 153 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
         %newEnabled.3 = local;
         symbol [ newEnabled %newEnabled.3 153 12 22 ];
         %tmp.7 = lgetv %enabled.2;
@@ -605,7 +605,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.8 = not %tmp.7;
         lputv %newEnabled.3 %tmp.8;
         symbol [ newEnabled %newEnabled.3 153 12 22 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 154 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 154 8 ]
         %tmp.9 = lgetv %app.1;
         symbol [ app %tmp.9 154 8 11 ];
         symbol [ setVibrationEnabled %tmp.10 154 12 31 ];
@@ -613,26 +613,26 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.11 = lgetv %newEnabled.3;
         symbol [ newEnabled %tmp.11 154 32 42 ];
         invoke %tmp.9 %tmp.10(%tmp.11);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 156 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 156 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop" ]
         %statusText.4 = local;
         symbol [ statusText %statusText.4 156 12 22 ];
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_begin:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_begin:
         %tmp.12 = lgetv %newEnabled.3;
         symbol [ newEnabled %tmp.12 156 25 35 ];
-        bf %tmp.12 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_else_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_true:
+        bf %tmp.12 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_else_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_true:
         %tmp.13 = "Vibration ON";
         push %tmp.13;
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_else_false:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_else_false:
         %tmp.14 = "Vibration OFF";
         push %tmp.14;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_end:
-        %tmp.15 = phi [%tmp.12 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_begin] [%tmp.13 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_true] [%tmp.14 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_else_false] [%tmp.15 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_end];
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_end:
+        %tmp.15 = phi [%tmp.12 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_begin] [%tmp.13 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_true] [%tmp.14 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_else_false] [%tmp.15 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_156_25_156_55_end];
         lputv %statusText.4 %tmp.15;
         symbol [ statusText %statusText.4 156 12 22 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 157 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 157 8 ]
         symbol [ System %tmp.16 157 8 14 ];
         %tmp.16 = getm $.Toybox.System;
         symbol [ println %tmp.17 157 15 22 ];
@@ -642,7 +642,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ statusText %tmp.19 157 33 43 ];
         %tmp.20 = add %tmp.18 %tmp.19;
         invoke %tmp.16 %tmp.17(%tmp.20);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 159 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 159 8 ]
         symbol [ WatchUi %tmp.21 159 8 15 ];
         %tmp.21 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.22 159 16 24 ];
@@ -662,13 +662,13 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.33 162 20 28 ];
         %tmp.33 = getv %tmp.32 :SLIDE_UP;
         invoke %tmp.21 %tmp.22(%tmp.23, %tmp.28, %tmp.33);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_149_39_164_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 166; @symbol_functiondef = [onSwipe,166,13,20]; @symbol_param<0> = [event,166,21,26]; @symbol_param<0>_type<0> = [WatchUi,166,30,37]; @symbol_param<0>_type<1> = [SwipeEvent,166,38,48]; @symbol_return<0> = [Boolean,166,53,60]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 166; @symbol_functiondef = [onSwipe,166,13,20]; @symbol_param<0> = [event,166,21,26]; @symbol_param<0>_type<0> = [WatchUi,166,30,37]; @symbol_param<0>_type<1> = [SwipeEvent,166,38,48]; @symbol_return<0> = [Boolean,166,53,60]; ]
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 167 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 167 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_stop" ]
         %direction.1 = local;
         symbol [ direction %direction.1 167 12 21 ];
         %tmp.1 = lgetv %event;
@@ -678,8 +678,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %direction.1 %tmp.3;
         symbol [ direction %direction.1 167 12 21 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 169 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 169 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_stmt:
         %tmp.4 = lgetv %direction.1;
         symbol [ direction %tmp.4 169 12 21 ];
         symbol [ WatchUi %tmp.5 169 25 32 ];
@@ -687,16 +687,16 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SWIPE_UP %tmp.6 169 33 41 ];
         %tmp.6 = getv %tmp.5 :SWIPE_UP;
         %tmp.7 = eq %tmp.4 %tmp.6;
-        bf %tmp.7 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_43_177_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 170 12 ]
+        bf %tmp.7 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_43_177_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 170 12 ]
         symbol [ AdvancedView %tmp.11 170 31 43 ];
         %tmp.11 = getv ? :AdvancedView;
         %tmp.8 = newc %tmp.11 ();
         symbol [ _currentView ? 170 12 24 ];
         putv self :_currentView %tmp.8;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 171 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 171 12 ]
         symbol [ WatchUi %tmp.12 171 12 19 ];
         %tmp.12 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.13 171 20 28 ];
@@ -713,22 +713,22 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_DOWN %tmp.23 174 24 34 ];
         %tmp.23 = getv %tmp.22 :SLIDE_DOWN;
         invoke %tmp.12 %tmp.13(%tmp.15, %tmp.16, %tmp.23);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 176 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 176 12 ]
         %tmp.24 = true;
         ret %tmp.24;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_43_177_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 178 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_43_177_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_169_8_177_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 178 8 ]
         %tmp.25 = false;
         ret %tmp.25;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_166_61_179_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 181; @symbol_functiondef = [showActivityControlMenu,181,13,36]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 181; @symbol_functiondef = [showActivityControlMenu,181,13,36]; ]
     function showActivityControlMenu() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 182 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 182 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_stop" ]
         %menu.1 = local;
         symbol [ menu %menu.1 182 12 16 ];
         symbol [ WatchUi %tmp.3 182 23 30 ];
@@ -744,7 +744,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.1 = newc %tmp.4 (%tmp.10);
         lputv %menu.1 %tmp.1;
         symbol [ menu %menu.1 182 12 16 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 183 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 183 8 ]
         %tmp.11 = lgetv %menu.1;
         symbol [ menu %tmp.11 183 8 12 ];
         symbol [ addItem %tmp.12 183 13 20 ];
@@ -760,7 +760,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.21 = null;
         %tmp.13 = newc %tmp.16 (%tmp.17, %tmp.18, %tmp.20, %tmp.21);
         invoke %tmp.11 %tmp.12(%tmp.13);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 184 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 184 8 ]
         %tmp.22 = lgetv %menu.1;
         symbol [ menu %tmp.22 184 8 12 ];
         symbol [ addItem %tmp.23 184 13 20 ];
@@ -776,7 +776,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.32 = null;
         %tmp.24 = newc %tmp.27 (%tmp.28, %tmp.29, %tmp.31, %tmp.32);
         invoke %tmp.22 %tmp.23(%tmp.24);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 185 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 185 8 ]
         %tmp.33 = lgetv %menu.1;
         symbol [ menu %tmp.33 185 8 12 ];
         symbol [ addItem %tmp.34 185 13 20 ];
@@ -792,7 +792,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.43 = null;
         %tmp.35 = newc %tmp.38 (%tmp.39, %tmp.40, %tmp.42, %tmp.43);
         invoke %tmp.33 %tmp.34(%tmp.35);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 187 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 187 8 ]
         symbol [ WatchUi %tmp.44 187 8 15 ];
         %tmp.44 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.45 187 16 24 ];
@@ -809,13 +809,13 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.53 187 78 86 ];
         %tmp.53 = getv %tmp.52 :SLIDE_UP;
         invoke %tmp.44 %tmp.45(%tmp.46, %tmp.47, %tmp.53);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_181_47_188_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 190; @symbol_functiondef = [showPausedControlMenu,190,13,34]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 190; @symbol_functiondef = [showPausedControlMenu,190,13,34]; ]
     function showPausedControlMenu() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 191 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 191 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_stop" ]
         %menu.1 = local;
         symbol [ menu %menu.1 191 12 16 ];
         symbol [ WatchUi %tmp.3 191 23 30 ];
@@ -831,7 +831,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.1 = newc %tmp.4 (%tmp.10);
         lputv %menu.1 %tmp.1;
         symbol [ menu %menu.1 191 12 16 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 192 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 192 8 ]
         %tmp.11 = lgetv %menu.1;
         symbol [ menu %tmp.11 192 8 12 ];
         symbol [ addItem %tmp.12 192 13 20 ];
@@ -847,7 +847,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.21 = null;
         %tmp.13 = newc %tmp.16 (%tmp.17, %tmp.18, %tmp.20, %tmp.21);
         invoke %tmp.11 %tmp.12(%tmp.13);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 193 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 193 8 ]
         %tmp.22 = lgetv %menu.1;
         symbol [ menu %tmp.22 193 8 12 ];
         symbol [ addItem %tmp.23 193 13 20 ];
@@ -863,7 +863,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.32 = null;
         %tmp.24 = newc %tmp.27 (%tmp.28, %tmp.29, %tmp.31, %tmp.32);
         invoke %tmp.22 %tmp.23(%tmp.24);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 195 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 195 8 ]
         symbol [ WatchUi %tmp.33 195 8 15 ];
         %tmp.33 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.34 195 16 24 ];
@@ -880,13 +880,13 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.42 195 78 86 ];
         %tmp.42 = getv %tmp.41 :SLIDE_UP;
         invoke %tmp.33 %tmp.34(%tmp.35, %tmp.36, %tmp.42);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_190_45_196_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 198; @symbol_functiondef = [showSaveDiscardMenu,198,13,32]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 198; @symbol_functiondef = [showSaveDiscardMenu,198,13,32]; ]
     function showSaveDiscardMenu() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 199 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 199 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_stop" ]
         %menu.1 = local;
         symbol [ menu %menu.1 199 12 16 ];
         symbol [ WatchUi %tmp.3 199 23 30 ];
@@ -902,7 +902,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.1 = newc %tmp.4 (%tmp.10);
         lputv %menu.1 %tmp.1;
         symbol [ menu %menu.1 199 12 16 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 200 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 200 8 ]
         %tmp.11 = lgetv %menu.1;
         symbol [ menu %tmp.11 200 8 12 ];
         symbol [ addItem %tmp.12 200 13 20 ];
@@ -918,7 +918,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.21 = null;
         %tmp.13 = newc %tmp.16 (%tmp.17, %tmp.18, %tmp.20, %tmp.21);
         invoke %tmp.11 %tmp.12(%tmp.13);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 201 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 201 8 ]
         %tmp.22 = lgetv %menu.1;
         symbol [ menu %tmp.22 201 8 12 ];
         symbol [ addItem %tmp.23 201 13 20 ];
@@ -934,7 +934,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.32 = null;
         %tmp.24 = newc %tmp.27 (%tmp.28, %tmp.29, %tmp.31, %tmp.32);
         invoke %tmp.22 %tmp.23(%tmp.24);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 203 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 203 8 ]
         symbol [ WatchUi %tmp.33 203 8 15 ];
         %tmp.33 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.34 203 16 24 ];
@@ -951,12 +951,12 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.42 203 74 82 ];
         %tmp.42 = getv %tmp.41 :SLIDE_UP;
         invoke %tmp.33 %tmp.34(%tmp.35, %tmp.36, %tmp.42);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_198_43_204_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 206; @symbol_functiondef = [pushSettingsView,206,13,29]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 206; @symbol_functiondef = [pushSettingsView,206,13,29]; ]
     function pushSettingsView() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_206_40_208_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 207 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_206_40_208_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 207 8 ]
         symbol [ WatchUi %tmp.1 207 8 15 ];
         %tmp.1 = getm $.Toybox.WatchUi;
         symbol [ switchToView %tmp.2 207 16 28 ];
@@ -972,17 +972,17 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.12 207 85 93 ];
         %tmp.12 = getv %tmp.11 :SLIDE_UP;
         invoke %tmp.1 %tmp.2(%tmp.3, %tmp.7, %tmp.12);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_206_40_208_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_206_40_208_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 210; @symbol_functiondef = [setMenuActive,210,13,26]; @symbol_param<0> = [active,210,27,33]; @symbol_param<0>_type<0> = [Boolean,210,37,44]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 210; @symbol_functiondef = [setMenuActive,210,13,26]; @symbol_param<0> = [active,210,27,33]; @symbol_param<0>_type<0> = [Boolean,210,37,44]; ]
     function setMenuActive(active as Boolean) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_210_54_213_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 211 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_210_54_213_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 211 8 ]
         %tmp.1 = lgetv %active;
         symbol [ active %tmp.1 211 22 28 ];
         symbol [ _menuActive ? 211 8 19 ];
         putv self :_menuActive %tmp.1;
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 212 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 212 8 ]
         symbol [ System %tmp.2 212 8 14 ];
         %tmp.2 = getm $.Toybox.System;
         symbol [ println %tmp.3 212 15 22 ];
@@ -992,13 +992,13 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ active %tmp.5 212 62 68 ];
         %tmp.6 = add %tmp.4 %tmp.5;
         invoke %tmp.2 %tmp.3(%tmp.6);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_210_54_213_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_210_54_213_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 215; @symbol_functiondef = [onBack,215,13,19]; @symbol_return<0> = [Boolean,215,25,32]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 215; @symbol_functiondef = [onBack,215,13,19]; @symbol_return<0> = [Boolean,215,25,32]; ]
     function onBack() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 216 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 216 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_stop" ]
         %app.1 = local;
         symbol [ app %app.1 216 12 15 ];
         %tmp.1 = self;
@@ -1007,52 +1007,52 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %app.1 %tmp.3;
         symbol [ app %app.1 216 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 218 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_stmt:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_65_begin:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_46_begin:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 218 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_65_begin:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_46_begin:
         %tmp.4 = lgetv %app.1;
         symbol [ app %tmp.4 218 12 15 ];
         symbol [ isRecording %tmp.5 218 16 27 ];
         %tmp.5 = getv function %tmp.4 :isRecording;
         %tmp.6 = invoke %tmp.4 %tmp.5();
-        bt %tmp.6 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_true;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_false:
+        bt %tmp.6 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_true;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_false:
         %tmp.7 = lgetv %app.1;
         symbol [ app %tmp.7 218 33 36 ];
         symbol [ isPaused %tmp.8 218 37 45 ];
         %tmp.8 = getv function %tmp.7 :isPaused;
         %tmp.9 = invoke %tmp.7 %tmp.8();
         push %tmp.9;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_end:
-        %tmp.10 = phi [%tmp.6 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_46_begin] [%tmp.9 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_false] [%tmp.10 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_end];
-        bt %tmp.10 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_true;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_false:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_end:
+        %tmp.10 = phi [%tmp.6 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_46_begin] [%tmp.9 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_false] [%tmp.10 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_33_218_46_end];
+        bt %tmp.10 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_true;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_false:
         %tmp.11 = lgetv %app.1;
         symbol [ app %tmp.11 218 51 54 ];
         symbol [ isStopped %tmp.12 218 55 64 ];
         %tmp.12 = getv function %tmp.11 :isStopped;
         %tmp.13 = invoke %tmp.11 %tmp.12();
         push %tmp.13;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_end:
-        %tmp.14 = phi [%tmp.10 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_65_begin] [%tmp.13 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_false] [%tmp.14 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_end];
-        bf %tmp.14 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_68_222_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 220 11 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_end:
+        %tmp.14 = phi [%tmp.10 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_12_218_65_begin] [%tmp.13 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_false] [%tmp.14 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_51_218_65_end];
+        bf %tmp.14 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_68_222_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 220 11 ]
         symbol [ System %tmp.15 220 11 17 ];
         %tmp.15 = getm $.Toybox.System;
         symbol [ println %tmp.16 220 18 25 ];
         %tmp.16 = getv function %tmp.15 :println;
         %tmp.17 = "[UI] Finish or discard current session first";
         invoke %tmp.15 %tmp.16(%tmp.17);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 221 11 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 221 11 ]
         %tmp.18 = true;
         ret %tmp.18;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_68_222_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 225 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_68_222_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_218_8_222_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 225 8 ]
         symbol [ WatchUi %tmp.19 225 8 15 ];
         %tmp.19 = getm $.Toybox.WatchUi;
         symbol [ switchToView %tmp.20 225 16 28 ];
@@ -1068,45 +1068,45 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_IMMEDIATE %tmp.30 228 20 35 ];
         %tmp.30 = getv %tmp.29 :SLIDE_IMMEDIATE;
         invoke %tmp.19 %tmp.20(%tmp.21, %tmp.25, %tmp.30);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 231 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 231 8 ]
         %tmp.31 = true;
         ret %tmp.31;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_215_33_232_4_stop:
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 235; @symbol_classdef = [ActivityControlMenuDelegate,235,6,33]; @symbol_extends<0> = [WatchUi,235,42,49]; @symbol_extends<1> = [Menu2InputDelegate,235,50,68]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 235; @symbol_classdef = [ActivityControlMenuDelegate,235,6,33]; @symbol_extends<0> = [WatchUi,235,42,49]; @symbol_extends<1> = [Menu2InputDelegate,235,50,68]; ]
 class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 235; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 235; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 235; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 235; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 237; @position = 16; @symbol_vardef = [_parentDelegate,237,16,31]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 237; @position = 16; @symbol_vardef = [_parentDelegate,237,16,31]; ]
     private
     var _parentDelegate;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 239; @symbol_functiondef = [initialize,239,13,23]; @symbol_param<0> = [parentDelegate,239,24,38]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 239; @symbol_functiondef = [initialize,239,13,23]; @symbol_param<0> = [parentDelegate,239,24,38]; ]
     function initialize(parentDelegate) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_239_40_242_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 240 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_239_40_242_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 240 8 ]
         symbol [ Menu2InputDelegate %tmp.2 240 8 26 ];
         %tmp.2 = getv ? :Menu2InputDelegate;
         symbol [ initialize %tmp.3 240 27 37 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 241 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 241 8 ]
         %tmp.4 = lgetv %parentDelegate;
         symbol [ parentDelegate %tmp.4 241 26 40 ];
         symbol [ _parentDelegate ? 241 8 23 ];
         putv self :_parentDelegate %tmp.4;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_239_40_242_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_239_40_242_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 244; @symbol_functiondef = [onSelect,244,13,21]; @symbol_param<0> = [item,244,22,26]; @symbol_param<0>_type<0> = [WatchUi,244,30,37]; @symbol_param<0>_type<1> = [MenuItem,244,38,46]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 244; @symbol_functiondef = [onSelect,244,13,21]; @symbol_param<0> = [item,244,22,26]; @symbol_param<0>_type<0> = [WatchUi,244,30,37]; @symbol_param<0>_type<1> = [MenuItem,244,38,46]; ]
     function onSelect(item as WatchUi.MenuItem) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 245 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 245 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_stop" ]
         %id.1 = local;
         symbol [ id %id.1 245 12 14 ];
         %tmp.1 = lgetv %item;
@@ -1116,8 +1116,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %id.1 %tmp.3;
         symbol [ id %id.1 245 12 14 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 246 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 246 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_stop" ]
         %app.2 = local;
         symbol [ app %app.2 246 12 15 ];
         %tmp.4 = self;
@@ -1126,7 +1126,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %app.2 %tmp.6;
         symbol [ app %app.2 246 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 248 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 248 8 ]
         symbol [ System %tmp.7 248 8 14 ];
         %tmp.7 = getm $.Toybox.System;
         symbol [ println %tmp.8 248 15 22 ];
@@ -1136,37 +1136,37 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ id %tmp.10 248 56 58 ];
         %tmp.11 = add %tmp.9 %tmp.10;
         invoke %tmp.7 %tmp.8(%tmp.11);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 250 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 250 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_stmt:
         %tmp.12 = lgetv %id.1;
         symbol [ id %tmp.12 250 12 14 ];
         %tmp.14 = const :pause_activity;
         symbol [ pause_activity %tmp.14 250 19 33 const ];
         %tmp.15 = eq %tmp.12 %tmp.14;
-        bf %tmp.15 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_35_257_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 251 12 ]
+        bf %tmp.15 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_35_257_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 251 12 ]
         %tmp.16 = lgetv %app.2;
         symbol [ app %tmp.16 251 12 15 ];
         symbol [ pauseRecording %tmp.17 251 16 30 ];
         %tmp.17 = getv function %tmp.16 :pauseRecording;
         invoke %tmp.16 %tmp.17();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 252 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 252 12 ]
         symbol [ System %tmp.18 252 12 18 ];
         %tmp.18 = getm $.Toybox.System;
         symbol [ println %tmp.19 252 19 26 ];
         %tmp.19 = getv function %tmp.18 :println;
         %tmp.20 = "[UI] Activity paused";
         invoke %tmp.18 %tmp.19(%tmp.20);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 253 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 253 12 ]
         symbol [ _parentDelegate %tmp.22 253 12 27 ];
         %tmp.22 = getv ? :_parentDelegate;
         symbol [ setMenuActive %tmp.23 253 28 41 ];
         %tmp.23 = getv function %tmp.22 :setMenuActive;
         %tmp.24 = false;
         invoke %tmp.22 %tmp.23(%tmp.24);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 254 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 254 12 ]
         symbol [ WatchUi %tmp.25 254 12 19 ];
         %tmp.25 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.26 254 20 27 ];
@@ -1176,59 +1176,59 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_IMMEDIATE %tmp.28 254 36 51 ];
         %tmp.28 = getv %tmp.27 :SLIDE_IMMEDIATE;
         invoke %tmp.25 %tmp.26(%tmp.28);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 255 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 255 12 ]
         symbol [ WatchUi %tmp.29 255 12 19 ];
         %tmp.29 = getm $.Toybox.WatchUi;
         symbol [ requestUpdate %tmp.30 255 20 33 ];
         %tmp.30 = getv function %tmp.29 :requestUpdate;
         invoke %tmp.29 %tmp.30();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_35_257_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 257 15 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_35_257_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_false:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 257 15 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_stmt:
         %tmp.31 = lgetv %id.1;
         symbol [ id %tmp.31 257 19 21 ];
         %tmp.33 = const :resume_activity;
         symbol [ resume_activity %tmp.33 257 26 41 const ];
         %tmp.34 = eq %tmp.31 %tmp.33;
-        bf %tmp.34 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_43_266_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 258 12 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_stmt:
+        bf %tmp.34 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_43_266_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 258 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_stmt:
         %tmp.35 = lgetv %app.2;
         symbol [ app %tmp.35 258 16 19 ];
         symbol [ isPaused %tmp.36 258 20 28 ];
         %tmp.36 = getv function %tmp.35 :isPaused;
         %tmp.37 = invoke %tmp.35 %tmp.36();
-        bf %tmp.37 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_32_261_12_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 259 16 ]
+        bf %tmp.37 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_32_261_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 259 16 ]
         %tmp.38 = lgetv %app.2;
         symbol [ app %tmp.38 259 16 19 ];
         symbol [ resumeRecording %tmp.39 259 20 35 ];
         %tmp.39 = getv function %tmp.38 :resumeRecording;
         invoke %tmp.38 %tmp.39();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 260 16 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 260 16 ]
         symbol [ System %tmp.40 260 16 22 ];
         %tmp.40 = getm $.Toybox.System;
         symbol [ println %tmp.41 260 23 30 ];
         %tmp.41 = getv function %tmp.40 :println;
         %tmp.42 = "[UI] Activity resumed";
         invoke %tmp.40 %tmp.41(%tmp.42);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_32_261_12_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 262 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_32_261_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_258_12_261_12_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 262 12 ]
         symbol [ _parentDelegate %tmp.44 262 12 27 ];
         %tmp.44 = getv ? :_parentDelegate;
         symbol [ setMenuActive %tmp.45 262 28 41 ];
         %tmp.45 = getv function %tmp.44 :setMenuActive;
         %tmp.46 = false;
         invoke %tmp.44 %tmp.45(%tmp.46);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 263 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 263 12 ]
         symbol [ WatchUi %tmp.47 263 12 19 ];
         %tmp.47 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.48 263 20 27 ];
@@ -1238,39 +1238,39 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_IMMEDIATE %tmp.50 263 36 51 ];
         %tmp.50 = getv %tmp.49 :SLIDE_IMMEDIATE;
         invoke %tmp.47 %tmp.48(%tmp.50);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 264 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 264 12 ]
         symbol [ WatchUi %tmp.51 264 12 19 ];
         %tmp.51 = getm $.Toybox.WatchUi;
         symbol [ requestUpdate %tmp.52 264 20 33 ];
         %tmp.52 = getv function %tmp.51 :requestUpdate;
         invoke %tmp.51 %tmp.52();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_43_266_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 266 15 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_43_266_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_false:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 266 15 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_stmt:
         %tmp.53 = lgetv %id.1;
         symbol [ id %tmp.53 266 19 21 ];
         %tmp.55 = const :stop_activity;
         symbol [ stop_activity %tmp.55 266 26 39 const ];
         %tmp.56 = eq %tmp.53 %tmp.55;
-        bf %tmp.56 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 267 12 ]
+        bf %tmp.56 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 267 12 ]
         %tmp.57 = lgetv %app.2;
         symbol [ app %tmp.57 267 12 15 ];
         symbol [ stopRecording %tmp.58 267 16 29 ];
         %tmp.58 = getv function %tmp.57 :stopRecording;
         invoke %tmp.57 %tmp.58();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 268 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 268 12 ]
         symbol [ System %tmp.59 268 12 18 ];
         %tmp.59 = getm $.Toybox.System;
         symbol [ println %tmp.60 268 19 26 ];
         %tmp.60 = getv function %tmp.59 :println;
         %tmp.61 = "[UI] Activity stopped";
         invoke %tmp.59 %tmp.60(%tmp.61);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 269 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 269 12 ]
         symbol [ WatchUi %tmp.62 269 12 19 ];
         %tmp.62 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.63 269 20 27 ];
@@ -1280,15 +1280,15 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_IMMEDIATE %tmp.65 269 36 51 ];
         %tmp.65 = getv %tmp.64 :SLIDE_IMMEDIATE;
         invoke %tmp.62 %tmp.63(%tmp.65);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 270 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 270 12 ]
         symbol [ _parentDelegate %tmp.67 270 12 27 ];
         %tmp.67 = getv ? :_parentDelegate;
         symbol [ setMenuActive %tmp.68 270 28 41 ];
         %tmp.68 = getv function %tmp.67 :setMenuActive;
         %tmp.69 = false;
         invoke %tmp.67 %tmp.68(%tmp.69);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 272 12 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 272 12 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_stop" ]
         %menu.3 = local;
         symbol [ menu %menu.3 272 16 20 ];
         symbol [ WatchUi %tmp.72 272 27 34 ];
@@ -1304,7 +1304,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.70 = newc %tmp.73 (%tmp.79);
         lputv %menu.3 %tmp.70;
         symbol [ menu %menu.3 272 16 20 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 273 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 273 12 ]
         %tmp.80 = lgetv %menu.3;
         symbol [ menu %tmp.80 273 12 16 ];
         symbol [ addItem %tmp.81 273 17 24 ];
@@ -1320,7 +1320,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.90 = null;
         %tmp.82 = newc %tmp.85 (%tmp.86, %tmp.87, %tmp.89, %tmp.90);
         invoke %tmp.80 %tmp.81(%tmp.82);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 274 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 274 12 ]
         %tmp.91 = lgetv %menu.3;
         symbol [ menu %tmp.91 274 12 16 ];
         symbol [ addItem %tmp.92 274 17 24 ];
@@ -1336,7 +1336,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.101 = null;
         %tmp.93 = newc %tmp.96 (%tmp.97, %tmp.98, %tmp.100, %tmp.101);
         invoke %tmp.91 %tmp.92(%tmp.93);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 275 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 275 12 ]
         symbol [ WatchUi %tmp.102 275 12 19 ];
         %tmp.102 = getm $.Toybox.WatchUi;
         symbol [ pushView %tmp.103 275 20 28 ];
@@ -1353,24 +1353,24 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_UP %tmp.112 275 89 97 ];
         %tmp.112 = getv %tmp.111 :SLIDE_UP;
         invoke %tmp.102 %tmp.103(%tmp.104, %tmp.105, %tmp.112);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_41_276_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_266_15_276_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_257_15_276_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_250_8_276_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_244_56_277_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 279; @symbol_functiondef = [onBack,279,13,19]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 279; @symbol_functiondef = [onBack,279,13,19]; ]
     function onBack() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_279_30_282_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 280 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_279_30_282_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 280 8 ]
         symbol [ _parentDelegate %tmp.2 280 8 23 ];
         %tmp.2 = getv ? :_parentDelegate;
         symbol [ setMenuActive %tmp.3 280 24 37 ];
         %tmp.3 = getv function %tmp.2 :setMenuActive;
         %tmp.4 = false;
         invoke %tmp.2 %tmp.3(%tmp.4);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 281 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 281 8 ]
         symbol [ WatchUi %tmp.5 281 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
         symbol [ popView %tmp.6 281 16 23 ];
@@ -1380,42 +1380,42 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ SLIDE_IMMEDIATE %tmp.8 281 32 47 ];
         %tmp.8 = getv %tmp.7 :SLIDE_IMMEDIATE;
         invoke %tmp.5 %tmp.6(%tmp.8);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_279_30_282_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_279_30_282_4_stop:
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 285; @symbol_classdef = [SaveDiscardMenuDelegate,285,6,29]; @symbol_extends<0> = [WatchUi,285,38,45]; @symbol_extends<1> = [Menu2InputDelegate,285,46,64]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 285; @symbol_classdef = [SaveDiscardMenuDelegate,285,6,29]; @symbol_extends<0> = [WatchUi,285,38,45]; @symbol_extends<1> = [Menu2InputDelegate,285,46,64]; ]
 class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 285; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 285; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 285; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 285; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 287; @position = 16; @symbol_vardef = [_parentDelegate,287,16,31]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 287; @position = 16; @symbol_vardef = [_parentDelegate,287,16,31]; ]
     private
     var _parentDelegate;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 289; @symbol_functiondef = [initialize,289,13,23]; @symbol_param<0> = [parentDelegate,289,24,38]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 289; @symbol_functiondef = [initialize,289,13,23]; @symbol_param<0> = [parentDelegate,289,24,38]; ]
     function initialize(parentDelegate) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_289_40_292_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 290 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_289_40_292_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 290 8 ]
         symbol [ Menu2InputDelegate %tmp.2 290 8 26 ];
         %tmp.2 = getv ? :Menu2InputDelegate;
         symbol [ initialize %tmp.3 290 27 37 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 291 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 291 8 ]
         %tmp.4 = lgetv %parentDelegate;
         symbol [ parentDelegate %tmp.4 291 26 40 ];
         symbol [ _parentDelegate ? 291 8 23 ];
         putv self :_parentDelegate %tmp.4;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_289_40_292_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_289_40_292_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 294; @symbol_functiondef = [onSelect,294,13,21]; @symbol_param<0> = [item,294,22,26]; @symbol_param<0>_type<0> = [WatchUi,294,30,37]; @symbol_param<0>_type<1> = [MenuItem,294,38,46]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 294; @symbol_functiondef = [onSelect,294,13,21]; @symbol_param<0> = [item,294,22,26]; @symbol_param<0>_type<0> = [WatchUi,294,30,37]; @symbol_param<0>_type<1> = [MenuItem,294,38,46]; ]
     function onSelect(item as WatchUi.MenuItem) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_322_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 295 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_322_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_322_4_stop" ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_331_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 295 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_331_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_331_4_stop" ]
         %id.1 = local;
         symbol [ id %id.1 295 12 14 ];
         %tmp.1 = lgetv %item;
@@ -1425,8 +1425,8 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.3 = invoke %tmp.1 %tmp.2();
         lputv %id.1 %tmp.3;
         symbol [ id %id.1 295 12 14 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 296 8 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_322_4_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_322_4_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 296 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_331_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_331_4_stop" ]
         %app.2 = local;
         symbol [ app %app.2 296 12 15 ];
         %tmp.4 = self;
@@ -1435,7 +1435,7 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         %tmp.6 = invoke %tmp.4 %tmp.5();
         lputv %app.2 %tmp.6;
         symbol [ app %app.2 296 12 15 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 298 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 298 8 ]
         symbol [ System %tmp.7 298 8 14 ];
         %tmp.7 = getm $.Toybox.System;
         symbol [ println %tmp.8 298 15 22 ];
@@ -1445,244 +1445,283 @@ C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDele
         symbol [ id %tmp.10 298 59 61 ];
         %tmp.11 = add %tmp.9 %tmp.10;
         invoke %tmp.7 %tmp.8(%tmp.11);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 300 8 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_319_8_if_stmt:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 300 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_328_8_if_stmt:
         %tmp.12 = lgetv %id.1;
         symbol [ id %tmp.12 300 12 14 ];
         %tmp.14 = const :save_session;
         symbol [ save_session %tmp.14 300 19 31 const ];
         %tmp.15 = eq %tmp.12 %tmp.14;
-        bf %tmp.15 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_319_8_if_false;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_319_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_33_311_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 301 13 ]
+        bf %tmp.15 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_328_8_if_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_328_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_33_320_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 301 13 ]
         %tmp.16 = lgetv %app.2;
         symbol [ app %tmp.16 301 13 16 ];
         symbol [ saveSession %tmp.17 301 17 28 ];
         %tmp.17 = getv function %tmp.16 :saveSession;
         invoke %tmp.16 %tmp.17();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 302 13 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 302 13 ]
         symbol [ System %tmp.18 302 13 19 ];
         %tmp.18 = getm $.Toybox.System;
         symbol [ println %tmp.19 302 20 27 ];
         %tmp.19 = getv function %tmp.18 :println;
         %tmp.20 = "[UI] Activity saved";
         invoke %tmp.18 %tmp.19(%tmp.20);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 303 12 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 303 12 ]
         symbol [ _parentDelegate %tmp.22 303 12 27 ];
         %tmp.22 = getv ? :_parentDelegate;
         symbol [ setMenuActive %tmp.23 303 28 41 ];
         %tmp.23 = getv function %tmp.22 :setMenuActive;
         %tmp.24 = false;
         invoke %tmp.22 %tmp.23(%tmp.24);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 306 13 ]
-        symbol [ WatchUi %tmp.25 306 13 20 ];
-        %tmp.25 = getm $.Toybox.WatchUi;
-        symbol [ switchToView %tmp.26 306 21 33 ];
-        %tmp.26 = getv function %tmp.25 :switchToView;
-        symbol [ SummaryView %tmp.30 307 17 28 ];
-        %tmp.30 = getv ? :SummaryView;
-        %tmp.27 = newc %tmp.30 ();
-        symbol [ SummaryViewDelegate %tmp.34 308 17 36 ];
-        %tmp.34 = getv ? :SummaryViewDelegate;
-        %tmp.31 = newc %tmp.34 ();
-        symbol [ WatchUi %tmp.35 309 13 20 ];
-        %tmp.35 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.36 309 21 29 ];
-        %tmp.36 = getv %tmp.35 :SLIDE_UP;
-        invoke %tmp.25 %tmp.26(%tmp.27, %tmp.31, %tmp.36);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_33_311_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_319_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_319_8_if_false:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 311 15 ]
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_15_319_8_if_stmt:
-        %tmp.37 = lgetv %id.1;
-        symbol [ id %tmp.37 311 19 21 ];
-        %tmp.39 = const :discard_session;
-        symbol [ discard_session %tmp.39 311 26 41 const ];
-        %tmp.40 = eq %tmp.37 %tmp.39;
-        bf %tmp.40 @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_15_319_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_15_319_8_if_true:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_43_319_8_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 312 12 ]
-        %tmp.41 = lgetv %app.2;
-        symbol [ app %tmp.41 312 12 15 ];
-        symbol [ discardSession %tmp.42 312 16 30 ];
-        %tmp.42 = getv function %tmp.41 :discardSession;
-        invoke %tmp.41 %tmp.42();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 313 12 ]
-        symbol [ System %tmp.43 313 12 18 ];
-        %tmp.43 = getm $.Toybox.System;
-        symbol [ println %tmp.44 313 19 26 ];
-        %tmp.44 = getv function %tmp.43 :println;
-        %tmp.45 = "[UI] Activity discarded";
-        invoke %tmp.43 %tmp.44(%tmp.45);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 314 12 ]
-        symbol [ _parentDelegate %tmp.47 314 12 27 ];
-        %tmp.47 = getv ? :_parentDelegate;
-        symbol [ setMenuActive %tmp.48 314 28 41 ];
-        %tmp.48 = getv function %tmp.47 :setMenuActive;
-        %tmp.49 = false;
-        invoke %tmp.47 %tmp.48(%tmp.49);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 316 12 ]
-        [ "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_43_319_8_start" "C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_43_319_8_stop" ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 305 12 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_12_319_12_if_stmt:
+        %tmp.25 = lgetv %app.2;
+        symbol [ app %tmp.25 305 16 19 ];
+        symbol [ getSummaryEnabled %tmp.26 305 20 37 ];
+        %tmp.26 = getv function %tmp.25 :getSummaryEnabled;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        bf %tmp.27 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_12_319_12_if_else_false;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_12_319_12_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_41_312_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 307 16 ]
+        symbol [ WatchUi %tmp.28 307 16 23 ];
+        %tmp.28 = getm $.Toybox.WatchUi;
+        symbol [ switchToView %tmp.29 307 24 36 ];
+        %tmp.29 = getv function %tmp.28 :switchToView;
+        symbol [ SummaryView %tmp.33 308 24 35 ];
+        %tmp.33 = getv ? :SummaryView;
+        %tmp.30 = newc %tmp.33 ();
+        symbol [ SummaryViewDelegate %tmp.37 309 24 43 ];
+        %tmp.37 = getv ? :SummaryViewDelegate;
+        %tmp.34 = newc %tmp.37 ();
+        symbol [ WatchUi %tmp.38 310 20 27 ];
+        %tmp.38 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.39 310 28 36 ];
+        %tmp.39 = getv %tmp.38 :SLIDE_UP;
+        invoke %tmp.28 %tmp.29(%tmp.30, %tmp.34, %tmp.39);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_41_312_12_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_12_319_12_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_12_319_12_if_else_false:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_312_19_319_12_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 313 16 ]
+        symbol [ System %tmp.40 313 16 22 ];
+        %tmp.40 = getm $.Toybox.System;
+        symbol [ println %tmp.41 313 23 30 ];
+        %tmp.41 = getv function %tmp.40 :println;
+        %tmp.42 = "[UI] Summary screen skipped by user preference";
+        invoke %tmp.40 %tmp.41(%tmp.42);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 314 16 ]
+        symbol [ WatchUi %tmp.43 314 16 23 ];
+        %tmp.43 = getm $.Toybox.WatchUi;
+        symbol [ switchToView %tmp.44 314 24 36 ];
+        %tmp.44 = getv function %tmp.43 :switchToView;
+        symbol [ SimpleView %tmp.48 315 24 34 ];
+        %tmp.48 = getv ? :SimpleView;
+        %tmp.45 = newc %tmp.48 ();
+        symbol [ SimpleViewDelegate %tmp.52 316 24 42 ];
+        %tmp.52 = getv ? :SimpleViewDelegate;
+        %tmp.49 = newc %tmp.52 ();
+        symbol [ WatchUi %tmp.53 317 20 27 ];
+        %tmp.53 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.54 317 28 38 ];
+        %tmp.54 = getv %tmp.53 :SLIDE_DOWN;
+        invoke %tmp.43 %tmp.44(%tmp.45, %tmp.49, %tmp.54);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_312_19_319_12_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_305_12_319_12_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_33_320_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_328_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_328_8_if_false:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 320 15 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_15_328_8_if_stmt:
+        %tmp.55 = lgetv %id.1;
+        symbol [ id %tmp.55 320 19 21 ];
+        %tmp.57 = const :discard_session;
+        symbol [ discard_session %tmp.57 320 26 41 const ];
+        %tmp.58 = eq %tmp.55 %tmp.57;
+        bf %tmp.58 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_15_328_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_15_328_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_43_328_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 321 12 ]
+        %tmp.59 = lgetv %app.2;
+        symbol [ app %tmp.59 321 12 15 ];
+        symbol [ discardSession %tmp.60 321 16 30 ];
+        %tmp.60 = getv function %tmp.59 :discardSession;
+        invoke %tmp.59 %tmp.60();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 322 12 ]
+        symbol [ System %tmp.61 322 12 18 ];
+        %tmp.61 = getm $.Toybox.System;
+        symbol [ println %tmp.62 322 19 26 ];
+        %tmp.62 = getv function %tmp.61 :println;
+        %tmp.63 = "[UI] Activity discarded";
+        invoke %tmp.61 %tmp.62(%tmp.63);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 323 12 ]
+        symbol [ _parentDelegate %tmp.65 323 12 27 ];
+        %tmp.65 = getv ? :_parentDelegate;
+        symbol [ setMenuActive %tmp.66 323 28 41 ];
+        %tmp.66 = getv function %tmp.65 :setMenuActive;
+        %tmp.67 = false;
+        invoke %tmp.65 %tmp.66(%tmp.67);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 325 12 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_43_328_8_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_43_328_8_stop" ]
         %confirmationMenu.3 = local;
-        symbol [ confirmationMenu %confirmationMenu.3 316 16 32 ];
-        symbol [ WatchUi %tmp.52 316 39 46 ];
-        %tmp.52 = getm $.Toybox.WatchUi;
-        symbol [ Menu2 %tmp.53 316 47 52 ];
-        %tmp.53 = getv function ? %tmp.52 :Menu2;
-        %tmp.54 = newd 1;
-        %tmp.56 = const :title;
-        symbol [ title %tmp.56 316 56 61 const ];
-        %tmp.57 = "Activity Discarded";
-        %tmp.58 = dup %tmp.54;
-        %tmp.59 = aputv %tmp.58 %tmp.56 %tmp.57;
-        %tmp.50 = newc %tmp.53 (%tmp.59);
-        lputv %confirmationMenu.3 %tmp.50;
-        symbol [ confirmationMenu %confirmationMenu.3 316 16 32 ];
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 317 12 ]
-        %tmp.60 = lgetv %confirmationMenu.3;
-        symbol [ confirmationMenu %tmp.60 317 12 28 ];
-        symbol [ addItem %tmp.61 317 29 36 ];
-        %tmp.61 = getv function %tmp.60 :addItem;
-        symbol [ WatchUi %tmp.64 317 41 48 ];
-        %tmp.64 = getm $.Toybox.WatchUi;
-        symbol [ MenuItem %tmp.65 317 49 57 ];
-        %tmp.65 = getv function ? %tmp.64 :MenuItem;
-        %tmp.66 = "Done";
-        %tmp.67 = null;
-        %tmp.69 = const :done;
-        symbol [ done %tmp.69 317 73 77 const ];
-        %tmp.70 = null;
-        %tmp.62 = newc %tmp.65 (%tmp.66, %tmp.67, %tmp.69, %tmp.70);
-        invoke %tmp.60 %tmp.61(%tmp.62);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 318 12 ]
-        symbol [ WatchUi %tmp.71 318 12 19 ];
-        %tmp.71 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.72 318 20 28 ];
-        %tmp.72 = getv function %tmp.71 :pushView;
-        %tmp.73 = lgetv %confirmationMenu.3;
-        symbol [ confirmationMenu %tmp.73 318 29 45 ];
-        symbol [ ConfirmationDelegate %tmp.77 318 51 71 ];
-        %tmp.77 = getv ? :ConfirmationDelegate;
-        symbol [ _parentDelegate %tmp.79 318 72 87 ];
-        %tmp.79 = getv ? :_parentDelegate;
-        %tmp.74 = newc %tmp.77 (%tmp.79);
-        symbol [ WatchUi %tmp.80 318 90 97 ];
-        %tmp.80 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.81 318 98 113 ];
-        %tmp.81 = getv %tmp.80 :SLIDE_IMMEDIATE;
-        invoke %tmp.71 %tmp.72(%tmp.73, %tmp.74, %tmp.81);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_43_319_8_stop:
-        goto @C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_15_319_8_if_end;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_311_15_319_8_if_end:
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_319_8_if_end:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 321 8 ]
-        symbol [ WatchUi %tmp.82 321 8 15 ];
+        symbol [ confirmationMenu %confirmationMenu.3 325 16 32 ];
+        symbol [ WatchUi %tmp.70 325 39 46 ];
+        %tmp.70 = getm $.Toybox.WatchUi;
+        symbol [ Menu2 %tmp.71 325 47 52 ];
+        %tmp.71 = getv function ? %tmp.70 :Menu2;
+        %tmp.72 = newd 1;
+        %tmp.74 = const :title;
+        symbol [ title %tmp.74 325 56 61 const ];
+        %tmp.75 = "Activity Discarded";
+        %tmp.76 = dup %tmp.72;
+        %tmp.77 = aputv %tmp.76 %tmp.74 %tmp.75;
+        %tmp.68 = newc %tmp.71 (%tmp.77);
+        lputv %confirmationMenu.3 %tmp.68;
+        symbol [ confirmationMenu %confirmationMenu.3 325 16 32 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 326 12 ]
+        %tmp.78 = lgetv %confirmationMenu.3;
+        symbol [ confirmationMenu %tmp.78 326 12 28 ];
+        symbol [ addItem %tmp.79 326 29 36 ];
+        %tmp.79 = getv function %tmp.78 :addItem;
+        symbol [ WatchUi %tmp.82 326 41 48 ];
         %tmp.82 = getm $.Toybox.WatchUi;
-        symbol [ requestUpdate %tmp.83 321 16 29 ];
-        %tmp.83 = getv function %tmp.82 :requestUpdate;
-        invoke %tmp.82 %tmp.83();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_322_4_stop:
+        symbol [ MenuItem %tmp.83 326 49 57 ];
+        %tmp.83 = getv function ? %tmp.82 :MenuItem;
+        %tmp.84 = "Done";
+        %tmp.85 = null;
+        %tmp.87 = const :done;
+        symbol [ done %tmp.87 326 73 77 const ];
+        %tmp.88 = null;
+        %tmp.80 = newc %tmp.83 (%tmp.84, %tmp.85, %tmp.87, %tmp.88);
+        invoke %tmp.78 %tmp.79(%tmp.80);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 327 12 ]
+        symbol [ WatchUi %tmp.89 327 12 19 ];
+        %tmp.89 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.90 327 20 28 ];
+        %tmp.90 = getv function %tmp.89 :pushView;
+        %tmp.91 = lgetv %confirmationMenu.3;
+        symbol [ confirmationMenu %tmp.91 327 29 45 ];
+        symbol [ ConfirmationDelegate %tmp.95 327 51 71 ];
+        %tmp.95 = getv ? :ConfirmationDelegate;
+        symbol [ _parentDelegate %tmp.97 327 72 87 ];
+        %tmp.97 = getv ? :_parentDelegate;
+        %tmp.92 = newc %tmp.95 (%tmp.97);
+        symbol [ WatchUi %tmp.98 327 90 97 ];
+        %tmp.98 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_IMMEDIATE %tmp.99 327 98 113 ];
+        %tmp.99 = getv %tmp.98 :SLIDE_IMMEDIATE;
+        invoke %tmp.89 %tmp.90(%tmp.91, %tmp.92, %tmp.99);
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_43_328_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_15_328_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_320_15_328_8_if_end:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_300_8_328_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 330 8 ]
+        symbol [ WatchUi %tmp.100 330 8 15 ];
+        %tmp.100 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.101 330 16 29 ];
+        %tmp.101 = getv function %tmp.100 :requestUpdate;
+        invoke %tmp.100 %tmp.101();
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_294_56_331_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 324; @symbol_functiondef = [onBack,324,13,19]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 333; @symbol_functiondef = [onBack,333,13,19]; ]
     function onBack() as Void {
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 329; @symbol_classdef = [ConfirmationDelegate,329,6,26]; @symbol_extends<0> = [WatchUi,329,35,42]; @symbol_extends<1> = [Menu2InputDelegate,329,43,61]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 338; @symbol_classdef = [ConfirmationDelegate,338,6,26]; @symbol_extends<0> = [WatchUi,338,35,42]; @symbol_extends<1> = [Menu2InputDelegate,338,43,61]; ]
 class ConfirmationDelegate extends WatchUi.Menu2InputDelegate {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 329; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 338; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 329; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 338; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 331; @position = 16; @symbol_vardef = [_parentDelegate,331,16,31]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 340; @position = 16; @symbol_vardef = [_parentDelegate,340,16,31]; ]
     private
     var _parentDelegate;
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 333; @symbol_functiondef = [initialize,333,13,23]; @symbol_param<0> = [parentDelegate,333,24,38]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 342; @symbol_functiondef = [initialize,342,13,23]; @symbol_param<0> = [parentDelegate,342,24,38]; ]
     function initialize(parentDelegate) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_333_40_336_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 334 8 ]
-        symbol [ Menu2InputDelegate %tmp.2 334 8 26 ];
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_342_40_345_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 343 8 ]
+        symbol [ Menu2InputDelegate %tmp.2 343 8 26 ];
         %tmp.2 = getv ? :Menu2InputDelegate;
-        symbol [ initialize %tmp.3 334 27 37 ];
+        symbol [ initialize %tmp.3 343 27 37 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 335 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 344 8 ]
         %tmp.4 = lgetv %parentDelegate;
-        symbol [ parentDelegate %tmp.4 335 26 40 ];
-        symbol [ _parentDelegate ? 335 8 23 ];
+        symbol [ parentDelegate %tmp.4 344 26 40 ];
+        symbol [ _parentDelegate ? 344 8 23 ];
         putv self :_parentDelegate %tmp.4;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_333_40_336_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_342_40_345_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 338; @symbol_functiondef = [onSelect,338,13,21]; @symbol_param<0> = [item,338,22,26]; @symbol_param<0>_type<0> = [WatchUi,338,30,37]; @symbol_param<0>_type<1> = [MenuItem,338,38,46]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 347; @symbol_functiondef = [onSelect,347,13,21]; @symbol_param<0> = [item,347,22,26]; @symbol_param<0>_type<0> = [WatchUi,347,30,37]; @symbol_param<0>_type<1> = [MenuItem,347,38,46]; ]
     function onSelect(item as WatchUi.MenuItem) as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_338_56_342_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 339 8 ]
-        symbol [ _parentDelegate %tmp.2 339 8 23 ];
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_347_56_351_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 348 8 ]
+        symbol [ _parentDelegate %tmp.2 348 8 23 ];
         %tmp.2 = getv ? :_parentDelegate;
-        symbol [ setMenuActive %tmp.3 339 24 37 ];
+        symbol [ setMenuActive %tmp.3 348 24 37 ];
         %tmp.3 = getv function %tmp.2 :setMenuActive;
         %tmp.4 = false;
         invoke %tmp.2 %tmp.3(%tmp.4);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 340 8 ]
-        symbol [ WatchUi %tmp.5 340 8 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 349 8 ]
+        symbol [ WatchUi %tmp.5 349 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.6 340 16 23 ];
+        symbol [ popView %tmp.6 349 16 23 ];
         %tmp.6 = getv function %tmp.5 :popView;
-        symbol [ WatchUi %tmp.7 340 24 31 ];
+        symbol [ WatchUi %tmp.7 349 24 31 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.8 340 32 47 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.8 349 32 47 ];
         %tmp.8 = getv %tmp.7 :SLIDE_IMMEDIATE;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 341 8 ]
-        symbol [ WatchUi %tmp.9 341 8 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 350 8 ]
+        symbol [ WatchUi %tmp.9 350 8 15 ];
         %tmp.9 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.10 341 16 23 ];
+        symbol [ popView %tmp.10 350 16 23 ];
         %tmp.10 = getv function %tmp.9 :popView;
-        symbol [ WatchUi %tmp.11 341 24 31 ];
+        symbol [ WatchUi %tmp.11 350 24 31 ];
         %tmp.11 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.12 341 32 47 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.12 350 32 47 ];
         %tmp.12 = getv %tmp.11 :SLIDE_IMMEDIATE;
         invoke %tmp.9 %tmp.10(%tmp.12);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_338_56_342_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_347_56_351_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 344; @symbol_functiondef = [onBack,344,13,19]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 353; @symbol_functiondef = [onBack,353,13,19]; ]
     function onBack() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_344_30_348_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 345 8 ]
-        symbol [ _parentDelegate %tmp.2 345 8 23 ];
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_353_30_357_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 354 8 ]
+        symbol [ _parentDelegate %tmp.2 354 8 23 ];
         %tmp.2 = getv ? :_parentDelegate;
-        symbol [ setMenuActive %tmp.3 345 24 37 ];
+        symbol [ setMenuActive %tmp.3 354 24 37 ];
         %tmp.3 = getv function %tmp.2 :setMenuActive;
         %tmp.4 = false;
         invoke %tmp.2 %tmp.3(%tmp.4);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 346 8 ]
-        symbol [ WatchUi %tmp.5 346 8 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 355 8 ]
+        symbol [ WatchUi %tmp.5 355 8 15 ];
         %tmp.5 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.6 346 16 23 ];
+        symbol [ popView %tmp.6 355 16 23 ];
         %tmp.6 = getv function %tmp.5 :popView;
-        symbol [ WatchUi %tmp.7 346 24 31 ];
+        symbol [ WatchUi %tmp.7 355 24 31 ];
         %tmp.7 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.8 346 32 47 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.8 355 32 47 ];
         %tmp.8 = getv %tmp.7 :SLIDE_IMMEDIATE;
         invoke %tmp.5 %tmp.6(%tmp.8);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 347 8 ]
-        symbol [ WatchUi %tmp.9 347 8 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc" 356 8 ]
+        symbol [ WatchUi %tmp.9 356 8 15 ];
         %tmp.9 = getm $.Toybox.WatchUi;
-        symbol [ popView %tmp.10 347 16 23 ];
+        symbol [ popView %tmp.10 356 16 23 ];
         %tmp.10 = getv function %tmp.9 :popView;
-        symbol [ WatchUi %tmp.11 347 24 31 ];
+        symbol [ WatchUi %tmp.11 356 24 31 ];
         %tmp.11 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_IMMEDIATE %tmp.12 347 32 47 ];
+        symbol [ SLIDE_IMMEDIATE %tmp.12 356 32 47 ];
         %tmp.12 = getv %tmp.11 :SLIDE_IMMEDIATE;
         invoke %tmp.9 %tmp.10(%tmp.12);
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_344_30_348_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SimpleViewDelegate_mc_353_30_357_4_stop:
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 1; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SimpleViewDelegate.mc"; @line = 1; ]
 <init> {
 }

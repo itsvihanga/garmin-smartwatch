@@ -1,140 +1,150 @@
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
 import Toybox.Lang;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
 import Toybox.System;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [WatchUi,3,14,21]; ]
 import Toybox.WatchUi;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Application,4,14,25]; ]
 import Toybox.Application;
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 6; @symbol_classdef = [SummarySettingsMenuDelegate,6,6,33]; @symbol_extends<0> = [WatchUi,6,42,49]; @symbol_extends<1> = [BehaviorDelegate,6,50,66]; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 6; @symbol_classdef = [SummarySettingsMenuDelegate,6,6,33]; @symbol_extends<0> = [WatchUi,6,42,49]; @symbol_extends<1> = [BehaviorDelegate,6,50,66]; ]
 class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 6; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 6; ]
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 6; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 6; ]
     static
     <init> {
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; ]
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; ]
     function initialize() as Void {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_8_26_10_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 9 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_8_26_10_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 9 8 ]
         symbol [ BehaviorDelegate %tmp.2 9 8 24 ];
         %tmp.2 = getv ? :BehaviorDelegate;
         symbol [ initialize %tmp.3 9 25 35 ];
         %tmp.3 = getv function %tmp.2 :initialize;
         invoke %tmp.2 %tmp.3();
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_8_26_10_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_8_26_10_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 13; @symbol_functiondef = [onBack,13,13,19]; @symbol_return<0> = [Boolean,13,25,32]; ]
-    function onBack() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_13_33_18_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 14 8 ]
-        symbol [ System %tmp.1 14 8 14 ];
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 12; @symbol_functiondef = [onBack,12,13,19]; ]
+    function onBack() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_12_22_22_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 13 8 ]
+        symbol [ System %tmp.1 13 8 14 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 14 15 22 ];
+        symbol [ println %tmp.2 13 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
         %tmp.3 = "Back pressed: Returning to main view";
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 16 8 ]
-        symbol [ WatchUi %tmp.4 16 8 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 15 8 ]
+        symbol [ WatchUi %tmp.4 15 8 15 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.5 16 16 24 ];
+        symbol [ pushView %tmp.5 15 16 24 ];
         %tmp.5 = getv function %tmp.4 :pushView;
-        symbol [ SimpleView %tmp.9 16 29 39 ];
+        symbol [ SimpleView %tmp.9 16 16 26 ];
         %tmp.9 = getv ? :SimpleView;
         %tmp.6 = newc %tmp.9 ();
-        symbol [ SimpleViewDelegate %tmp.13 16 47 65 ];
+        symbol [ SimpleViewDelegate %tmp.13 17 16 34 ];
         %tmp.13 = getv ? :SimpleViewDelegate;
         %tmp.10 = newc %tmp.13 ();
-        symbol [ WatchUi %tmp.14 16 69 76 ];
+        symbol [ WatchUi %tmp.14 18 12 19 ];
         %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_DOWN %tmp.15 16 77 87 ];
+        symbol [ SLIDE_DOWN %tmp.15 18 20 30 ];
         %tmp.15 = getv %tmp.14 :SLIDE_DOWN;
         invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 17 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 21 8 ]
         %tmp.16 = true;
         ret %tmp.16;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_13_33_18_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_12_22_22_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 21; @symbol_functiondef = [onSelect,21,13,21]; @symbol_return<0> = [Boolean,21,27,34]; ]
-    function onSelect() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_21_35_26_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 22 8 ]
-        symbol [ System %tmp.1 22 8 14 ];
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 24; @symbol_functiondef = [onSelect,24,13,21]; ]
+    function onSelect() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_24_24_29_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 25 8 ]
+        symbol [ System %tmp.1 25 8 14 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 22 15 22 ];
+        symbol [ println %tmp.2 25 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
-        %tmp.3 = "Select/Tap pressed: toggle summary on/off   ";
+        %tmp.3 = "Select/Tap pressed: toggle summary on/off";
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 25 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 28 8 ]
         %tmp.4 = true;
         ret %tmp.4;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_21_35_26_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_24_24_29_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 29; @symbol_functiondef = [onNextPage,29,13,23]; @symbol_return<0> = [Boolean,29,29,36]; ]
-    function onNextPage() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_29_37_36_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 30 8 ]
-        symbol [ System %tmp.1 30 8 14 ];
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 32; @symbol_functiondef = [onNextPage,32,13,23]; ]
+    function onNextPage() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_32_26_44_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 33 8 ]
+        symbol [ System %tmp.1 33 8 14 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 30 15 22 ];
+        symbol [ println %tmp.2 33 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
-        %tmp.3 = "Down button pressed";
+        %tmp.3 = "Down button pressed: Opening Reset Settings";
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 33 8 ]
-        symbol [ WatchUi %tmp.4 33 8 15 ];
-        %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.5 33 16 24 ];
-        %tmp.5 = getv function %tmp.4 :pushView;
-        symbol [ CadenceSettingsMenuView %tmp.9 33 29 52 ];
-        %tmp.9 = getv ? :CadenceSettingsMenuView;
-        %tmp.6 = newc %tmp.9 ();
-        symbol [ CadenceSettingsMenuDelegate %tmp.13 33 60 87 ];
-        %tmp.13 = getv ? :CadenceSettingsMenuDelegate;
-        %tmp.10 = newc %tmp.13 ();
-        symbol [ WatchUi %tmp.14 33 91 98 ];
-        %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_UP %tmp.15 33 99 107 ];
-        %tmp.15 = getv %tmp.14 :SLIDE_UP;
-        invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 35 8 ]
-        %tmp.16 = true;
-        ret %tmp.16;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_29_37_36_4_stop:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 35 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_32_26_44_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_32_26_44_4_stop" ]
+        %resetView.1 = local;
+        symbol [ resetView %resetView.1 35 12 21 ];
+        symbol [ ResetSettingsView %tmp.7 35 28 45 ];
+        %tmp.7 = getv ? :ResetSettingsView;
+        %tmp.4 = newc %tmp.7 ();
+        lputv %resetView.1 %tmp.4;
+        symbol [ resetView %resetView.1 35 12 21 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 37 8 ]
+        symbol [ WatchUi %tmp.8 37 8 15 ];
+        %tmp.8 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.9 37 16 24 ];
+        %tmp.9 = getv function %tmp.8 :pushView;
+        %tmp.10 = lgetv %resetView.1;
+        symbol [ resetView %tmp.10 38 12 21 ];
+        symbol [ ResetSettingsDelegate %tmp.14 39 16 37 ];
+        %tmp.14 = getv ? :ResetSettingsDelegate;
+        %tmp.15 = lgetv %resetView.1;
+        symbol [ resetView %tmp.15 39 38 47 ];
+        %tmp.11 = newc %tmp.14 (%tmp.15);
+        symbol [ WatchUi %tmp.16 40 12 19 ];
+        %tmp.16 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_UP %tmp.17 40 20 28 ];
+        %tmp.17 = getv %tmp.16 :SLIDE_UP;
+        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11, %tmp.17);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 43 8 ]
+        %tmp.18 = true;
+        ret %tmp.18;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_32_26_44_4_stop:
     }
-    [ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 39; @symbol_functiondef = [onPreviousPage,39,13,27]; @symbol_return<0> = [Boolean,39,33,40]; ]
-    function onPreviousPage() as Boolean {
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_39_41_46_4_start:
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 40 8 ]
-        symbol [ System %tmp.1 40 8 14 ];
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 47; @symbol_functiondef = [onPreviousPage,47,13,27]; ]
+    function onPreviousPage() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_47_30_57_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 48 8 ]
+        symbol [ System %tmp.1 48 8 14 ];
         %tmp.1 = getm $.Toybox.System;
-        symbol [ println %tmp.2 40 15 22 ];
+        symbol [ println %tmp.2 48 15 22 ];
         %tmp.2 = getv function %tmp.1 :println;
-        %tmp.3 = "Up button pressed";
+        %tmp.3 = "Up button pressed: Back to Bar Chart Settings";
         invoke %tmp.1 %tmp.2(%tmp.3);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 43 8 ]
-        symbol [ WatchUi %tmp.4 43 8 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 50 8 ]
+        symbol [ WatchUi %tmp.4 50 8 15 ];
         %tmp.4 = getm $.Toybox.WatchUi;
-        symbol [ pushView %tmp.5 43 16 24 ];
+        symbol [ pushView %tmp.5 50 16 24 ];
         %tmp.5 = getv function %tmp.4 :pushView;
-        symbol [ BarChartSettingsMenuView %tmp.9 43 29 53 ];
+        symbol [ BarChartSettingsMenuView %tmp.9 51 16 40 ];
         %tmp.9 = getv ? :BarChartSettingsMenuView;
         %tmp.6 = newc %tmp.9 ();
-        symbol [ BarChartSettingsMenuDelegate %tmp.13 43 61 89 ];
+        symbol [ BarChartSettingsMenuDelegate %tmp.13 52 16 44 ];
         %tmp.13 = getv ? :BarChartSettingsMenuDelegate;
         %tmp.10 = newc %tmp.13 ();
-        symbol [ WatchUi %tmp.14 43 93 100 ];
+        symbol [ WatchUi %tmp.14 53 12 19 ];
         %tmp.14 = getm $.Toybox.WatchUi;
-        symbol [ SLIDE_DOWN %tmp.15 43 101 111 ];
+        symbol [ SLIDE_DOWN %tmp.15 53 20 30 ];
         %tmp.15 = getv %tmp.14 :SLIDE_DOWN;
         invoke %tmp.4 %tmp.5(%tmp.6, %tmp.10, %tmp.15);
-[ "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 45 8 ]
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc" 56 8 ]
         %tmp.16 = true;
         ret %tmp.16;
-C__Users_Jack_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_39_41_46_4_stop:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SettingsMenuDelegates_SummarySettingsMenuDelegate_mc_47_30_57_4_stop:
     }
 }
-[ @file = "C:\Users\Jack\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 1; ]
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SettingsMenuDelegates\SummarySettingsMenuDelegate.mc"; @line = 1; ]
 <init> {
 }

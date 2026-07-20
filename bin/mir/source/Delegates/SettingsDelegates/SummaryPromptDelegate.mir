@@ -1,0 +1,304 @@
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [System,1,14,20]; ]
+import Toybox.System;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [WatchUi,2,14,21]; ]
+import Toybox.WatchUi;
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 4; @symbol_classdef = [SummaryPromptDelegate,4,6,27]; @symbol_extends<0> = [WatchUi,4,36,43]; @symbol_extends<1> = [BehaviorDelegate,4,44,60]; ]
+class SummaryPromptDelegate extends WatchUi.BehaviorDelegate {
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 4; ]
+    static
+    <init> {
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 6; @position = 16; @symbol_vardef = [_promptView,6,16,27]; ]
+    private
+    var _promptView;
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 8; @symbol_functiondef = [initialize,8,13,23]; @symbol_param<0> = [promptView,8,24,34]; ]
+    function initialize(promptView) as Void {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_8_36_11_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 9 8 ]
+        symbol [ BehaviorDelegate %tmp.2 9 8 24 ];
+        %tmp.2 = getv ? :BehaviorDelegate;
+        symbol [ initialize %tmp.3 9 25 35 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 10 8 ]
+        %tmp.4 = lgetv %promptView;
+        symbol [ promptView %tmp.4 10 22 32 ];
+        symbol [ _promptView ? 10 8 19 ];
+        putv self :_promptView %tmp.4;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_8_36_11_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 13; @symbol_functiondef = [onKey,13,13,18]; @symbol_param<0> = [keyEvent,13,19,27]; ]
+    function onKey(keyEvent) {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_13_29_29_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 14 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_13_29_29_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_13_29_29_4_stop" ]
+        %key.1 = local;
+        symbol [ key %key.1 14 12 15 ];
+        %tmp.1 = lgetv %keyEvent;
+        symbol [ keyEvent %tmp.1 14 18 26 ];
+        symbol [ getKey %tmp.2 14 27 33 ];
+        %tmp.2 = getv function %tmp.1 :getKey;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %key.1 %tmp.3;
+        symbol [ key %key.1 14 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 16 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_8_20_8_if_stmt:
+        %tmp.4 = lgetv %key.1;
+        symbol [ key %tmp.4 16 12 15 ];
+        symbol [ WatchUi %tmp.5 16 19 26 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ KEY_UP %tmp.6 16 27 33 ];
+        %tmp.6 = getv %tmp.5 :KEY_UP;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bf %tmp.7 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_8_20_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_8_20_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_35_20_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 17 12 ]
+        symbol [ _promptView %tmp.9 17 12 23 ];
+        %tmp.9 = getv ? :_promptView;
+        symbol [ setSelectedOption %tmp.10 17 24 41 ];
+        %tmp.10 = getv function %tmp.9 :setSelectedOption;
+        %tmp.11 = 0;
+        invoke %tmp.9 %tmp.10(%tmp.11);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 18 12 ]
+        symbol [ WatchUi %tmp.12 18 12 19 ];
+        %tmp.12 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.13 18 20 33 ];
+        %tmp.13 = getv function %tmp.12 :requestUpdate;
+        invoke %tmp.12 %tmp.13();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 19 12 ]
+        %tmp.14 = true;
+        ret %tmp.14;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_35_20_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_8_20_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_16_8_20_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 22 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_8_26_8_if_stmt:
+        %tmp.15 = lgetv %key.1;
+        symbol [ key %tmp.15 22 12 15 ];
+        symbol [ WatchUi %tmp.16 22 19 26 ];
+        %tmp.16 = getm $.Toybox.WatchUi;
+        symbol [ KEY_DOWN %tmp.17 22 27 35 ];
+        %tmp.17 = getv %tmp.16 :KEY_DOWN;
+        %tmp.18 = eq %tmp.15 %tmp.17;
+        bf %tmp.18 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_8_26_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_8_26_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_37_26_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 23 12 ]
+        symbol [ _promptView %tmp.20 23 12 23 ];
+        %tmp.20 = getv ? :_promptView;
+        symbol [ setSelectedOption %tmp.21 23 24 41 ];
+        %tmp.21 = getv function %tmp.20 :setSelectedOption;
+        %tmp.22 = 1;
+        invoke %tmp.20 %tmp.21(%tmp.22);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 24 12 ]
+        symbol [ WatchUi %tmp.23 24 12 19 ];
+        %tmp.23 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.24 24 20 33 ];
+        %tmp.24 = getv function %tmp.23 :requestUpdate;
+        invoke %tmp.23 %tmp.24();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 25 12 ]
+        %tmp.25 = true;
+        ret %tmp.25;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_37_26_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_8_26_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_22_8_26_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 28 8 ]
+        %tmp.26 = false;
+        ret %tmp.26;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_13_29_29_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 31; @symbol_functiondef = [onSwipe,31,13,20]; @symbol_param<0> = [event,31,21,26]; ]
+    function onSwipe(event) {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_31_28_47_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 32 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_31_28_47_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_31_28_47_4_stop" ]
+        %direction.1 = local;
+        symbol [ direction %direction.1 32 12 21 ];
+        %tmp.1 = lgetv %event;
+        symbol [ event %tmp.1 32 24 29 ];
+        symbol [ getDirection %tmp.2 32 30 42 ];
+        %tmp.2 = getv function %tmp.1 :getDirection;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %direction.1 %tmp.3;
+        symbol [ direction %direction.1 32 12 21 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 34 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_8_38_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_12_34_69_begin:
+        %tmp.4 = lgetv %direction.1;
+        symbol [ direction %tmp.4 34 12 21 ];
+        symbol [ WatchUi %tmp.5 34 25 32 ];
+        %tmp.5 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_RIGHT %tmp.6 34 33 44 ];
+        %tmp.6 = getv %tmp.5 :SWIPE_RIGHT;
+        %tmp.7 = eq %tmp.4 %tmp.6;
+        bt %tmp.7 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_8_38_8_if_true;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_48_34_69_false:
+        %tmp.8 = lgetv %direction.1;
+        symbol [ direction %tmp.8 34 48 57 ];
+        symbol [ WatchUi %tmp.9 34 61 68 ];
+        %tmp.9 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_DOWN %tmp.10 34 69 79 ];
+        %tmp.10 = getv %tmp.9 :SWIPE_DOWN;
+        %tmp.11 = eq %tmp.8 %tmp.10;
+        push %tmp.11;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_48_34_69_end:
+        %tmp.12 = phi [%tmp.7 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_12_34_69_begin] [%tmp.11 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_48_34_69_false] [%tmp.12 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_48_34_69_end];
+        bf %tmp.12 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_8_38_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_8_38_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_81_38_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 35 12 ]
+        symbol [ _promptView %tmp.14 35 12 23 ];
+        %tmp.14 = getv ? :_promptView;
+        symbol [ setSelectedOption %tmp.15 35 24 41 ];
+        %tmp.15 = getv function %tmp.14 :setSelectedOption;
+        %tmp.16 = 0;
+        invoke %tmp.14 %tmp.15(%tmp.16);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 36 12 ]
+        symbol [ WatchUi %tmp.17 36 12 19 ];
+        %tmp.17 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.18 36 20 33 ];
+        %tmp.18 = getv function %tmp.17 :requestUpdate;
+        invoke %tmp.17 %tmp.18();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 37 12 ]
+        %tmp.19 = true;
+        ret %tmp.19;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_81_38_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_8_38_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_34_8_38_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 40 8 ]
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_8_44_8_if_stmt:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_12_40_68_begin:
+        %tmp.20 = lgetv %direction.1;
+        symbol [ direction %tmp.20 40 12 21 ];
+        symbol [ WatchUi %tmp.21 40 25 32 ];
+        %tmp.21 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_LEFT %tmp.22 40 33 43 ];
+        %tmp.22 = getv %tmp.21 :SWIPE_LEFT;
+        %tmp.23 = eq %tmp.20 %tmp.22;
+        bt %tmp.23 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_8_44_8_if_true;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_47_40_68_false:
+        %tmp.24 = lgetv %direction.1;
+        symbol [ direction %tmp.24 40 47 56 ];
+        symbol [ WatchUi %tmp.25 40 60 67 ];
+        %tmp.25 = getm $.Toybox.WatchUi;
+        symbol [ SWIPE_UP %tmp.26 40 68 76 ];
+        %tmp.26 = getv %tmp.25 :SWIPE_UP;
+        %tmp.27 = eq %tmp.24 %tmp.26;
+        push %tmp.27;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_47_40_68_end:
+        %tmp.28 = phi [%tmp.23 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_12_40_68_begin] [%tmp.27 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_47_40_68_false] [%tmp.28 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_47_40_68_end];
+        bf %tmp.28 @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_8_44_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_8_44_8_if_true:
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_78_44_8_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 41 12 ]
+        symbol [ _promptView %tmp.30 41 12 23 ];
+        %tmp.30 = getv ? :_promptView;
+        symbol [ setSelectedOption %tmp.31 41 24 41 ];
+        %tmp.31 = getv function %tmp.30 :setSelectedOption;
+        %tmp.32 = 1;
+        invoke %tmp.30 %tmp.31(%tmp.32);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 42 12 ]
+        symbol [ WatchUi %tmp.33 42 12 19 ];
+        %tmp.33 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.34 42 20 33 ];
+        %tmp.34 = getv function %tmp.33 :requestUpdate;
+        invoke %tmp.33 %tmp.34();
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 43 12 ]
+        %tmp.35 = true;
+        ret %tmp.35;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_78_44_8_stop:
+        goto @C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_8_44_8_if_end;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_40_8_44_8_if_end:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 46 8 ]
+        %tmp.36 = false;
+        ret %tmp.36;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_31_28_47_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 49; @symbol_functiondef = [onSelect,49,13,21]; ]
+    function onSelect() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_49_24_58_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 50 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_49_24_58_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_49_24_58_4_stop" ]
+        %app.1 = local;
+        symbol [ app %app.1 50 12 15 ];
+        %tmp.1 = self;
+        symbol [ getApp %tmp.2 50 18 24 ];
+        %tmp.2 = getv function %tmp.1 :getApp;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %app.1 %tmp.3;
+        symbol [ app %app.1 50 12 15 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 51 8 ]
+        [ "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_49_24_58_4_start" "C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_49_24_58_4_stop" ]
+        %enabled.2 = local;
+        symbol [ enabled %enabled.2 51 12 19 ];
+        symbol [ _promptView %tmp.5 51 22 33 ];
+        %tmp.5 = getv ? :_promptView;
+        symbol [ getSelectedOption %tmp.6 51 34 51 ];
+        %tmp.6 = getv function %tmp.5 :getSelectedOption;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = 0;
+        %tmp.9 = eq %tmp.7 %tmp.8;
+        lputv %enabled.2 %tmp.9;
+        symbol [ enabled %enabled.2 51 12 19 ];
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 53 8 ]
+        %tmp.10 = lgetv %app.1;
+        symbol [ app %tmp.10 53 8 11 ];
+        symbol [ setSummaryEnabled %tmp.11 53 12 29 ];
+        %tmp.11 = getv function %tmp.10 :setSummaryEnabled;
+        %tmp.12 = lgetv %enabled.2;
+        symbol [ enabled %tmp.12 53 30 37 ];
+        invoke %tmp.10 %tmp.11(%tmp.12);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 54 8 ]
+        symbol [ System %tmp.13 54 8 14 ];
+        %tmp.13 = getm $.Toybox.System;
+        symbol [ println %tmp.14 54 15 22 ];
+        %tmp.14 = getv function %tmp.13 :println;
+        %tmp.15 = "[SUMMARY SETTINGS] Summary view preference saved: ";
+        %tmp.16 = lgetv %enabled.2;
+        symbol [ enabled %tmp.16 54 78 85 ];
+        symbol [ toString %tmp.17 54 86 94 ];
+        %tmp.17 = getv function %tmp.16 :toString;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        %tmp.19 = add %tmp.15 %tmp.18;
+        invoke %tmp.13 %tmp.14(%tmp.19);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 56 8 ]
+        symbol [ WatchUi %tmp.20 56 8 15 ];
+        %tmp.20 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.21 56 16 23 ];
+        %tmp.21 = getv function %tmp.20 :popView;
+        symbol [ WatchUi %tmp.22 56 24 31 ];
+        %tmp.22 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.23 56 32 42 ];
+        %tmp.23 = getv %tmp.22 :SLIDE_DOWN;
+        invoke %tmp.20 %tmp.21(%tmp.23);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 57 8 ]
+        %tmp.24 = true;
+        ret %tmp.24;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_49_24_58_4_stop:
+    }
+    [ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 60; @symbol_functiondef = [onBack,60,13,19]; ]
+    function onBack() {
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_60_22_63_4_start:
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 61 8 ]
+        symbol [ WatchUi %tmp.1 61 8 15 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 61 16 23 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        symbol [ WatchUi %tmp.3 61 24 31 ];
+        %tmp.3 = getm $.Toybox.WatchUi;
+        symbol [ SLIDE_DOWN %tmp.4 61 32 42 ];
+        %tmp.4 = getv %tmp.3 :SLIDE_DOWN;
+        invoke %tmp.1 %tmp.2(%tmp.4);
+[ "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc" 62 8 ]
+        %tmp.5 = true;
+        ret %tmp.5;
+C__Users_wmvsw_OneDrive_Documents_GitHub_garmin_smartwatch_source_Delegates_SettingsDelegates_SummaryPromptDelegate_mc_60_22_63_4_stop:
+    }
+}
+[ @file = "C:\Users\wmvsw\OneDrive\Documents\GitHub\garmin-smartwatch\source\Delegates\SettingsDelegates\SummaryPromptDelegate.mc"; @line = 1; ]
+<init> {
+}

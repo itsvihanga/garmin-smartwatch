@@ -52,31 +52,19 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 }
 
     // Handles the UP button (or swipe down)
-   function onPreviousPage() {
-    System.println("Up button pressed: Opening Reset Settings");
-
-    var resetView = new ResetSettingsView();
-
-    WatchUi.pushView(
-        resetView,
-        new ResetSettingsDelegate(resetView),
-        WatchUi.SLIDE_DOWN
-    );
-
-    return true;
-}
-
-    // Handles the UP button
+    // Consolidated behavior: navigate to Reset Settings by default when swiping down.
     function onPreviousPage() as Boolean {
+        System.println("Up button pressed: Opening Reset Settings");
 
-        System.println("Up button pressed");
+        var resetView = new ResetSettingsView();
 
-        WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+        WatchUi.pushView(
+            resetView,
+            new ResetSettingsDelegate(resetView),
             WatchUi.SLIDE_DOWN
         );
 
-        return true; 
+        return true;
     }
+    // Removed duplicate onPreviousPage: consolidated behavior handled above
 }
