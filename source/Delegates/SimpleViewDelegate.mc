@@ -220,15 +220,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            System.println("[UI] Finish or discard current session first");
            return true;
         }
-
-        // FULL RESET TO SIMPLE VIEW
-        WatchUi.switchToView(
-            new SimpleView(),
-            new SimpleViewDelegate(),
-            WatchUi.SLIDE_IMMEDIATE
-        );
-
-        return true;
+        return false; // Allow default back behavior (exit app)
     }
 }
 
