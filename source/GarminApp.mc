@@ -75,6 +75,7 @@ class GarminApp extends Application.AppBase {
     var _targetCadence = 160;
 
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
+    private var _secondsSinceLastAlert = 0;
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
      
@@ -97,7 +98,7 @@ class GarminApp extends Application.AppBase {
     private var _sessionDistance = null; // centimeters
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
-    private var _linkedTemperature = "--";
+    private var _linkedTemperature = "--";    
 
     function initialize() {
         AppBase.initialize();
@@ -151,6 +152,9 @@ class GarminApp extends Application.AppBase {
         
         activitySession.start();
         System.println("[INFO] Garmin activity session started");
+
+        System.println("[INFO] Haptic Feedback: HIGH");
+        triggerHapticFeedback();
 
         // Reset cadence monitoring data
         _finalCQ = null;
@@ -235,6 +239,10 @@ class GarminApp extends Application.AppBase {
             activitySession.stop();
             System.println("[INFO] Garmin activity session stopped");
         }
+
+        System.println("[INFO] Haptic Feedback: HIGH");
+        triggerHapticFeedback();
+
 
         if (_sessionState == PAUSED && _lastPauseTime != null) {
             _sessionPausedTime += System.getTimer() - _lastPauseTime;
@@ -444,26 +452,37 @@ class GarminApp extends Application.AppBase {
     }
 
    function updateCadenceBarAvg() as Void {
-    if (_sessionState != RECORDING) { 
-        return;
-    }
+        if (_sessionState != RECORDING) { 
+            return;
+        }
 
-    var info = Activity.getActivityInfo();
+        var info = Activity.getActivityInfo();
 
-    if (info == null) {
-        System.println("[DEBUG] Activity info is null");
-        return;
-    }
-
-   if (info.currentCadence == null) {
-    System.println("[DEBUG] currentCadence is null - using test cadence 100");
-    updateCadenceHistory(100.0);
-    return;
-}
+        if (info == null || info.currentCadence == null) {
+            System.println("[DEBUG] Activity info is null");
+            return;
+        }
 
     System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
 
+    var current = info.currentCadence.toNumber();
     updateCadenceHistory(info.currentCadence.toFloat());
+
+    if (getVibrationEnabled()) {
+        var minZone = getCalculatedMinCadence();
+        var maxZone = getCalculatedMaxCadence();
+
+        _secondsSinceLastAlert++;
+
+        if((current < minZone || current > maxZone) && _secondsSinceLastAlert >= 15){
+                
+            System.println("[ALERT] Cadence out of zone! Current: " + current);
+            
+            triggerHapticFeedback();
+            
+            _secondsSinceLastAlert = 0;
+        }
+    }
 }
 
     function updateCadenceHistory(newCadence as Float) as Void {
@@ -1101,9 +1120,43 @@ if (val != null) {
     function getChartBarCount() as Number {
         return _chartDuration;
     }
+
+    function triggerHapticFeedback() as Void {
+        var currentSetting = getHaptic();
+
+        var lowProfile = [new Attention.VibeProfile(25, 250)];
+        var medProfile = [new Attention.VibeProfile(50, 250)];
+        var highProfile = [new Attention.VibeProfile(100, 500)];
+
+        if (currentSetting.equals("low")) {
+            Attention.vibrate(lowProfile);
+        } else if (currentSetting.equals("med")) {
+            Attention.vibrate(medProfile);
+        } else if (currentSetting.equals("high")) {
+            Attention.vibrate(highProfile);
+        }
+    }
+
+    function setHaptic(value as String) as Void {
+    Application.Storage.setValue("haptic_preference", value);
+    }
+
+    function getHaptic() as String {
+        var savedValue = Application.Storage.getValue("haptic_preference");
+        
+        if (savedValue == null) {
+            return "low";
+        }
+        
+        return savedValue as String;
+    }
 }
 
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }
+
+
+
+
 

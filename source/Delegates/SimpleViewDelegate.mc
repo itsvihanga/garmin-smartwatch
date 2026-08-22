@@ -18,6 +18,10 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     private var _longPressTimer = null;
     private var _handledLongPress = false;
 
+    // Timer variables for BACK button
+    private var _backLongPressTimer = null;
+    private var _handledBackLongPress = false;
+
     function initialize() {
         BehaviorDelegate.initialize();
         _initTime = getTimeMs();
@@ -86,7 +90,29 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             return true;
         }
 
+        if (key == WatchUi.KEY_ESC){
+            _handledBackLongPress = false;
+
+            _backLongPressTimer = new Timer.Timer();
+            _backLongPressTimer.start(method(:triggerBackLongPress),3000,false);
+            return true;
+        }
+
         return false;
+    }
+
+    function triggerBackLongPress() as Void {
+        System.println("[DEBUG] Long press ESC detected (3s) -> New Menu");
+        _handledBackLongPress = true;
+        showCustomBackMenu();
+    }
+
+    function showCustomBackMenu() as Void {
+        var menu = new WatchUi.Menu2({ :title => "Secret Menu" });
+        menu.addItem(new WatchUi.MenuItem("Option 1", "Subtext", :custom_opt_1, null));
+        menu.addItem(new WatchUi.MenuItem("Option 2", null, :custom_opt_2, null));
+        
+        WatchUi.pushView(menu, new CustomBackMenuDelegate(self), WatchUi.SLIDE_UP);
     }
 
     // This function fires instantly while the button is still held down
@@ -133,6 +159,23 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         }
 
         //  HANDLE DOWN BUTTON
+        if (key == WatchUi.KEY_ESC) {
+            if (_backLongPressTimer != null) {
+                _backLongPressTimer.stop();
+                _backLongPressTimer = null;
+            }
+
+            // If the 3s long press already triggered, do nothing on release.
+            if (_handledBackLongPress) {
+                _handledBackLongPress = false; 
+                return true;
+            }
+
+            // If it was a short click, trigger standard back behavior
+            return onBack(); 
+        }
+
+
         if (key == WatchUi.KEY_DOWN) {
             _currentView = new AdvancedView();
             WatchUi.pushView(
@@ -352,6 +395,32 @@ class ConfirmationDelegate extends WatchUi.Menu2InputDelegate {
     function onBack() as Void {
         _parentDelegate.setMenuActive(false);
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+    }
+}
+
+class CustomBackMenuDelegate extends WatchUi.Menu2InputDelegate {
+    
+    private var _parentDelegate;
+
+    function initialize(parentDelegate) {
+        Menu2InputDelegate.initialize();
+        _parentDelegate = parentDelegate;
+    }
+
+    function onSelect(item as WatchUi.MenuItem) as Void {
+        var id = item.getId();
+        System.println("[DEBUG] Custom back menu item selected: " + id);
+
+        if (id == :custom_opt_1) {
+            // Add action code for Option 1 here
+        } else if (id == :custom_opt_2) {
+            // Add action code for Option 2 here
+        }
+    }
+
+    function onBack() as Void {
+        _parentDelegate.setMenuActive(false);
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
     }
 }
