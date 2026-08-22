@@ -4,6 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.ActivityRecording;
+import Toybox.Position;
 import Toybox.System;
 import Toybox.Application.Storage;
 
@@ -95,10 +96,16 @@ class GarminApp extends Application.AppBase {
 
     // Activity metrics captured when monitoring stops
     private var _sessionDuration = null; // milliseconds
-    private var _sessionDistance = null; // centimeters
+    private var _sessionDistance = null; // meters
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
-    private var _linkedTemperature = "--";    
+    private var _linkedTemperature = "--";
+
+    // GPS state for the current recording. Location events activate the device
+    // positioning system; ActivityRecording then includes the enabled data in FIT.
+    private var _gpsTrackingEnabled = false;
+    private var _gpsQuality = Position.QUALITY_NOT_AVAILABLE;
+    private var _lastPosition = null;
 
     function initialize() {
         AppBase.initialize();
@@ -119,6 +126,8 @@ class GarminApp extends Application.AppBase {
 
     function onStop(state as Dictionary?) as Void {
         System.println("[INFO] App stopping");
+
+        stopGpsTracking();
         
         // Stop any active session
         if (activitySession != null && activitySession.isRecording()) {
@@ -142,6 +151,10 @@ class GarminApp extends Application.AppBase {
         }
 
         System.println("[INFO] Starting activity session");
+
+        // Enable positioning before starting the FIT session so location records
+        // are available from the beginning of the activity.
+        startGpsTracking();
 
         // Create and start Garmin activity session KEEP THIS DEPRECATED NAMING!! It makes it so when the app API level is reduced it will work.
         activitySession = ActivityRecording.createSession({
@@ -251,6 +264,7 @@ class GarminApp extends Application.AppBase {
 
         // Capture activity metrics before stopping
         captureActivityMetrics();
+        stopGpsTracking();
 
         var cq = computeCadenceQualityScore();
 
@@ -400,6 +414,8 @@ class GarminApp extends Application.AppBase {
 
     function resetSession() as Void {
         System.println("[INFO] Resetting session");
+
+        stopGpsTracking();
         
         _sessionState = IDLE;
         _finalCQ = null;
@@ -428,6 +444,74 @@ class GarminApp extends Application.AppBase {
         }
     }
 
+    function startGpsTracking() as Void {
+        if (_gpsTrackingEnabled) {
+            return;
+        }
+
+        _gpsQuality = Position.QUALITY_NOT_AVAILABLE;
+        _lastPosition = null;
+
+        try {
+            Position.enableLocationEvents(
+                Position.LOCATION_CONTINUOUS,
+                method(:onPosition)
+            );
+            _gpsTrackingEnabled = true;
+            System.println("[GPS] Location tracking enabled; waiting for fix");
+        } catch (ex) {
+            _gpsTrackingEnabled = false;
+            System.println("[GPS] Unable to enable location tracking: " + ex.getErrorMessage());
+        }
+    }
+
+    function stopGpsTracking() as Void {
+        if (!_gpsTrackingEnabled) {
+            return;
+        }
+
+        try {
+            Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
+        } catch (ex) {
+            System.println("[GPS] Unable to disable location tracking: " + ex.getErrorMessage());
+        }
+
+        _gpsTrackingEnabled = false;
+        System.println("[GPS] Location tracking disabled");
+    }
+
+    function onPosition(info as Position.Info) as Void {
+        var previousQuality = _gpsQuality;
+        _gpsQuality = info.accuracy;
+
+        if (info.position != null) {
+            _lastPosition = info.position;
+        }
+
+        if (_gpsQuality != previousQuality) {
+            System.println("[GPS] Fix quality changed: " + getGpsStatus());
+        }
+    }
+
+    function hasGpsFix() as Boolean {
+        return _lastPosition != null &&
+               _gpsQuality >= Position.QUALITY_USABLE;
+    }
+
+    function getGpsStatus() as String {
+        if (_gpsQuality >= Position.QUALITY_GOOD) {
+            return "Good";
+        } else if (_gpsQuality >= Position.QUALITY_USABLE) {
+            return "Usable";
+        } else if (_gpsQuality >= Position.QUALITY_POOR) {
+            return "Poor";
+        } else if (_gpsQuality == Position.QUALITY_LAST_KNOWN) {
+            return "Last known";
+        }
+
+        return "Waiting";
+    }
+
     function captureActivityMetrics() as Void {
         var info = Activity.getActivityInfo();
         
@@ -439,7 +523,7 @@ class GarminApp extends Application.AppBase {
             
             if (info.elapsedDistance != null) {
                 _sessionDistance = info.elapsedDistance;
-                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 100000.0).format("%.2f") + " km");
+                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 1000.0).format("%.2f") + " km");
             }
             
             if (info.currentHeartRate != null) {
