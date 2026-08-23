@@ -1257,8 +1257,12 @@ if (val != null) {
     }
 
     var paceSecondsPerKm = totalSeconds / distanceKm;
-    var minutesPart = (paceSecondsPerKm / 60).toNumber();
-    var secondsPart = (paceSecondsPerKm % 60).toNumber();
+
+    // Monkey C modulo only accepts integer numeric values. Convert the complete
+    // pace first so a real activity's Float pace cannot crash the summary view.
+    var wholePaceSeconds = paceSecondsPerKm.toNumber();
+    var minutesPart = wholePaceSeconds / 60;
+    var secondsPart = wholePaceSeconds % 60;
 
     return minutesPart.format("%02d") + ":" + secondsPart.format("%02d") + "/km";
     }
