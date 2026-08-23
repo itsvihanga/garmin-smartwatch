@@ -83,7 +83,10 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_UP) {
             // 1. Reset the flag
             _handledLongPress = false;
-            
+
+            // A repeated physical key event must not leak the previous timer.
+            stopLongPressTimer();
+
             // 2. Start the stopwatch timer
             _longPressTimer = new Timer.Timer();
             _longPressTimer.start(method(:triggerLongPress), _longPressThreshold, false); 
@@ -93,6 +96,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_ESC){
             _handledBackLongPress = false;
 
+            stopBackLongPressTimer();
             _backLongPressTimer = new Timer.Timer();
             _backLongPressTimer.start(method(:triggerBackLongPress),3000,false);
             return true;
@@ -102,6 +106,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function triggerBackLongPress() as Void {
+        _backLongPressTimer = null;
         System.println("[DEBUG] Long press ESC detected (3s) -> New Menu");
         _handledBackLongPress = true;
         showCustomBackMenu();
@@ -117,6 +122,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     // This function fires instantly while the button is still held down
     function triggerLongPress() as Void {
+        _longPressTimer = null;
         System.println("[DEBUG] Long press UP detected (Live) -> Settings");
         _handledLongPress = true; // Tell onKeyReleased to ignore the upcoming release
         _lastUpReleaseTime = 0;   // Reset double click math
@@ -131,10 +137,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_UP) {
             
             // 1. Cancel the timer! If they let go before the threshold, stop it from firing.
-            if (_longPressTimer != null) {
-                _longPressTimer.stop();
-                _longPressTimer = null;
-            }
+            stopLongPressTimer();
 
             // 2. If the long press already triggered, do NOTHING on release.
             if (_handledLongPress) {
@@ -160,10 +163,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
         //  HANDLE DOWN BUTTON
         if (key == WatchUi.KEY_ESC) {
-            if (_backLongPressTimer != null) {
-                _backLongPressTimer.stop();
-                _backLongPressTimer = null;
-            }
+            stopBackLongPressTimer();
 
             // If the 3s long press already triggered, do nothing on release.
             if (_handledBackLongPress) {
@@ -204,6 +204,20 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             new WatchUi.BehaviorDelegate(), 
             WatchUi.SLIDE_UP 
         );
+    }
+
+    function stopLongPressTimer() as Void {
+        if (_longPressTimer != null) {
+            _longPressTimer.stop();
+            _longPressTimer = null;
+        }
+    }
+
+    function stopBackLongPressTimer() as Void {
+        if (_backLongPressTimer != null) {
+            _backLongPressTimer.stop();
+            _backLongPressTimer = null;
+        }
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
@@ -285,7 +299,11 @@ class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
         System.println("[DEBUG] Menu item selected: " + id);
 
         if (id == :pause_activity) {
-            app.pauseRecording();
+            if (!app.pauseRecording()) {
+                System.println("[UI] Activity could not be paused; keeping control menu open");
+                WatchUi.requestUpdate();
+                return;
+            }
             System.println("[UI] Activity paused");
             _parentDelegate.setMenuActive(false);
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
@@ -293,7 +311,11 @@ class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
             
         } else if (id == :resume_activity) {
             if (app.isPaused()) {
-                app.resumeRecording();
+                if (!app.resumeRecording()) {
+                    System.println("[UI] Activity could not be resumed; keeping control menu open");
+                    WatchUi.requestUpdate();
+                    return;
+                }
                 System.println("[UI] Activity resumed");
             }
             _parentDelegate.setMenuActive(false);
@@ -301,7 +323,11 @@ class ActivityControlMenuDelegate extends WatchUi.Menu2InputDelegate {
             WatchUi.requestUpdate();
             
         } else if (id == :stop_activity) {
-            app.stopRecording();
+            if (!app.stopRecording()) {
+                System.println("[UI] Activity could not be stopped; keeping control menu open");
+                WatchUi.requestUpdate();
+                return;
+            }
             System.println("[UI] Activity stopped");
             WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
             _parentDelegate.setMenuActive(false);
@@ -360,7 +386,11 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
                 );
             }
         } else if (id == :discard_session) {
-            app.discardSession();
+            if (!app.discardSession()) {
+                System.println("[UI] Activity could not be discarded; staying on Save/Discard screen");
+                WatchUi.requestUpdate();
+                return;
+            }
             System.println("[UI] Activity discarded");
             _parentDelegate.setMenuActive(false);
             

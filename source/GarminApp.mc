@@ -128,10 +128,29 @@ class GarminApp extends Application.AppBase {
         System.println("[INFO] App stopping");
 
         stopGpsTracking();
-        
-        // Stop any active session
-        if (activitySession != null && activitySession.isRecording()) {
-            activitySession.stop();
+
+        // Always complete the FIT session before the app exits. An unfinished
+        // session can leave the recording resource locked on a physical watch.
+        if (activitySession != null) {
+            try {
+                if (activitySession.isRecording() && !activitySession.stop()) {
+                    System.println("[ERROR] Garmin rejected the activity stop during shutdown");
+                }
+
+                if (activitySession.save()) {
+                    System.println("[INFO] Active activity saved during shutdown");
+                } else {
+                    System.println("[ERROR] Garmin rejected the shutdown save; discarding session");
+                    activitySession.discard();
+                }
+            } catch (ex) {
+                System.println("[ERROR] Activity shutdown cleanup failed: " + ex.getErrorMessage());
+                try {
+                    activitySession.discard();
+                } catch (discardEx) {
+                    System.println("[ERROR] Activity shutdown discard failed: " + discardEx.getErrorMessage());
+                }
+            }
             activitySession = null;
         }
         
@@ -144,10 +163,10 @@ class GarminApp extends Application.AppBase {
         saveSettings();
     }
 
-    function startRecording() as Void {
-        if (_sessionState == RECORDING) {
-            System.println("[INFO] Already recording");
-            return;
+    function startRecording() as Boolean {
+        if (_sessionState != IDLE || activitySession != null) {
+            System.println("[INFO] Cannot start - another session is active");
+            return false;
         }
 
         System.println("[INFO] Starting activity session");
@@ -157,13 +176,26 @@ class GarminApp extends Application.AppBase {
         startGpsTracking();
 
         // Create and start Garmin activity session KEEP THIS DEPRECATED NAMING!! It makes it so when the app API level is reduced it will work.
-        activitySession = ActivityRecording.createSession({
-            :name => "Running",
-            :sport => ActivityRecording.SPORT_RUNNING,
-            :subSport => ActivityRecording.SUB_SPORT_GENERIC
-        });
-        
-        activitySession.start();
+        try {
+            activitySession = ActivityRecording.createSession({
+                :name => "Running",
+                :sport => ActivityRecording.SPORT_RUNNING,
+                :subSport => ActivityRecording.SUB_SPORT_GENERIC
+            });
+
+            if (activitySession == null || !activitySession.start()) {
+                System.println("[ERROR] Garmin rejected the activity start");
+                cleanupFailedSession();
+                stopGpsTracking();
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity start failed: " + ex.getErrorMessage());
+            cleanupFailedSession();
+            stopGpsTracking();
+            return false;
+        }
+
         System.println("[INFO] Garmin activity session started");
 
         System.println("[INFO] Haptic Feedback: HIGH");
@@ -197,39 +229,53 @@ class GarminApp extends Application.AppBase {
 
         _sessionState = RECORDING;
         System.println("[INFO] Starting cadence monitoring");
+        return true;
     }
 
-    function pauseRecording() as Void {
+    function pauseRecording() as Boolean {
         if (_sessionState != RECORDING) {
             System.println("[INFO] Cannot pause - not recording");
-            return;
+            return false;
         }
 
         System.println("[INFO] Pausing activity session");
         
         // Pause Garmin activity session
-        if (activitySession != null && activitySession.isRecording()) {
-            activitySession.stop();
-            System.println("[INFO] Garmin activity session paused");
+        try {
+            if (activitySession == null || !activitySession.isRecording() || !activitySession.stop()) {
+                System.println("[ERROR] Garmin rejected the activity pause");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity pause failed: " + ex.getErrorMessage());
+            return false;
         }
+        System.println("[INFO] Garmin activity session paused");
         
         _lastPauseTime = System.getTimer();
         _sessionState = PAUSED;
+        return true;
     }
 
-    function resumeRecording() as Void {
+    function resumeRecording() as Boolean {
         if (_sessionState != PAUSED) {
             System.println("[INFO] Cannot resume - not paused");
-            return;
+            return false;
         }
 
         System.println("[INFO] Resuming activity session");
         
         // Resume Garmin activity session
-        if (activitySession != null && !activitySession.isRecording()) {
-            activitySession.start();
-            System.println("[INFO] Garmin activity session resumed");
+        try {
+            if (activitySession == null || activitySession.isRecording() || !activitySession.start()) {
+                System.println("[ERROR] Garmin rejected the activity resume");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity resume failed: " + ex.getErrorMessage());
+            return false;
         }
+        System.println("[INFO] Garmin activity session resumed");
         
         if (_lastPauseTime != null) {
             _sessionPausedTime += System.getTimer() - _lastPauseTime;
@@ -237,21 +283,33 @@ class GarminApp extends Application.AppBase {
         }
         
         _sessionState = RECORDING;
+        return true;
     }
 
-    function stopRecording() as Void {
+    function stopRecording() as Boolean {
         if (_sessionState == IDLE || _sessionState == STOPPED) {
             System.println("[INFO] No active session to stop");
-            return;
+            return false;
         }
 
         System.println("[INFO] Stopping activity session");
 
         // Stop Garmin activity session (but don't save or discard yet)
-        if (activitySession != null && activitySession.isRecording()) {
-            activitySession.stop();
-            System.println("[INFO] Garmin activity session stopped");
+        try {
+            if (activitySession == null) {
+                System.println("[ERROR] Cannot stop - activity session is missing");
+                return false;
+            }
+
+            if (activitySession.isRecording() && !activitySession.stop()) {
+                System.println("[ERROR] Garmin rejected the activity stop");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity stop failed: " + ex.getErrorMessage());
+            return false;
         }
+        System.println("[INFO] Garmin activity session stopped");
 
         System.println("[INFO] Haptic Feedback: HIGH");
         triggerHapticFeedback();
@@ -284,6 +342,7 @@ class GarminApp extends Application.AppBase {
         }
 
         _sessionState = STOPPED;
+        return true;
     }
 
     // function saveSession() as Void {
@@ -394,22 +453,52 @@ class GarminApp extends Application.AppBase {
 
 
 
-    function discardSession() as Void {
+    function discardSession() as Boolean {
         if (_sessionState != STOPPED) {
             System.println("[INFO] Cannot discard - session not stopped");
-            return;
+            return false;
         }
 
         System.println("[INFO] Discarding activity session");
         
         // Discard Garmin activity session
-        if (activitySession != null) {
-            activitySession.discard();
-            System.println("[INFO] Garmin activity session discarded");
-            activitySession = null;
+        if (activitySession == null) {
+            System.println("[ERROR] Cannot discard - activity session is missing");
+            return false;
         }
-        
+
+        try {
+            if (!activitySession.discard()) {
+                System.println("[ERROR] Garmin rejected the activity discard");
+                return false;
+            }
+        } catch (ex) {
+            System.println("[ERROR] Activity discard failed: " + ex.getErrorMessage());
+            return false;
+        }
+
+        System.println("[INFO] Garmin activity session discarded");
+        activitySession = null;
         resetSession();
+        return true;
+    }
+
+    // Best-effort cleanup used only after a recording session fails to start.
+    // Never let cleanup replace the original failure with another exception.
+    function cleanupFailedSession() as Void {
+        if (activitySession == null) {
+            return;
+        }
+
+        try {
+            if (activitySession.isRecording()) {
+                activitySession.stop();
+            }
+            activitySession.discard();
+        } catch (ex) {
+            System.println("[ERROR] Failed-session cleanup error: " + ex.getErrorMessage());
+        }
+        activitySession = null;
     }
 
     function resetSession() as Void {
@@ -1206,18 +1295,21 @@ if (val != null) {
     }
 
     function triggerHapticFeedback() as Void {
-        var currentSetting = getHaptic();
+        try {
+            var currentSetting = getHaptic();
+            var lowProfile = [new Attention.VibeProfile(25, 250)];
+            var medProfile = [new Attention.VibeProfile(50, 250)];
+            var highProfile = [new Attention.VibeProfile(100, 500)];
 
-        var lowProfile = [new Attention.VibeProfile(25, 250)];
-        var medProfile = [new Attention.VibeProfile(50, 250)];
-        var highProfile = [new Attention.VibeProfile(100, 500)];
-
-        if (currentSetting.equals("low")) {
-            Attention.vibrate(lowProfile);
-        } else if (currentSetting.equals("med")) {
-            Attention.vibrate(medProfile);
-        } else if (currentSetting.equals("high")) {
-            Attention.vibrate(highProfile);
+            if (currentSetting.equals("low")) {
+                Attention.vibrate(lowProfile);
+            } else if (currentSetting.equals("med")) {
+                Attention.vibrate(medProfile);
+            } else if (currentSetting.equals("high")) {
+                Attention.vibrate(highProfile);
+            }
+        } catch (ex) {
+            System.println("[ERROR] Haptic feedback failed: " + ex.getErrorMessage());
         }
     }
 
