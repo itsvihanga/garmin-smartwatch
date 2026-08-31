@@ -15,7 +15,7 @@ module ScreenNavigation {
     const SETTINGS_SUMMARY = :settings_summary;
     const SETTINGS_RESET = :settings_reset;
 
-    function showAdvanced(homePage, isNext as Boolean) as Void {
+    function showAdvanced(homePage as Symbol, isNext as Boolean) as Void {
         var view = new AdvancedView();
         var transition = isNext ? WatchUi.SLIDE_UP : WatchUi.SLIDE_DOWN;
 
@@ -27,7 +27,7 @@ module ScreenNavigation {
         );
     }
 
-    function showHome(homePage, isNext as Boolean) as Void {
+    function showHome(homePage as Symbol, isNext as Boolean) as Void {
         var transition = isNext ? WatchUi.SLIDE_UP : WatchUi.SLIDE_DOWN;
         var homeLabel = getHomeLabel(homePage);
 
@@ -49,15 +49,15 @@ module ScreenNavigation {
         );
     }
 
-    function showNextSettingsPage(currentPage) as Void {
+    function showNextSettingsPage(currentPage as Symbol) as Void {
         showSettingsPage(currentPage, getNextSettingsPage(currentPage), true);
     }
 
-    function showPreviousSettingsPage(currentPage) as Void {
+    function showPreviousSettingsPage(currentPage as Symbol) as Void {
         showSettingsPage(currentPage, getPreviousSettingsPage(currentPage), false);
     }
 
-    private function getNextSettingsPage(currentPage) {
+    function getNextSettingsPage(currentPage as Symbol) as Symbol {
         if (currentPage == SETTINGS_ROOT) { return SETTINGS_CADENCE; }
         if (currentPage == SETTINGS_CADENCE) { return SETTINGS_BAR_CHART; }
         if (currentPage == SETTINGS_BAR_CHART) { return SETTINGS_SUMMARY; }
@@ -65,7 +65,7 @@ module ScreenNavigation {
         return SETTINGS_ROOT;
     }
 
-    private function getPreviousSettingsPage(currentPage) {
+    function getPreviousSettingsPage(currentPage as Symbol) as Symbol {
         if (currentPage == SETTINGS_ROOT) { return SETTINGS_RESET; }
         if (currentPage == SETTINGS_CADENCE) { return SETTINGS_ROOT; }
         if (currentPage == SETTINGS_BAR_CHART) { return SETTINGS_CADENCE; }
@@ -73,7 +73,7 @@ module ScreenNavigation {
         return SETTINGS_SUMMARY;
     }
 
-    private function showSettingsPage(currentPage, targetPage, isNext as Boolean) as Void {
+    function showSettingsPage(currentPage as Symbol, targetPage as Symbol, isNext as Boolean) as Void {
         var transition = isNext ? WatchUi.SLIDE_UP : WatchUi.SLIDE_DOWN;
 
         logNavigation(
@@ -116,11 +116,11 @@ module ScreenNavigation {
         }
     }
 
-    private function getHomeLabel(homePage) as String {
+    function getHomeLabel(homePage as Symbol) as String {
         return homePage == HOME_TIME ? "time" : "simple";
     }
 
-    private function getSettingsLabel(page) as String {
+    function getSettingsLabel(page as Symbol) as String {
         if (page == SETTINGS_ROOT) { return "settings"; }
         if (page == SETTINGS_CADENCE) { return "cadence"; }
         if (page == SETTINGS_BAR_CHART) { return "bar_chart"; }
@@ -128,7 +128,7 @@ module ScreenNavigation {
         return "reset";
     }
 
-    private function logNavigation(isNext as Boolean, fromPage as String, toPage as String) as Void {
+    function logNavigation(isNext as Boolean, fromPage as String, toPage as String) as Void {
         var direction = isNext ? "DOWN" : "UP";
         System.println(
             "[NAV] direction=" + direction +

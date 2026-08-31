@@ -212,7 +212,7 @@ class GarminApp extends Application.AppBase {
         System.println("[TIMER] STOP ALL reason=" + reason + " active=0");
     }
 
-    private function handleRefreshTick() as Void {
+    function handleRefreshTick() as Void {
         if (_refreshTimer == null || _refreshCallback == null || _refreshOwner == null) {
             return;
         }
@@ -223,7 +223,7 @@ class GarminApp extends Application.AppBase {
         _refreshCallback.invoke();
     }
 
-    private function handleOneShotTimer() as Void {
+    function handleOneShotTimer() as Void {
         var ownerLabel = _refreshOwnerLabel;
         var callback = _refreshCallback;
 
