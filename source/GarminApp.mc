@@ -4,6 +4,7 @@ import Toybox.WatchUi;
 import Toybox.Timer;
 import Toybox.Activity;
 import Toybox.ActivityRecording;
+import Toybox.Sensor;
 import Toybox.System;
 import Toybox.Application.Storage;
 
@@ -100,9 +101,11 @@ class GarminApp extends Application.AppBase {
 
     // Activity metrics captured when monitoring stops
     private var _sessionDuration = null; // milliseconds
-    private var _sessionDistance = null; // centimeters
+    private var _sessionDistance = null; // meters
+    private var _sessionAverageCadence = null; // spm
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
+    private var _sessionTemperature = null; // Celsius
 
     function initialize() {
         AppBase.initialize();
@@ -268,6 +271,12 @@ class GarminApp extends Application.AppBase {
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
+        _sessionDuration = null;
+        _sessionDistance = null;
+        _sessionAverageCadence = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
+        _sessionTemperature = null;
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -328,6 +337,9 @@ class GarminApp extends Application.AppBase {
 
         System.println("[INFO] Stopping activity session");
 
+        // Capture values while Garmin still exposes the current activity.
+        captureActivityMetrics();
+
         // Stop Garmin activity session (but don't save or discard yet)
         if (activitySession != null && activitySession.isRecording()) {
             activitySession.stop();
@@ -338,9 +350,6 @@ class GarminApp extends Application.AppBase {
             _sessionPausedTime += System.getTimer() - _lastPauseTime;
             _lastPauseTime = null;
         }
-
-        // Capture activity metrics before stopping
-        captureActivityMetrics();
 
         var cq = computeCadenceQualityScore();
 
@@ -388,35 +397,45 @@ class GarminApp extends Application.AppBase {
         System.println("[RESET] All settings reset complete");
     }
 
-        function saveSession() as Void {
+        function saveSession() as Boolean {
 
             if (_sessionState != STOPPED) {
                 System.println("[INFO] Cannot save - session not stopped");
-                return;
+                return false;
             }
 
             System.println("[INFO] Saving activity session");
-            
-            if (activitySession != null) {
-                activitySession.save();
-                activitySession = null;
+
+            if (activitySession == null) {
+                System.println("[ERROR] Cannot save - activity session is missing");
+                return false;
             }
 
-            // // STORE DATA
-            // if (_sessionStartTime != null) {
-            //     _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
-            // }
-            if (_sessionDuration == null) {
-            System.println("[WARN] No duration captured");
+            var saved = false;
+            try {
+                saved = activitySession.save();
+            } catch (ex) {
+                System.println("[ERROR] Activity save exception: " + ex.getErrorMessage());
+                return false;
             }
 
-            System.println("[SAVE] Duration stored: " + _sessionDuration);
-            System.println("[SAVE] Distance stored: " + _sessionDistance);
+            if (!saved) {
+                System.println("[ERROR] Garmin rejected the activity save");
+                return false;
+            }
 
-           
-           // resetSession();
+            activitySession = null;
 
-            System.println("[INFO] Ready for summary view");
+            System.println(
+                "[SUMMARY] ready duration=" + SummaryFormatter.formatDuration(_sessionDuration) +
+                " distance=" + SummaryFormatter.formatDistance(_sessionDistance) +
+                " cadence=" + SummaryFormatter.formatCadence(_sessionAverageCadence) +
+                " heart_rate=" + SummaryFormatter.formatHeartRate(_avgHeartRate) +
+                " pace=" + SummaryFormatter.formatAveragePace(_sessionDuration, _sessionDistance) +
+                " quality=" + SummaryFormatter.formatCadenceQuality(_finalCQ) +
+                " temperature=" + SummaryFormatter.formatTemperature(_sessionTemperature)
+            );
+            return true;
         }
 
 
@@ -457,6 +476,10 @@ class GarminApp extends Application.AppBase {
         _lastPauseTime = null;
         _sessionDuration = null;
         _sessionDistance = null;
+        _sessionAverageCadence = null;
+        _avgHeartRate = null;
+        _peakHeartRate = null;
+        _sessionTemperature = null;
         
         for (var i = 0; i < MAX_BARS; i++) {
             _cadenceHistory[i] = null;
@@ -472,21 +495,41 @@ class GarminApp extends Application.AppBase {
         if (info != null) {
             if (info.timerTime != null) {
                 _sessionDuration = info.timerTime;
-                System.println("[ACTIVITY] Duration: " + (_sessionDuration / 1000).toString() + " seconds");
+                System.println("[ACTIVITY] Duration: " + SummaryFormatter.formatDuration(_sessionDuration));
             }
             
             if (info.elapsedDistance != null) {
                 _sessionDistance = info.elapsedDistance;
-                System.println("[ACTIVITY] Distance: " + (_sessionDistance / 100000.0).format("%.2f") + " km");
+                System.println("[ACTIVITY] Distance: " + SummaryFormatter.formatDistance(_sessionDistance));
             }
-            
-            if (info.currentHeartRate != null) {
-                // For now, use current heart rate as average (could be enhanced with history tracking)
-                _avgHeartRate = info.currentHeartRate;
-                _peakHeartRate = info.currentHeartRate;
-                System.println("[ACTIVITY] Heart Rate: " + _avgHeartRate.toString() + " bpm");
+
+            if (info.averageCadence != null) {
+                _sessionAverageCadence = info.averageCadence;
+            }
+
+            if (info.averageHeartRate != null) {
+                _avgHeartRate = info.averageHeartRate;
+            }
+
+            if (info.maxHeartRate != null) {
+                _peakHeartRate = info.maxHeartRate;
             }
         }
+
+        // Temperature is sensor data rather than Activity.Info data. It is
+        // optional on every device, so retain null when no reading is available.
+        var sensorInfo = Sensor.getInfo();
+        if (sensorInfo != null && sensorInfo.temperature != null) {
+            _sessionTemperature = sensorInfo.temperature;
+        }
+
+        System.println(
+            "[SUMMARY] captured duration=" + SummaryFormatter.formatDuration(_sessionDuration) +
+            " distance=" + SummaryFormatter.formatDistance(_sessionDistance) +
+            " cadence=" + SummaryFormatter.formatCadence(_sessionAverageCadence) +
+            " heart_rate=" + SummaryFormatter.formatHeartRate(_avgHeartRate) +
+            " temperature=" + SummaryFormatter.formatTemperature(_sessionTemperature)
+        );
     }
 
    function updateCadenceBarAvg() as Void {
@@ -987,27 +1030,8 @@ if (val != null) {
     // Summary Statistics Methods
     // -----------------------
 
-    function getAverageCadence() as Float {
-        if (_cadenceCount == 0) {
-            return 0.0;
-        }
-
-        var total = 0.0;
-        var validSamples = 0;
-
-        for (var i = 0; i < MAX_BARS; i++) {
-            var c = _cadenceHistory[i];
-            if (c != null) {
-                total += c;
-                validSamples++;
-            }
-        }
-
-        if (validSamples == 0) {
-            return 0.0;
-        }
-
-        return total / validSamples;
+    function getAverageCadence() {
+        return _sessionAverageCadence;
     }
 
     function getTimeInZonePercentage() as Number {
@@ -1045,12 +1069,17 @@ if (val != null) {
     }
 
     function hasValidSummaryData() as Boolean {
-        return Activity.getActivityInfo() != null;
+        return _sessionDuration != null ||
+               _sessionDistance != null ||
+               _sessionAverageCadence != null ||
+               _avgHeartRate != null ||
+               _finalCQ != null ||
+               _sessionTemperature != null;
     }
 
    function getfinalQC() as String {
     if (_finalCQ == null) {
-        return "N/A";
+        return SummaryFormatter.MISSING_VALUE;
     } else {
         return _finalCQ.format("%d") + "%";
     }
@@ -1072,6 +1101,10 @@ if (val != null) {
 
     function getPeakHeartRate() {
         return _peakHeartRate;
+    }
+
+    function getSessionTemperature() {
+        return _sessionTemperature;
     }
 
     function getChartBarCount() as Number {
