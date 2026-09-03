@@ -112,6 +112,11 @@ class ScreenNavigationTests(unittest.TestCase):
         self.assertIn("WatchUi.switchToView", source)
         self.assertNotIn("WatchUi.pushView", source)
 
+    def test_navigation_module_uses_valid_function_declarations(self):
+        source = self.source("source/Navigation/ScreenNavigation.mc")
+
+        self.assertNotIn("private function", source)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

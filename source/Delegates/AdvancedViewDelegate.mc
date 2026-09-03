@@ -3,9 +3,9 @@ import Toybox.WatchUi;
 
 class AdvancedViewDelegate extends WatchUi.BehaviorDelegate { 
 
-    private var _homePage;
+    private var _homePage as Symbol;
 
-    function initialize(view as AdvancedView, homePage) {
+    function initialize(view as AdvancedView, homePage as Symbol) {
         BehaviorDelegate.initialize();
         _homePage = homePage;
     }
