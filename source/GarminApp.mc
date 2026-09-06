@@ -979,7 +979,6 @@ if (val != null) {
         
     //     return totalTime / 1000;
     // }
-}
 
     function getInitialView() as [Views] or [Views, InputDelegates] {
         return [ new SimpleView(), new SimpleViewDelegate() ];
