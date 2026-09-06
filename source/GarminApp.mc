@@ -6,6 +6,7 @@ import Toybox.Activity;
 import Toybox.ActivityRecording;
 import Toybox.System;
 import Toybox.Application.Storage;
+import Toybox.Attention;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 280;
@@ -93,7 +94,15 @@ class GarminApp extends Application.AppBase {
     private var _finalCQConfidence = null;
     private var _finalCQTrend = null;
     private var _cqHistory as Array<Number> = [];
-    
+
+    // Cadence zone alerting, centralized here (rather than per-view) so it keeps
+    // running on every refresh tick no matter which screen is currently visible.
+    const CADENCE_ALERT_DURATION = 180000; // 3 minutes
+    const CADENCE_ALERT_INTERVAL = 30000; // 30 seconds
+    private var _cadenceZoneState = 0; // -1 below zone, 0 in zone, 1 above zone
+    private var _cadenceAlertStartTime = null;
+    private var _cadenceLastAlertTime = 0;
+
     //private var _sessionStartTime = null;
     private var _sessionPausedTime = 0;
     private var _lastPauseTime = null;
@@ -217,6 +226,7 @@ class GarminApp extends Application.AppBase {
         _refreshTickCount++;
         System.println("[TIMER] TICK owner=" + _refreshOwnerLabel + " count=" + _refreshTickCount.toString() + " active=1");
         pollCadence();
+        checkCadenceAlerts();
         _refreshCallback.invoke();
     }
 
@@ -485,6 +495,86 @@ class GarminApp extends Application.AppBase {
                 _peakHeartRate = info.currentHeartRate;
                 System.println("[ACTIVITY] Heart Rate: " + _avgHeartRate.toString() + " bpm");
             }
+        }
+    }
+
+    // Runs on every refresh tick regardless of which view is visible - previously
+    // this lived in each view's own refreshScreen() and stopped the instant that
+    // view was hidden, silently dropping the "even when hidden" behavior a comment
+    // here used to promise but never delivered.
+    function checkCadenceAlerts() as Void {
+        var info = Activity.getActivityInfo();
+
+        if (info == null || info.currentCadence == null) {
+            // No reliable reading - hold the current zone/alert state rather
+            // than guessing, same reasoning as the cadence sampling above.
+            return;
+        }
+
+        var minZone = getCalculatedMinCadence();
+        var maxZone = getCalculatedMaxCadence();
+        var c = info.currentCadence;
+
+        var newZoneState = 0;
+        if (c < minZone) { newZoneState = -1; }
+        else if (c > maxZone) { newZoneState = 1; }
+
+        if (newZoneState != _cadenceZoneState) {
+            if (newZoneState != 0) {
+                _cadenceAlertStartTime = System.getTimer();
+                _cadenceLastAlertTime = System.getTimer();
+            } else {
+                _cadenceAlertStartTime = null;
+            }
+            _cadenceZoneState = newZoneState;
+        }
+
+        fireCadenceAlertIfDue();
+    }
+
+    function fireCadenceAlertIfDue() as Void {
+        if (_cadenceAlertStartTime == null) { return; }
+
+        var currentTime = System.getTimer();
+        if (currentTime - _cadenceAlertStartTime >= CADENCE_ALERT_DURATION) {
+            _cadenceAlertStartTime = null;
+            return;
+        }
+
+        if (currentTime - _cadenceLastAlertTime < CADENCE_ALERT_INTERVAL) {
+            return;
+        }
+        _cadenceLastAlertTime = currentTime;
+
+        var msg = (_cadenceZoneState == -1) ? "Increase Cadence" : "Decrease Cadence";
+
+        WatchUi.pushView(
+            new CadenceAlertView(msg, _vibrationEnabled, "GarminApp"),
+            new CadenceAlertDelegate(),
+            WatchUi.SLIDE_IMMEDIATE
+        );
+
+        if (_vibrationEnabled) {
+            triggerCadenceVibration(_cadenceZoneState == 1);
+        }
+    }
+
+    // doublePulse distinguishes "decrease" (above zone) from "increase" (below
+    // zone) alerts. Both pulses are issued in one Attention.vibrate() call
+    // instead of a timer-deferred second call, since the shared refresh timer
+    // has exactly one slot and a one-shot timer here would steal it from
+    // whichever view currently owns the periodic tick with no way to hand it back.
+    function triggerCadenceVibration(doublePulse as Boolean) as Void {
+        if (!(Attention has :vibrate)) { return; }
+
+        if (doublePulse) {
+            Attention.vibrate([
+                new Attention.VibeProfile(50, 200),
+                new Attention.VibeProfile(0, 240),
+                new Attention.VibeProfile(50, 200)
+            ]);
+        } else {
+            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
         }
     }
 
