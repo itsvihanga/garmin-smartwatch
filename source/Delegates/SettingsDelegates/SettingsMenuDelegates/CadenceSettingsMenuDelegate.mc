@@ -40,11 +40,11 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() {
-    System.println("Down button pressed: Opening Bar Chart Settings");
+    System.println("Down button pressed: Opening Profile Settings");
 
     WatchUi.pushView(
-        new BarChartSettingsMenuView(),
-        new BarChartSettingsMenuDelegate(),
+        new ProfileSettingsMenuView(),
+        new ProfileSettingsMenuDelegate(),
         WatchUi.SLIDE_UP
     );
 
