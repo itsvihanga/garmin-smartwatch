@@ -24,7 +24,12 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     function onSelect() {
         System.println("Select/Tap pressed: toggle summary on/off");
 
-        // Future summary ON/OFF logic can go here.
+        var promptView = new SummaryPromptView();
+        WatchUi.pushView(
+            promptView,
+            new SummaryPromptDelegate(promptView),
+            WatchUi.SLIDE_UP
+        );
         return true;
     }
 

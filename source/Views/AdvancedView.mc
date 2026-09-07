@@ -47,7 +47,6 @@ class AdvancedView extends WatchUi.View {
 
 // THIS IS THE MAIN LOGIC LOOP (Runs every 1 second)
     function refreshScreen() as Void {
-        var info = Activity.getActivityInfo();
         var app = Application.getApp();
 
         // Pause freeze: stop all runtime calculations while not recording.
@@ -58,15 +57,13 @@ class AdvancedView extends WatchUi.View {
             return;
         }
 
-        // 1. Update Chart Data
-        if (info != null && info.currentCadence != null) {
-            app.updateCadenceHistory(info.currentCadence.toFloat());
-        }
+        // Cadence history is sampled by GarminApp's global timer. Sampling here
+        // as well would double-count every second spent on AdvancedView.
 
-        // 2. RUN ALERT LOGIC HERE (So it works even when view is hidden)
+        // RUN ALERT LOGIC HERE
         checkCadenceZone();
 
-        // 3. Request UI Redraw
+        // Request UI Redraw
         WatchUi.requestUpdate();
     }
 

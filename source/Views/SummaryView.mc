@@ -76,8 +76,11 @@ function onUpdate(dc as Dc) as Void {
     var km = distance / 1000.0;
 
         drawRow(dc, width, startY, timeStr, :time, "TIME");
-        drawRow(dc, width, startY + gap, km.format("%.2f km"), :distance, "DISTANCE");
-        drawRow(dc, width, startY + gap * 2, app.getAverageCadence().format("%.0f spm"), :cadence, "CADENCE");
+        // Number.format() only accepts the numeric conversion pattern. Keeping
+        // units inside that pattern raises "Invalid Value" when this view is
+        // first drawn after a save.
+        drawRow(dc, width, startY + gap, km.format("%.2f") + " km", :distance, "DISTANCE");
+        drawRow(dc, width, startY + gap * 2, app.getAverageCadence().format("%.0f") + " spm", :cadence, "CADENCE");
         drawRow(dc, width, startY + gap * 3, hr + " bpm", :quality, "HEART RATE");
         drawRow(dc, width, startY + gap * 4, "--", :distance, "STEPS");
         drawRow(dc, width, startY + gap * 5, pace, :pace, "AVG PACE");
