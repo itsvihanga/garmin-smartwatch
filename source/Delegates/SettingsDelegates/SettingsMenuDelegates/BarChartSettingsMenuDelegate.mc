@@ -29,11 +29,13 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
         System.println("Down button pressed: Opening Reset Settings");
+
+        var resetView = new ResetSettingsView();
         
         // Push the reset settings view
         WatchUi.pushView(
-            new ResetSettingsView(),
-            new ResetSettingsDelegate(),
+            resetView,
+            new ResetSettingsDelegate(resetView),
             WatchUi.SLIDE_UP
         );
         

@@ -5,8 +5,9 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
 
     private var _view;
 
-    function initialize() {
+    function initialize(view) {
         BehaviorDelegate.initialize();
+        _view = view;
     }
 
     function onSelect() {
@@ -54,28 +55,41 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function handleUp() {
-        System.println("Up button pressed: Opening Bar Chart Settings");
+        if (_view.isConfirmScreen()) {
+            _view.moveSelectionUp();
+            return;
+        }
 
-        WatchUi.pushView(
-            new BarChartSettingsMenuView(),
-            new BarChartSettingsMenuDelegate(),
-            WatchUi.SLIDE_DOWN
-        );
+        if (_view.isOpenScreen()) {
+            System.println("Up button pressed: Opening Bar Chart Settings");
+
+            WatchUi.pushView(
+                new BarChartSettingsMenuView(),
+                new BarChartSettingsMenuDelegate(),
+                WatchUi.SLIDE_DOWN
+            );
+        }
 
         return;
     }
 
     function handleDown() {
+        if (_view.isConfirmScreen()) {
+            _view.moveSelectionDown();
+            return;
+        }
+
         // First Reset screen: DOWN goes to Cadence Settings
+        if (_view.isOpenScreen()) {
+            System.println("Down button pressed: Opening Cadence Settings");
 
-        System.println("Down button pressed: Opening Cadence Settings");
-
-        WatchUi.pushView(
-            new CadenceSettingsMenuView(),
-            new CadenceSettingsMenuDelegate(),
-            WatchUi.SLIDE_UP
-        );
-        return;
+            WatchUi.pushView(
+                new CadenceSettingsMenuView(),
+                new CadenceSettingsMenuDelegate(),
+                WatchUi.SLIDE_UP
+            );
+            return;
+        }
     }
 
     function onBack() {
