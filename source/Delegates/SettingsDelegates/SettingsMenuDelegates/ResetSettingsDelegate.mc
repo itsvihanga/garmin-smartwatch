@@ -54,30 +54,21 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function handleUp() {
-        // Confirmation screen: UP selects YES
-        if (_view.isConfirmScreen()) {
-            _view.moveSelectionUp();
-            return;
-        }
+        System.println("Up button pressed: Opening Bar Chart Settings");
 
-        // First Reset screen: UP goes back to Summary Settings
-        if (_view.isOpenScreen()) {
-            System.println("UP pressed from Reset: Summary Settings");
+        WatchUi.pushView(
+            new BarChartSettingsMenuView(),
+            new BarChartSettingsMenuDelegate(),
+            WatchUi.SLIDE_DOWN
+        );
 
-            WatchUi.pushView(
-                new CadenceSettingsMenuView(),
-                new CadenceSettingsMenuDelegate(),
-                WatchUi.SLIDE_DOWN
-            );
-
-            return;
-        }
+        return;
     }
 
     function handleDown() {
         // First Reset screen: DOWN goes to Cadence Settings
 
-        System.println("DOWN pressed from Reset: Cadence Settings");
+        System.println("Down button pressed: Opening Cadence Settings");
 
         WatchUi.pushView(
             new CadenceSettingsMenuView(),

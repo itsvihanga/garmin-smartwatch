@@ -30,8 +30,8 @@ class CadenceSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Select pressed: Opening CadenceTargetView");
 
         WatchUi.pushView(
-            new CadenceTargetView(),
-            new CadenceTargetDelegate(),
+            new SettingsView(),
+            new SettingsMenuDelegate(),
             WatchUi.SLIDE_UP
         );
 

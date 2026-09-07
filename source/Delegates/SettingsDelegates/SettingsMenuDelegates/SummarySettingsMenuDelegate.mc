@@ -30,9 +30,7 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed");
-        
-        // Push the cadence settings view
+        System.println("Down button pressed: Opening Bar Chart Settings");
         
         WatchUi.switchToView(
             new BarChartSettingsMenuView(),
@@ -42,13 +40,13 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         return true; 
     }
 
-    // UP button: Summary Settings -> Bar Chart Settings
+    // Handles the UP button (or swipe down)
     function onPreviousPage() {
-        System.println("Up button pressed: Back to Bar Chart Settings");
+        System.println("Up button pressed: Opening Profile Settings");
 
         WatchUi.pushView(
-            new BarChartSettingsMenuView(),
-            new BarChartSettingsMenuDelegate(),
+            new ProfileSettingsMenuView(),
+            new ProfileSettingsMenuDelegate(),
             WatchUi.SLIDE_DOWN
         );
 
