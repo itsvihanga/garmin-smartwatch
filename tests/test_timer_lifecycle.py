@@ -84,6 +84,14 @@ class TimerLifecycleTests(unittest.TestCase):
 
         self.assertEqual(["source/GarminApp.mc"], allocations)
 
+    def test_timer_callbacks_are_visible_to_indirect_lookup(self):
+        app = self.source("source/GarminApp.mc")
+
+        self.assertIn("method(:handleRefreshTick)", app)
+        self.assertIn("method(:handleOneShotTimer)", app)
+        self.assertNotIn("private function handleRefreshTick", app)
+        self.assertNotIn("private function handleOneShotTimer", app)
+
     def test_repeated_navigation_never_exceeds_one_active_timer(self):
         timer = TimerModel()
 
