@@ -3,7 +3,6 @@ import Toybox.WatchUi;
 import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.System;
-import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
@@ -14,17 +13,6 @@ class SimpleView extends WatchUi.View {
     private var _distanceDisplay;
     private var _timeDisplay;
     private var _paceDisplay;
-    
-    // Logic state updated by the app's single shared refresh timer.
-    private var _lastZoneState = 0; 
-    private var _alertStartTime = null;
-    private var _alertDuration = 180000; // 3 minutes
-    private var _alertInterval = 30000; // 30 seconds
-    private var _lastAlertTime = 0;
-    private var _cadenceDataStale = true;
-
-    private var _pendingSecondVibe = false;
-    private var _secondVibeTime = 0;
 
     function initialize() {
         WatchUi.View.initialize();
@@ -57,88 +45,20 @@ class SimpleView extends WatchUi.View {
 
     // --- Logic Loop (The "Heartbeat") ---
     function refreshScreen() as Void {
-        var info = Activity.getActivityInfo();
-        
-        // 1. Update internal state (Zone checking)
-        updateCadenceLogic(info);
-        
-        // 2. Check for recurring alerts
-        checkAndTriggerAlerts();
-        
-        // 3. Request UI draw
+        // Cadence sampling and zone alerts are handled centrally by
+        // GarminApp.handleRefreshTick(), so they keep running even when this
+        // view isn't the one currently visible.
         WatchUi.requestUpdate();
     }
 
     // --- Drawing Loop (The "Face") ---
     function onUpdate(dc as Dc) as Void {
         updateDisplayStrings();
-        checkPendingVibration();
-        
-        View.onUpdate(dc); 
+
+        View.onUpdate(dc);
         drawDividers(dc);
 
         drawRecordingIndicator(dc);
-    }
-
-    function updateCadenceLogic(info) as Void {
-        if (!Application.getApp().hasCurrentCadence(info)) {
-            // No reliable cadence reading this tick - leave the current
-            // zone/alert state alone instead of guessing "in zone", and
-            // pause active alerts below until we know it's still valid.
-            _cadenceDataStale = true;
-            return;
-        }
-        _cadenceDataStale = false;
-
-        var minZone = Application.getApp().getCalculatedMinCadence();
-        var maxZone = Application.getApp().getCalculatedMaxCadence();
-
-        var c = info.currentCadence;
-        var newZoneState = 0;
-        if (c < minZone) { newZoneState = -1; }
-        else if (c > maxZone) { newZoneState = 1; }
-
-        if (newZoneState != _lastZoneState) {
-            if (newZoneState != 0) {
-                _alertStartTime = System.getTimer();
-                _lastAlertTime = System.getTimer();
-            } else {
-                _alertStartTime = null;
-            }
-            _lastZoneState = newZoneState;
-        }
-    }
-
-    function checkAndTriggerAlerts() as Void {
-        if (_alertStartTime == null) { return; }
-        // Don't fire (or keep firing) an alert while we don't have a current
-        // reading to confirm the runner is still out of zone.
-        if (_cadenceDataStale) { return; }
-
-        var currentTime = System.getTimer();
-        if (currentTime - _alertStartTime >= _alertDuration) {
-            _alertStartTime = null;
-            return;
-        }
-        
-        if (currentTime - _lastAlertTime >= _alertInterval) {
-            _lastAlertTime = currentTime;
-
-            var app = Application.getApp();
-            var isVibrationOn = app.getVibrationEnabled();
-            var msg = (_lastZoneState == -1) ? "Increase Cadence" : "Decrease Cadence";
-
-            WatchUi.pushView(
-                new CadenceAlertView(msg, isVibrationOn, "SimpleView"),
-                new CadenceAlertDelegate(),
-                WatchUi.SLIDE_IMMEDIATE
-            );
-
-            if (isVibrationOn) {
-                if (_lastZoneState == -1) { triggerSingleVibration(); }
-                else { triggerDoubleVibration(); }
-            }
-        }
     }
 
     function updateDisplayStrings() as Void {
@@ -188,29 +108,6 @@ class SimpleView extends WatchUi.View {
     }
 
     // --- Helpers ---
-    function checkPendingVibration() as Void {
-        if (_pendingSecondVibe && System.getTimer() >= _secondVibeTime) {
-            if (Attention has :vibrate) {
-                Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-            }
-            _pendingSecondVibe = false;
-        }
-    }
-    
-    function triggerSingleVibration() as Void {
-        if (Attention has :vibrate) {
-            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-        }
-    }
-    
-    function triggerDoubleVibration() as Void {
-        if (Attention has :vibrate) {
-            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-            _pendingSecondVibe = true;
-            _secondVibeTime = System.getTimer() + 240;
-        }
-    }
-
     function drawRecordingIndicator(dc as Dc) as Void {
         var app = Application.getApp();
         if (app.isActivityRecording()) {
