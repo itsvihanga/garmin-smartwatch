@@ -279,7 +279,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         }
 
         // Idle: allow the platform's default back behavior so users can exit the app.
-        return true;
+        return false;
     }
 }
 
@@ -379,6 +379,7 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
                 );
             } else {
                 System.println("[UI] Summary screen skipped by user preference");
+                app.resetSession();
                 WatchUi.switchToView(
                     new SimpleView(),
                     new SimpleViewDelegate(),

@@ -79,6 +79,7 @@ class GarminApp extends Application.AppBase {
     private var _secondsSinceLastAlert = 0;
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
+    private var _validCadenceSampleCount = 0;
      
     private var _cadenceBarAvg as Array<Float?> = new [_chartDuration];
     private var _cadenceAvgIndex = 0;
@@ -211,6 +212,8 @@ class GarminApp extends Application.AppBase {
         _cadenceAvgCount = 0;
         _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
+        _validCadenceSampleCount = 0;
+        _secondsSinceLastAlert = 0;
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -516,6 +519,8 @@ class GarminApp extends Application.AppBase {
         _cadenceAvgCount = 0;
         _cadenceAvgIndex = 0;
         _missingCadenceCount = 0;
+        _validCadenceSampleCount = 0;
+        _secondsSinceLastAlert = 0;
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -632,7 +637,9 @@ class GarminApp extends Application.AppBase {
         var info = Activity.getActivityInfo();
 
         if (info == null || info.currentCadence == null) {
-            System.println("[DEBUG] Activity info is null");
+            _missingCadenceCount++;
+            _secondsSinceLastAlert = 0;
+            System.println("[DEBUG] Cadence data is unavailable");
             return;
         }
 
@@ -645,9 +652,13 @@ class GarminApp extends Application.AppBase {
         var minZone = getCalculatedMinCadence();
         var maxZone = getCalculatedMaxCadence();
 
-        _secondsSinceLastAlert++;
+        if (current < minZone || current > maxZone) {
+            _secondsSinceLastAlert++;
+        } else {
+            _secondsSinceLastAlert = 0;
+        }
 
-        if((current < minZone || current > maxZone) && _secondsSinceLastAlert >= 15){
+        if (_secondsSinceLastAlert >= 15) {
                 
             System.println("[ALERT] Cadence out of zone! Current: " + current);
             
@@ -655,6 +666,8 @@ class GarminApp extends Application.AppBase {
             
             _secondsSinceLastAlert = 0;
         }
+    } else {
+        _secondsSinceLastAlert = 0;
     }
 }
 
@@ -662,14 +675,11 @@ class GarminApp extends Application.AppBase {
         _cadenceHistory[_cadenceIndex] = newCadence;
         _cadenceIndex = (_cadenceIndex + 1) % MAX_BARS;
         if (_cadenceCount < MAX_BARS) { _cadenceCount++; }
+        _validCadenceSampleCount++;
       
         if (DEBUG_MODE) {
             System.println("[CADENCE] " + newCadence);
         }
-        else {
-            _missingCadenceCount++;
-        }
-
         var cq = computeCadenceQualityScore();
 
         if (cq < 0) {
@@ -814,7 +824,7 @@ class GarminApp extends Application.AppBase {
         }
 
         var missingRatio = _missingCadenceCount.toFloat() /
-                        (_cadenceCount + _missingCadenceCount).toFloat();
+                        (_validCadenceSampleCount + _missingCadenceCount).toFloat();
 
         if (missingRatio > 0.2) {
             return "Low";
@@ -921,6 +931,7 @@ class GarminApp extends Application.AppBase {
     }
     function setVibrationEnabled(enabled as Boolean) as Void {
         _vibrationEnabled = enabled;
+        saveSettings();
     }
 
     function getSummaryEnabled() as Boolean {
@@ -992,7 +1003,8 @@ class GarminApp extends Application.AppBase {
 
     function setUserGender(value as Number) as Void {
         _userGender = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function getUserLegLength() as Float {
@@ -1001,7 +1013,8 @@ class GarminApp extends Application.AppBase {
 
     function setUserHeight(value as Number) as Void {
         _userHeight = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function getUserHeight() as Number {
@@ -1014,7 +1027,8 @@ class GarminApp extends Application.AppBase {
 
     function setUserSpeed(value as Float) as Void {
         _userSpeed = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function getExperienceLvl() as Number {
@@ -1023,7 +1037,8 @@ class GarminApp extends Application.AppBase {
 
     function setExperienceLvl(value as Float) as Void {
         _experienceLvl = value;
-        //saveSettings();
+        idealCadenceCalculator();
+        saveSettings();
     }
 
     function min(a,b){
@@ -1064,6 +1079,7 @@ class GarminApp extends Application.AppBase {
     s.setValue("u_exp", _experienceLvl);
     s.setValue("u_gen", _userGender);
     s.setValue("u_dur", _chartDuration);
+    s.setValue(PROP_VIBRATION_ENABLED, _vibrationEnabled);
     s.setValue(PROP_SUMMARY_ENABLED, _summaryEnabled);
     
     System.println("--- DISK SYNC COMPLETE ---");
@@ -1082,6 +1098,7 @@ function loadSettings() {
     val = s.getValue("u_speed"); if (val != null) { _userSpeed = val; }
     val = s.getValue("u_exp"); if (val != null) { _experienceLvl = val; }
     val = s.getValue("u_gen"); if (val != null) { _userGender = val; }
+    val = s.getValue(PROP_VIBRATION_ENABLED); if (val != null) { _vibrationEnabled = val; }
     val = s.getValue(PROP_SUMMARY_ENABLED); if (val != null) { _summaryEnabled = val; }
     val = s.getValue("u_dur");
 
@@ -1110,10 +1127,27 @@ if (val != null) {
 }
 
  function resetAllSettings() as Void {
-        Application.Properties.setValue("targetCadence", 100);
-        Application.Properties.setValue("vibrationEnabled", true);
-        Application.Properties.setValue("chartDuration", 5);
+        _targetCadence = 160;
+        _userHeight = 170;
+        _userSpeed = 10.0;
+        _experienceLvl = 1.00;
+        _userGender = Male;
+        _chartDuration = ThirtyminChart as Number;
+        _vibrationEnabled = true;
+        _summaryEnabled = true;
 
+        _cadenceBarAvg = new [_chartDuration];
+        _cadenceAvgIndex = 0;
+        _cadenceAvgCount = 0;
+        _cadenceHistory = new [MAX_BARS];
+        _cadenceIndex = 0;
+        _cadenceCount = 0;
+        _validCadenceSampleCount = 0;
+        _missingCadenceCount = 0;
+        _secondsSinceLastAlert = 0;
+
+        setHaptic("low");
+        saveSettings();
         System.println("[SETTINGS] All settings reset to defaults");
     }
 
