@@ -29,7 +29,11 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Down button pressed");
         
         // Push the cadence settings view
-        WatchUi.switchToView(new SummarySettingsMenuView(), new SummarySettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.pushView(
+            new ResetSettingsView(),
+            new ResetSettingsDelegate(),
+            WatchUi.SLIDE_UP
+        );
         
         return true; 
     }

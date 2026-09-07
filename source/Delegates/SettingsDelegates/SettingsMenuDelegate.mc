@@ -31,7 +31,10 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Down button pressed");
         
         // Push the cadence settings view
-        WatchUi.switchToView(new CadenceSettingsMenuView(), new CadenceSettingsMenuDelegate(), WatchUi.SLIDE_UP);
+        WatchUi.switchToView(
+            new CadenceSettingsMenuView(),
+            new CadenceSettingsMenuDelegate(),
+        WatchUi.SLIDE_UP);
         
         return true; 
     }

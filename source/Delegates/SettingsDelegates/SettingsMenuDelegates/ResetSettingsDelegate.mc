@@ -5,9 +5,8 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
 
     private var _view;
 
-    function initialize(view) {
+    function initialize() {
         BehaviorDelegate.initialize();
-        _view = view;
     }
 
     function onSelect() {
@@ -66,8 +65,8 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
             System.println("UP pressed from Reset: Summary Settings");
 
             WatchUi.pushView(
-                new SummarySettingsMenuView(),
-                new SummarySettingsMenuDelegate(),
+                new CadenceSettingsMenuView(),
+                new CadenceSettingsMenuDelegate(),
                 WatchUi.SLIDE_DOWN
             );
 
@@ -76,24 +75,16 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function handleDown() {
-        // Confirmation screen: DOWN selects NO
-        if (_view.isConfirmScreen()) {
-            _view.moveSelectionDown();
-            return;
-        }
-
         // First Reset screen: DOWN goes to Cadence Settings
-        if (_view.isOpenScreen()) {
-            System.println("DOWN pressed from Reset: Cadence Settings");
 
-            WatchUi.pushView(
-                new CadenceSettingsMenuView(),
-                new CadenceSettingsMenuDelegate(),
-                WatchUi.SLIDE_UP
-            );
+        System.println("DOWN pressed from Reset: Cadence Settings");
 
-            return;
-        }
+        WatchUi.pushView(
+            new CadenceSettingsMenuView(),
+            new CadenceSettingsMenuDelegate(),
+            WatchUi.SLIDE_UP
+        );
+        return;
     }
 
     function onBack() {

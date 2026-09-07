@@ -28,19 +28,18 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
-    // DOWN button: Summary Settings -> Reset Settings
-    function onNextPage() {
-        System.println("Down button pressed: Opening Reset Settings");
-
-        var resetView = new ResetSettingsView();
-
-        WatchUi.pushView(
-            resetView,
-            new ResetSettingsDelegate(resetView),
-            WatchUi.SLIDE_UP
-        );
-
-        return true;
+    // Handles the DOWN button (or swipe up)
+    function onNextPage() as Boolean {
+        System.println("Down button pressed");
+        
+        // Push the cadence settings view
+        
+        WatchUi.switchToView(
+            new BarChartSettingsMenuView(),
+            new BarChartSettingsMenuDelegate(),
+            WatchUi.SLIDE_UP);
+        
+        return true; 
     }
 
     // UP button: Summary Settings -> Bar Chart Settings
