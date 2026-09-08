@@ -53,7 +53,7 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         return true; 
     }
 
-        function pushProfileMenu() as Void{
+    function pushProfileMenu() as Void{
 
         //creates the secondary menu and sets title
         var menu = new WatchUi.Menu2({
