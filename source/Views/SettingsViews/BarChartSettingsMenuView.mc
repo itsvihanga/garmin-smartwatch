@@ -22,7 +22,7 @@ class BarChartSettingsMenuView extends WatchUi.View {
 
         // Draw "Bar Chart" title in white
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, (height * 0.57).toNumber(), Graphics.FONT_MEDIUM, "Bar Chart", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(centerX, (height * 0.57).toNumber(), Graphics.FONT_MEDIUM, "Line Chart", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // Draw "tap to open" subtitle in grey
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);

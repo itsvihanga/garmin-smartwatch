@@ -3,7 +3,7 @@ import Toybox.System;
 import Toybox.WatchUi;
 import Toybox.Application;
 
-class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate { 
+class VibrationsOnSettingsMenuDelegate extends WatchUi.BehaviorDelegate { 
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -22,14 +22,13 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() {
-        System.println("Select/Tap pressed: toggle summary on/off");
+        System.println("Select/Tap pressed: Vibrations Enabled");
 
-        var promptView = new SummaryPromptView();
-        WatchUi.pushView(
-            promptView,
-            new SummaryPromptDelegate(promptView),
-            WatchUi.SLIDE_UP
-        );
+        var app = Application.getApp() as GarminApp;
+
+
+        app.setVibrationEnabled(true);
+        app.triggerHapticFeedback();
         return true;
     }
 
@@ -38,8 +37,8 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Down button pressed: Opening Bar Chart Settings");
         
         WatchUi.switchToView(
-            new BarChartSettingsMenuView(),
-            new BarChartSettingsMenuDelegate(),
+            new VibrationsOffSettingsView(),
+            new VibrationsOffSettingsMenuDelegate(),
             WatchUi.SLIDE_UP);
         
         return true; 
@@ -47,11 +46,13 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the UP button (or swipe down)
     function onPreviousPage() {
-        System.println("Up button pressed: Opening Profile Settings");
+        System.println("Up button pressed: Opening Reset Settings");
+        
+        var resetView = new ResetSettingsView();
 
         WatchUi.pushView(
-            new ProfileSettingsMenuView(),
-            new ProfileSettingsMenuDelegate(),
+            resetView,
+            new ResetSettingsDelegate(resetView),
             WatchUi.SLIDE_DOWN
         );
 
