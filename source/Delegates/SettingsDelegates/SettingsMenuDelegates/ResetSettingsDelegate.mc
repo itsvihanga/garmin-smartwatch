@@ -81,11 +81,11 @@ class ResetSettingsDelegate extends WatchUi.BehaviorDelegate {
 
         // First Reset screen: DOWN goes to Cadence Settings
         if (_view.isOpenScreen()) {
-            System.println("Down button pressed: Opening Cadence Settings");
+            System.println("Down button pressed: Opening Vibration On Settings");
 
             WatchUi.pushView(
-                new CadenceSettingsMenuView(),
-                new CadenceSettingsMenuDelegate(),
+                new VibrationsOnSettingsView(),
+                new VibrationsOnSettingsMenuDelegate(),
                 WatchUi.SLIDE_UP
             );
             return;
