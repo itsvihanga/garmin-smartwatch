@@ -22,9 +22,13 @@ class VibrationsOnSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() {
-        System.println("Select/Tap pressed: toggle summary on/off");
+        System.println("Select/Tap pressed: Vibrations Enabled");
 
-        // Future summary ON/OFF logic can go here.
+        var app = Application.getApp() as GarminApp;
+
+
+        app.setVibrationEnabled(true);
+        app.triggerHapticFeedback();
         return true;
     }
 

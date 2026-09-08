@@ -5,6 +5,8 @@ import Toybox.Application;
 
 class VibrationsOffSettingsMenuDelegate extends WatchUi.BehaviorDelegate { 
 
+    private var _hapticTimer;
+    
     function initialize() {
         BehaviorDelegate.initialize();
     }
@@ -22,10 +24,29 @@ class VibrationsOffSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() {
-        System.println("Select/Tap pressed: toggle summary on/off");
+        System.println("Select/Tap pressed: Vibrations Disabled");
+        var app = Application.getApp() as GarminApp;
 
-        // Future summary ON/OFF logic can go here.
+        app.setVibrationEnabled(false);
+
+        var currentHaptic = app.getHaptic();
+
+        playHighHaptic();
+
+        _hapticTimer = new Timer.Timer();
+        _hapticTimer.start(method(:playHighHaptic), 1000, false);
+
+        app.setHaptic(currentHaptic);
         return true;
+    }
+
+    function playHighHaptic() as Void {
+        var app = Application.getApp() as GarminApp;
+
+        app.setHaptic("high");
+        app.triggerHapticFeedback();
+
+        _hapticTimer = null;
     }
 
     // Handles the DOWN button (or swipe up)
