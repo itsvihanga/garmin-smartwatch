@@ -9,11 +9,10 @@ import Toybox.Attention;
 class SimpleView extends WatchUi.View {
 
     const MAIN_VIBRATION_ICON_SIZE = 34;
-    const MAIN_VIBRATION_ICON_TOP = 0.84;
+    const MAIN_VIBRATION_ICON_BOTTOM_MARGIN = 0.06;
 
     // UI Drawables
     private var _cadenceDisplay;
-    private var _cadenceZoneDisplay;
     private var _heartrateDisplay;
     private var _distanceDisplay;
     private var _timeDisplay;
@@ -43,7 +42,6 @@ class SimpleView extends WatchUi.View {
         
         // Link UI variables to layout IDs
         _cadenceDisplay = findDrawableById("cadence_text");
-        _cadenceZoneDisplay = findDrawableById("cadence_zone");
         _heartrateDisplay = findDrawableById("heartrate_text");
         _distanceDisplay = findDrawableById("distance_text"); // Restored
         _timeDisplay = findDrawableById("time_text");
@@ -161,18 +159,10 @@ class SimpleView extends WatchUi.View {
 
     function updateDisplayStrings() as Void {
         var info = Activity.getActivityInfo();
-        var app = Application.getApp();
         
         // Cadence
         if (_cadenceDisplay != null) {
             _cadenceDisplay.setText(info != null && info.currentCadence != null ? info.currentCadence.toString() : "--");
-        }
-
-        // Zone Info
-        if (_cadenceZoneDisplay != null) {
-            var min = app.getCalculatedMinCadence();
-            var max = app.getCalculatedMaxCadence();
-            _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
         }
 
         // Heartrate
@@ -255,7 +245,8 @@ class SimpleView extends WatchUi.View {
         // The x position is derived from the screen width so the icon remains
         // centred across every supported round watch size.
         var x = ((dc.getWidth() - MAIN_VIBRATION_ICON_SIZE) / 2).toNumber();
-        var y = (dc.getHeight() * MAIN_VIBRATION_ICON_TOP).toNumber();
+        var bottomMargin = (dc.getHeight() * MAIN_VIBRATION_ICON_BOTTOM_MARGIN).toNumber();
+        var y = dc.getHeight() - MAIN_VIBRATION_ICON_SIZE - bottomMargin;
 
         dc.drawBitmap(x, y, icon);
     }
