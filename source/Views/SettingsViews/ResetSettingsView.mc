@@ -95,7 +95,6 @@ class ResetSettingsView extends WatchUi.View {
 
         if (app != null) {
             app.resetAllSettings();
-            app.setTargetCadence(140);
         }
 
         System.println("[RESET] All settings restored to default");

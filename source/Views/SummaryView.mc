@@ -72,11 +72,15 @@ function onUpdate(dc as Dc) as Void {
                   s.format("%02d");
 
     // ===== METRICS =====
-    var km = distance / 100000.0;
+    // Activity.Info.elapsedDistance is reported in metres.
+    var km = distance / 1000.0;
 
         drawRow(dc, width, startY, timeStr, :time, "TIME");
-        drawRow(dc, width, startY + gap, km.format("%.2f km"), :distance, "DISTANCE");
-        drawRow(dc, width, startY + gap * 2, app.getAverageCadence().format("%.0f spm"), :cadence, "CADENCE");
+        // Number.format() only accepts the numeric conversion pattern. Keeping
+        // units inside that pattern raises "Invalid Value" when this view is
+        // first drawn after a save.
+        drawRow(dc, width, startY + gap, km.format("%.2f") + " km", :distance, "DISTANCE");
+        drawRow(dc, width, startY + gap * 2, app.getAverageCadence().format("%.0f") + " spm", :cadence, "CADENCE");
         drawRow(dc, width, startY + gap * 3, hr + " bpm", :quality, "HEART RATE");
         drawRow(dc, width, startY + gap * 4, "--", :distance, "STEPS");
         drawRow(dc, width, startY + gap * 5, pace, :pace, "AVG PACE");
@@ -354,7 +358,7 @@ function drawRow(dc as Dc, width as Number, y as Number, value as String, iconTy
         // Distance
         var distance = app.getSessionDistance();
         if (distance != null) {
-            var distanceKm = distance / 100000.0;
+            var distanceKm = distance / 1000.0;
             
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             dc.drawText(

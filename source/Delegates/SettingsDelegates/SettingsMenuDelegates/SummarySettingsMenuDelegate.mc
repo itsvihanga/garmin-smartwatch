@@ -24,32 +24,34 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     function onSelect() {
         System.println("Select/Tap pressed: toggle summary on/off");
 
-        // Future summary ON/OFF logic can go here.
-        return true;
-    }
-
-    // DOWN button: Summary Settings -> Reset Settings
-    function onNextPage() {
-        System.println("Down button pressed: Opening Reset Settings");
-
-        var resetView = new ResetSettingsView();
-
+        var promptView = new SummaryPromptView();
         WatchUi.pushView(
-            resetView,
-            new ResetSettingsDelegate(resetView),
+            promptView,
+            new SummaryPromptDelegate(promptView),
             WatchUi.SLIDE_UP
         );
-
         return true;
     }
 
-    // UP button: Summary Settings -> Bar Chart Settings
-    function onPreviousPage() {
-        System.println("Up button pressed: Back to Bar Chart Settings");
-
-        WatchUi.pushView(
+    // Handles the DOWN button (or swipe up)
+    function onNextPage() as Boolean {
+        System.println("Down button pressed: Opening Bar Chart Settings");
+        
+        WatchUi.switchToView(
             new BarChartSettingsMenuView(),
             new BarChartSettingsMenuDelegate(),
+            WatchUi.SLIDE_UP);
+        
+        return true; 
+    }
+
+    // Handles the UP button (or swipe down)
+    function onPreviousPage() {
+        System.println("Up button pressed: Opening Profile Settings");
+
+        WatchUi.pushView(
+            new ProfileSettingsMenuView(),
+            new ProfileSettingsMenuDelegate(),
             WatchUi.SLIDE_DOWN
         );
 
