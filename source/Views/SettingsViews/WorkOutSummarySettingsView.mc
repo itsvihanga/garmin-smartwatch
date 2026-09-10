@@ -1,15 +1,41 @@
 import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
+import Toybox.Timer;
+import Toybox.Activity;
 
 class WorkOutSummarySettingsView extends WatchUi.View {
+
+    var _avgCadence = "-- spm";
+    var _duration = "00:00:00";
+    var _cadenceScore = "--%";
+    var _calories = "-- kcal";
+
+    private var _timer as Timer.Timer?;
 
     function initialize() {
         View.initialize();
     }
 
+    function onShow() as Void {
+        _timer = new Timer.Timer();
+        _timer.start(method(:onTimerCallback), 1000, true);
+    }
+
+    function onHide() as Void {
+        if (_timer != null) {
+            _timer.stop();
+            _timer = null;
+        }
+    }
+
+    function onTimerCallback() as Void {
+        WatchUi.requestUpdate();
+    }
+
     function onUpdate(dc as Dc) as Void {
-        // Clear background to black
+        updateDisplayStrings();
+
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
@@ -17,57 +43,63 @@ class WorkOutSummarySettingsView extends WatchUi.View {
         var height = dc.getHeight();
         var centerX = width / 2;
 
-        // Dynamic spacing calculations
-        var titleY = (height * 0.20).toNumber();
-        var startY = (height * 0.40).toNumber();
-        var gap = (height * 0.12).toNumber(); 
+        var titleY = (height * 0.25).toNumber();
+        var startY = (height * 0.42).toNumber();
+        var gap = (height * 0.09).toNumber(); 
+        
         var leftMargin = (width * 0.15).toNumber();
-        var rightMargin = (width * 0.85).toNumber();
+        var rightMargin = (width * 0.84).toNumber();
 
-        // 1. Draw Title
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        
         dc.drawText(
             centerX, 
             titleY, 
-            Graphics.FONT_MEDIUM, 
+            Graphics.FONT_XTINY, 
             "Workout Summary", 
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
 
-        // Mock variables - replace these with your app.get...() calls
-        var avgCadence = "171 spm";
-        var duration = "45:00";
-        var cadenceScore = "92%";
-        var calories = "320 kcal";
-
-        // 2. Draw Metric Rows
-        drawMetricRow(dc, leftMargin, rightMargin, startY, "Avg Cadence", avgCadence, Graphics.COLOR_GREEN);
-        drawMetricRow(dc, leftMargin, rightMargin, startY + gap, "Duration", duration, Graphics.COLOR_WHITE);
-        drawMetricRow(dc, leftMargin, rightMargin, startY + (gap * 2), "Cadence Score", cadenceScore, Graphics.COLOR_GREEN);
-        drawMetricRow(dc, leftMargin, rightMargin, startY + (gap * 3), "Calories", calories, Graphics.COLOR_GREEN);
+        drawMetricRow(dc, leftMargin, rightMargin, startY, "Avg Cadence", _avgCadence, Graphics.COLOR_GREEN);
+        drawMetricRow(dc, leftMargin, rightMargin, startY + gap, "Duration", _duration, Graphics.COLOR_WHITE);
+        drawMetricRow(dc, leftMargin, rightMargin, startY + (gap * 2), "Cadence Score", _cadenceScore, Graphics.COLOR_GREEN);
+        drawMetricRow(dc, leftMargin, rightMargin, startY + (gap * 3), "Calories", _calories, Graphics.COLOR_GREEN);
     }
 
-    // Helper function to draw consistent left-aligned labels and right-aligned values
     function drawMetricRow(dc as Dc, leftX as Number, rightX as Number, y as Number, label as String, value as String, valueColor as Number) as Void {
-        
-        // Label (Always White)
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             leftX, 
             y, 
-            Graphics.FONT_SMALL, 
+            Graphics.FONT_XTINY, 
             label, 
             Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER
         );
 
-        // Value (Dynamic Color)
         dc.setColor(valueColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             rightX, 
             y, 
-            Graphics.FONT_SMALL, 
+            Graphics.FONT_XTINY, 
             value, 
             Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
         );
+    }
+
+    function updateDisplayStrings() as Void {
+        var info = Activity.getActivityInfo();
+
+        if (info != null) {
+            if (info.timerTime != null) {
+                var s = info.timerTime / 1000;
+                _duration = ((s / 3600).format("%02d") + ":" + ((s % 3600) / 60).format("%02d") + ":" + (s % 60).format("%02d"));
+            }
+            if (info.averageCadence != null) {
+                _avgCadence = info.averageCadence.format("%d") + " spm";
+            }
+            if (info.calories != null) {
+                _calories = info.calories.format("%d") + " kcal";
+            }
+        }
     }
 }
