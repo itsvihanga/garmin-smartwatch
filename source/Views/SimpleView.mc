@@ -93,10 +93,10 @@ class SimpleView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         updateDisplayStrings();
         checkPendingVibration();
-        drawRecordingIndicator(dc);
+        // drawRecordingIndicator(dc);
         
         View.onUpdate(dc); 
-        drawPaceIcon(dc);
+        // drawPaceIcon(dc);
         drawDividers(dc);
     }
 
@@ -156,16 +156,16 @@ class SimpleView extends WatchUi.View {
         var app = Application.getApp();
         
         // Cadence
-        if (_cadenceDisplay != null) {
-            _cadenceDisplay.setText(info != null && info.currentCadence != null ? info.currentCadence.toString() : "--");
-        }
+        // if (_cadenceDisplay != null) {
+        //     _cadenceDisplay.setText(info != null && info.currentCadence != null ? info.currentCadence.toString() : "--");
+        // }
 
         // Zone Info
-        if (_cadenceZoneDisplay != null) {
-            var min = app.getCalculatedMinCadence();
-            var max = app.getCalculatedMaxCadence();
-            _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
-        }
+        // if (_cadenceZoneDisplay != null) {
+        //     var min = app.getCalculatedMinCadence();
+        //     var max = app.getCalculatedMaxCadence();
+        //     _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
+        // }
 
         // Heartrate
         if (_heartrateDisplay != null) {
@@ -173,28 +173,28 @@ class SimpleView extends WatchUi.View {
         }
 
         // --- DISTANCE (RESTORED) ---
-        if (_distanceDisplay != null) {
-            if (info != null && info.elapsedDistance != null) {
-                var distanceKm = info.elapsedDistance / 1000.0; // Meters to Kilometers
-                _distanceDisplay.setText(distanceKm.format("%.2f") + " KM");
-            } else {
-                _distanceDisplay.setText("-- KM");
-            }
-        }
+        // if (_distanceDisplay != null) {
+        //     if (info != null && info.elapsedDistance != null) {
+        //         var distanceKm = info.elapsedDistance / 1000.0; // Meters to Kilometers
+        //         _distanceDisplay.setText(distanceKm.format("%.2f") + " KM");
+        //     } else {
+        //         _distanceDisplay.setText("-- KM");
+        //     }
+        // }
 
         // Time
-        if (_timeDisplay != null && info != null && info.timerTime != null) {
-            var s = info.timerTime / 1000;
-            _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
-        }
+        // if (_timeDisplay != null && info != null && info.timerTime != null) {
+        //     var s = info.timerTime / 1000;
+        //     _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
+        // }
         
-        // Pace
-        if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
-            var pace = (1000.0 / info.currentSpeed).toNumber();
-            _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d"));
-        } else if (_paceDisplay != null) {
-            _paceDisplay.setText("--:--");
-        }
+        // // Pace
+        // if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
+        //     var pace = (1000.0 / info.currentSpeed).toNumber();
+        //     _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d"));
+        // } else if (_paceDisplay != null) {
+        //     _paceDisplay.setText("--:--");
+        // }
     }
 
     // --- Helpers ---
@@ -221,23 +221,23 @@ class SimpleView extends WatchUi.View {
         }
     }
 
-    function drawRecordingIndicator(dc as Dc) as Void {
-        var app = Application.getApp();
-        if (app.isActivityRecording()) {
-            dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-            dc.fillCircle((dc.getWidth() * 0.82).toNumber(), (dc.getHeight() * 0.12).toNumber(), 6);
-        }
-    }
+    // function drawRecordingIndicator(dc as Dc) as Void {
+    //     var app = Application.getApp();
+    //     if (app.isActivityRecording()) {
+    //         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+    //         dc.fillCircle((dc.getWidth() * 0.82).toNumber(), (dc.getHeight() * 0.12).toNumber(), 6);
+    //     }
+    // }
 
-    function drawPaceIcon(dc as Dc) as Void {
-        if (_paceIcon == null) { return; }
+    // function drawPaceIcon(dc as Dc) as Void {
+    //     if (_paceIcon == null) { return; }
 
-        dc.drawBitmap(
-            (dc.getWidth() * 0.12).toNumber(),
-            (dc.getHeight() * 0.67).toNumber(),
-            _paceIcon
-        );
-    }
+    //     dc.drawBitmap(
+    //         (dc.getWidth() * 0.12).toNumber(),
+    //         (dc.getHeight() * 0.67).toNumber(),
+    //         _paceIcon
+    //     );
+    // }
 
     function drawDividers(dc as Dc) as Void {
         var w = dc.getWidth();

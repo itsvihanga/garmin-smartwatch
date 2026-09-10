@@ -22,13 +22,13 @@
         color="Gfx.COLOR_BLUE" />
 
     <bitmap id="heartrate_icon"
-        x="13%"
-        y="46%"
+        x="20%"
+        y="67%"
         filename="../drawables/heart-rate.png" />
 
     <label id="heartrate_text"
         x="41%"
-        y="50%"
+        y="67%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_RED" />
