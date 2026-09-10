@@ -60,9 +60,8 @@ class SummarySettingsMenuView extends WatchUi.View {
         }
         else if (_screenState == 2){
             WatchUi.pushView(
-                //NEED TO MAKE NEW VIEW OR ADD ANOTHER DRAW IN HERE
-                new SummaryView(),
-                new SummaryViewDelegate(),
+                new WorkOutSummarySettingsView(),
+                new WorkOutSummarySettingsViewDelegate(),
                 WatchUi.SLIDE_DOWN
             );
         }
@@ -202,10 +201,13 @@ function drawButtons(dc as Dc, startY) {
 
         if (_screenState == 1) {
             if (_selectedButton == 0) {
+                System.println("[BUTTON 0]");
                 _screenState = 2;
             } else {
                 _screenState = 0;
+                System.println("[BUTTON 1]");
             }
+            WatchUi.requestUpdate();
             return;
         }
     }
