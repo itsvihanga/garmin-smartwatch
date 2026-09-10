@@ -93,11 +93,15 @@ class SimpleView extends WatchUi.View {
         }
 
         // Time
-        if (_timeDisplay != null && info != null && info.timerTime != null) {
-            var s = info.timerTime / 1000;
-            _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
+        if (_timeDisplay != null) {
+            if (info != null && info.timerTime != null) {
+                var s = info.timerTime / 1000;
+                _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
+            } else {
+                _timeDisplay.setText("00:00:00");
+            }
         }
-        
+
         // Pace
         if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
             var pace = (1000.0 / info.currentSpeed).toNumber();
