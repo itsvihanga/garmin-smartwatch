@@ -97,8 +97,15 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             _handledBackLongPress = false;
 
             stopBackLongPressTimer();
-            _backLongPressTimer = new Timer.Timer();
-            _backLongPressTimer.start(method(:triggerBackLongPress),3000,false);
+            if (_backLongPressTimer == null) {
+                _backLongPressTimer = new Timer.Timer();
+            }
+            // Match the existing UP-button long-press duration.
+            _backLongPressTimer.start(
+                method(:triggerBackLongPress),
+                _longPressThreshold,
+                false
+            );
             return true;
         }
 
@@ -106,18 +113,9 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function triggerBackLongPress() as Void {
-        _backLongPressTimer = null;
-        System.println("[DEBUG] Long press ESC detected (3s) -> New Menu");
+        System.println("[UI] Long BACK press detected - opening Feedback Mode");
         _handledBackLongPress = true;
-        showCustomBackMenu();
-    }
-
-    function showCustomBackMenu() as Void {
-        var menu = new WatchUi.Menu2({ :title => "Secret Menu" });
-        menu.addItem(new WatchUi.MenuItem("Option 1", "Subtext", :custom_opt_1, null));
-        menu.addItem(new WatchUi.MenuItem("Option 2", null, :custom_opt_2, null));
-        
-        WatchUi.pushView(menu, new CustomBackMenuDelegate(self), WatchUi.SLIDE_UP);
+        openFeedbackMode();
     }
 
     // This function fires instantly while the button is still held down
@@ -165,14 +163,13 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_ESC) {
             stopBackLongPressTimer();
 
-            // If the 3s long press already triggered, do nothing on release.
+            // If the long press already triggered, do nothing on release.
             if (_handledBackLongPress) {
-                _handledBackLongPress = false; 
+                _handledBackLongPress = false;
                 return true;
             }
 
-            // If it was a short click, trigger standard back behavior
-            return onBack(); 
+            return onBack();
         }
 
 
@@ -211,8 +208,15 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     function stopBackLongPressTimer() as Void {
         if (_backLongPressTimer != null) {
             _backLongPressTimer.stop();
-            _backLongPressTimer = null;
         }
+    }
+
+    function openFeedbackMode() as Void {
+        WatchUi.pushView(
+            new FeedbackModeView(),
+            new WatchUi.BehaviorDelegate(),
+            WatchUi.SLIDE_UP
+        );
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
@@ -273,8 +277,11 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            return true;
         }
 
-        // Idle: allow the platform's default back behavior so users can exit the app.
-        return false;
+        // The main screen is the root view, so there is nowhere to pop back to.
+        // Consume a short press to keep the app open. Long BACK is handled by
+        // triggerBackLongPress() and opens Feedback Mode.
+        System.println("[UI] Short BACK pressed - staying on main screen");
+        return true;
     }
 }
 
