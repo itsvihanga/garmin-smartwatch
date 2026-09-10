@@ -223,23 +223,6 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         );
     }
 
-    function startSingleBackExitTimer() as Void {
-        stopSingleBackExitTimer();
-        if (_backLongPressTimer == null) {
-            _backLongPressTimer = new Timer.Timer();
-        }
-        _backLongPressTimer.start(method(:exitAfterSingleBack), 600, false);
-    }
-
-    function stopSingleBackExitTimer() as Void {
-        stopBackLongPressTimer();
-    }
-
-    function exitAfterSingleBack() as Void {
-        getApp().resetFeedbackBackPress();
-        System.exit();
-    }
-
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
         var direction = event.getDirection();
 
@@ -300,14 +283,13 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
         if (app.registerFeedbackBackPress()) {
             System.println("[UI] Double BACK pressed - opening Feedback Mode");
-            stopSingleBackExitTimer();
             openFeedbackMode();
             return true;
         }
 
-        // Wait briefly for a second press, then preserve the normal single-BACK exit.
+        // Consume a single press so it cannot close the app. A second press
+        // within the threshold is required to open Feedback Mode.
         System.println("[DEBUG] Single BACK pressed - waiting for double press");
-        startSingleBackExitTimer();
         return true;
     }
 }
