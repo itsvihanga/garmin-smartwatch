@@ -21,7 +21,6 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     // Timer variables for BACK button
     private var _backLongPressTimer = null;
     private var _handledBackLongPress = false;
-    private var _singleBackExitTimer = null;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -98,7 +97,9 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             _handledBackLongPress = false;
 
             stopBackLongPressTimer();
-            _backLongPressTimer = new Timer.Timer();
+            if (_backLongPressTimer == null) {
+                _backLongPressTimer = new Timer.Timer();
+            }
             _backLongPressTimer.start(method(:triggerBackLongPress),3000,false);
             return true;
         }
@@ -107,7 +108,6 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function triggerBackLongPress() as Void {
-        _backLongPressTimer = null;
         System.println("[DEBUG] Long press ESC detected (3s) -> New Menu");
         _handledBackLongPress = true;
         showCustomBackMenu();
@@ -212,7 +212,6 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     function stopBackLongPressTimer() as Void {
         if (_backLongPressTimer != null) {
             _backLongPressTimer.stop();
-            _backLongPressTimer = null;
         }
     }
 
@@ -226,19 +225,17 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     function startSingleBackExitTimer() as Void {
         stopSingleBackExitTimer();
-        _singleBackExitTimer = new Timer.Timer();
-        _singleBackExitTimer.start(method(:exitAfterSingleBack), 600, false);
+        if (_backLongPressTimer == null) {
+            _backLongPressTimer = new Timer.Timer();
+        }
+        _backLongPressTimer.start(method(:exitAfterSingleBack), 600, false);
     }
 
     function stopSingleBackExitTimer() as Void {
-        if (_singleBackExitTimer != null) {
-            _singleBackExitTimer.stop();
-            _singleBackExitTimer = null;
-        }
+        stopBackLongPressTimer();
     }
 
     function exitAfterSingleBack() as Void {
-        _singleBackExitTimer = null;
         getApp().resetFeedbackBackPress();
         System.exit();
     }
