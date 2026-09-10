@@ -42,13 +42,13 @@ class SimpleView extends WatchUi.View {
         _heartrateDisplay = findDrawableById("heartrate_text");
         _distanceDisplay = findDrawableById("distance_text"); // Restored
         _timeDisplay = findDrawableById("time_text");
-        _paceDisplay = findDrawableById("pace_text");
-        _paceUnitDisplay = findDrawableById("pace_unit");
-        _paceIcon = WatchUi.loadResource(Rez.Drawables.PaceIcon);
+        // _paceDisplay = findDrawableById("pace_text");
+        // _paceUnitDisplay = findDrawableById("pace_unit");
+        // _paceIcon = WatchUi.loadResource(Rez.Drawables.PaceIcon);
 
         var _spmLabel = findDrawableById("spm_label") as WatchUi.Text;
         if (_spmLabel != null) { _spmLabel.setText("SPM"); }
-        if (_paceUnitDisplay != null) { (_paceUnitDisplay as WatchUi.Text).setText("min/km"); }
+        // if (_paceUnitDisplay != null) { (_paceUnitDisplay as WatchUi.Text).setText("min/km"); }
     }
 
     function onShow() as Void {
@@ -173,14 +173,19 @@ class SimpleView extends WatchUi.View {
         }
 
         // --- DISTANCE (RESTORED) ---
-        // if (_distanceDisplay != null) {
-        //     if (info != null && info.elapsedDistance != null) {
-        //         var distanceKm = info.elapsedDistance / 1000.0; // Meters to Kilometers
-        //         _distanceDisplay.setText(distanceKm.format("%.2f") + " KM");
-        //     } else {
-        //         _distanceDisplay.setText("-- KM");
-        //     }
-        // }
+        if (_distanceDisplay != null) {
+            // System.println("[INFO] " + info);
+            // System.println("[INFO] " + info.elapsedDistance);
+            if (info != null && info.elapsedDistance != null) {
+                var distanceKm = info.elapsedDistance / 1000.0; // Meters to Kilometers
+                System.println("[DISTANCE] " + distanceKm);
+
+                _distanceDisplay.setText(distanceKm.format("%.2f") + " KM");
+            } else {
+                // System.println("[DISTANCE] ERROR");
+                _distanceDisplay.setText("-- KM");
+            }
+        }
 
         // Time
         // if (_timeDisplay != null && info != null && info.timerTime != null) {

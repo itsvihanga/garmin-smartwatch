@@ -35,7 +35,7 @@
 
     <label id="distance_text"
         x="73%"
-        y="50%"
+        y="67%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_PURPLE" />
