@@ -186,12 +186,19 @@ class SimpleView extends WatchUi.View {
             _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
         }
         
-        // Pace
-        if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
-            var pace = (1000.0 / info.currentSpeed).toNumber();
-            _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d"));
-        } else if (_paceDisplay != null) {
-            _paceDisplay.setText("--:--");
+        // Pace uses the average of up to five most recent active seconds.
+        if (_paceDisplay != null) {
+            var averageSpeed = Application.getApp().getAverageRecentSpeed();
+
+            if (averageSpeed != null && averageSpeed > 0) {
+                var pace = (1000.0 / averageSpeed).toNumber();
+                _paceDisplay.setText(
+                    (pace / 60).format("%d") + ":" +
+                    (pace % 60).format("%02d")
+                );
+            } else {
+                _paceDisplay.setText("--:--");
+            }
         }
     }
 
