@@ -21,8 +21,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     // Timer variables for BACK button
     private var _backLongPressTimer = null;
     private var _handledBackLongPress = false;
-    private var _lastBackReleaseTime = 0;
-    private var _doubleBackThreshold = 600;
+    private var _singleBackExitTimer = null;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -170,22 +169,11 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             // If the 3s long press already triggered, do nothing on release.
             if (_handledBackLongPress) {
                 _handledBackLongPress = false;
-                _lastBackReleaseTime = 0;
+                getApp().resetFeedbackBackPress();
                 return true;
             }
 
-            if (_lastBackReleaseTime != 0 && (currentTime - _lastBackReleaseTime) < _doubleBackThreshold) {
-                System.println("[UI] Double BACK pressed - opening Feedback Mode");
-                _lastBackReleaseTime = 0;
-                openFeedbackMode();
-                return true;
-            }
-
-            // Consume the first press so Garmin does not close the root view
-            // before a possible second BACK press arrives.
-            System.println("[DEBUG] Single BACK pressed - waiting for double press");
-            _lastBackReleaseTime = currentTime;
-            return true;
+            return onBack();
         }
 
 
@@ -234,6 +222,25 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             new WatchUi.BehaviorDelegate(),
             WatchUi.SLIDE_UP
         );
+    }
+
+    function startSingleBackExitTimer() as Void {
+        stopSingleBackExitTimer();
+        _singleBackExitTimer = new Timer.Timer();
+        _singleBackExitTimer.start(method(:exitAfterSingleBack), 600, false);
+    }
+
+    function stopSingleBackExitTimer() as Void {
+        if (_singleBackExitTimer != null) {
+            _singleBackExitTimer.stop();
+            _singleBackExitTimer = null;
+        }
+    }
+
+    function exitAfterSingleBack() as Void {
+        _singleBackExitTimer = null;
+        getApp().resetFeedbackBackPress();
+        System.exit();
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
@@ -294,8 +301,17 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            return true;
         }
 
-        // Idle: allow the platform's default back behavior so users can exit the app.
-        return false;
+        if (app.registerFeedbackBackPress()) {
+            System.println("[UI] Double BACK pressed - opening Feedback Mode");
+            stopSingleBackExitTimer();
+            openFeedbackMode();
+            return true;
+        }
+
+        // Wait briefly for a second press, then preserve the normal single-BACK exit.
+        System.println("[DEBUG] Single BACK pressed - waiting for double press");
+        startSingleBackExitTimer();
+        return true;
     }
 }
 

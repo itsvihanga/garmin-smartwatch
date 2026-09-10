@@ -14,6 +14,7 @@ class GarminApp extends Application.AppBase {
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
     const DEBUG_MODE = true;
+    const FEEDBACK_DOUBLE_BACK_THRESHOLD_MS = 600;
 
     // Property keys for persistent storage
     const PROP_USER_HEIGHT = "userHeight";
@@ -72,6 +73,7 @@ class GarminApp extends Application.AppBase {
     var _chartDuration = ThirtyminChart as Number;
     private var _vibrationEnabled = true;
     private var _summaryEnabled = true;
+    private var _lastFeedbackBackPressTime = 0;
 
     var _targetCadence = 160;
 
@@ -904,6 +906,23 @@ class GarminApp extends Application.AppBase {
 
     function isActivityRecording() as Boolean {
         return _sessionState == RECORDING || _sessionState == PAUSED;
+    }
+
+    function registerFeedbackBackPress() as Boolean {
+        var currentTime = System.getTimer();
+
+        if (_lastFeedbackBackPressTime != 0 &&
+            (currentTime - _lastFeedbackBackPressTime) < FEEDBACK_DOUBLE_BACK_THRESHOLD_MS) {
+            _lastFeedbackBackPressTime = 0;
+            return true;
+        }
+
+        _lastFeedbackBackPressTime = currentTime;
+        return false;
+    }
+
+    function resetFeedbackBackPress() as Void {
+        _lastFeedbackBackPressTime = 0;
     }
 
        function getVibrationEnabled() as Boolean {

@@ -72,6 +72,7 @@ private var _confirmView;
 
     function onBack() {
         System.println("[UI] Back pressed - returning to main screen");
+        getApp().registerFeedbackBackPress();
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         return true;
     }
