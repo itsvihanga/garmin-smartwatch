@@ -198,12 +198,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
         var statusText = newEnabled ? "Vibration ON" : "Vibration OFF";
         System.println("[UI] " + statusText);
-
-        WatchUi.pushView(
-            new VibrationView(newEnabled), 
-            new WatchUi.BehaviorDelegate(), 
-            WatchUi.SLIDE_UP 
-        );
+        WatchUi.requestUpdate();
     }
 
     function stopLongPressTimer() as Void {
