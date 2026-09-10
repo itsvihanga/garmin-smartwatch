@@ -31,10 +31,11 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Down button pressed: Opening Summary Settings");
         
         // Push the cadence settings view
+            var summary = new SummarySettingsMenuView();
         
         WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+            summary,
+            new SummarySettingsMenuDelegate(summary),
             WatchUi.SLIDE_UP);
         
         return true; 
