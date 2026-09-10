@@ -100,7 +100,12 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             if (_backLongPressTimer == null) {
                 _backLongPressTimer = new Timer.Timer();
             }
-            _backLongPressTimer.start(method(:triggerBackLongPress),3000,false);
+            // Match the existing UP-button long-press duration.
+            _backLongPressTimer.start(
+                method(:triggerBackLongPress),
+                _longPressThreshold,
+                false
+            );
             return true;
         }
 
@@ -158,7 +163,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_ESC) {
             stopBackLongPressTimer();
 
-            // If the 3s long press already triggered, do nothing on release.
+            // If the long press already triggered, do nothing on release.
             if (_handledBackLongPress) {
                 _handledBackLongPress = false;
                 return true;
@@ -272,8 +277,11 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            return true;
         }
 
-        System.println("[UI] BACK pressed - closing app");
-        System.exit();
+        // The main screen is the root view, so there is nowhere to pop back to.
+        // Consume a short press to keep the app open. Long BACK is handled by
+        // triggerBackLongPress() and opens Feedback Mode.
+        System.println("[UI] Short BACK pressed - staying on main screen");
+        return true;
     }
 }
 
