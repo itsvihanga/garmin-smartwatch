@@ -47,9 +47,10 @@ class SettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed");
         
         // Push the profile settings view
+            var summary = new SummarySettingsMenuView();
         WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+            summary,
+            new SummarySettingsMenuDelegate(summary),
             WatchUi.SLIDE_DOWN);
         
         return true; 

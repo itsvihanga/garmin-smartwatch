@@ -48,9 +48,11 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         System.println("Up button pressed: Opening Summary Settings");
         
         // Push the Summary Settings view
+        var summary = new SummarySettingsMenuView();
+        
         WatchUi.switchToView(
-            new SummarySettingsMenuView(),
-            new SummarySettingsMenuDelegate(),
+            summary,
+            new SummarySettingsMenuDelegate(summary),
             WatchUi.SLIDE_DOWN);
         
         return true; 
