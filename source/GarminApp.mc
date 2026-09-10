@@ -1193,11 +1193,9 @@ if (val != null) {
         
     //     return totalTime / 1000;
     // }
-
-    function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new SimpleView(), new SimpleViewDelegate() ];
+    function getInitialView() {
+    return [ new SimpleView(), new SimpleViewDelegate() ];
     }
-
     // -----------------------
     // Summary Statistics Methods
     // -----------------------
@@ -1365,7 +1363,6 @@ if (val != null) {
         return savedValue as String;
     }
 }
-
 function getApp() as GarminApp {
     return Application.getApp() as GarminApp;
 }

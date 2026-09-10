@@ -146,7 +146,8 @@ class ResetSettingsView extends WatchUi.View {
         var centerX = screenW / 2;
 
         // Question block
-        var questionTop = (screenH * 0.19).toNumber();
+        var questionTop = (screenH * 0.20).toNumber();
+        var lineGap = (screenH * 0.11).toNumber();
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
@@ -160,7 +161,7 @@ class ResetSettingsView extends WatchUi.View {
 
         dc.drawText(
             centerX,
-            questionTop + (screenH * 0.10).toNumber(),
+            questionTop + lineGap,
             Graphics.FONT_SMALL,
             "you want to reset",
             Graphics.TEXT_JUSTIFY_CENTER
@@ -168,26 +169,26 @@ class ResetSettingsView extends WatchUi.View {
 
         dc.drawText(
             centerX,
-            questionTop + (screenH * 0.20).toNumber(),
+            questionTop + (lineGap * 2),
             Graphics.FONT_SMALL,
             "all settings?",
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
-        drawButtons(dc, (screenH * 0.55).toNumber());
+        drawButtons(dc, (screenH * 0.59).toNumber());
     }
 
     function drawButtons(dc as Dc, startY) {
         var centerX = dc.getWidth() / 2;
 
-        var buttonW = (dc.getWidth() * 0.52).toNumber();
-        var buttonH = (dc.getHeight() * 0.12).toNumber();
+        var buttonW = (dc.getWidth() * 0.55).toNumber();
+        var buttonH = (dc.getHeight() * 0.11).toNumber();
         var radius = 8;
 
         var buttonX = centerX - (buttonW / 2);
 
         var yesY = startY;
-        var noY = startY + (dc.getHeight() * 0.16).toNumber();
+        var noY = startY + (dc.getHeight() * 0.15).toNumber();
 
         if (_selectedButton == 0) {
             drawButton(
@@ -328,3 +329,4 @@ class ResetSettingsView extends WatchUi.View {
         return _screenState == 1;
     }
 }
+

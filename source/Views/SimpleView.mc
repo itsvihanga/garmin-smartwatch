@@ -265,9 +265,9 @@ class SimpleView extends WatchUi.View {
         var h = dc.getHeight();
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var inset = (w * 0.13).toNumber();
-        dc.drawLine(inset, h * 0.23, w - inset, h * 0.23);
-        dc.drawLine(inset, h * 0.45, w - inset, h * 0.45);
-        dc.drawLine(inset, h * 0.64, w - inset, h * 0.64);
-        dc.drawLine(inset, h * 0.81, w - inset, h * 0.81);
+        dc.drawLine(inset, h * 0.24, w - inset, h * 0.24);
+        dc.drawLine(inset, h * 0.47, w - inset, h * 0.47);
+        dc.drawLine(inset, h * 0.66, w - inset, h * 0.66);
+        dc.drawLine(inset, h * 0.83, w - inset, h * 0.83);
     }
 }
