@@ -21,6 +21,8 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     // Timer variables for BACK button
     private var _backLongPressTimer = null;
     private var _handledBackLongPress = false;
+    private var _lastBackReleaseTime = 0;
+    private var _doubleBackThreshold = 600;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -167,12 +169,23 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
             // If the 3s long press already triggered, do nothing on release.
             if (_handledBackLongPress) {
-                _handledBackLongPress = false; 
+                _handledBackLongPress = false;
+                _lastBackReleaseTime = 0;
                 return true;
             }
 
-            // If it was a short click, trigger standard back behavior
-            return onBack(); 
+            if (_lastBackReleaseTime != 0 && (currentTime - _lastBackReleaseTime) < _doubleBackThreshold) {
+                System.println("[UI] Double BACK pressed - opening Feedback Mode");
+                _lastBackReleaseTime = 0;
+                openFeedbackMode();
+                return true;
+            }
+
+            // Consume the first press so Garmin does not close the root view
+            // before a possible second BACK press arrives.
+            System.println("[DEBUG] Single BACK pressed - waiting for double press");
+            _lastBackReleaseTime = currentTime;
+            return true;
         }
 
 
@@ -213,6 +226,14 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             _backLongPressTimer.stop();
             _backLongPressTimer = null;
         }
+    }
+
+    function openFeedbackMode() as Void {
+        WatchUi.pushView(
+            new FeedbackModeView(),
+            new WatchUi.BehaviorDelegate(),
+            WatchUi.SLIDE_UP
+        );
     }
 
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
