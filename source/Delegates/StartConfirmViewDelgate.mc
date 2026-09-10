@@ -72,7 +72,9 @@ private var _confirmView;
 
     function onBack() {
         System.println("[UI] Back pressed - returning to main screen");
-        getApp().registerFeedbackBackPress();
+        // A BACK press on this screen only closes this screen. It must not count
+        // as the first press of the main screen's double-BACK gesture.
+        getApp().resetFeedbackBackPress();
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         return true;
     }
