@@ -379,6 +379,7 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
                 );
             } else {
                 System.println("[UI] Summary screen skipped by user preference");
+                app.resetSession();
                 WatchUi.switchToView(
                     new SimpleView(),
                     new SimpleViewDelegate(),

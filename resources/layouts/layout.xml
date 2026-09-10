@@ -2,61 +2,61 @@
 <layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
     <label id="time_text"
         x="center"
-        y="9%"
+        y="7%"
         font="Gfx.FONT_MEDIUM"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_WHITE" />
 
     <label id="cadence_text"
         x="39%"
-        y="25%"
+        y="27%"
         font="Gfx.FONT_NUMBER_MILD"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_WHITE" />
 
     <label id="spm_label"
         x="72%"
-        y="27%"
+        y="29%"
         font="Gfx.FONT_MEDIUM"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_BLUE" />
 
     <bitmap id="heartrate_icon"
         x="13%"
-        y="46%"
+        y="48%"
         filename="../drawables/heart-rate.png" />
 
     <label id="heartrate_text"
         x="41%"
-        y="50%"
+        y="52%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_RED" />
 
     <label id="distance_text"
         x="73%"
-        y="50%"
+        y="52%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_PURPLE" />
 
     <label id="pace_text"
         x="48%"
-        y="67%"
+        y="70%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_GREEN" />
 
     <label id="pace_unit"
         x="74%"
-        y="67%"
+        y="70%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_GREEN" />
 
     <label id="cadence_zone"
         x="center"
-        y="84%"
+        y="86%"
         font="Gfx.FONT_XTINY"
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_LT_GRAY" />

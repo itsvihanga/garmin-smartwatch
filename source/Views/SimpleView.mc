@@ -8,6 +8,9 @@ import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
+    const MAIN_VIBRATION_ICON_SIZE = 34;
+    const MAIN_VIBRATION_ICON_TOP = 0.84;
+
     // UI Drawables
     private var _cadenceDisplay;
     private var _cadenceZoneDisplay;
@@ -17,6 +20,8 @@ class SimpleView extends WatchUi.View {
     private var _paceDisplay;
     private var _paceUnitDisplay;
     private var _paceIcon;
+    private var _vibrationOnIcon;
+    private var _vibrationOffIcon;
     
     // Logic & Timer Variables
     private var _refreshTimer;
@@ -45,6 +50,8 @@ class SimpleView extends WatchUi.View {
         _paceDisplay = findDrawableById("pace_text");
         _paceUnitDisplay = findDrawableById("pace_unit");
         _paceIcon = WatchUi.loadResource(Rez.Drawables.PaceIcon);
+        _vibrationOnIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOnIcon);
+        _vibrationOffIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOffIcon);
 
         var _spmLabel = findDrawableById("spm_label") as WatchUi.Text;
         if (_spmLabel != null) { _spmLabel.setText("SPM"); }
@@ -98,6 +105,7 @@ class SimpleView extends WatchUi.View {
         View.onUpdate(dc); 
         drawPaceIcon(dc);
         drawDividers(dc);
+        drawVibrationStatusIcon(dc);
     }
 
     function updateCadenceLogic(info) as Void {
@@ -239,14 +247,27 @@ class SimpleView extends WatchUi.View {
         );
     }
 
+    function drawVibrationStatusIcon(dc as Dc) as Void {
+        var app = Application.getApp();
+        var icon = app.getVibrationEnabled() ? _vibrationOnIcon : _vibrationOffIcon;
+        if (icon == null) { return; }
+
+        // The x position is derived from the screen width so the icon remains
+        // centred across every supported round watch size.
+        var x = ((dc.getWidth() - MAIN_VIBRATION_ICON_SIZE) / 2).toNumber();
+        var y = (dc.getHeight() * MAIN_VIBRATION_ICON_TOP).toNumber();
+
+        dc.drawBitmap(x, y, icon);
+    }
+
     function drawDividers(dc as Dc) as Void {
         var w = dc.getWidth();
         var h = dc.getHeight();
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         var inset = (w * 0.13).toNumber();
-        dc.drawLine(inset, h * 0.23, w - inset, h * 0.23);
-        dc.drawLine(inset, h * 0.45, w - inset, h * 0.45);
-        dc.drawLine(inset, h * 0.64, w - inset, h * 0.64);
-        dc.drawLine(inset, h * 0.81, w - inset, h * 0.81);
+        dc.drawLine(inset, h * 0.24, w - inset, h * 0.24);
+        dc.drawLine(inset, h * 0.47, w - inset, h * 0.47);
+        dc.drawLine(inset, h * 0.66, w - inset, h * 0.66);
+        dc.drawLine(inset, h * 0.83, w - inset, h * 0.83);
     }
 }
