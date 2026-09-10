@@ -54,13 +54,6 @@
         justification="Gfx.TEXT_JUSTIFY_CENTER"
         color="Gfx.COLOR_GREEN" />
 
-    <label id="cadence_zone"
-        x="center"
-        y="86%"
-        font="Gfx.FONT_XTINY"
-        justification="Gfx.TEXT_JUSTIFY_CENTER"
-        color="Gfx.COLOR_LT_GRAY" />
-
 </layout>
 
 <!-- Watch face with date and time Layout -->

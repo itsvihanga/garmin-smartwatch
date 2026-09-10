@@ -19,10 +19,9 @@
     <bitmap id="ProfileSettingsIcon" filename="profile_settings_icon.png"/>
     <bitmap id="VibrationsOnIcon" filename="Vibration_On_Icon.png"/>
     <bitmap id="VibrationsOffIcon" filename="Vibration_Off_Icon.png"/>
-    <!-- Main activity screen status icons. Keep these separate from the
-         settings resources so the compact size can be changed independently. -->
-    <bitmap id="MainVibrationOnIcon" filename="Vibration_On_Icon.png" scaleX="34" scaleY="34"/>
-    <bitmap id="MainVibrationOffIcon" filename="Vibration_Off_Icon.png" scaleX="34" scaleY="34"/>
+    <!-- Compact SVG status icons for the main activity screen. -->
+    <bitmap id="MainVibrationOnIcon" filename="main_vibration_on.svg" scaleX="34" scaleY="34"/>
+    <bitmap id="MainVibrationOffIcon" filename="main_vibration_off.svg" scaleX="34" scaleY="34"/>
     <!-- Scale at build time so every target receives a device-native bitmap. -->
     <bitmap id="PaceIcon" filename="shoe_icon.png" scaleX="43" scaleY="33"/>
 </drawables>
