@@ -41,14 +41,7 @@
         color="Gfx.COLOR_PURPLE" />
 
     <label id="pace_text"
-        x="48%"
-        y="70%"
-        font="Gfx.FONT_SMALL"
-        justification="Gfx.TEXT_JUSTIFY_CENTER"
-        color="Gfx.COLOR_GREEN" />
-
-    <label id="pace_unit"
-        x="74%"
+        x="64%"
         y="70%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_CENTER"

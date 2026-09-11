@@ -17,7 +17,6 @@ class SimpleView extends WatchUi.View {
     private var _distanceDisplay;
     private var _timeDisplay;
     private var _paceDisplay;
-    private var _paceUnitDisplay;
     private var _paceIcon;
     private var _vibrationOnIcon;
     private var _vibrationOffIcon;
@@ -46,14 +45,12 @@ class SimpleView extends WatchUi.View {
         _distanceDisplay = findDrawableById("distance_text"); // Restored
         _timeDisplay = findDrawableById("time_text");
         _paceDisplay = findDrawableById("pace_text");
-        _paceUnitDisplay = findDrawableById("pace_unit");
         _paceIcon = WatchUi.loadResource(Rez.Drawables.PaceIcon);
         _vibrationOnIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOnIcon);
         _vibrationOffIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOffIcon);
 
         var _spmLabel = findDrawableById("spm_label") as WatchUi.Text;
         if (_spmLabel != null) { _spmLabel.setText("SPM"); }
-        if (_paceUnitDisplay != null) { (_paceUnitDisplay as WatchUi.Text).setText("min/km"); }
     }
 
     function onShow() as Void {
@@ -186,12 +183,19 @@ class SimpleView extends WatchUi.View {
             _timeDisplay.setText((s/3600).format("%02d") + ":" + ((s%3600)/60).format("%02d") + ":" + (s%60).format("%02d"));
         }
         
-        // Pace
-        if (_paceDisplay != null && info != null && info.currentSpeed != null && info.currentSpeed > 0) {
-            var pace = (1000.0 / info.currentSpeed).toNumber();
-            _paceDisplay.setText((pace/60).format("%d") + ":" + (pace%60).format("%02d"));
-        } else if (_paceDisplay != null) {
-            _paceDisplay.setText("--:--");
+        // Pace uses the average of up to five most recent active seconds.
+        if (_paceDisplay != null) {
+            var averageSpeed = Application.getApp().getAverageRecentSpeed();
+
+            if (averageSpeed != null && averageSpeed > 0) {
+                var pace = (1000.0 / averageSpeed).toNumber();
+                _paceDisplay.setText(
+                    (pace / 60).format("%d") + ":" +
+                    (pace % 60).format("%02d") + " min/km"
+                );
+            } else {
+                _paceDisplay.setText("--:-- min/km");
+            }
         }
     }
 

@@ -13,6 +13,7 @@ class GarminApp extends Application.AppBase {
     const BASELINE_AVG_CADENCE = 160;
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
+    const PACE_SPEED_BUFFER_SIZE = 5;
     const DEBUG_MODE = true;
 
     // Property keys for persistent storage
@@ -80,6 +81,11 @@ class GarminApp extends Application.AppBase {
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
     private var _validCadenceSampleCount = 0;
+
+    // Most recent active-recording speed samples used by the main-screen pace.
+    private var _paceSpeedSamples as Array<Float?> = new [PACE_SPEED_BUFFER_SIZE];
+    private var _paceSpeedIndex = 0;
+    private var _paceSpeedCount = 0;
      
     private var _cadenceBarAvg as Array<Float?> = new [_chartDuration];
     private var _cadenceAvgIndex = 0;
@@ -214,6 +220,7 @@ class GarminApp extends Application.AppBase {
         _missingCadenceCount = 0;
         _validCadenceSampleCount = 0;
         _secondsSinceLastAlert = 0;
+        resetPaceSpeedBuffer();
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -636,6 +643,10 @@ class GarminApp extends Application.AppBase {
 
         var info = Activity.getActivityInfo();
 
+        // Sample pace independently from cadence so missing cadence data does
+        // not prevent a valid speed sample from entering the pace buffer.
+        updatePaceSpeedBuffer(info);
+
         if (info == null || info.currentCadence == null) {
             _missingCadenceCount++;
             _secondsSinceLastAlert = 0;
@@ -669,7 +680,42 @@ class GarminApp extends Application.AppBase {
     } else {
         _secondsSinceLastAlert = 0;
     }
-}
+    }
+
+    function resetPaceSpeedBuffer() as Void {
+        _paceSpeedIndex = 0;
+        _paceSpeedCount = 0;
+
+        for (var i = 0; i < PACE_SPEED_BUFFER_SIZE; i++) {
+            _paceSpeedSamples[i] = null;
+        }
+    }
+
+    function updatePaceSpeedBuffer(info) as Void {
+        if (info == null || info.currentSpeed == null) {
+            return;
+        }
+
+        _paceSpeedSamples[_paceSpeedIndex] = info.currentSpeed.toFloat();
+        _paceSpeedIndex = (_paceSpeedIndex + 1) % PACE_SPEED_BUFFER_SIZE;
+
+        if (_paceSpeedCount < PACE_SPEED_BUFFER_SIZE) {
+            _paceSpeedCount++;
+        }
+    }
+
+    function getAverageRecentSpeed() {
+        if (_paceSpeedCount == 0) {
+            return null;
+        }
+
+        var total = 0.0;
+        for (var i = 0; i < _paceSpeedCount; i++) {
+            total += _paceSpeedSamples[i];
+        }
+
+        return total / _paceSpeedCount;
+    }
 
     function updateCadenceHistory(newCadence as Float) as Void {
         _cadenceHistory[_cadenceIndex] = newCadence;
