@@ -63,18 +63,23 @@ class SimpleView extends WatchUi.View {
 
     function updateDisplayStrings() as Void {
         var info = Activity.getActivityInfo();
-        var app = Application.getApp();
+        var app = Application.getApp() as GarminApp;
+        var hasCadence = app.hasCurrentCadence(info);
         
         // Cadence
         if (_cadenceDisplay != null) {
-            _cadenceDisplay.setText(info != null && info.currentCadence != null ? info.currentCadence.toString() : "--");
+            _cadenceDisplay.setText(hasCadence ? info.currentCadence.toString() : "--");
         }
 
         // Zone Info
         if (_cadenceZoneDisplay != null) {
-            var min = app.getCalculatedMinCadence();
-            var max = app.getCalculatedMaxCadence();
-            _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
+            if (hasCadence) {
+                var min = app.getCalculatedMinCadence();
+                var max = app.getCalculatedMaxCadence();
+                _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
+            } else {
+                _cadenceZoneDisplay.setText("waiting");
+            }
         }
 
         // Heartrate
