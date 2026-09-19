@@ -93,10 +93,11 @@ class AdvancedView extends WatchUi.View {
         var idealMaxCadence = app.getCalculatedMaxCadence();
         var cadenceY = height * 0.37;
         var cadenceRangeY = height * 0.43;
+        var cadence = app.getCurrentCadence();
 
-        if (info != null && info.currentCadence != null) {
-            dc.setColor(getCadenceZoneColor(info.currentCadence, idealMinCadence, idealMaxCadence), Graphics.COLOR_TRANSPARENT);
-            dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, info.currentCadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
+        if (cadence != null) {
+            dc.setColor(getCadenceZoneColor(cadence, idealMinCadence, idealMaxCadence), Graphics.COLOR_TRANSPARENT);
+            dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, cadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
         }
 
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
