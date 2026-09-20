@@ -86,6 +86,13 @@ class GarminApp extends Application.AppBase {
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
 
+    // A short trailing window over raw per-second cadence samples, kept separate
+    // from _cadenceHistory so it can smooth what's displayed live without
+    // touching the reliability/CQ pipeline that reads _cadenceHistory directly.
+    const ROLLING_CADENCE_WINDOW = 30; // seconds
+    private var _cadenceRollingBuffer as Array<Float?> = new [ROLLING_CADENCE_WINDOW];
+    private var _cadenceRollingIndex = 0;
+
     private var _finalCQ = null;
     // _missingCadenceCount / _totalCadenceTicks are NOT capped at MAX_BARS like
     // _cadenceCount is (that cap only reflects ring-buffer fill level) - they track
@@ -277,6 +284,7 @@ class GarminApp extends Application.AppBase {
         _cadenceIndex = 0;
         _missingCadenceCount = 0;
         _totalCadenceTicks = 0;
+        resetRollingCadenceBuffer();
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -396,6 +404,7 @@ class GarminApp extends Application.AppBase {
         _cadenceCount = 0;
         _missingCadenceCount = 0;
         _totalCadenceTicks = 0;
+        resetRollingCadenceBuffer();
 
         var s = Application.Storage;
         s.setValue("training_mode", "Warm Up");
@@ -483,6 +492,7 @@ class GarminApp extends Application.AppBase {
         _cadenceIndex = 0;
         _missingCadenceCount = 0;
         _totalCadenceTicks = 0;
+        resetRollingCadenceBuffer();
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -653,6 +663,11 @@ class GarminApp extends Application.AppBase {
         return info != null && info.currentCadence != null;
     }
 
+    function resetRollingCadenceBuffer() as Void {
+        _cadenceRollingBuffer = new [ROLLING_CADENCE_WINDOW];
+        _cadenceRollingIndex = 0;
+    }
+
     // sample is null when the sensor failed to report a cadence for this tick;
     // it's still recorded (as a gap) so ring-buffer timing stays aligned with elapsed time.
     function recordCadenceSample(sample as Float?) as Void {
@@ -664,6 +679,9 @@ class GarminApp extends Application.AppBase {
         if (sample == null) {
             _missingCadenceCount++;
         }
+
+        _cadenceRollingBuffer[_cadenceRollingIndex] = sample;
+        _cadenceRollingIndex = (_cadenceRollingIndex + 1) % ROLLING_CADENCE_WINDOW;
 
         var cq = computeCadenceQualityScore();
 
@@ -949,6 +967,7 @@ class GarminApp extends Application.AppBase {
     _cadenceCount = 0;
     _missingCadenceCount = 0;
     _totalCadenceTicks = 0;
+    resetRollingCadenceBuffer();
 
     saveSettings();
 
@@ -1123,6 +1142,31 @@ if (val != null) {
 
     function getAverageCadence() {
         return _sessionAverageCadence;
+    }
+
+    // Trailing average over the last ROLLING_CADENCE_WINDOW (30) raw samples -
+    // smooths out second-to-second jitter for live display, independent of the
+    // whole-session getAverageCadence() above. Returns null when no valid
+    // sample has landed in the window yet (e.g. right after starting, or a
+    // sensor dropout spanning the whole window), so callers can show their own
+    // placeholder instead of a misleading 0.
+    function getRollingCadenceAverage() as Float? {
+        var total = 0.0;
+        var validSamples = 0;
+
+        for (var i = 0; i < ROLLING_CADENCE_WINDOW; i++) {
+            var c = _cadenceRollingBuffer[i];
+            if (c != null) {
+                total += c;
+                validSamples++;
+            }
+        }
+
+        if (validSamples == 0) {
+            return null;
+        }
+
+        return total / validSamples;
     }
 
     function getTimeInZonePercentage() as Number {
