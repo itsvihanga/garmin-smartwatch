@@ -15,11 +15,16 @@ class ProfilePickerDelegate extends WatchUi.PickerDelegate {
 
         if (_type == :prof_height) {
             app._userHeight = selectedValue;
-        } 
-        else if (_type == :prof_speed || _type == :profile_speed) { 
+        }
+        else if (_type == :prof_speed || _type == :profile_speed) {
             app._userSpeed = selectedValue;
             System.println("Speed saved to App: " + selectedValue);
         }
+
+        // Recalculate the target cadence range now that a profile input changed -
+        // otherwise height/speed are saved but never actually feed into the
+        // runner's target cadence.
+        app.idealCadenceCalculator();
 
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         return true;
