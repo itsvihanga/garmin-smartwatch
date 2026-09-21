@@ -9,8 +9,6 @@ class AdvancedView extends WatchUi.View {
     const MAX_BARS = 280;
     const MAX_CADENCE_DISPLAY = 200;
 
-    const COLOR_BELOW = 0xFF0000; // red
-    const COLOR_IN_ZONE = 0x00BF63; // green
     const COLOR_TEXT_MUTED = 0x969696;
     const COLOR_CHART_BORDER = 0x969696;
 
@@ -93,10 +91,19 @@ class AdvancedView extends WatchUi.View {
         var idealMaxCadence = app.getCalculatedMaxCadence();
         var cadenceY = height * 0.37;
         var cadenceRangeY = height * 0.43;
+        var cadence = app.getCurrentCadence();
 
         if (info != null && info.currentCadence != null) {
+            dc.setColor(app.getCadenceZoneColor(info.currentCadence, idealMinCadence, idealMaxCadence), Graphics.COLOR_TRANSPARENT);
+        if (cadence != null) {
+            dc.setColor(getCadenceZoneColor(cadence, idealMinCadence, idealMaxCadence), Graphics.COLOR_TRANSPARENT);
+            dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, cadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
+        if (app.hasCurrentCadence(info)) {
             dc.setColor(getCadenceZoneColor(info.currentCadence, idealMinCadence, idealMaxCadence), Graphics.COLOR_TRANSPARENT);
             dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, info.currentCadence.toString() + " spm", Graphics.TEXT_JUSTIFY_CENTER);
+        } else {
+            dc.setColor(COLOR_TEXT_MUTED, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(width / 2, cadenceY, Graphics.FONT_XTINY, "-- spm", Graphics.TEXT_JUSTIFY_CENTER);
         }
 
         dc.setColor(0x969696, Graphics.COLOR_TRANSPARENT);
@@ -138,18 +145,14 @@ class AdvancedView extends WatchUi.View {
 
         for (var i = 0; i < numBars; i++) {
             var cadence = cadenceHistory[(startIndex + i) % MAX_BARS];
-            if (cadence == null) { cadence = 0; }
+            if (cadence == null) { continue; }
 
             var bHeight = ((cadence / MAX_CADENCE_DISPLAY) * chartHeight).toNumber();
             var x = (chartLeft + 1) + i * barWidth;
             var y = (chartBottom - 1) - bHeight;
 
-            dc.setColor(getCadenceZoneColor(cadence, minZ, maxZ), Graphics.COLOR_TRANSPARENT);
+            dc.setColor(app.getCadenceZoneColor(cadence, minZ, maxZ), Graphics.COLOR_TRANSPARENT);
             dc.fillRectangle(x, y, barWidth - 1, bHeight);
         }
-    }
-
-    function getCadenceZoneColor(cadence, min, max) {
-        return (cadence < min) ? COLOR_BELOW : COLOR_IN_ZONE;
     }
 }

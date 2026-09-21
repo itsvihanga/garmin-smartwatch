@@ -15,6 +15,8 @@ class GarminApp extends Application.AppBase {
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
     const DEBUG_MODE = true;
+    const CADENCE_REFRESH_INTERVAL_MS = 1000;
+    const DIAGNOSTIC_LOG_INTERVAL_TICKS = 60;
 
     // Property keys for persistent storage
     const PROP_USER_HEIGHT = "userHeight";
@@ -85,6 +87,7 @@ class GarminApp extends Application.AppBase {
     private var _cadenceHistory as Array<Float?> = new [MAX_BARS];
     private var _cadenceIndex = 0;
     private var _cadenceCount = 0;
+    private var _currentCadence = null;
 
     // A short trailing window over raw per-second cadence samples, kept separate
     // from _cadenceHistory so it can smooth what's displayed live without
@@ -172,7 +175,7 @@ class GarminApp extends Application.AppBase {
         _refreshCallback = callback;
         _refreshTickCount = 0;
         _refreshTimer = new Timer.Timer();
-        _refreshTimer.start(method(:handleRefreshTick), 1000, true);
+        _refreshTimer.start(method(:handleRefreshTick), CADENCE_REFRESH_INTERVAL_MS, true);
         System.println("[TIMER] START owner=" + ownerLabel + " active=1");
     }
 
@@ -234,9 +237,20 @@ class GarminApp extends Application.AppBase {
         }
 
         _refreshTickCount++;
-        System.println("[TIMER] TICK owner=" + _refreshOwnerLabel + " count=" + _refreshTickCount.toString() + " active=1");
-        pollCadence();
-        checkCadenceAlerts();
+        if (DEBUG_MODE && (_refreshTickCount % DIAGNOSTIC_LOG_INTERVAL_TICKS == 0)) {
+            System.println("[TIMER] TICK owner=" + _refreshOwnerLabel + " count=" + _refreshTickCount.toString() + " active=1");
+        }
+
+        // One cadence pipeline per second:
+        // activity data -> cadence update -> state calculation -> UI refresh.
+        if (_sessionState == RECORDING) {
+            var info = Activity.getActivityInfo();
+            updateCadenceState(info);
+            pollCadence(info);
+            checkCadenceAlerts(info);
+        } else {
+            _currentCadence = null;
+        }
         _refreshCallback.invoke();
     }
 
@@ -285,6 +299,7 @@ class GarminApp extends Application.AppBase {
         _missingCadenceCount = 0;
         _totalCadenceTicks = 0;
         resetRollingCadenceBuffer();
+        _currentCadence = null;
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -319,6 +334,7 @@ class GarminApp extends Application.AppBase {
         
         _lastPauseTime = System.getTimer();
         _sessionState = PAUSED;
+        _currentCadence = null;
     }
 
     function resumeRecording() as Void {
@@ -383,6 +399,7 @@ class GarminApp extends Application.AppBase {
         }
 
         _sessionState = STOPPED;
+        _currentCadence = null;
     }
 
     function resetAllSettings() as Void {
@@ -405,6 +422,7 @@ class GarminApp extends Application.AppBase {
         _missingCadenceCount = 0;
         _totalCadenceTicks = 0;
         resetRollingCadenceBuffer();
+        _currentCadence = null;
 
         var s = Application.Storage;
         s.setValue("training_mode", "Warm Up");
@@ -493,6 +511,7 @@ class GarminApp extends Application.AppBase {
         _missingCadenceCount = 0;
         _totalCadenceTicks = 0;
         resetRollingCadenceBuffer();
+        _currentCadence = null;
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -555,10 +574,12 @@ class GarminApp extends Application.AppBase {
     // this lived in each view's own refreshScreen() and stopped the instant that
     // view was hidden, silently dropping the "even when hidden" behavior a comment
     // here used to promise but never delivered.
+    function checkCadenceAlerts(info) as Void {
+        if (_sessionState != RECORDING || info == null || info.currentCadence == null) {
     function checkCadenceAlerts() as Void {
         var info = Activity.getActivityInfo();
 
-        if (info == null || info.currentCadence == null) {
+        if (!hasCurrentCadence(info)) {
             // No reliable reading - hold the current zone/alert state rather
             // than guessing, same reasoning as the cadence sampling above.
             return;
@@ -631,36 +652,49 @@ class GarminApp extends Application.AppBase {
         }
     }
 
-   function pollCadence() as Void {
+   function pollCadence(info) as Void {
     if (_sessionState != RECORDING) {
         return;
     }
 
-    var info = Activity.getActivityInfo();
-
     if (info == null) {
-        System.println("[DEBUG] Activity info is null");
+        if (DEBUG_MODE && (_refreshTickCount % DIAGNOSTIC_LOG_INTERVAL_TICKS == 0)) {
+            System.println("[DEBUG] Activity info is null");
+        }
         return;
     }
 
    if (!hasCurrentCadence(info)) {
-    if (DEBUG_MODE) {
+    if (DEBUG_MODE && (_refreshTickCount % DIAGNOSTIC_LOG_INTERVAL_TICKS == 0)) {
         System.println("[DEBUG] currentCadence is null - recording missing sample");
     }
     recordCadenceSample(null);
     return;
 }
 
-    if (DEBUG_MODE) {
+    if (DEBUG_MODE && (_refreshTickCount % DIAGNOSTIC_LOG_INTERVAL_TICKS == 0)) {
         System.println("[DEBUG] currentCadence = " + info.currentCadence.toString());
     }
 
     recordCadenceSample(info.currentCadence.toFloat());
 }
 
+    function updateCadenceState(info) as Void {
+        _currentCadence = hasCurrentCadence(info) ? info.currentCadence : null;
+    }
+
+    function getCurrentCadence() {
+        return _currentCadence;
+    }
+
     // Shared with SimpleView so both agree on what counts as a usable cadence reading.
+    // Garmin can report zero before the cadence sensor has a usable reading.
+    // Treat only positive values as cadence so missing startup data never
+    // appears as a below-zone sample.
     function hasCurrentCadence(info) as Boolean {
-        return info != null && info.currentCadence != null;
+        return info != null &&
+               info.currentCadence != null &&
+               info.currentCadence > 0;
     }
 
     function resetRollingCadenceBuffer() as Void {
@@ -922,6 +956,19 @@ class GarminApp extends Application.AppBase {
 
     function getCalculatedMaxCadence() as Number {
         return (_targetCadence * 1.05).toNumber();
+    }
+
+    const CADENCE_COLOR_BELOW = 0xFF0000;   // red - below target zone
+    const CADENCE_COLOR_IN_ZONE = 0x00BF63; // green - in target zone
+    const CADENCE_COLOR_ABOVE = 0xFFAA00;   // amber - above target zone
+
+    // Shared so every screen classifies/colors cadence the same way, instead of
+    // each view reinventing this (AdvancedView had its own private, two-way-only
+    // copy that treated "above zone" the same as "in zone").
+    function getCadenceZoneColor(cadence, min, max) as Number {
+        if (cadence < min) { return CADENCE_COLOR_BELOW; }
+        if (cadence > max) { return CADENCE_COLOR_ABOVE; }
+        return CADENCE_COLOR_IN_ZONE;
     }
 
     function setTargetCadence(value as Number) as Void {
