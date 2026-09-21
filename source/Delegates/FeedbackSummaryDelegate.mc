@@ -28,11 +28,22 @@ class FeedbackSummaryDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function showWorkoutSummary() as Void {
-        System.println("[FEEDBACK] Opening workout summary");
-        WatchUi.switchToView(
-            new SummaryView(),
-            new SummaryViewDelegate(),
-            WatchUi.SLIDE_UP
-        );
+        var app = getApp();
+        if (app.getSummaryEnabled()) {
+            System.println("[FEEDBACK] Opening workout summary");
+            WatchUi.switchToView(
+                new SummaryView(),
+                new SummaryViewDelegate(),
+                WatchUi.SLIDE_UP
+            );
+        } else {
+            System.println("[FEEDBACK] Workout summary disabled; returning to main view");
+            app.resetSession();
+            WatchUi.switchToView(
+                new SimpleView(),
+                new SimpleViewDelegate(),
+                WatchUi.SLIDE_DOWN
+            );
+        }
     }
 }

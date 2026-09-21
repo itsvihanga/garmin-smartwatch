@@ -150,8 +150,8 @@ class FeedbackSummaryView extends WatchUi.View {
         var top = cardTop + (height * 0.035).toNumber();
         var bottom = cardBottom - (height * 0.055).toNumber();
         var graphWidth = right - left;
-        var targetMin = app.getCalculatedMinCadence();
-        var targetMax = app.getCalculatedMaxCadence();
+        var targetMin = app.getFeedbackTargetMinCadence();
+        var targetMax = app.getFeedbackTargetMaxCadence();
         var graphMin = targetMin - 10;
         var graphMax = targetMax + 10;
 

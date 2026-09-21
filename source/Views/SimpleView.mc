@@ -3,8 +3,6 @@ import Toybox.WatchUi;
 import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.Timer;
-import Toybox.System;
-import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
@@ -27,15 +25,6 @@ class SimpleView extends WatchUi.View {
     
     // Logic & Timer Variables
     private var _refreshTimer;
-    private var _lastZoneState = 0; 
-    private var _alertStartTime = null;
-    private var _alertDuration = 180000; // 3 minutes
-    private var _alertInterval = 30000; // 30 seconds
-    private var _lastAlertTime = 0;
-    
-    private var _pendingSecondVibe = false;
-    private var _secondVibeTime = 0;
-
     function initialize() {
         WatchUi.View.initialize();
     }
@@ -77,7 +66,6 @@ class SimpleView extends WatchUi.View {
 
 // --- Logic Loop (The "Heartbeat") ---
     function refreshScreen() as Void {
-        var info = Activity.getActivityInfo();
         var app = Application.getApp();
         
         // Pause freeze: stop all runtime calculations while not recording.
@@ -89,21 +77,14 @@ class SimpleView extends WatchUi.View {
 
         if (app.isFeedbackHidden()) {
             // Hidden windows still record cadence in GarminApp, but all cadence
-            // guidance and queued vibration feedback are suppressed here.
-            _alertStartTime = null;
-            _lastZoneState = 0;
-            _pendingSecondVibe = false;
+            // guidance is suppressed here. The app timer owns cadence alerts,
+            // so there is no second view-level alert to cancel or duplicate.
             WatchUi.requestUpdate();
             return;
         }
-        
-        // 1. Update internal state (Zone checking)
-        updateCadenceLogic(info);
-        
-        // 2. Check for recurring alerts
-        checkAndTriggerAlerts();
-        
-        // 3. Request UI draw
+
+        // Cadence sampling and alerting are centralized in GarminApp so they
+        // remain stable when this view is covered by menus or other screens.
         WatchUi.requestUpdate();
     }
 
@@ -117,7 +98,6 @@ class SimpleView extends WatchUi.View {
         }
 
         updateDisplayStrings();
-        checkPendingVibration();
 
         // Layout labels do not erase their previous pixels on every device.
         // Clear first so changing values never ghost or overlap one another.
@@ -161,7 +141,7 @@ class SimpleView extends WatchUi.View {
             centerX,
             (height * 0.61).toNumber(),
             Graphics.FONT_XTINY,
-            "Cadence is still recording",
+            app.isPaused() ? "Paused - feedback stays hidden" : "Cadence is still recording",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
 
@@ -178,57 +158,6 @@ class SimpleView extends WatchUi.View {
                 Graphics.COLOR_TRANSPARENT
             );
             dc.fillCircle(firstDotX + (i * dotGap), dotY, dotRadius);
-        }
-    }
-
-    function updateCadenceLogic(info) as Void {
-        var minZone = Application.getApp().getCalculatedMinCadence();
-        var maxZone = Application.getApp().getCalculatedMaxCadence();
-        
-        var newZoneState = 0;
-        if (info != null && info.currentCadence != null) {
-            var c = info.currentCadence;
-            if (c < minZone) { newZoneState = -1; }
-            else if (c > maxZone) { newZoneState = 1; }
-        }
-
-        if (newZoneState != _lastZoneState) {
-            if (newZoneState != 0) {
-                _alertStartTime = System.getTimer();
-                _lastAlertTime = System.getTimer();
-            } else {
-                _alertStartTime = null;
-            }
-            _lastZoneState = newZoneState;
-        }
-    }
-
-    function checkAndTriggerAlerts() as Void {
-        if (_alertStartTime == null) { return; }
-        
-        var currentTime = System.getTimer();
-        if (currentTime - _alertStartTime >= _alertDuration) {
-            _alertStartTime = null;
-            return;
-        }
-        
-        if (currentTime - _lastAlertTime >= _alertInterval) {
-            _lastAlertTime = currentTime;
-
-            var app = Application.getApp();
-            var isVibrationOn = app.getVibrationEnabled();
-            var msg = (_lastZoneState == -1) ? "Increase Cadence" : "Decrease Cadence";
-
-            WatchUi.pushView(
-                new CadenceAlertView(msg, isVibrationOn, "SimpleView"),
-                new CadenceAlertDelegate(),
-                WatchUi.SLIDE_IMMEDIATE
-            );
-
-            if (isVibrationOn) {
-                if (_lastZoneState == -1) { triggerSingleVibration(); }
-                else { triggerDoubleVibration(); }
-            }
         }
     }
 
@@ -304,30 +233,6 @@ class SimpleView extends WatchUi.View {
             } else {
                 _paceDisplay.setText("--:-- min/km");
             }
-        }
-    }
-
-    // --- Helpers ---
-    function checkPendingVibration() as Void {
-        if (_pendingSecondVibe && System.getTimer() >= _secondVibeTime) {
-            if (Attention has :vibrate) {
-                Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-            }
-            _pendingSecondVibe = false;
-        }
-    }
-    
-    function triggerSingleVibration() as Void {
-        if (Attention has :vibrate) {
-            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-        }
-    }
-    
-    function triggerDoubleVibration() as Void {
-        if (Attention has :vibrate) {
-            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-            _pendingSecondVibe = true;
-            _secondVibeTime = System.getTimer() + 240;
         }
     }
 

@@ -52,7 +52,27 @@ class FeedbackModeTests(unittest.TestCase):
         self.assertIn("drawFeedbackHiddenIndicator", view)
         self.assertIn('"FEEDBACK"', view)
         self.assertIn('"HIDDEN"', view)
-        self.assertIn("_pendingSecondVibe = false", view)
+        self.assertNotIn("checkAndTriggerAlerts()", view)
+
+    def test_hidden_feedback_stays_concealed_while_paused(self):
+        app = read("source/GarminApp.mc")
+        view = read("source/Views/SimpleView.mc")
+        self.assertRegex(
+            app,
+            r"function isFeedbackHidden\(\)[\s\S]*?"
+            r"isActivityRecording\(\)[\s\S]*?_feedbackHiddenActive",
+        )
+        self.assertIn('"Paused - feedback stays hidden"', view)
+
+    def test_feedback_run_uses_frozen_target_range(self):
+        app = read("source/GarminApp.mc")
+        feedback_view = read("source/Views/FeedbackSummaryView.mc")
+        self.assertIn("_feedbackTargetMin = getCalculatedMinCadence()", app)
+        self.assertIn("_feedbackTargetMax = getCalculatedMaxCadence()", app)
+        self.assertIn("cadence >= getFeedbackTargetMinCadence()", app)
+        self.assertIn("cadence <= getFeedbackTargetMaxCadence()", app)
+        self.assertIn("app.getFeedbackTargetMinCadence()", feedback_view)
+        self.assertIn("app.getFeedbackTargetMaxCadence()", feedback_view)
 
     def test_feedback_summary_precedes_existing_workout_summary(self):
         delegate = read("source/Delegates/SimpleViewDelegate.mc")
@@ -65,6 +85,26 @@ class FeedbackModeTests(unittest.TestCase):
         self.assertIn('"in target range"', feedback_view)
         self.assertIn('"Shaded = Feedback hidden"', feedback_view)
         self.assertIn("didHoldCadenceWhenHidden", feedback_view)
+
+    def test_feedback_result_is_independent_of_workout_summary_preference(self):
+        delegate = read("source/Delegates/SimpleViewDelegate.mc")
+        feedback_delegate = read("source/Delegates/FeedbackSummaryDelegate.mc")
+        feedback_check = delegate.index("if (app.hasFeedbackSummaryData())")
+        summary_check = delegate.index("else if (app.getSummaryEnabled())", feedback_check)
+        self.assertLess(feedback_check, summary_check)
+        self.assertIn("if (app.getSummaryEnabled())", feedback_delegate)
+        self.assertIn("app.resetSession()", feedback_delegate)
+
+    def test_cadence_alerts_have_one_owner_and_match_documented_interval(self):
+        app = read("source/GarminApp.mc")
+        view = read("source/Views/SimpleView.mc")
+        advanced_view = read("source/Views/AdvancedView.mc")
+        self.assertIn("const CADENCE_ALERT_SECONDS = 30", app)
+        self.assertIn("triggerCadenceHapticFeedback(current > maxZone)", app)
+        self.assertNotIn("new CadenceAlertView", view)
+        self.assertNotIn("triggerSingleVibration", view)
+        self.assertNotIn("new CadenceAlertView", advanced_view)
+        self.assertNotIn("triggerSingleVibration", advanced_view)
 
     def test_feedback_summary_has_compact_round_watch_layout(self):
         feedback_view = read("source/Views/FeedbackSummaryView.mc")

@@ -385,22 +385,21 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
             System.println("[UI] Activity saved");
             _parentDelegate.setMenuActive(false);
 
-            if (app.getSummaryEnabled()) {
-                if (app.hasFeedbackSummaryData()) {
-                    // Feedback performance is shown first; SELECT/BACK then
-                    // continues to the existing complete workout summary.
-                    WatchUi.switchToView(
-                        new FeedbackSummaryView(),
-                        new FeedbackSummaryDelegate(),
-                        WatchUi.SLIDE_UP
-                    );
-                } else {
+            if (app.hasFeedbackSummaryData()) {
+                // A feedback run must always show its result. The separate
+                // workout-summary preference only controls the screen that
+                // follows this feedback result.
+                WatchUi.switchToView(
+                    new FeedbackSummaryView(),
+                    new FeedbackSummaryDelegate(),
+                    WatchUi.SLIDE_UP
+                );
+            } else if (app.getSummaryEnabled()) {
                     WatchUi.switchToView(
                         new SummaryView(),
                         new SummaryViewDelegate(),
                         WatchUi.SLIDE_UP
                     );
-                }
             } else {
                 System.println("[UI] Summary screen skipped by user preference");
                 app.resetSession();

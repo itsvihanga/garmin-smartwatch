@@ -4,7 +4,6 @@ import Toybox.Activity;
 import Toybox.Lang;
 import Toybox.Timer;
 import Toybox.System;
-import Toybox.Attention;
 import Toybox.Application;
 
 class AdvancedView extends WatchUi.View {
@@ -19,12 +18,6 @@ class AdvancedView extends WatchUi.View {
 
     private var _simulationTimer;
     
-    private var _lastZoneState = 0; 
-    private var _alertStartTime = null;
-    private var _alertDuration = 180000; // 3 minutes
-    private var _alertInterval = 30000; // 30 seconds
-    private var _lastAlertTime = 0;
-
     function initialize() {
         View.initialize();
     }
@@ -60,10 +53,8 @@ class AdvancedView extends WatchUi.View {
         // Cadence history is sampled by GarminApp's global timer. Sampling here
         // as well would double-count every second spent on AdvancedView.
 
-        // RUN ALERT LOGIC HERE
-        checkCadenceZone();
-
-        // Request UI Redraw
+        // Cadence sampling and alerts are owned by GarminApp's timer. Keeping
+        // them out of this legacy view avoids duplicate haptics.
         WatchUi.requestUpdate();
     }
 
@@ -71,81 +62,6 @@ class AdvancedView extends WatchUi.View {
         // Only Drawing here
         View.onUpdate(dc);
         drawElements(dc);
-    }
-
-    function checkCadenceZone() as Void {
-        var info = Activity.getActivityInfo();
-        var app = Application.getApp();
-        var minZone = app.getCalculatedMinCadence();
-
-        var newZoneState = 0;
-        if (info != null && info.currentCadence != null) {
-            if (info.currentCadence < minZone) {
-                newZoneState = -1;
-            } else {
-                newZoneState = 0;
-            }
-        }
-
-        // Logic for entering/exiting the "Low Cadence" state
-        if (newZoneState != _lastZoneState) {
-            if (newZoneState == -1) {
-                // Just entered "Below" zone
-                _alertStartTime = System.getTimer();
-                _lastAlertTime = System.getTimer();
-                System.println("Cadence Low - Starting Alert Loop");
-            } else {
-                // Back in zone
-                _alertStartTime = null;
-                _lastAlertTime = 0;
-                System.println("Cadence Recovered - Stopping Alerts");
-            }
-            _lastZoneState = newZoneState;
-        }
-
-        // If we are currently "Below", handle the recurring 30s alerts
-        if (_lastZoneState == -1) {
-            checkAndTriggerAlerts();
-        }
-    }
-
-    function checkAndTriggerAlerts() as Void {
-        if (_alertStartTime == null) { return; }
-
-        var currentTime = System.getTimer();
-        var elapsed = currentTime - _alertStartTime;
-
-        // Stop alerting after 3 minutes
-        if (elapsed >= _alertDuration) {
-            _alertStartTime = null;
-            return;
-        }
-
-        // Check if 30 seconds passed since the last alert
-        if (currentTime - _lastAlertTime >= _alertInterval) {
-            _lastAlertTime = currentTime;
-
-            var app = Application.getApp();
-            var isVibrationOn = app.getVibrationEnabled();
-
-            System.println("Triggering 30s Alert in AdvancedView");
-
-            WatchUi.pushView(
-                new CadenceAlertView("Increase Cadence", isVibrationOn, "AdvancedView"),
-                new CadenceAlertDelegate(),
-                WatchUi.SLIDE_IMMEDIATE
-            );
-
-            if (isVibrationOn) {
-                triggerSingleVibration();
-            }
-        }
-    }
-
-    function triggerSingleVibration() as Void {
-        if (Attention has :vibrate) {
-            Attention.vibrate([new Attention.VibeProfile(50, 200)]);
-        }
     }
 
     function drawElements(dc as Dc) as Void {

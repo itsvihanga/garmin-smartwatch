@@ -7,6 +7,7 @@ import Toybox.ActivityRecording;
 import Toybox.Position;
 import Toybox.System;
 import Toybox.Application.Storage;
+import Toybox.Attention;
 
 class GarminApp extends Application.AppBase {
     const MAX_BARS = 280;
@@ -20,6 +21,7 @@ class GarminApp extends Application.AppBase {
     const FEEDBACK_HELD_THRESHOLD_PERCENT = 70;
     const FEEDBACK_GRAPH_MAX_SAMPLES = 240;
     const FEEDBACK_GRAPH_SAMPLE_INTERVAL_SECONDS = 5;
+    const CADENCE_ALERT_SECONDS = 30;
     const DEBUG_MODE = true;
 
     // Property keys for persistent storage
@@ -104,6 +106,11 @@ class GarminApp extends Application.AppBase {
     private var _feedbackCadenceLog as Array<Number?> = [];
     private var _feedbackHiddenLog as Array<Boolean> = [];
     private var _feedbackTimeLog as Array<Number> = [];
+    // Freeze the target used for a feedback run. Settings can still be viewed
+    // while an activity is active, but they must not rewrite an in-progress
+    // score or the target band shown in that activity's summary.
+    private var _feedbackTargetMin as Number? = null;
+    private var _feedbackTargetMax as Number? = null;
      
     private var _cadenceBarAvg as Array<Float?> = new [_chartDuration];
     private var _cadenceAvgIndex = 0;
@@ -240,6 +247,10 @@ class GarminApp extends Application.AppBase {
         _secondsSinceLastAlert = 0;
         resetPaceSpeedBuffer();
         resetFeedbackSession();
+        if (_feedbackModeEnabled) {
+            _feedbackTargetMin = getCalculatedMinCadence();
+            _feedbackTargetMax = getCalculatedMaxCadence();
+        }
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -699,11 +710,11 @@ class GarminApp extends Application.AppBase {
             _secondsSinceLastAlert = 0;
         }
 
-        if (_secondsSinceLastAlert >= 15) {
+        if (_secondsSinceLastAlert >= CADENCE_ALERT_SECONDS) {
                 
             System.println("[ALERT] Cadence out of zone! Current: " + current);
             
-            triggerHapticFeedback();
+            triggerCadenceHapticFeedback(current > maxZone);
             
             _secondsSinceLastAlert = 0;
         }
@@ -720,6 +731,8 @@ class GarminApp extends Application.AppBase {
         _feedbackCadenceLog = [];
         _feedbackHiddenLog = [];
         _feedbackTimeLog = [];
+        _feedbackTargetMin = null;
+        _feedbackTargetMax = null;
     }
 
     function updateFeedbackSession(info) as Void {
@@ -754,8 +767,8 @@ class GarminApp extends Application.AppBase {
             // second, otherwise data drop-outs incorrectly drive the result
             // toward zero.
             _feedbackHiddenSampleCount++;
-            if (cadence >= getCalculatedMinCadence() &&
-                cadence <= getCalculatedMaxCadence()) {
+            if (cadence >= getFeedbackTargetMinCadence() &&
+                cadence <= getFeedbackTargetMaxCadence()) {
                 _feedbackHiddenInRangeCount++;
             }
         }
@@ -778,8 +791,22 @@ class GarminApp extends Application.AppBase {
 
     function isFeedbackHidden() as Boolean {
         return _feedbackModeEnabled &&
-               _sessionState == RECORDING &&
+               isActivityRecording() &&
                _feedbackHiddenActive;
+    }
+
+    function getFeedbackTargetMinCadence() as Number {
+        if (_feedbackTargetMin != null) {
+            return _feedbackTargetMin as Number;
+        }
+        return getCalculatedMinCadence();
+    }
+
+    function getFeedbackTargetMaxCadence() as Number {
+        if (_feedbackTargetMax != null) {
+            return _feedbackTargetMax as Number;
+        }
+        return getCalculatedMaxCadence();
     }
 
     function getFeedbackActiveSeconds() as Number {
@@ -1567,6 +1594,39 @@ if (val != null) {
             }
         } catch (ex) {
             System.println("[ERROR] Haptic feedback failed: " + ex.getErrorMessage());
+        }
+    }
+
+    // Cadence guidance has one owner (the app timer), so changing views cannot
+    // stop it and the main view cannot issue a duplicate vibration. A double
+    // pulse means cadence is above the target; a single pulse means below.
+    function triggerCadenceHapticFeedback(isAboveTarget as Boolean) as Void {
+        try {
+            if (!(Attention has :vibrate)) {
+                return;
+            }
+
+            var currentSetting = getHaptic();
+            var strength = 25;
+            var duration = 250;
+            if (currentSetting.equals("med")) {
+                strength = 50;
+            } else if (currentSetting.equals("high")) {
+                strength = 100;
+                duration = 500;
+            }
+
+            if (isAboveTarget) {
+                Attention.vibrate([
+                    new Attention.VibeProfile(strength, duration),
+                    new Attention.VibeProfile(0, 240),
+                    new Attention.VibeProfile(strength, duration)
+                ]);
+            } else {
+                Attention.vibrate([new Attention.VibeProfile(strength, duration)]);
+            }
+        } catch (ex) {
+            System.println("[ERROR] Cadence haptic feedback failed: " + ex.getErrorMessage());
         }
     }
 
