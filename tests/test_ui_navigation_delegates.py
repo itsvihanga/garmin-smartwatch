@@ -33,12 +33,27 @@ class UiNavigationDelegateTests(unittest.TestCase):
         self.assertIn("triggerBackLongPress", text)
         self.assertIn("openFeedbackMode", text)
 
-    def test_main_and_advanced_swipes_match_gesture_direction(self):
+    def test_main_screen_does_not_route_to_legacy_advanced_view(self):
+        app = source(ROOT / "source" / "GarminApp.mc")
+        self.assertIn(
+            "return [ new SimpleView(), new SimpleViewDelegate() ];",
+            app,
+        )
+
         simple = method(source(DELEGATES / "SimpleViewDelegate.mc"), "onSwipe", "showActivityControlMenu")
         self.assertIn("WatchUi.SWIPE_UP", simple)
-        self.assertIn("WatchUi.SLIDE_UP", simple)
         self.assertIn("WatchUi.SWIPE_DOWN", simple)
-        self.assertIn("WatchUi.SLIDE_DOWN", simple)
+        self.assertIn("WatchUi.requestUpdate()", simple)
+        self.assertNotIn("new AdvancedView()", simple)
+        self.assertNotIn("new AdvancedViewDelegate", simple)
+
+        delegate = source(DELEGATES / "SimpleViewDelegate.mc")
+        key_release = method(delegate, "onKeyReleased", "toggleVibration")
+        self.assertIn("key == WatchUi.KEY_DOWN", key_release)
+        self.assertIn("WatchUi.requestUpdate()", key_release)
+        self.assertNotIn("new AdvancedView()", key_release)
+
+    def test_legacy_advanced_view_can_return_to_main_if_already_stacked(self):
 
         advanced_text = source(DELEGATES / "AdvancedViewDelegate.mc")
         advanced = method(advanced_text, "onSwipe", "onBack")

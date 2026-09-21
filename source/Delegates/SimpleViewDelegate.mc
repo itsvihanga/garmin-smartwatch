@@ -5,7 +5,6 @@ import Toybox.Timer;
 
 class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
-    private var _currentView = null;
     private var _initTime = null;
     private var _menuActive = false;
 
@@ -185,12 +184,11 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
 
         if (key == WatchUi.KEY_DOWN) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
-            );
+            // AdvancedView is the legacy graph screen. Keep the newly merged
+            // main dashboard visible instead of replacing it on a routine
+            // DOWN press.
+            System.println("[UI] DOWN pressed - staying on main screen");
+            WatchUi.requestUpdate();
             return true;
         }
 
@@ -233,23 +231,13 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     function onSwipe(event as WatchUi.SwipeEvent) as Boolean {
         var direction = event.getDirection();
 
-        if (direction == WatchUi.SWIPE_UP) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_UP
-            );
-            return true;
-        }
-
-        if (direction == WatchUi.SWIPE_DOWN) {
-            _currentView = new AdvancedView();
-            WatchUi.pushView(
-                _currentView,
-                new AdvancedViewDelegate(_currentView),
-                WatchUi.SLIDE_DOWN
-            );
+        if (direction == WatchUi.SWIPE_UP ||
+            direction == WatchUi.SWIPE_DOWN) {
+            // Both gestures previously opened the obsolete AdvancedView,
+            // which made the merged main-screen work appear to be missing.
+            // Consume vertical swipes and retain the current dashboard.
+            System.println("[UI] Vertical swipe - staying on main screen");
+            WatchUi.requestUpdate();
             return true;
         }
         return false;
