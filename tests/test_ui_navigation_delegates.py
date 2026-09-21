@@ -33,7 +33,7 @@ class UiNavigationDelegateTests(unittest.TestCase):
         self.assertIn("triggerBackLongPress", text)
         self.assertIn("openFeedbackMode", text)
 
-    def test_main_screen_does_not_route_to_legacy_advanced_view(self):
+    def test_main_screen_routes_down_to_cadence_display_not_legacy_advanced_view(self):
         app = source(ROOT / "source" / "GarminApp.mc")
         self.assertIn(
             "return [ new SimpleView(), new SimpleViewDelegate() ];",
@@ -50,7 +50,9 @@ class UiNavigationDelegateTests(unittest.TestCase):
         delegate = source(DELEGATES / "SimpleViewDelegate.mc")
         key_release = method(delegate, "onKeyReleased", "toggleVibration")
         self.assertIn("key == WatchUi.KEY_DOWN", key_release)
-        self.assertIn("WatchUi.requestUpdate()", key_release)
+        self.assertIn("new CadenceQualityView()", key_release)
+        self.assertIn("new CadenceQualityDelegate()", key_release)
+        self.assertIn("WatchUi.SLIDE_DOWN", key_release)
         self.assertNotIn("new AdvancedView()", key_release)
 
     def test_legacy_advanced_view_can_return_to_main_if_already_stacked(self):

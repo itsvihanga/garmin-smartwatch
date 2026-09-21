@@ -184,11 +184,14 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
 
         if (key == WatchUi.KEY_DOWN) {
-            // AdvancedView is the legacy graph screen. Keep the newly merged
-            // main dashboard visible instead of replacing it on a routine
-            // DOWN press.
-            System.println("[UI] DOWN pressed - staying on main screen");
-            WatchUi.requestUpdate();
+            // Open the merged cadence-quality screen. Do not route back to
+            // AdvancedView, which is the obsolete graph UI.
+            System.println("[UI] DOWN pressed - opening cadence display");
+            WatchUi.pushView(
+                new CadenceQualityView(),
+                new CadenceQualityDelegate(),
+                WatchUi.SLIDE_DOWN
+            );
             return true;
         }
 
