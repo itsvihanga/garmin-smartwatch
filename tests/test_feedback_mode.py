@@ -63,15 +63,26 @@ class FeedbackModeTests(unittest.TestCase):
         self.assertIn("new SummaryView()", feedback_delegate)
         self.assertIn('"When hidden"', feedback_view)
         self.assertIn('"in target range"', feedback_view)
-        self.assertIn('"Shaded = feedback hidden"', feedback_view)
+        self.assertIn('"Shaded = Feedback hidden"', feedback_view)
         self.assertIn("didHoldCadenceWhenHidden", feedback_view)
 
     def test_feedback_summary_has_compact_round_watch_layout(self):
         feedback_view = read("source/Views/FeedbackSummaryView.mc")
-        self.assertIn("width <= 450", feedback_view)
-        self.assertIn("Graphics.FONT_MEDIUM", feedback_view)
-        self.assertIn("compactLayout ? 0.63 : 0.66", feedback_view)
-        self.assertIn("compactLayout ? 0.76 : 0.79", feedback_view)
+        self.assertIn("width < 300", feedback_view)
+        self.assertIn("Graphics.FONT_NUMBER_HOT", feedback_view)
+        self.assertIn("dc.fillRoundedRectangle", feedback_view)
+        self.assertIn("Rez.Drawables.MainHeartRateIcon", feedback_view)
+        self.assertIn("smallScreen ? 0.82 : 0.81", feedback_view)
+
+    def test_feedback_graph_uses_recorded_time_and_clear_visual_layers(self):
+        feedback_view = read("source/Views/FeedbackSummaryView.mc")
+        self.assertIn("timeLog[i] - firstSecond", feedback_view)
+        self.assertIn("Hidden-period strips sit behind", feedback_view)
+        self.assertLess(
+            feedback_view.index("dc.setColor(0x202020"),
+            feedback_view.index("dc.setColor(0x174A2A"),
+        )
+        self.assertIn("dc.setPenWidth(smallScreen ? 2 : 3)", feedback_view)
 
 
 if __name__ == "__main__":

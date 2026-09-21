@@ -4,8 +4,11 @@ import Toybox.WatchUi;
 
 class FeedbackSummaryView extends WatchUi.View {
 
+    private var _heartRateIcon;
+
     function initialize() {
         View.initialize();
+        _heartRateIcon = WatchUi.loadResource(Rez.Drawables.MainHeartRateIcon);
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -13,17 +16,14 @@ class FeedbackSummaryView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
         var centerX = width / 2;
-        // Connect IQ reports the drawable canvas, not the outer watch size.
-        // Keep every round-watch layout inside a conservative circular safe
-        // area so labels do not disappear behind the bezel.
-        var compactLayout = width <= 450;
-        var titleY = compactLayout ? 0.10 : 0.08;
-        var scoreY = compactLayout ? 0.19 : 0.18;
-        var scoreFont = compactLayout
-            ? Graphics.FONT_MEDIUM
-            : Graphics.FONT_LARGE;
-        var subtitleY = compactLayout ? 0.27 : 0.27;
-        var legendY = compactLayout ? 0.76 : 0.79;
+        var smallScreen = width < 300;
+        var titleY = smallScreen ? 0.10 : 0.09;
+        var scoreY = smallScreen ? 0.20 : 0.21;
+        var scoreFont = smallScreen
+            ? Graphics.FONT_LARGE
+            : Graphics.FONT_NUMBER_HOT;
+        var subtitleY = smallScreen ? 0.31 : 0.32;
+        var legendY = smallScreen ? 0.82 : 0.81;
 
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
@@ -49,7 +49,7 @@ class FeedbackSummaryView extends WatchUi.View {
         dc.drawText(
             centerX,
             (height * titleY).toNumber(),
-            Graphics.FONT_XTINY,
+            smallScreen ? Graphics.FONT_XTINY : Graphics.FONT_SMALL,
             "When hidden",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
@@ -67,7 +67,7 @@ class FeedbackSummaryView extends WatchUi.View {
         dc.drawText(
             centerX,
             (height * subtitleY).toNumber(),
-            Graphics.FONT_XTINY,
+            smallScreen ? Graphics.FONT_XTINY : Graphics.FONT_SMALL,
             "in target range",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
@@ -80,7 +80,7 @@ class FeedbackSummaryView extends WatchUi.View {
             centerX,
             (height * legendY).toNumber(),
             Graphics.FONT_XTINY,
-            "Shaded = feedback hidden",
+            "Shaded = Feedback hidden",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }
@@ -92,12 +92,20 @@ class FeedbackSummaryView extends WatchUi.View {
         var distanceText = distance == null
             ? "-- KM"
             : (distance / 1000.0).format("%.2f") + " KM";
-        var compactLayout = width <= 450;
-        var y = (height * (compactLayout ? 0.34 : 0.36)).toNumber();
+        var smallScreen = width < 300;
+        var y = (height * (smallScreen ? 0.39 : 0.40)).toNumber();
+
+        if (_heartRateIcon != null) {
+            dc.drawBitmap(
+                (width * (smallScreen ? 0.08 : 0.07)).toNumber(),
+                y - 22,
+                _heartRateIcon
+            );
+        }
 
         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
-            (width * 0.29).toNumber(),
+            (width * (smallScreen ? 0.34 : 0.30)).toNumber(),
             y,
             Graphics.FONT_XTINY,
             heartRateText,
@@ -106,7 +114,7 @@ class FeedbackSummaryView extends WatchUi.View {
 
         dc.setColor(Graphics.COLOR_PURPLE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
-            (width * 0.71).toNumber(),
+            (width * (smallScreen ? 0.73 : 0.75)).toNumber(),
             y,
             Graphics.FONT_XTINY,
             distanceText,
@@ -130,13 +138,18 @@ class FeedbackSummaryView extends WatchUi.View {
             return;
         }
 
-        var compactLayout = width <= 450;
-        var left = (width * (compactLayout ? 0.24 : 0.20)).toNumber();
-        var right = (width * (compactLayout ? 0.76 : 0.80)).toNumber();
-        var top = (height * (compactLayout ? 0.43 : 0.44)).toNumber();
-        var bottom = (height * (compactLayout ? 0.63 : 0.66)).toNumber();
+        var smallScreen = width < 300;
+        var cardLeft = (width * (smallScreen ? 0.10 : 0.09)).toNumber();
+        var cardRight = (width * (smallScreen ? 0.90 : 0.91)).toNumber();
+        var cardTop = (height * (smallScreen ? 0.48 : 0.47)).toNumber();
+        var cardBottom = (height * (smallScreen ? 0.72 : 0.72)).toNumber();
+        var cardWidth = cardRight - cardLeft;
+        var cardHeight = cardBottom - cardTop;
+        var left = cardLeft + (width * 0.09).toNumber();
+        var right = cardRight - (width * 0.03).toNumber();
+        var top = cardTop + (height * 0.035).toNumber();
+        var bottom = cardBottom - (height * 0.055).toNumber();
         var graphWidth = right - left;
-        var graphHeight = bottom - top;
         var targetMin = app.getCalculatedMinCadence();
         var targetMax = app.getCalculatedMaxCadence();
         var graphMin = targetMin - 10;
@@ -154,33 +167,50 @@ class FeedbackSummaryView extends WatchUi.View {
             graphMax = graphMin + 1;
         }
 
-        dc.setColor(Graphics.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawRectangle(left, top, graphWidth, graphHeight);
+        // A rounded dark card matches the design while keeping the plotting
+        // area comfortably inside the circular bezel.
+        dc.setColor(0x111111, 0x111111);
+        dc.fillRoundedRectangle(
+            cardLeft,
+            cardTop,
+            cardWidth,
+            cardHeight,
+            (width * 0.055).toNumber()
+        );
 
-        var bandTop = cadenceToY(targetMax, graphMin, graphMax, top, bottom);
-        var bandBottom = cadenceToY(targetMin, graphMin, graphMax, top, bottom);
-        dc.setColor(0x003300, Graphics.COLOR_TRANSPARENT);
-        dc.fillRectangle(left, bandTop, graphWidth, bandBottom - bandTop + 1);
+        var firstSecond = timeLog[0];
+        var lastSecond = timeLog[count - 1];
+        var timeSpan = lastSecond - firstSecond;
+        if (timeSpan < 1) { timeSpan = 1; }
 
-        var sampleWidth = count > 1
-            ? (graphWidth.toFloat() / (count - 1))
-            : graphWidth.toFloat();
-
-        dc.setColor(0x222222, Graphics.COLOR_TRANSPARENT);
+        // Hidden-period strips sit behind both the target range and cadence
+        // line, making every layer readable at a glance.
+        dc.setColor(0x202020, Graphics.COLOR_TRANSPARENT);
         for (var i = 0; i < count; i++) {
             if (hiddenLog[i]) {
-                var shadedX = left + (i * sampleWidth).toNumber();
-                var shadedWidth = sampleWidth.toNumber();
-                if (shadedWidth < 1) { shadedWidth = 1; }
-                dc.fillRectangle(shadedX, top, shadedWidth, graphHeight);
+                var shadedX = left +
+                    (((timeLog[i] - firstSecond) * graphWidth) / timeSpan).toNumber();
+                var shadedEnd = right;
+                if (i + 1 < count) {
+                    shadedEnd = left +
+                        (((timeLog[i + 1] - firstSecond) * graphWidth) / timeSpan).toNumber();
+                }
+                var shadedWidth = shadedEnd - shadedX + 1;
+                if (shadedWidth < 2) { shadedWidth = 2; }
+                if (shadedX + shadedWidth > right) {
+                    shadedWidth = right - shadedX;
+                }
+                dc.fillRectangle(shadedX, cardTop, shadedWidth, cardHeight);
             }
         }
 
-        dc.setColor(Graphics.COLOR_GREEN, Graphics.COLOR_TRANSPARENT);
-        dc.drawLine(left, bandTop, right, bandTop);
-        dc.drawLine(left, bandBottom, right, bandBottom);
+        var bandTop = cadenceToY(targetMax, graphMin, graphMax, top, bottom);
+        var bandBottom = cadenceToY(targetMin, graphMin, graphMax, top, bottom);
+        dc.setColor(0x174A2A, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(left, bandTop, graphWidth, bandBottom - bandTop + 1);
 
         dc.setColor(stateColor, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(smallScreen ? 2 : 3);
         var previousX = -1;
         var previousY = -1;
 
@@ -192,9 +222,8 @@ class FeedbackSummaryView extends WatchUi.View {
                 continue;
             }
 
-            var x = count > 1
-                ? left + ((i * graphWidth) / (count - 1)).toNumber()
-                : left;
+            var x = left +
+                (((timeLog[i] - firstSecond) * graphWidth) / timeSpan).toNumber();
             var y = cadenceToY(cadence, graphMin, graphMax, top, bottom);
 
             if (previousX >= 0 && previousY >= 0) {
@@ -204,37 +233,46 @@ class FeedbackSummaryView extends WatchUi.View {
             previousX = x;
             previousY = y;
         }
+        dc.setPenWidth(1);
 
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
-            left - 3,
-            top,
+            left - 4,
+            bandTop,
             Graphics.FONT_XTINY,
-            graphMax.toString(),
+            targetMax.toString(),
             Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
         );
         dc.drawText(
-            left - 3,
-            bottom,
+            left - 4,
+            bandBottom,
             Graphics.FONT_XTINY,
-            graphMin.toString(),
+            targetMin.toString(),
             Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
         );
 
-        var firstMinute = timeLog[0] / 60.0;
-        var lastMinute = timeLog[count - 1] / 60.0;
+        var firstMinute = 0.0;
+        var lastMinute = timeSpan / 60.0;
+        var middleMinute = lastMinute / 2.0;
         dc.drawText(
             left,
-            bottom + 2,
+            cardBottom - (height * 0.05).toNumber(),
             Graphics.FONT_XTINY,
             firstMinute.format("%.0f"),
             Graphics.TEXT_JUSTIFY_LEFT
         );
         dc.drawText(
-            right,
-            bottom + 2,
+            (left + right) / 2,
+            cardBottom - (height * 0.05).toNumber(),
             Graphics.FONT_XTINY,
-            lastMinute.format("%.0f") + " min",
+            middleMinute.format("%.1f"),
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+        dc.drawText(
+            right,
+            cardBottom - (height * 0.05).toNumber(),
+            Graphics.FONT_XTINY,
+            lastMinute.format("%.1f"),
             Graphics.TEXT_JUSTIFY_RIGHT
         );
     }
