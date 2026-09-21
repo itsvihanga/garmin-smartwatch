@@ -5,6 +5,7 @@
     <bitmap id="IconCadence" filename="cadence_icon_50.png" />
     <bitmap id="IconHeartRate" filename="heart-rate_50.png" />
     <bitmap id="MainHeartRateIcon" filename="heart-rate-ui-v2.png" scaleX="48" scaleY="44" />
+    <bitmap id="FeedbackHeartRateIcon" filename="heart-rate-ui-v2.png" scaleX="34" scaleY="31" />
     <bitmap id="IconSteps" filename="cadence_icon_v2_50.png" />
     <bitmap id="IconTime" filename="clock_icon_50.png" />
 

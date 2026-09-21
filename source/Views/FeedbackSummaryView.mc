@@ -8,7 +8,7 @@ class FeedbackSummaryView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
-        _heartRateIcon = WatchUi.loadResource(Rez.Drawables.MainHeartRateIcon);
+        _heartRateIcon = WatchUi.loadResource(Rez.Drawables.FeedbackHeartRateIcon);
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -17,13 +17,13 @@ class FeedbackSummaryView extends WatchUi.View {
         var height = dc.getHeight();
         var centerX = width / 2;
         var smallScreen = width < 300;
-        var titleY = smallScreen ? 0.10 : 0.09;
-        var scoreY = smallScreen ? 0.20 : 0.21;
+        var titleY = smallScreen ? 0.08 : 0.09;
+        var scoreY = smallScreen ? 0.18 : 0.205;
         var scoreFont = smallScreen
-            ? Graphics.FONT_LARGE
-            : Graphics.FONT_NUMBER_HOT;
-        var subtitleY = smallScreen ? 0.31 : 0.32;
-        var legendY = smallScreen ? 0.82 : 0.81;
+            ? Graphics.FONT_MEDIUM
+            : Graphics.FONT_NUMBER_MILD;
+        var subtitleY = smallScreen ? 0.28 : 0.305;
+        var legendY = smallScreen ? 0.76 : 0.77;
 
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
@@ -93,19 +93,19 @@ class FeedbackSummaryView extends WatchUi.View {
             ? "-- KM"
             : (distance / 1000.0).format("%.2f") + " KM";
         var smallScreen = width < 300;
-        var y = (height * (smallScreen ? 0.39 : 0.40)).toNumber();
+        var y = (height * (smallScreen ? 0.37 : 0.385)).toNumber();
 
         if (_heartRateIcon != null) {
             dc.drawBitmap(
                 (width * (smallScreen ? 0.08 : 0.07)).toNumber(),
-                y - 22,
+                y - 15,
                 _heartRateIcon
             );
         }
 
         dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
-            (width * (smallScreen ? 0.34 : 0.30)).toNumber(),
+            (width * (smallScreen ? 0.40 : 0.30)).toNumber(),
             y,
             Graphics.FONT_XTINY,
             heartRateText,
@@ -141,8 +141,8 @@ class FeedbackSummaryView extends WatchUi.View {
         var smallScreen = width < 300;
         var cardLeft = (width * (smallScreen ? 0.10 : 0.09)).toNumber();
         var cardRight = (width * (smallScreen ? 0.90 : 0.91)).toNumber();
-        var cardTop = (height * (smallScreen ? 0.48 : 0.47)).toNumber();
-        var cardBottom = (height * (smallScreen ? 0.72 : 0.72)).toNumber();
+        var cardTop = (height * (smallScreen ? 0.45 : 0.47)).toNumber();
+        var cardBottom = (height * (smallScreen ? 0.68 : 0.69)).toNumber();
         var cardWidth = cardRight - cardLeft;
         var cardHeight = cardBottom - cardTop;
         var left = cardLeft + (width * 0.09).toNumber();
@@ -238,16 +238,16 @@ class FeedbackSummaryView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             left - 4,
-            bandTop,
+            top,
             Graphics.FONT_XTINY,
-            targetMax.toString(),
+            graphMax.toString(),
             Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
         );
         dc.drawText(
             left - 4,
-            bandBottom,
+            bottom,
             Graphics.FONT_XTINY,
-            targetMin.toString(),
+            graphMin.toString(),
             Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER
         );
 
