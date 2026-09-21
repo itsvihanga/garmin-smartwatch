@@ -67,7 +67,18 @@ class SimpleView extends WatchUi.View {
         var cadence = app.getCurrentCadence();
         
         // Cadence
+        var minZone = app.getCalculatedMinCadence();
+        var maxZone = app.getCalculatedMaxCadence();
         if (_cadenceDisplay != null) {
+            if (info != null && info.currentCadence != null) {
+                // Same zone-color classification AdvancedView uses, so the live
+                // number gives the same at-a-glance feedback on every screen.
+                _cadenceDisplay.setColor(app.getCadenceZoneColor(info.currentCadence, minZone, maxZone));
+                _cadenceDisplay.setText(info.currentCadence.toString());
+            } else {
+                _cadenceDisplay.setColor(Graphics.COLOR_WHITE);
+                _cadenceDisplay.setText("--");
+            }
             _cadenceDisplay.setText(cadence != null ? cadence.toString() : "--");
         var hasCadence = app.hasCurrentCadence(info);
         
@@ -78,6 +89,7 @@ class SimpleView extends WatchUi.View {
 
         // Zone Info
         if (_cadenceZoneDisplay != null) {
+            _cadenceZoneDisplay.setText("(" + minZone + "-" + maxZone + ")");
             if (hasCadence) {
                 var min = app.getCalculatedMinCadence();
                 var max = app.getCalculatedMaxCadence();

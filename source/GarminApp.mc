@@ -940,6 +940,19 @@ class GarminApp extends Application.AppBase {
         return (_targetCadence * 1.05).toNumber();
     }
 
+    const CADENCE_COLOR_BELOW = 0xFF0000;   // red - below target zone
+    const CADENCE_COLOR_IN_ZONE = 0x00BF63; // green - in target zone
+    const CADENCE_COLOR_ABOVE = 0xFFAA00;   // amber - above target zone
+
+    // Shared so every screen classifies/colors cadence the same way, instead of
+    // each view reinventing this (AdvancedView had its own private, two-way-only
+    // copy that treated "above zone" the same as "in zone").
+    function getCadenceZoneColor(cadence, min, max) as Number {
+        if (cadence < min) { return CADENCE_COLOR_BELOW; }
+        if (cadence > max) { return CADENCE_COLOR_ABOVE; }
+        return CADENCE_COLOR_IN_ZONE;
+    }
+
     function setTargetCadence(value as Number) as Void {
 
         _targetCadence = value;
