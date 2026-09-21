@@ -21,7 +21,7 @@ def method(text, name, next_name=None):
 
 
 class UiNavigationDelegateTests(unittest.TestCase):
-    def test_main_view_stacks_settings_and_allows_idle_exit(self):
+    def test_main_view_stacks_settings_and_preserves_back_long_press(self):
         text = source(DELEGATES / "SimpleViewDelegate.mc")
 
         settings = method(text, "pushSettingsView", "setMenuActive")
@@ -29,7 +29,9 @@ class UiNavigationDelegateTests(unittest.TestCase):
         self.assertNotIn("WatchUi.switchToView", settings)
 
         on_back = method(text, "onBack")
-        self.assertIn("return false;", on_back)
+        self.assertIn("return true;", on_back)
+        self.assertIn("triggerBackLongPress", text)
+        self.assertIn("openFeedbackMode", text)
 
     def test_main_and_advanced_swipes_match_gesture_direction(self):
         simple = method(source(DELEGATES / "SimpleViewDelegate.mc"), "onSwipe", "showActivityControlMenu")
