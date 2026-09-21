@@ -19,7 +19,7 @@ class CadenceQualityViewTests(unittest.TestCase):
         self.assertIn('format("%.2f") + " KM"', self.view)
 
     def test_target_score_and_range_are_dynamic(self):
-        self.assertIn("app.computeTimeInZoneScore()", self.view)
+        self.assertIn("app.computeLiveTimeInZonePercentage()", self.view)
         self.assertIn("app.getCadenceCount()", self.view)
         self.assertIn("app.getCalculatedMinCadence()", self.view)
         self.assertIn("app.getCalculatedMaxCadence()", self.view)
@@ -27,6 +27,15 @@ class CadenceQualityViewTests(unittest.TestCase):
         self.assertNotIn('"148"', self.view)
         self.assertNotIn('"140"', self.view)
         self.assertNotIn('"160"', self.view)
+
+    def test_percentage_is_available_from_first_recorded_sample(self):
+        app = (ROOT / "source" / "GarminApp.mc").read_text(encoding="utf-8")
+        self.assertIn("function computeLiveTimeInZonePercentage()", app)
+        self.assertIn("if (_cadenceCount == 0)", app)
+        self.assertIn("return computeLiveTimeInZonePercentage();", app)
+        self.assertNotIn("warming up", self.view)
+        self.assertIn('detailText = "start recording"', self.view)
+        self.assertIn('detailText = "waiting for cadence"', self.view)
 
     def test_view_refreshes_and_releases_its_timer(self):
         self.assertIn("new Timer.Timer()", self.view)

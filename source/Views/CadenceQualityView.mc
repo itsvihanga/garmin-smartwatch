@@ -7,7 +7,6 @@ import Toybox.WatchUi;
 
 class CadenceQualityView extends WatchUi.View {
 
-    const MIN_CQ_SAMPLES = 30;
     const RANGE_PADDING_SPM = 20;
 
     const COLOR_BELOW = Graphics.COLOR_ORANGE;
@@ -135,15 +134,17 @@ class CadenceQualityView extends WatchUi.View {
     }
 
     function drawTargetScore(dc as Dc, app as GarminApp, centerX as Number, screenH as Number) as Void {
-        var score = app.computeTimeInZoneScore();
+        var score = app.computeLiveTimeInZonePercentage();
         var sampleCount = app.getCadenceCount();
         var scoreText = score < 0 ? "--%" : score.toString() + "%";
-        var detailText = "on target";
+        var detailText = "start recording";
 
-        if (sampleCount < MIN_CQ_SAMPLES) {
-            detailText = "warming up " + sampleCount.toString() + "/30s";
-        } else {
+        if (score >= 0) {
             detailText = "on target - " + sampleCount.toString() + "s";
+        } else if (app.isRecording()) {
+            detailText = "waiting for cadence";
+        } else if (app.isPaused()) {
+            detailText = "activity paused";
         }
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
