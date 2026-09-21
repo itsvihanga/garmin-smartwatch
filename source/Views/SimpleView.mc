@@ -69,13 +69,22 @@ class SimpleView extends WatchUi.View {
         // Cadence
         if (_cadenceDisplay != null) {
             _cadenceDisplay.setText(cadence != null ? cadence.toString() : "--");
+        var hasCadence = app.hasCurrentCadence(info);
+        
+        // Cadence
+        if (_cadenceDisplay != null) {
+            _cadenceDisplay.setText(hasCadence ? info.currentCadence.toString() : "--");
         }
 
         // Zone Info
         if (_cadenceZoneDisplay != null) {
-            var min = app.getCalculatedMinCadence();
-            var max = app.getCalculatedMaxCadence();
-            _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
+            if (hasCadence) {
+                var min = app.getCalculatedMinCadence();
+                var max = app.getCalculatedMaxCadence();
+                _cadenceZoneDisplay.setText("(" + min + "-" + max + ")");
+            } else {
+                _cadenceZoneDisplay.setText("waiting");
+            }
         }
 
         // Heartrate

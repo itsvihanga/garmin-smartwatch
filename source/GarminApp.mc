@@ -566,6 +566,10 @@ class GarminApp extends Application.AppBase {
     // here used to promise but never delivered.
     function checkCadenceAlerts(info) as Void {
         if (_sessionState != RECORDING || info == null || info.currentCadence == null) {
+    function checkCadenceAlerts() as Void {
+        var info = Activity.getActivityInfo();
+
+        if (!hasCurrentCadence(info)) {
             // No reliable reading - hold the current zone/alert state rather
             // than guessing, same reasoning as the cadence sampling above.
             return;
@@ -674,8 +678,13 @@ class GarminApp extends Application.AppBase {
     }
 
     // Shared with SimpleView so both agree on what counts as a usable cadence reading.
+    // Garmin can report zero before the cadence sensor has a usable reading.
+    // Treat only positive values as cadence so missing startup data never
+    // appears as a below-zone sample.
     function hasCurrentCadence(info) as Boolean {
-        return info != null && info.currentCadence != null;
+        return info != null &&
+               info.currentCadence != null &&
+               info.currentCadence > 0;
     }
 
     // sample is null when the sensor failed to report a cadence for this tick;
