@@ -64,6 +64,11 @@ class SimpleView extends WatchUi.View {
     function updateDisplayStrings() as Void {
         var info = Activity.getActivityInfo();
         var app = Application.getApp() as GarminApp;
+        var cadence = app.getCurrentCadence();
+        
+        // Cadence
+        if (_cadenceDisplay != null) {
+            _cadenceDisplay.setText(cadence != null ? cadence.toString() : "--");
         var hasCadence = app.hasCurrentCadence(info);
         
         // Cadence
