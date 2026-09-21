@@ -45,6 +45,12 @@ class SelectExperienceDelegate extends WatchUi.Menu2InputDelegate {
         else if (id == :exp_advanced) { app._experienceLvl = 1.02; }
 
         System.println("Experience updated to: " + app._experienceLvl);
+
+        // Recalculate the target cadence range now that a profile input changed -
+        // otherwise experience level is saved but never actually feeds into the
+        // runner's target cadence.
+        app.idealCadenceCalculator();
+
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         //return true;
     }

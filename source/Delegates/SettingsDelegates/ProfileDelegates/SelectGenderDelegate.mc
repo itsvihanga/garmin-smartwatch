@@ -42,6 +42,12 @@ class SelectGenderDelegate extends WatchUi.Menu2InputDelegate {
         else { app._userGender = 2; }
 
         System.println("Gender updated to: " + app._userGender);
+
+        // Recalculate the target cadence range now that a profile input changed -
+        // otherwise gender is saved but never actually feeds into the runner's
+        // target cadence.
+        app.idealCadenceCalculator();
+
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         //return true;
     }
