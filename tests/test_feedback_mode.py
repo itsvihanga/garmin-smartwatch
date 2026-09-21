@@ -69,10 +69,11 @@ class FeedbackModeTests(unittest.TestCase):
     def test_feedback_summary_has_compact_round_watch_layout(self):
         feedback_view = read("source/Views/FeedbackSummaryView.mc")
         self.assertIn("width < 300", feedback_view)
-        self.assertIn("Graphics.FONT_NUMBER_HOT", feedback_view)
+        self.assertIn("Graphics.FONT_NUMBER_MILD", feedback_view)
+        self.assertIn("Graphics.FONT_MEDIUM", feedback_view)
         self.assertIn("dc.fillRoundedRectangle", feedback_view)
-        self.assertIn("Rez.Drawables.MainHeartRateIcon", feedback_view)
-        self.assertIn("smallScreen ? 0.82 : 0.81", feedback_view)
+        self.assertIn("Rez.Drawables.FeedbackHeartRateIcon", feedback_view)
+        self.assertIn("smallScreen ? 0.76 : 0.77", feedback_view)
 
     def test_feedback_graph_uses_recorded_time_and_clear_visual_layers(self):
         feedback_view = read("source/Views/FeedbackSummaryView.mc")
