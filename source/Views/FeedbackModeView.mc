@@ -26,12 +26,25 @@ class FeedbackModeView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
-        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        var app = getApp();
+        var title = "FEEDBACK MODE";
+        var detail = "OFF - normal feedback";
+        var color = Graphics.COLOR_LT_GRAY;
+        var titleFont = dc.getWidth() <= 300
+            ? Graphics.FONT_SMALL
+            : Graphics.FONT_MEDIUM;
+
+        if (app.getFeedbackModeEnabled()) {
+            detail = "ON - ready for next run";
+            color = Graphics.COLOR_GREEN;
+        }
+
+        dc.setColor(color, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             dc.getWidth() / 2,
             (dc.getHeight() * 0.45).toNumber(),
-            Graphics.FONT_MEDIUM,
-            "Feedback Mode",
+            titleFont,
+            title,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
 
@@ -40,7 +53,7 @@ class FeedbackModeView extends WatchUi.View {
             dc.getWidth() / 2,
             (dc.getHeight() * 0.60).toNumber(),
             Graphics.FONT_XTINY,
-            "Testing",
+            detail,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }

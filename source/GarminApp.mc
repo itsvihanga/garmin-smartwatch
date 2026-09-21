@@ -14,6 +14,12 @@ class GarminApp extends Application.AppBase {
     const MAX_CADENCE = 190;
     const MIN_CQ_SAMPLES = 30;
     const PACE_SPEED_BUFFER_SIZE = 5;
+    const FEEDBACK_INITIAL_VISIBLE_SECONDS = 60;
+    const FEEDBACK_HIDDEN_SECONDS = 30;
+    const FEEDBACK_VISIBLE_SECONDS = 60;
+    const FEEDBACK_HELD_THRESHOLD_PERCENT = 70;
+    const FEEDBACK_GRAPH_MAX_SAMPLES = 240;
+    const FEEDBACK_GRAPH_SAMPLE_INTERVAL_SECONDS = 5;
     const DEBUG_MODE = true;
 
     // Property keys for persistent storage
@@ -26,6 +32,7 @@ class GarminApp extends Application.AppBase {
     const PROP_MAX_CADENCE = "maxCadence";
     const PROP_VIBRATION_ENABLED = "vibrationEnabled";
     const PROP_SUMMARY_ENABLED = "summaryEnabled";
+    const PROP_FEEDBACK_MODE_ENABLED = "feedbackModeEnabled";
 
     var globalTimer;
     var activitySession; // Garmin activity recording session
@@ -73,6 +80,7 @@ class GarminApp extends Application.AppBase {
     var _chartDuration = ThirtyminChart as Number;
     private var _vibrationEnabled = true;
     private var _summaryEnabled = true;
+    private var _feedbackModeEnabled = false;
 
     var _targetCadence = 160;
 
@@ -86,6 +94,16 @@ class GarminApp extends Application.AppBase {
     private var _paceSpeedSamples as Array<Float?> = new [PACE_SPEED_BUFFER_SIZE];
     private var _paceSpeedIndex = 0;
     private var _paceSpeedCount = 0;
+
+    // Feedback-hidden mode uses active recording seconds, so pause time never
+    // advances the schedule or affects the hidden-period score.
+    private var _feedbackActiveSeconds = 0;
+    private var _feedbackHiddenActive = false;
+    private var _feedbackHiddenSampleCount = 0;
+    private var _feedbackHiddenInRangeCount = 0;
+    private var _feedbackCadenceLog as Array<Number?> = [];
+    private var _feedbackHiddenLog as Array<Boolean> = [];
+    private var _feedbackTimeLog as Array<Number> = [];
      
     private var _cadenceBarAvg as Array<Float?> = new [_chartDuration];
     private var _cadenceAvgIndex = 0;
@@ -221,6 +239,7 @@ class GarminApp extends Application.AppBase {
         _validCadenceSampleCount = 0;
         _secondsSinceLastAlert = 0;
         resetPaceSpeedBuffer();
+        resetFeedbackSession();
         //_sessionStartTime = System.getTimer();
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -528,6 +547,7 @@ class GarminApp extends Application.AppBase {
         _missingCadenceCount = 0;
         _validCadenceSampleCount = 0;
         _secondsSinceLastAlert = 0;
+        resetFeedbackSession();
         //_sessionStartTime = null;
         _sessionPausedTime = 0;
         _lastPauseTime = null;
@@ -646,6 +666,9 @@ class GarminApp extends Application.AppBase {
         // Sample pace independently from cadence so missing cadence data does
         // not prevent a valid speed sample from entering the pace buffer.
         updatePaceSpeedBuffer(info);
+        if (_feedbackModeEnabled) {
+            updateFeedbackSession(info);
+        }
 
         if (info == null || info.currentCadence == null) {
             _missingCadenceCount++;
@@ -658,6 +681,13 @@ class GarminApp extends Application.AppBase {
 
     var current = info.currentCadence.toNumber();
     updateCadenceHistory(info.currentCadence.toFloat());
+
+    // Cadence is still recorded during hidden windows, but no live cue or
+    // vibration may reveal whether the runner is inside the target range.
+    if (isFeedbackHidden()) {
+        _secondsSinceLastAlert = 0;
+        return;
+    }
 
     if (getVibrationEnabled()) {
         var minZone = getCalculatedMinCadence();
@@ -680,6 +710,148 @@ class GarminApp extends Application.AppBase {
     } else {
         _secondsSinceLastAlert = 0;
     }
+    }
+
+    function resetFeedbackSession() as Void {
+        _feedbackActiveSeconds = 0;
+        _feedbackHiddenActive = false;
+        _feedbackHiddenSampleCount = 0;
+        _feedbackHiddenInRangeCount = 0;
+        _feedbackCadenceLog = [];
+        _feedbackHiddenLog = [];
+        _feedbackTimeLog = [];
+    }
+
+    function updateFeedbackSession(info) as Void {
+        _feedbackActiveSeconds++;
+
+        var wasHidden = _feedbackHiddenActive;
+        _feedbackHiddenActive = false;
+
+        if (_feedbackActiveSeconds >= FEEDBACK_INITIAL_VISIBLE_SECONDS) {
+            var cycleLength = FEEDBACK_HIDDEN_SECONDS + FEEDBACK_VISIBLE_SECONDS;
+            var cycleSecond =
+                (_feedbackActiveSeconds - FEEDBACK_INITIAL_VISIBLE_SECONDS) % cycleLength;
+            _feedbackHiddenActive = cycleSecond < FEEDBACK_HIDDEN_SECONDS;
+        }
+
+        if (_feedbackHiddenActive != wasHidden) {
+            System.println(
+                _feedbackHiddenActive
+                    ? "[FEEDBACK] Hidden window started"
+                    : "[FEEDBACK] Hidden window ended"
+            );
+        }
+
+        var cadence = null;
+        if (info != null && info.currentCadence != null) {
+            cadence = info.currentCadence.toNumber();
+        }
+
+        if (_feedbackHiddenActive && cadence != null) {
+            // Only cadence readings that actually exist belong in the score.
+            // A missing sensor sample must not be counted as an out-of-range
+            // second, otherwise data drop-outs incorrectly drive the result
+            // toward zero.
+            _feedbackHiddenSampleCount++;
+            if (cadence >= getCalculatedMinCadence() &&
+                cadence <= getCalculatedMaxCadence()) {
+                _feedbackHiddenInRangeCount++;
+            }
+        }
+
+        // Graph data is sampled less frequently than the score to keep memory
+        // bounded while still preserving hidden-window transitions.
+        if ((_feedbackActiveSeconds % FEEDBACK_GRAPH_SAMPLE_INTERVAL_SECONDS) == 0 ||
+            _feedbackHiddenActive != wasHidden) {
+            _feedbackCadenceLog.add(cadence);
+            _feedbackHiddenLog.add(_feedbackHiddenActive);
+            _feedbackTimeLog.add(_feedbackActiveSeconds);
+
+            if (_feedbackCadenceLog.size() > FEEDBACK_GRAPH_MAX_SAMPLES) {
+                _feedbackCadenceLog.remove(_feedbackCadenceLog[0]);
+                _feedbackHiddenLog.remove(_feedbackHiddenLog[0]);
+                _feedbackTimeLog.remove(_feedbackTimeLog[0]);
+            }
+        }
+    }
+
+    function isFeedbackHidden() as Boolean {
+        return _feedbackModeEnabled &&
+               _sessionState == RECORDING &&
+               _feedbackHiddenActive;
+    }
+
+    function getFeedbackActiveSeconds() as Number {
+        return _feedbackActiveSeconds;
+    }
+
+    function getFeedbackSecondsUntilNextHidden() as Number {
+        if (!_feedbackModeEnabled) {
+            return -1;
+        }
+
+        if (isFeedbackHidden()) {
+            return 0;
+        }
+
+        if (_feedbackActiveSeconds < FEEDBACK_INITIAL_VISIBLE_SECONDS) {
+            return FEEDBACK_INITIAL_VISIBLE_SECONDS - _feedbackActiveSeconds;
+        }
+
+        var cycleLength = FEEDBACK_HIDDEN_SECONDS + FEEDBACK_VISIBLE_SECONDS;
+        var cycleSecond =
+            (_feedbackActiveSeconds - FEEDBACK_INITIAL_VISIBLE_SECONDS) % cycleLength;
+        return cycleLength - cycleSecond;
+    }
+
+    function getFeedbackHiddenPercentage() as Number {
+        if (_feedbackHiddenSampleCount == 0) {
+            return -1;
+        }
+
+        return ((_feedbackHiddenInRangeCount * 100.0) /
+                _feedbackHiddenSampleCount).toNumber();
+    }
+
+    function hasFeedbackSummaryData() as Boolean {
+        return _feedbackHiddenSampleCount > 0;
+    }
+
+    function getFeedbackModeEnabled() as Boolean {
+        return _feedbackModeEnabled;
+    }
+
+    function toggleFeedbackMode() as Boolean {
+        if (!isIdle()) {
+            System.println("[FEEDBACK] Mode can only be changed before a run");
+            return _feedbackModeEnabled;
+        }
+
+        _feedbackModeEnabled = !_feedbackModeEnabled;
+        resetFeedbackSession();
+        saveSettings();
+        System.println(
+            "[FEEDBACK] Mode " + (_feedbackModeEnabled ? "ON" : "OFF")
+        );
+        return _feedbackModeEnabled;
+    }
+
+    function didHoldCadenceWhenHidden() as Boolean {
+        var score = getFeedbackHiddenPercentage();
+        return score >= FEEDBACK_HELD_THRESHOLD_PERCENT;
+    }
+
+    function getFeedbackCadenceLog() as Array<Number?> {
+        return _feedbackCadenceLog;
+    }
+
+    function getFeedbackHiddenLog() as Array<Boolean> {
+        return _feedbackHiddenLog;
+    }
+
+    function getFeedbackTimeLog() as Array<Number> {
+        return _feedbackTimeLog;
     }
 
     function resetPaceSpeedBuffer() as Void {
@@ -1127,6 +1299,7 @@ class GarminApp extends Application.AppBase {
     s.setValue("u_dur", _chartDuration);
     s.setValue(PROP_VIBRATION_ENABLED, _vibrationEnabled);
     s.setValue(PROP_SUMMARY_ENABLED, _summaryEnabled);
+    s.setValue(PROP_FEEDBACK_MODE_ENABLED, _feedbackModeEnabled);
     
     System.println("--- DISK SYNC COMPLETE ---");
 }
@@ -1146,6 +1319,7 @@ function loadSettings() {
     val = s.getValue("u_gen"); if (val != null) { _userGender = val; }
     val = s.getValue(PROP_VIBRATION_ENABLED); if (val != null) { _vibrationEnabled = val; }
     val = s.getValue(PROP_SUMMARY_ENABLED); if (val != null) { _summaryEnabled = val; }
+    val = s.getValue(PROP_FEEDBACK_MODE_ENABLED); if (val != null) { _feedbackModeEnabled = val; }
     val = s.getValue("u_dur");
 
 if (val != null) {
@@ -1181,6 +1355,7 @@ if (val != null) {
         _chartDuration = ThirtyminChart as Number;
         _vibrationEnabled = true;
         _summaryEnabled = true;
+        _feedbackModeEnabled = false;
 
         _cadenceBarAvg = new [_chartDuration];
         _cadenceAvgIndex = 0;

@@ -113,8 +113,19 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function triggerBackLongPress() as Void {
-        System.println("[UI] Long BACK press detected - opening Feedback Mode");
         _handledBackLongPress = true;
+
+        var app = getApp();
+        if (!app.isIdle()) {
+            System.println("[FEEDBACK] Finish the current run before changing mode");
+            return;
+        }
+
+        var enabled = app.toggleFeedbackMode();
+        System.println(
+            "[UI] Long BACK press - Feedback Mode " +
+            (enabled ? "ON" : "OFF")
+        );
         openFeedbackMode();
     }
 
@@ -287,8 +298,12 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            return true;
         }
 
-        // Idle: allow the platform's default back behavior so users can exit the app.
-        return false;
+        // The root view must consume BACK immediately. Returning false here lets
+        // Garmin exit the app before the key-held timer can detect a long press.
+        // Short presses are therefore ignored on the root screen; holding BACK
+        // is handled by triggerBackLongPress() above.
+        System.println("[UI] Short BACK pressed - staying on main screen");
+        return true;
     }
 }
 
@@ -380,12 +395,21 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
             _parentDelegate.setMenuActive(false);
 
             if (app.getSummaryEnabled()) {
-                // SHOW SUMMARY SCREEN ON SAVE
-                WatchUi.switchToView(
-                    new SummaryView(),
-                    new SummaryViewDelegate(),
-                    WatchUi.SLIDE_UP
-                );
+                if (app.hasFeedbackSummaryData()) {
+                    // Feedback performance is shown first; SELECT/BACK then
+                    // continues to the existing complete workout summary.
+                    WatchUi.switchToView(
+                        new FeedbackSummaryView(),
+                        new FeedbackSummaryDelegate(),
+                        WatchUi.SLIDE_UP
+                    );
+                } else {
+                    WatchUi.switchToView(
+                        new SummaryView(),
+                        new SummaryViewDelegate(),
+                        WatchUi.SLIDE_UP
+                    );
+                }
             } else {
                 System.println("[UI] Summary screen skipped by user preference");
                 app.resetSession();
