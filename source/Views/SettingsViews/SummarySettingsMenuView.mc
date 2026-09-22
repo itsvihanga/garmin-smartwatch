@@ -58,13 +58,6 @@ class SummarySettingsMenuView extends WatchUi.View {
         } else if (_screenState == 1) {
             drawSummaryConfirmScreen(dc);
         }
-        else if (_screenState == 2){
-            WatchUi.pushView(
-                new WorkOutSummarySettingsView(),
-                new WorkOutSummarySettingsViewDelegate(),
-                WatchUi.SLIDE_DOWN
-            );
-        }
     }
 
         function openConfirmScreen() {
@@ -202,7 +195,12 @@ function drawButtons(dc as Dc, startY) {
         if (_screenState == 1) {
             if (_selectedButton == 0) {
                 System.println("[BUTTON 0]");
-                _screenState = 2;
+                _screenState = 0;
+                WatchUi.pushView(
+                    new WorkOutSummarySettingsView(),
+                    new WorkOutSummarySettingsViewDelegate(),
+                    WatchUi.SLIDE_DOWN
+                );
             } else {
                 _screenState = 0;
                 System.println("[BUTTON 1]");
