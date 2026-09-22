@@ -7,8 +7,8 @@ module FeedbackHiddenRenderer {
         var height = dc.getHeight();
         var centerX = width / 2;
 
-        // Keep the remainder of the hidden interval completely blank so the
-        // runner receives no distracting cadence guidance.
+        // This renderer is used only for the four-second transition notice.
+        // Its callers return to the main dashboard when the notice expires.
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
         if (!app.shouldShowFeedbackHiddenNotice()) {

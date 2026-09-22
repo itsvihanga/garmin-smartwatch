@@ -33,6 +33,14 @@ class CadenceQualityView extends WatchUi.View {
     }
 
     function refreshScreen() as Void {
+        var app = Application.getApp() as GarminApp;
+        if (app.isFeedbackHidden() && !app.shouldShowFeedbackHiddenNotice()) {
+            // CadenceQualityView is pushed from the main dashboard. Once the
+            // four-second notice expires, pop it so the runner returns home.
+            stopRefreshTimer();
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            return;
+        }
         WatchUi.requestUpdate();
     }
 
@@ -49,7 +57,9 @@ class CadenceQualityView extends WatchUi.View {
 
         var app = Application.getApp() as GarminApp;
         if (app.isFeedbackHidden()) {
-            drawFeedbackHidden(dc, app);
+            if (app.shouldShowFeedbackHiddenNotice()) {
+                drawFeedbackHidden(dc, app);
+            }
             return;
         }
 

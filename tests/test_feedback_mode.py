@@ -71,6 +71,13 @@ class FeedbackModeTests(unittest.TestCase):
         self.assertIn("if (!app.shouldShowFeedbackHiddenNotice())", renderer)
         self.assertIn("return;", renderer)
 
+        main_view = read("source/Views/SimpleView.mc")
+        self.assertIn(
+            "app.isFeedbackHidden() && app.shouldShowFeedbackHiddenNotice()",
+            main_view,
+        )
+        self.assertIn("WatchUi.popView(WatchUi.SLIDE_IMMEDIATE)", cadence_view)
+
     def test_feedback_summary_precedes_existing_workout_summary(self):
         delegate = read("source/Delegates/SimpleViewDelegate.mc")
         feedback_delegate = read("source/Delegates/FeedbackSummaryDelegate.mc")

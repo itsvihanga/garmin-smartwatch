@@ -111,7 +111,7 @@ class SimpleView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         var app = Application.getApp();
 
-        if (app.isFeedbackHidden()) {
+        if (app.isFeedbackHidden() && app.shouldShowFeedbackHiddenNotice()) {
             drawFeedbackHiddenIndicator(dc, app);
             return;
         }
