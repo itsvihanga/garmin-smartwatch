@@ -5,9 +5,11 @@ import Toybox.WatchUi;
 class FeedbackSummaryView extends WatchUi.View {
 
     private var _heartRateIcon;
+    private var _useSavedData;
 
-    function initialize() {
+    function initialize(useSavedData as Boolean) {
         View.initialize();
+        _useSavedData = useSavedData;
         _heartRateIcon = WatchUi.loadResource(Rez.Drawables.FeedbackHeartRateIcon);
     }
 
@@ -28,20 +30,28 @@ class FeedbackSummaryView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
-        if (!app.hasFeedbackSummaryData()) {
+        var hasData = _useSavedData
+            ? app.hasSavedFeedbackSummaryData()
+            : app.hasFeedbackSummaryData();
+        if (!hasData) {
             dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
             dc.drawText(
                 centerX,
                 height / 2,
                 Graphics.FONT_SMALL,
-                "No hidden-period data",
+                _useSavedData ? "No saved feedback" : "No hidden-period data",
                 Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
             );
             return;
         }
 
-        var score = app.getFeedbackHiddenPercentage();
-        var stateColor = app.didHoldCadenceWhenHidden()
+        var score = _useSavedData
+            ? app.getSavedFeedbackHiddenPercentage()
+            : app.getFeedbackHiddenPercentage();
+        var heldCadence = _useSavedData
+            ? app.didHoldSavedCadenceWhenHidden()
+            : app.didHoldCadenceWhenHidden();
+        var stateColor = heldCadence
             ? Graphics.COLOR_GREEN
             : Graphics.COLOR_ORANGE;
 
@@ -86,8 +96,12 @@ class FeedbackSummaryView extends WatchUi.View {
     }
 
     function drawMetrics(dc as Dc, app, width as Number, height as Number) as Void {
-        var heartRate = app.getAvgHeartRate();
-        var distance = app.getSessionDistance();
+        var heartRate = _useSavedData
+            ? app.getSavedFeedbackHeartRate()
+            : app.getAvgHeartRate();
+        var distance = _useSavedData
+            ? app.getSavedFeedbackDistance()
+            : app.getSessionDistance();
         var heartRateText = heartRate == null ? "-- bpm" : heartRate.toString() + " bpm";
         var distanceText = distance == null
             ? "-- KM"
@@ -129,9 +143,15 @@ class FeedbackSummaryView extends WatchUi.View {
         width as Number,
         height as Number
     ) as Void {
-        var cadenceLog = app.getFeedbackCadenceLog();
-        var hiddenLog = app.getFeedbackHiddenLog();
-        var timeLog = app.getFeedbackTimeLog();
+        var cadenceLog = _useSavedData
+            ? app.getSavedFeedbackCadenceLog()
+            : app.getFeedbackCadenceLog();
+        var hiddenLog = _useSavedData
+            ? app.getSavedFeedbackHiddenLog()
+            : app.getFeedbackHiddenLog();
+        var timeLog = _useSavedData
+            ? app.getSavedFeedbackTimeLog()
+            : app.getFeedbackTimeLog();
         var count = cadenceLog.size();
 
         if (count == 0) {
@@ -150,8 +170,12 @@ class FeedbackSummaryView extends WatchUi.View {
         var top = cardTop + (height * 0.035).toNumber();
         var bottom = cardBottom - (height * 0.055).toNumber();
         var graphWidth = right - left;
-        var targetMin = app.getCalculatedMinCadence();
-        var targetMax = app.getCalculatedMaxCadence();
+        var targetMin = _useSavedData
+            ? app.getSavedFeedbackTargetMin()
+            : app.getCalculatedMinCadence();
+        var targetMax = _useSavedData
+            ? app.getSavedFeedbackTargetMax()
+            : app.getCalculatedMaxCadence();
         var graphMin = targetMin - 10;
         var graphMax = targetMax + 10;
 

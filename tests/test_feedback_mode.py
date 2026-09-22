@@ -83,7 +83,7 @@ class FeedbackModeTests(unittest.TestCase):
         feedback_delegate = read("source/Delegates/FeedbackSummaryDelegate.mc")
         feedback_view = read("source/Views/FeedbackSummaryView.mc")
         self.assertIn("app.hasFeedbackSummaryData()", delegate)
-        self.assertIn("new FeedbackSummaryView()", delegate)
+        self.assertIn("new FeedbackSummaryView(false)", delegate)
         self.assertIn("new SummaryView()", feedback_delegate)
         self.assertIn('"When hidden"', feedback_view)
         self.assertIn('"in target range"', feedback_view)
@@ -108,6 +108,35 @@ class FeedbackModeTests(unittest.TestCase):
             feedback_view.index("dc.setColor(0x174A2A"),
         )
         self.assertIn("dc.setPenWidth(smallScreen ? 2 : 3)", feedback_view)
+
+    def test_post_feedback_is_persisted_and_available_from_settings(self):
+        app = read("source/GarminApp.mc")
+        feedback_view = read("source/Views/FeedbackSummaryView.mc")
+        settings_view = read("source/Views/SettingsViews/PostFeedbackSettingsView.mc")
+        settings_delegate = read(
+            "source/Delegates/SettingsDelegates/SettingsMenuDelegates/"
+            "PostFeedbackSettingsMenuDelegate.mc"
+        )
+        drawables = read("resources/drawables/drawables.xml")
+
+        self.assertIn("persistFeedbackSummary();", app)
+        self.assertIn("PROP_SAVED_FEEDBACK_AVAILABLE", app)
+        self.assertIn("hasSavedFeedbackSummaryData", app)
+        self.assertIn("getSavedFeedbackCadenceLog", app)
+        self.assertIn("getSavedFeedbackHiddenLog", app)
+        self.assertIn("getSavedFeedbackTimeLog", app)
+        self.assertIn("_useSavedData", feedback_view)
+        self.assertIn('"No saved feedback"', feedback_view)
+        self.assertIn('"Post Feedback"', settings_view)
+        self.assertIn("Rez.Drawables.PostFeedbackIcon", settings_view)
+        self.assertIn("new FeedbackSummaryView(true)", settings_delegate)
+        self.assertIn('id="PostFeedbackIcon"', drawables)
+
+        stop_method = app[app.index("function stopRecording"):app.index("function saveSession")]
+        self.assertLess(
+            stop_method.index("captureActivityMetrics();"),
+            stop_method.index("activitySession.stop()"),
+        )
 
 
 if __name__ == "__main__":

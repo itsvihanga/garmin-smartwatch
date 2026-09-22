@@ -88,6 +88,8 @@ class UiNavigationDelegateTests(unittest.TestCase):
             ("CadenceSettingsMenuDelegate.mc", "onPreviousPage", None),
             ("ProfileSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage"),
             ("ProfileSettingsMenuDelegate.mc", "onPreviousPage", "pushProfileMenu"),
+            ("PostFeedbackSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage"),
+            ("PostFeedbackSettingsMenuDelegate.mc", "onPreviousPage", None),
             ("SummarySettingsMenuDelegate.mc", "handleUp", "handleDown"),
             ("SummarySettingsMenuDelegate.mc", "handleDown", "onKey"),
             ("BarChartSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage"),
@@ -105,6 +107,7 @@ class UiNavigationDelegateTests(unittest.TestCase):
         for filename in (
             "CadenceSettingsMenuDelegate.mc",
             "ProfileSettingsMenuDelegate.mc",
+            "PostFeedbackSettingsMenuDelegate.mc",
             "BarChartSettingsMenuDelegate.mc",
         ):
             with self.subTest(filename=filename):

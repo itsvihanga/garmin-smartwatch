@@ -399,7 +399,7 @@ class SaveDiscardMenuDelegate extends WatchUi.Menu2InputDelegate {
                     // Feedback performance is shown first; SELECT/BACK then
                     // continues to the existing complete workout summary.
                     WatchUi.switchToView(
-                        new FeedbackSummaryView(),
+                        new FeedbackSummaryView(false),
                         new FeedbackSummaryDelegate(),
                         WatchUi.SLIDE_UP
                     );
