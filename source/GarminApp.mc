@@ -923,9 +923,21 @@ class GarminApp extends Application.AppBase {
         }
     } 
     
-        function computeTimeInZoneScore() as Number {
+    function computeTimeInZoneScore() as Number {
 
         if (_cadenceCount < MIN_CQ_SAMPLES) {
+            return -1;
+        }
+
+        return computeLiveTimeInZonePercentage();
+    }
+
+    // Live adherence is useful from the first valid cadence sample. Cadence
+    // Quality still calls computeTimeInZoneScore(), which preserves its
+    // 30-sample warm-up before producing the research-oriented CQ metric.
+    function computeLiveTimeInZonePercentage() as Number {
+
+        if (_cadenceCount == 0) {
             return -1;
         }
 

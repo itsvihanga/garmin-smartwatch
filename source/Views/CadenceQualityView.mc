@@ -1,94 +1,99 @@
+import Toybox.Activity;
+import Toybox.Application;
 import Toybox.Graphics;
+import Toybox.Lang;
+import Toybox.Timer;
 import Toybox.WatchUi;
 
 class CadenceQualityView extends WatchUi.View {
 
+    const RANGE_PADDING_SPM = 20;
+
+    const COLOR_BELOW = Graphics.COLOR_ORANGE;
+    const COLOR_IN_RANGE = Graphics.COLOR_BLUE;
+    const COLOR_ABOVE = Graphics.COLOR_RED;
+
     private var _heartIcon;
+    private var _refreshTimer = null;
 
     function initialize() {
         View.initialize();
-
-        // Load the heart-rate icon already available in drawables
-        _heartIcon = WatchUi.loadResource(
-            Rez.Drawables.IconHeartRate
-        );
+        _heartIcon = WatchUi.loadResource(Rez.Drawables.IconHeartRate);
     }
 
-
-    function onLayout(dc as Dc) {
+    function onShow() as Void {
+        stopRefreshTimer();
+        _refreshTimer = new Timer.Timer();
+        _refreshTimer.start(method(:refreshScreen), 1000, true);
+        WatchUi.requestUpdate();
     }
 
-
-    function onShow() {
+    function onHide() as Void {
+        stopRefreshTimer();
     }
 
+    function refreshScreen() as Void {
+        WatchUi.requestUpdate();
+    }
 
-    function onUpdate(dc as Dc) {
+    function stopRefreshTimer() as Void {
+        if (_refreshTimer != null) {
+            _refreshTimer.stop();
+            _refreshTimer = null;
+        }
+    }
 
-        // Clear the screen
-        dc.setColor(
-            Graphics.COLOR_BLACK,
-            Graphics.COLOR_BLACK
-        );
-
+    function onUpdate(dc as Dc) as Void {
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
 
-        drawCadenceQualityScreen(dc);
+        var app = Application.getApp() as GarminApp;
+        if (app.isFeedbackHidden()) {
+            drawFeedbackHidden(dc, app.isPaused());
+            return;
+        }
+
+        drawCadenceDisplay(dc, app, Activity.getActivityInfo());
     }
 
-
-    function onHide() {
-    }
-
-
-    function drawCadenceQualityScreen(dc as Dc) {
-
+    function drawCadenceDisplay(dc as Dc, app as GarminApp, info) as Void {
         var screenW = dc.getWidth();
         var screenH = dc.getHeight();
         var centerX = screenW / 2;
 
+        var targetMin = app.getCalculatedMinCadence();
+        var targetMax = app.getCalculatedMaxCadence();
+        var cadence = null;
+        var heartRate = null;
+        var elapsedDistance = null;
 
-        // =====================================================
-        // ON TARGET SECTION
-        // =====================================================
+        if (info != null) {
+            if (info.currentCadence != null) {
+                cadence = info.currentCadence.toNumber();
+            }
+            heartRate = info.currentHeartRate;
+            elapsedDistance = info.elapsedDistance;
+        }
 
-        dc.setColor(
-            Graphics.COLOR_WHITE,
-            Graphics.COLOR_TRANSPARENT
-        );
+        var stateColor = Graphics.COLOR_LT_GRAY;
+        var statusText = "waiting";
+        if (cadence != null) {
+            if (cadence < targetMin) {
+                stateColor = COLOR_BELOW;
+                statusText = "faster";
+            } else if (cadence > targetMax) {
+                stateColor = COLOR_ABOVE;
+                statusText = "slower";
+            } else {
+                stateColor = COLOR_IN_RANGE;
+                statusText = "in range";
+            }
+        }
 
+        drawTargetScore(dc, app, centerX, screenH);
 
-        // On target percentage
-        dc.drawText(
-            centerX,
-            (screenH * 0.045).toNumber(),
-            Graphics.FONT_XTINY,
-            "82%",
-            Graphics.TEXT_JUSTIFY_CENTER
-        );
-
-
-        // On target label
-        dc.drawText(
-            centerX,
-            (screenH * 0.095).toNumber(),
-            Graphics.FONT_XTINY,
-            "on target",
-            Graphics.TEXT_JUSTIFY_CENTER
-        );
-
-
-        // =====================================================
-        // DIVIDER LINE
-        // =====================================================
-
-        dc.setColor(
-            Graphics.COLOR_LT_GRAY,
-            Graphics.COLOR_TRANSPARENT
-        );
-
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(1);
-
         dc.drawLine(
             (screenW * 0.28).toNumber(),
             (screenH * 0.165).toNumber(),
@@ -96,33 +101,16 @@ class CadenceQualityView extends WatchUi.View {
             (screenH * 0.165).toNumber()
         );
 
-
-        // =====================================================
-        // LIVE CADENCE
-        // =====================================================
-
-        dc.setColor(
-            Graphics.COLOR_BLUE,
-            Graphics.COLOR_TRANSPARENT
-        );
-
-
-        // Current cadence
+        dc.setColor(stateColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
             (screenH * 0.235).toNumber(),
             Graphics.FONT_LARGE,
-            "148",
+            cadence == null ? "--" : cadence.toString(),
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
-
-        // SPM
-        dc.setColor(
-            Graphics.COLOR_WHITE,
-            Graphics.COLOR_TRANSPARENT
-        );
-
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
             (screenH * 0.365).toNumber(),
@@ -131,139 +119,124 @@ class CadenceQualityView extends WatchUi.View {
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
-
-        // Cadence status
-        dc.setColor(
-            Graphics.COLOR_BLUE,
-            Graphics.COLOR_TRANSPARENT
-        );
-
+        dc.setColor(stateColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
             (screenH * 0.425).toNumber(),
             Graphics.FONT_XTINY,
-            "in range",
+            statusText,
             Graphics.TEXT_JUSTIFY_CENTER
         );
 
+        drawTargetRange(dc, screenW, screenH, cadence, targetMin, targetMax, stateColor);
+        drawHeartRate(dc, screenW, screenH, heartRate);
+        drawDistance(dc, screenW, screenH, elapsedDistance);
+    }
 
-        // =====================================================
-        // PROGRESS BAR
-        // =====================================================
+    function drawTargetScore(dc as Dc, app as GarminApp, centerX as Number, screenH as Number) as Void {
+        var score = app.computeLiveTimeInZonePercentage();
+        var sampleCount = app.getCadenceCount();
+        var scoreText = score < 0 ? "--%" : score.toString() + "%";
+        var detailText = "start recording";
 
-        var barY =
-            (screenH * 0.545).toNumber();
+        if (score >= 0) {
+            detailText = "on target - " + sampleCount.toString() + "s";
+        } else if (app.isRecording()) {
+            detailText = "waiting for cadence";
+        } else if (app.isPaused()) {
+            detailText = "activity paused";
+        }
 
-        var barStart =
-            (screenW * 0.17).toNumber();
-
-        var barEnd =
-            (screenW * 0.83).toNumber();
-
-
-        // Grey background bar
-        dc.setColor(
-            Graphics.COLOR_LT_GRAY,
-            Graphics.COLOR_TRANSPARENT
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(
+            centerX,
+            (screenH * 0.045).toNumber(),
+            Graphics.FONT_XTINY,
+            scoreText,
+            Graphics.TEXT_JUSTIFY_CENTER
         );
+        dc.drawText(
+            centerX,
+            (screenH * 0.095).toNumber(),
+            Graphics.FONT_XTINY,
+            detailText,
+            Graphics.TEXT_JUSTIFY_CENTER
+        );
+    }
 
+    function drawTargetRange(
+        dc as Dc,
+        screenW as Number,
+        screenH as Number,
+        cadence,
+        targetMin as Number,
+        targetMax as Number,
+        stateColor as Number
+    ) as Void {
+        var barY = (screenH * 0.545).toNumber();
+        var barStart = (screenW * 0.17).toNumber();
+        var barEnd = (screenW * 0.83).toNumber();
+        var barWidth = barEnd - barStart;
+        var scaleMin = targetMin - RANGE_PADDING_SPM;
+        var scaleMax = targetMax + RANGE_PADDING_SPM;
+        var scaleSpan = scaleMax - scaleMin;
+
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(4);
-
-        dc.drawLine(
-            barStart,
-            barY,
-            barEnd,
-            barY
-        );
-
+        dc.drawLine(barStart, barY, barEnd, barY);
         dc.setPenWidth(1);
 
+        var targetStartX = barStart +
+            (((targetMin - scaleMin) * barWidth) / scaleSpan).toNumber();
+        var targetEndX = barStart +
+            (((targetMax - scaleMin) * barWidth) / scaleSpan).toNumber();
+        var targetWidth = targetEndX - targetStartX;
+        if (targetWidth < 8) { targetWidth = 8; }
 
-        // =====================================================
-        // TARGET RANGE BOX
-        // =====================================================
-
-        var targetX =
-            (screenW * 0.40).toNumber();
-
-        var targetY =
-            (screenH * 0.525).toNumber();
-
-        var targetWidth =
-            (screenW * 0.25).toNumber();
-
-        var targetHeight =
-            (screenH * 0.055).toNumber();
-
-
-        dc.setColor(
-            Graphics.COLOR_WHITE,
-            Graphics.COLOR_WHITE
-        );
-
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_WHITE);
         dc.fillRoundedRectangle(
-            targetX,
-            targetY,
+            targetStartX,
+            barY - (screenH * 0.020).toNumber(),
             targetWidth,
-            targetHeight,
-            7
+            (screenH * 0.040).toNumber(),
+            6
         );
 
+        if (cadence != null) {
+            var clampedCadence = cadence;
+            if (clampedCadence < scaleMin) { clampedCadence = scaleMin; }
+            if (clampedCadence > scaleMax) { clampedCadence = scaleMax; }
+            var markerX = barStart +
+                (((clampedCadence - scaleMin) * barWidth) / scaleSpan).toNumber();
 
-        // =====================================================
-        // CURRENT CADENCE MARKER
-        // =====================================================
+            dc.setColor(stateColor, stateColor);
+            dc.fillRectangle(
+                markerX - 1,
+                barY - (screenH * 0.047).toNumber(),
+                3,
+                (screenH * 0.094).toNumber()
+            );
+        }
 
-        dc.setColor(
-            Graphics.COLOR_GREEN,
-            Graphics.COLOR_GREEN
-        );
-
-        dc.fillRectangle(
-            (screenW * 0.497).toNumber(),
-            (screenH * 0.505).toNumber(),
-            3,
-            (screenH * 0.095).toNumber()
-        );
-
-
-        // =====================================================
-        // TARGET RANGE VALUES
-        // =====================================================
-
-        dc.setColor(
-            Graphics.COLOR_WHITE,
-            Graphics.COLOR_TRANSPARENT
-        );
-
-
-        // Minimum cadence
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
-            (screenW * 0.40).toNumber(),
+            targetStartX,
             (screenH * 0.600).toNumber(),
             Graphics.FONT_XTINY,
-            "140",
+            targetMin.toString(),
             Graphics.TEXT_JUSTIFY_CENTER
         );
-
-
-        // Maximum cadence
         dc.drawText(
-            (screenW * 0.65).toNumber(),
+            targetEndX,
             (screenH * 0.600).toNumber(),
             Graphics.FONT_XTINY,
-            "160",
+            targetMax.toString(),
             Graphics.TEXT_JUSTIFY_CENTER
         );
+    }
 
-
-        // =====================================================
-        // HEART RATE
-        // =====================================================
-
-        // Existing heart-rate icon
+    function drawHeartRate(dc as Dc, screenW as Number, screenH as Number, heartRate) as Void {
         if (_heartIcon != null) {
-
             dc.drawBitmap(
                 (screenW * 0.20).toNumber(),
                 (screenH * 0.690).toNumber(),
@@ -271,37 +244,51 @@ class CadenceQualityView extends WatchUi.View {
             );
         }
 
-
-        // Heart-rate placeholder
-        dc.setColor(
-            Graphics.COLOR_RED,
-            Graphics.COLOR_TRANSPARENT
-        );
-
+        dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
-            (screenW * 0.34).toNumber(),
+            (screenW * 0.38).toNumber(),
             (screenH * 0.705).toNumber(),
             Graphics.FONT_XTINY,
-            "--",
+            heartRate == null ? "--" : heartRate.toString(),
             Graphics.TEXT_JUSTIFY_CENTER
         );
+    }
 
+    function drawDistance(dc as Dc, screenW as Number, screenH as Number, elapsedDistance) as Void {
+        var distanceText = "-- KM";
+        if (elapsedDistance != null) {
+            distanceText = (elapsedDistance / 1000.0).format("%.2f") + " KM";
+        }
 
-        // =====================================================
-        // DISTANCE
-        // =====================================================
-
-        dc.setColor(
-            Graphics.COLOR_PURPLE,
-            Graphics.COLOR_TRANSPARENT
-        );
-
+        dc.setColor(Graphics.COLOR_PURPLE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             (screenW * 0.72).toNumber(),
             (screenH * 0.705).toNumber(),
             Graphics.FONT_XTINY,
-            "-- KM",
+            distanceText,
             Graphics.TEXT_JUSTIFY_CENTER
+        );
+    }
+
+    function drawFeedbackHidden(dc as Dc, paused as Boolean) as Void {
+        var centerX = dc.getWidth() / 2;
+        var height = dc.getHeight();
+
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(
+            centerX,
+            (height * 0.40).toNumber(),
+            Graphics.FONT_MEDIUM,
+            "FEEDBACK HIDDEN",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
+        );
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(
+            centerX,
+            (height * 0.58).toNumber(),
+            Graphics.FONT_XTINY,
+            paused ? "Paused - cadence stays hidden" : "Cadence is still recording",
+            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
     }
 }
