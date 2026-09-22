@@ -17,6 +17,7 @@ class GarminApp extends Application.AppBase {
     const FEEDBACK_INITIAL_VISIBLE_SECONDS = 60;
     const FEEDBACK_HIDDEN_SECONDS = 30;
     const FEEDBACK_VISIBLE_SECONDS = 60;
+    const FEEDBACK_HIDDEN_NOTICE_SECONDS = 4;
     const FEEDBACK_HELD_THRESHOLD_PERCENT = 70;
     const FEEDBACK_GRAPH_MAX_SAMPLES = 240;
     const FEEDBACK_GRAPH_SAMPLE_INTERVAL_SECONDS = 5;
@@ -812,6 +813,19 @@ class GarminApp extends Application.AppBase {
 
     function getFeedbackActiveSeconds() as Number {
         return _feedbackActiveSeconds;
+    }
+
+    // The transition notice is intentionally brief. Cadence continues to be
+    // recorded and scored for the full hidden window after the screen blanks.
+    function shouldShowFeedbackHiddenNotice() as Boolean {
+        if (!isFeedbackHidden()) {
+            return false;
+        }
+
+        var cycleLength = FEEDBACK_HIDDEN_SECONDS + FEEDBACK_VISIBLE_SECONDS;
+        var cycleSecond =
+            (_feedbackActiveSeconds - FEEDBACK_INITIAL_VISIBLE_SECONDS) % cycleLength;
+        return cycleSecond < FEEDBACK_HIDDEN_NOTICE_SECONDS;
     }
 
     function getFeedbackSecondsUntilNextHidden() as Number {

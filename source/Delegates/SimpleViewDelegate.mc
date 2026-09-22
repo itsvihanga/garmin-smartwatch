@@ -184,6 +184,15 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
 
         if (key == WatchUi.KEY_DOWN) {
+            var app = getApp();
+            if (app.isFeedbackHidden()) {
+                // The main view already owns the single hidden-feedback notice.
+                // Do not open a second version of that screen.
+                System.println("[FEEDBACK] DOWN ignored while feedback is hidden");
+                WatchUi.requestUpdate();
+                return true;
+            }
+
             // Open the merged cadence-quality screen. Do not route back to
             // AdvancedView, which is the obsolete graph UI.
             System.println("[UI] DOWN pressed - opening cadence display");

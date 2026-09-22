@@ -48,8 +48,7 @@ class CadenceQualityViewTests(unittest.TestCase):
         hidden_check = self.view.index("if (app.isFeedbackHidden())")
         draw_live = self.view.index("drawCadenceDisplay", hidden_check)
         self.assertLess(hidden_check, draw_live)
-        self.assertIn('"FEEDBACK HIDDEN"', self.view)
-        self.assertIn('"Paused - cadence stays hidden"', self.view)
+        self.assertIn("FeedbackHiddenRenderer.draw(dc, app)", self.view)
 
     def test_marker_and_status_follow_live_cadence(self):
         self.assertIn("cadence < targetMin", self.view)

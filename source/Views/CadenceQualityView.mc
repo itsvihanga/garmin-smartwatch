@@ -33,6 +33,14 @@ class CadenceQualityView extends WatchUi.View {
     }
 
     function refreshScreen() as Void {
+        var app = Application.getApp() as GarminApp;
+        if (app.isFeedbackHidden() && !app.shouldShowFeedbackHiddenNotice()) {
+            // CadenceQualityView is pushed from the main dashboard. Once the
+            // four-second notice expires, pop it so the runner returns home.
+            stopRefreshTimer();
+            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            return;
+        }
         WatchUi.requestUpdate();
     }
 
@@ -49,7 +57,9 @@ class CadenceQualityView extends WatchUi.View {
 
         var app = Application.getApp() as GarminApp;
         if (app.isFeedbackHidden()) {
-            drawFeedbackHidden(dc, app.isPaused());
+            if (app.shouldShowFeedbackHiddenNotice()) {
+                drawFeedbackHidden(dc, app);
+            }
             return;
         }
 
@@ -270,25 +280,7 @@ class CadenceQualityView extends WatchUi.View {
         );
     }
 
-    function drawFeedbackHidden(dc as Dc, paused as Boolean) as Void {
-        var centerX = dc.getWidth() / 2;
-        var height = dc.getHeight();
-
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            centerX,
-            (height * 0.40).toNumber(),
-            Graphics.FONT_MEDIUM,
-            "FEEDBACK HIDDEN",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            centerX,
-            (height * 0.58).toNumber(),
-            Graphics.FONT_XTINY,
-            paused ? "Paused - cadence stays hidden" : "Cadence is still recording",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
+    function drawFeedbackHidden(dc as Dc, app as GarminApp) as Void {
+        FeedbackHiddenRenderer.draw(dc, app);
     }
 }
