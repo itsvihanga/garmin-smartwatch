@@ -28,14 +28,10 @@ class ProfileSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed: Opening Summary Settings");
-        
-        // Push the cadence settings view
-            var summary = new SummarySettingsMenuView();
-        
+        System.println("Down button pressed: Opening Post Feedback");
         WatchUi.switchToView(
-            summary,
-            new SummarySettingsMenuDelegate(summary),
+            new PostFeedbackSettingsView(),
+            new PostFeedbackSettingsMenuDelegate(),
             WatchUi.SLIDE_UP);
         
         return true; 

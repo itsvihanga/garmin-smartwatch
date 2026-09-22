@@ -34,6 +34,15 @@ class GarminApp extends Application.AppBase {
     const PROP_VIBRATION_ENABLED = "vibrationEnabled";
     const PROP_SUMMARY_ENABLED = "summaryEnabled";
     const PROP_FEEDBACK_MODE_ENABLED = "feedbackModeEnabled";
+    const PROP_SAVED_FEEDBACK_AVAILABLE = "savedFeedbackAvailable";
+    const PROP_SAVED_FEEDBACK_SCORE = "savedFeedbackScore";
+    const PROP_SAVED_FEEDBACK_CADENCE = "savedFeedbackCadence";
+    const PROP_SAVED_FEEDBACK_HIDDEN = "savedFeedbackHidden";
+    const PROP_SAVED_FEEDBACK_TIME = "savedFeedbackTime";
+    const PROP_SAVED_FEEDBACK_HEART_RATE = "savedFeedbackHeartRate";
+    const PROP_SAVED_FEEDBACK_DISTANCE = "savedFeedbackDistance";
+    const PROP_SAVED_FEEDBACK_TARGET_MIN = "savedFeedbackTargetMin";
+    const PROP_SAVED_FEEDBACK_TARGET_MAX = "savedFeedbackTargetMax";
     const PROP_LAST_SUMMARY_AVAILABLE = "lastSummaryAvailable";
     const PROP_LAST_SUMMARY_DURATION = "lastSummaryDuration";
     const PROP_LAST_SUMMARY_AVG_CADENCE = "lastSummaryAvgCadence";
@@ -334,7 +343,8 @@ class GarminApp extends Application.AppBase {
         System.println("[INFO] Stopping activity session");
 
         // Activity.getActivityInfo() can be cleared as soon as Garmin stops the
-        // recording. Freeze the final metrics while the session is still live.
+        // recording. Freeze the final metrics for both workout and feedback
+        // summaries while the session is still live.
         captureActivityMetrics();
 
         // Stop Garmin activity session (but don't save or discard yet)
@@ -478,6 +488,7 @@ class GarminApp extends Application.AppBase {
             // Activity.getActivityInfo() no longer contains the completed run.
             // Persist a small snapshot only after Garmin confirms the save.
             persistLastWorkoutSummary();
+            persistFeedbackSummary();
 
             // // STORE DATA
             // if (_sessionStartTime != null) {
@@ -858,6 +869,74 @@ class GarminApp extends Application.AppBase {
 
     function hasFeedbackSummaryData() as Boolean {
         return _feedbackHiddenSampleCount > 0;
+    }
+
+    function persistFeedbackSummary() as Void {
+        if (!hasFeedbackSummaryData()) {
+            return;
+        }
+
+        Storage.setValue(PROP_SAVED_FEEDBACK_SCORE, getFeedbackHiddenPercentage());
+        Storage.setValue(PROP_SAVED_FEEDBACK_CADENCE, _feedbackCadenceLog);
+        Storage.setValue(PROP_SAVED_FEEDBACK_HIDDEN, _feedbackHiddenLog);
+        Storage.setValue(PROP_SAVED_FEEDBACK_TIME, _feedbackTimeLog);
+        Storage.setValue(PROP_SAVED_FEEDBACK_HEART_RATE,
+            _avgHeartRate == null ? -1 : _avgHeartRate);
+        Storage.setValue(PROP_SAVED_FEEDBACK_DISTANCE,
+            _sessionDistance == null ? -1 : _sessionDistance);
+        Storage.setValue(PROP_SAVED_FEEDBACK_TARGET_MIN, getCalculatedMinCadence());
+        Storage.setValue(PROP_SAVED_FEEDBACK_TARGET_MAX, getCalculatedMaxCadence());
+        Storage.setValue(PROP_SAVED_FEEDBACK_AVAILABLE, true);
+        System.println("[FEEDBACK] Saved post-feedback summary");
+    }
+
+    function hasSavedFeedbackSummaryData() as Boolean {
+        var available = Storage.getValue(PROP_SAVED_FEEDBACK_AVAILABLE);
+        return available != null && available == true;
+    }
+
+    function getSavedFeedbackHiddenPercentage() as Number {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_SCORE);
+        return value == null ? -1 : value.toNumber();
+    }
+
+    function didHoldSavedCadenceWhenHidden() as Boolean {
+        return getSavedFeedbackHiddenPercentage() >= FEEDBACK_HELD_THRESHOLD_PERCENT;
+    }
+
+    function getSavedFeedbackCadenceLog() as Array<Number?> {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_CADENCE);
+        return value == null ? [] : value as Array<Number?>;
+    }
+
+    function getSavedFeedbackHiddenLog() as Array<Boolean> {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_HIDDEN);
+        return value == null ? [] : value as Array<Boolean>;
+    }
+
+    function getSavedFeedbackTimeLog() as Array<Number> {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_TIME);
+        return value == null ? [] : value as Array<Number>;
+    }
+
+    function getSavedFeedbackHeartRate() {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_HEART_RATE);
+        return value == null || value < 0 ? null : value;
+    }
+
+    function getSavedFeedbackDistance() {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_DISTANCE);
+        return value == null || value < 0 ? null : value;
+    }
+
+    function getSavedFeedbackTargetMin() as Number {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_TARGET_MIN);
+        return value == null ? getCalculatedMinCadence() : value.toNumber();
+    }
+
+    function getSavedFeedbackTargetMax() as Number {
+        var value = Storage.getValue(PROP_SAVED_FEEDBACK_TARGET_MAX);
+        return value == null ? getCalculatedMaxCadence() : value.toNumber();
     }
 
     function getFeedbackModeEnabled() as Boolean {

@@ -51,11 +51,11 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         }
 
         if (_view.isOpenScreen()) {
-            System.println("Up button pressed: Opening Profile Settings");
+            System.println("Up button pressed: Opening Post Feedback");
 
             WatchUi.switchToView(
-                new ProfileSettingsMenuView(),
-                new ProfileSettingsMenuDelegate(),
+                new PostFeedbackSettingsView(),
+                new PostFeedbackSettingsMenuDelegate(),
                 WatchUi.SLIDE_DOWN
             );
         }
