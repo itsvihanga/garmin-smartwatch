@@ -43,6 +43,11 @@ class GarminApp extends Application.AppBase {
     const PROP_SAVED_FEEDBACK_DISTANCE = "savedFeedbackDistance";
     const PROP_SAVED_FEEDBACK_TARGET_MIN = "savedFeedbackTargetMin";
     const PROP_SAVED_FEEDBACK_TARGET_MAX = "savedFeedbackTargetMax";
+    const PROP_LAST_SUMMARY_AVAILABLE = "lastSummaryAvailable";
+    const PROP_LAST_SUMMARY_DURATION = "lastSummaryDuration";
+    const PROP_LAST_SUMMARY_AVG_CADENCE = "lastSummaryAvgCadence";
+    const PROP_LAST_SUMMARY_CADENCE_SCORE = "lastSummaryCadenceScore";
+    const PROP_LAST_SUMMARY_CALORIES = "lastSummaryCalories";
 
     var globalTimer;
     var activitySession; // Garmin activity recording session
@@ -132,6 +137,8 @@ class GarminApp extends Application.AppBase {
     // Activity metrics captured when monitoring stops
     private var _sessionDuration = null; // milliseconds
     private var _sessionDistance = null; // meters
+    private var _sessionAverageCadence = null; // spm
+    private var _sessionCalories = null; // kcal
     private var _avgHeartRate = null; // bpm
     private var _peakHeartRate = null; // bpm
     private var _linkedTemperature = "--";
@@ -187,8 +194,6 @@ class GarminApp extends Application.AppBase {
                 }
             }
             activitySession = null;
-
-            persistFeedbackSummary();
         }
         
         if(globalTimer != null){
@@ -257,6 +262,8 @@ class GarminApp extends Application.AppBase {
         _lastPauseTime = null;
         _sessionDuration = null;
         _sessionDistance = null;
+        _sessionAverageCadence = null;
+        _sessionCalories = null;
         _avgHeartRate = null;
         _peakHeartRate = null;
         _linkedTemperature = "--";
@@ -335,8 +342,9 @@ class GarminApp extends Application.AppBase {
 
         System.println("[INFO] Stopping activity session");
 
-        // Freeze final metrics before Garmin stops and may clear Activity.Info.
-        // These values are also persisted with the post-feedback summary.
+        // Activity.getActivityInfo() can be cleared as soon as Garmin stops the
+        // recording. Freeze the final metrics for both workout and feedback
+        // summaries while the session is still live.
         captureActivityMetrics();
 
         // Stop Garmin activity session (but don't save or discard yet)
@@ -476,6 +484,12 @@ class GarminApp extends Application.AppBase {
 
             activitySession = null;
 
+            // The settings summary is opened after resetSession(), when
+            // Activity.getActivityInfo() no longer contains the completed run.
+            // Persist a small snapshot only after Garmin confirms the save.
+            persistLastWorkoutSummary();
+            persistFeedbackSummary();
+
             // // STORE DATA
             // if (_sessionStartTime != null) {
             //     _sessionDuration = System.getTimer() - _sessionStartTime - _sessionPausedTime;
@@ -567,6 +581,8 @@ class GarminApp extends Application.AppBase {
         _lastPauseTime = null;
         _sessionDuration = null;
         _sessionDistance = null;
+        _sessionAverageCadence = null;
+        _sessionCalories = null;
         _avgHeartRate = null;
         _peakHeartRate = null;
         _linkedTemperature = "--";
@@ -659,6 +675,16 @@ class GarminApp extends Application.AppBase {
             if (info.elapsedDistance != null) {
                 _sessionDistance = info.elapsedDistance;
                 System.println("[ACTIVITY] Distance: " + (_sessionDistance / 1000.0).format("%.2f") + " km");
+            }
+
+            if (info.averageCadence != null) {
+                _sessionAverageCadence = info.averageCadence;
+                System.println("[ACTIVITY] Average cadence: " + _sessionAverageCadence.toString() + " spm");
+            }
+
+            if (info.calories != null) {
+                _sessionCalories = info.calories;
+                System.println("[ACTIVITY] Calories: " + _sessionCalories.toString() + " kcal");
             }
             
             if (info.currentHeartRate != null) {
@@ -1391,6 +1417,50 @@ class GarminApp extends Application.AppBase {
     }
     function getSessionDuration() {
     return _sessionDuration;
+    }
+
+    function persistLastWorkoutSummary() as Void {
+        var averageCadence = _sessionAverageCadence;
+        if (averageCadence == null && _cadenceCount > 0) {
+            averageCadence = getAverageCadence();
+        }
+
+        var cadenceScore = _finalCQ;
+        if (cadenceScore == null) {
+            cadenceScore = computeLiveTimeInZonePercentage();
+        }
+
+        Storage.setValue(PROP_LAST_SUMMARY_DURATION,
+            _sessionDuration == null ? 0 : _sessionDuration);
+        Storage.setValue(PROP_LAST_SUMMARY_AVG_CADENCE,
+            averageCadence == null ? -1 : averageCadence);
+        Storage.setValue(PROP_LAST_SUMMARY_CADENCE_SCORE,
+            cadenceScore == null ? -1 : cadenceScore);
+        Storage.setValue(PROP_LAST_SUMMARY_CALORIES,
+            _sessionCalories == null ? -1 : _sessionCalories);
+        Storage.setValue(PROP_LAST_SUMMARY_AVAILABLE, true);
+        System.println("[SUMMARY] Saved last-workout snapshot");
+    }
+
+    function hasLastWorkoutSummary() as Boolean {
+        var available = Storage.getValue(PROP_LAST_SUMMARY_AVAILABLE);
+        return available != null && available == true;
+    }
+
+    function getLastSummaryDuration() {
+        return Storage.getValue(PROP_LAST_SUMMARY_DURATION);
+    }
+
+    function getLastSummaryAverageCadence() {
+        return Storage.getValue(PROP_LAST_SUMMARY_AVG_CADENCE);
+    }
+
+    function getLastSummaryCadenceScore() {
+        return Storage.getValue(PROP_LAST_SUMMARY_CADENCE_SCORE);
+    }
+
+    function getLastSummaryCalories() {
+        return Storage.getValue(PROP_LAST_SUMMARY_CALORIES);
     }
 
 // --- SETTINGS MANAGEMENT ---

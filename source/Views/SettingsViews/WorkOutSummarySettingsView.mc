@@ -2,7 +2,7 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Timer;
-import Toybox.Activity;
+import Toybox.Application;
 
 class WorkOutSummarySettingsView extends WatchUi.View {
 
@@ -87,19 +87,39 @@ class WorkOutSummarySettingsView extends WatchUi.View {
     }
 
     function updateDisplayStrings() as Void {
-        var info = Activity.getActivityInfo();
+        var app = Application.getApp() as GarminApp;
 
-        if (info != null) {
-            if (info.timerTime != null) {
-                var s = info.timerTime / 1000;
-                _duration = ((s / 3600).format("%02d") + ":" + ((s % 3600) / 60).format("%02d") + ":" + (s % 60).format("%02d"));
-            }
-            if (info.averageCadence != null) {
-                _avgCadence = info.averageCadence.format("%d") + " spm";
-            }
-            if (info.calories != null) {
-                _calories = info.calories.format("%d") + " kcal";
-            }
+        if (!app.hasLastWorkoutSummary()) {
+            _avgCadence = "-- spm";
+            _duration = "00:00:00";
+            _cadenceScore = "--%";
+            _calories = "-- kcal";
+            return;
+        }
+
+        var duration = app.getLastSummaryDuration();
+        if (duration != null) {
+            var totalSeconds = duration / 1000;
+            var hours = totalSeconds / 3600;
+            var minutes = (totalSeconds % 3600) / 60;
+            var seconds = totalSeconds % 60;
+            _duration = hours.format("%02d") + ":" +
+                minutes.format("%02d") + ":" + seconds.format("%02d");
+        }
+
+        var averageCadence = app.getLastSummaryAverageCadence();
+        if (averageCadence != null && averageCadence >= 0) {
+            _avgCadence = averageCadence.toNumber().format("%d") + " spm";
+        }
+
+        var cadenceScore = app.getLastSummaryCadenceScore();
+        if (cadenceScore != null && cadenceScore >= 0) {
+            _cadenceScore = cadenceScore.toNumber().format("%d") + "%";
+        }
+
+        var calories = app.getLastSummaryCalories();
+        if (calories != null && calories >= 0) {
+            _calories = calories.toNumber().format("%d") + " kcal";
         }
     }
 }

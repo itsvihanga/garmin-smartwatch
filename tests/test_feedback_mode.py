@@ -119,7 +119,8 @@ class FeedbackModeTests(unittest.TestCase):
         )
         drawables = read("resources/drawables/drawables.xml")
 
-        self.assertIn("persistFeedbackSummary();", app)
+        save_method = app[app.index("function saveSession"):app.index("function discardSession")]
+        self.assertIn("persistFeedbackSummary();", save_method)
         self.assertIn("PROP_SAVED_FEEDBACK_AVAILABLE", app)
         self.assertIn("hasSavedFeedbackSummaryData", app)
         self.assertIn("getSavedFeedbackCadenceLog", app)
