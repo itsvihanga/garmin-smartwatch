@@ -38,6 +38,7 @@ class FeedbackModeTests(unittest.TestCase):
     def test_hidden_samples_are_scored_and_live_cues_are_suppressed(self):
         app = read("source/GarminApp.mc")
         view = read("source/Views/SimpleView.mc")
+        renderer = read("source/Views/FeedbackHiddenRenderer.mc")
         self.assertRegex(
             app,
             r"if \(_feedbackHiddenActive && cadence != null\) \{[\s\S]*?"
@@ -50,9 +51,25 @@ class FeedbackModeTests(unittest.TestCase):
             r"_secondsSinceLastAlert = 0;[\s\S]*?return;",
         )
         self.assertIn("drawFeedbackHiddenIndicator", view)
-        self.assertIn('"FEEDBACK"', view)
-        self.assertIn('"HIDDEN"', view)
+        self.assertIn("FeedbackHiddenRenderer.draw(dc, app)", view)
+        self.assertIn('"FEEDBACK"', renderer)
+        self.assertIn('"HIDDEN"', renderer)
         self.assertIn("_pendingSecondVibe = false", view)
+
+    def test_hidden_notice_is_single_and_limited_to_four_seconds(self):
+        app = read("source/GarminApp.mc")
+        delegate = read("source/Delegates/SimpleViewDelegate.mc")
+        cadence_view = read("source/Views/CadenceQualityView.mc")
+        renderer = read("source/Views/FeedbackHiddenRenderer.mc")
+
+        self.assertIn("const FEEDBACK_HIDDEN_NOTICE_SECONDS = 4", app)
+        self.assertIn("function shouldShowFeedbackHiddenNotice()", app)
+        self.assertIn("cycleSecond < FEEDBACK_HIDDEN_NOTICE_SECONDS", app)
+        self.assertIn("if (app.isFeedbackHidden())", delegate)
+        self.assertIn("DOWN ignored while feedback is hidden", delegate)
+        self.assertIn("FeedbackHiddenRenderer.draw(dc, app)", cadence_view)
+        self.assertIn("if (!app.shouldShowFeedbackHiddenNotice())", renderer)
+        self.assertIn("return;", renderer)
 
     def test_feedback_summary_precedes_existing_workout_summary(self):
         delegate = read("source/Delegates/SimpleViewDelegate.mc")

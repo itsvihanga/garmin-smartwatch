@@ -133,52 +133,7 @@ class SimpleView extends WatchUi.View {
     }
 
     function drawFeedbackHiddenIndicator(dc as Dc, app) as Void {
-        var width = dc.getWidth();
-        var height = dc.getHeight();
-        var centerX = width / 2;
-
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.clear();
-
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            centerX,
-            (height * 0.36).toNumber(),
-            Graphics.FONT_MEDIUM,
-            "FEEDBACK",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
-        dc.drawText(
-            centerX,
-            (height * 0.48).toNumber(),
-            Graphics.FONT_MEDIUM,
-            "HIDDEN",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
-
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            centerX,
-            (height * 0.61).toNumber(),
-            Graphics.FONT_XTINY,
-            "Cadence is still recording",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
-
-        var activeDots = (app.getFeedbackActiveSeconds() % 3) + 1;
-        var dotRadius = (width * 0.012).toNumber();
-        if (dotRadius < 2) { dotRadius = 2; }
-        var dotGap = (width * 0.075).toNumber();
-        var firstDotX = centerX - dotGap;
-        var dotY = (height * 0.72).toNumber();
-
-        for (var i = 0; i < 3; i++) {
-            dc.setColor(
-                i < activeDots ? Graphics.COLOR_GREEN : Graphics.COLOR_DK_GRAY,
-                Graphics.COLOR_TRANSPARENT
-            );
-            dc.fillCircle(firstDotX + (i * dotGap), dotY, dotRadius);
-        }
+        FeedbackHiddenRenderer.draw(dc, app);
     }
 
     function updateCadenceLogic(info) as Void {

@@ -50,6 +50,11 @@ class UiNavigationDelegateTests(unittest.TestCase):
         delegate = source(DELEGATES / "SimpleViewDelegate.mc")
         key_release = method(delegate, "onKeyReleased", "toggleVibration")
         self.assertIn("key == WatchUi.KEY_DOWN", key_release)
+        self.assertIn("if (app.isFeedbackHidden())", key_release)
+        self.assertLess(
+            key_release.index("if (app.isFeedbackHidden())"),
+            key_release.index("new CadenceQualityView()"),
+        )
         self.assertIn("new CadenceQualityView()", key_release)
         self.assertIn("new CadenceQualityDelegate()", key_release)
         self.assertIn("WatchUi.SLIDE_DOWN", key_release)
