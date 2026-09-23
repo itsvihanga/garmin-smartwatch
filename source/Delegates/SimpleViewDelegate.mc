@@ -21,6 +21,10 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
     private var _backLongPressTimer = null;
     private var _handledBackLongPress = false;
 
+    // Ignore releases that originated in a screen which has just been popped.
+    private var _escPressed = false;
+    private var _downPressed = false;
+
     function initialize() {
         BehaviorDelegate.initialize();
         _initTime = getTimeMs();
@@ -76,6 +80,15 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         return true;
     }
 
+    // Consume the physical BACK key here so the long-press timer gets a chance
+    // to fire. Other keys retain the platform's normal behavior mapping.
+    function onKey(keyEvent as WatchUi.KeyEvent) as Boolean {
+        if (keyEvent.getKey() == WatchUi.KEY_ESC) {
+            return true;
+        }
+        return BehaviorDelegate.onKey(keyEvent);
+    }
+
     function onKeyPressed(keyEvent as WatchUi.KeyEvent) as Boolean {
         var key = keyEvent.getKey();
 
@@ -92,7 +105,13 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
             return true;
         }
 
+        if (key == WatchUi.KEY_DOWN) {
+            _downPressed = true;
+            return true;
+        }
+
         if (key == WatchUi.KEY_ESC){
+            _escPressed = true;
             _handledBackLongPress = false;
 
             stopBackLongPressTimer();
@@ -113,6 +132,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
     function triggerBackLongPress() as Void {
         _handledBackLongPress = true;
+        _escPressed = false;
 
         var app = getApp();
         if (!app.isIdle()) {
@@ -173,17 +193,27 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         if (key == WatchUi.KEY_ESC) {
             stopBackLongPressTimer();
 
+            if (!_escPressed && !_handledBackLongPress) {
+                return true;
+            }
+            _escPressed = false;
+
             // If the long press already triggered, do nothing on release.
             if (_handledBackLongPress) {
                 _handledBackLongPress = false;
                 return true;
             }
 
-            return onBack();
+            return handleShortBack();
         }
 
 
         if (key == WatchUi.KEY_DOWN) {
+            if (!_downPressed) {
+                return true;
+            }
+            _downPressed = false;
+
             var app = getApp();
             if (app.isFeedbackHidden()) {
                 // The main view already owns the single hidden-feedback notice.
@@ -217,6 +247,12 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         var statusText = newEnabled ? "Vibration ON" : "Vibration OFF";
         System.println("[UI] " + statusText);
         WatchUi.requestUpdate();
+
+        WatchUi.pushView(
+            new VibrationView(newEnabled),
+            new WatchUi.BehaviorDelegate(),
+            WatchUi.SLIDE_UP
+        );
     }
 
     function stopLongPressTimer() as Void {
@@ -245,11 +281,18 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
 
         if (direction == WatchUi.SWIPE_UP ||
             direction == WatchUi.SWIPE_DOWN) {
-            // Both gestures previously opened the obsolete AdvancedView,
-            // which made the merged main-screen work appear to be missing.
-            // Consume vertical swipes and retain the current dashboard.
-            System.println("[UI] Vertical swipe - staying on main screen");
-            WatchUi.requestUpdate();
+            if (getApp().isFeedbackHidden()) {
+                System.println("[FEEDBACK] Swipe ignored while feedback is hidden");
+                WatchUi.requestUpdate();
+                return true;
+            }
+
+            System.println("[UI] Vertical swipe - opening cadence display");
+            WatchUi.pushView(
+                new CadenceQualityView(),
+                new CadenceQualityDelegate(),
+                direction == WatchUi.SWIPE_UP ? WatchUi.SLIDE_UP : WatchUi.SLIDE_DOWN
+            );
             return true;
         }
         return false;
@@ -289,7 +332,7 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
         System.println("[DEBUG] Menu active state set to: " + active);
     }
 
-    function onBack() as Boolean {
+    function handleShortBack() as Boolean {
         var app = getApp();
 
         if (app.isRecording() || app.isPaused() || app.isStopped()) {
@@ -298,12 +341,20 @@ class SimpleViewDelegate extends WatchUi.BehaviorDelegate {
            return true;
         }
 
-        // The root view must consume BACK immediately. Returning false here lets
-        // Garmin exit the app before the key-held timer can detect a long press.
-        // Short presses are therefore ignored on the root screen; holding BACK
-        // is handled by triggerBackLongPress() above.
-        System.println("[UI] Short BACK pressed - staying on main screen");
-        return true;
+        System.println("[UI] Short BACK at idle - exiting app");
+        System.exit();
+    }
+
+    function onBack() as Boolean {
+        var app = getApp();
+
+        if (app.isRecording() || app.isPaused() || app.isStopped()) {
+           System.println("[UI] Finish or discard current session first");
+           return true;
+        }
+
+        // Non-key BACK input can use the platform's default exit behavior.
+        return false;
     }
 }
 

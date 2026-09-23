@@ -29,14 +29,14 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the DOWN button (or swipe up)
     function onNextPage() as Boolean {
-        System.println("Down button pressed: Opening Reset Settings");
+        System.println("Down button pressed: Opening Summary Settings");
 
-        var resetView = new ResetSettingsView();
+        var summary = new SummarySettingsMenuView();
         
         // Replace this settings card while keeping SettingsView beneath it.
         WatchUi.switchToView(
-            resetView,
-            new ResetSettingsDelegate(resetView),
+            summary,
+            new SummarySettingsMenuDelegate(summary),
             WatchUi.SLIDE_UP
         );
         
@@ -45,14 +45,12 @@ class BarChartSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
 
     // Handles the UP button (or swipe down)
     function onPreviousPage() as Boolean {
-        System.println("Up button pressed: Opening Summary Settings");
+        System.println("Up button pressed: Opening Post Feedback");
         
-        // Push the Summary Settings view
-        var summary = new SummarySettingsMenuView();
-        
+        // Replace this card while preserving the settings root beneath it.
         WatchUi.switchToView(
-            summary,
-            new SummarySettingsMenuDelegate(summary),
+            new PostFeedbackSettingsView(),
+            new PostFeedbackSettingsMenuDelegate(),
             WatchUi.SLIDE_DOWN);
         
         return true; 
