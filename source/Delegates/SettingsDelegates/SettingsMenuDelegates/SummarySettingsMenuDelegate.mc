@@ -13,13 +13,17 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() {
-        _view.selectCurrentOption();
+        handleSelect();
         return true;
     }
 
     function onTap(evt) {
-        _view.selectCurrentOption();
+        handleSelect();
         return true;
+    }
+
+    function handleSelect() {
+        _view.selectCurrentOption();
     }
 
     // Handles the DOWN button (or swipe up)
@@ -51,11 +55,11 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         }
 
         if (_view.isOpenScreen()) {
-            System.println("Up button pressed: Opening Post Feedback");
+            System.println("Up button pressed: Opening Bar Chart Settings");
 
             WatchUi.switchToView(
-                new PostFeedbackSettingsView(),
-                new PostFeedbackSettingsMenuDelegate(),
+                new BarChartSettingsMenuView(),
+                new BarChartSettingsMenuDelegate(),
                 WatchUi.SLIDE_DOWN
             );
         }
@@ -68,13 +72,13 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
             return;
         }
 
-        // First Reset screen: DOWN goes to Cadence Settings
         if (_view.isOpenScreen()) {
-            System.println("Down button pressed: Opening Bar Chart Settings");
+            System.println("Down button pressed: Opening Reset Settings");
 
+            var resetView = new ResetSettingsView();
             WatchUi.switchToView(
-                new BarChartSettingsMenuView(),
-                new BarChartSettingsMenuDelegate(),
+                resetView,
+                new ResetSettingsDelegate(resetView),
                 WatchUi.SLIDE_UP);
         }
     }
@@ -93,7 +97,7 @@ class SummarySettingsMenuDelegate extends WatchUi.BehaviorDelegate {
         }
 
         if (key == WatchUi.KEY_ENTER || key == WatchUi.KEY_START || key == WatchUi.KEY_MENU) {
-            _view.selectCurrentOption();
+            handleSelect();
             return true;
         }
 

@@ -43,7 +43,9 @@ class UiNavigationDelegateTests(unittest.TestCase):
         simple = method(source(DELEGATES / "SimpleViewDelegate.mc"), "onSwipe", "showActivityControlMenu")
         self.assertIn("WatchUi.SWIPE_UP", simple)
         self.assertIn("WatchUi.SWIPE_DOWN", simple)
-        self.assertIn("WatchUi.requestUpdate()", simple)
+        self.assertIn("if (getApp().isFeedbackHidden())", simple)
+        self.assertIn("new CadenceQualityView()", simple)
+        self.assertIn("new CadenceQualityDelegate()", simple)
         self.assertNotIn("new AdvancedView()", simple)
         self.assertNotIn("new AdvancedViewDelegate", simple)
 
@@ -59,6 +61,44 @@ class UiNavigationDelegateTests(unittest.TestCase):
         self.assertIn("new CadenceQualityDelegate()", key_release)
         self.assertIn("WatchUi.SLIDE_DOWN", key_release)
         self.assertNotIn("new AdvancedView()", key_release)
+
+    def test_cadence_display_closes_on_second_down_or_vertical_swipe(self):
+        text = source(DELEGATES / "CadenceQualityDelegate.mc")
+
+        on_key = method(text, "onKey", "onKeyReleased")
+        self.assertIn("keyEvent.getKey() == WatchUi.KEY_DOWN", on_key)
+        self.assertIn("return true;", on_key)
+
+        released = method(text, "onKeyReleased", "onSwipe")
+        self.assertIn("keyEvent.getKey() == WatchUi.KEY_DOWN", released)
+        self.assertIn("WatchUi.popView(WatchUi.SLIDE_UP)", released)
+
+        swipe = method(text, "onSwipe")
+        self.assertIn("WatchUi.SWIPE_UP", swipe)
+        self.assertIn("WatchUi.SWIPE_DOWN", swipe)
+        self.assertEqual(2, swipe.count("WatchUi.popView("))
+
+    def test_main_view_ignores_releases_from_a_screen_that_just_closed(self):
+        text = source(DELEGATES / "SimpleViewDelegate.mc")
+        self.assertIn("private var _escPressed = false;", text)
+        self.assertIn("private var _downPressed = false;", text)
+
+        pressed = method(text, "onKeyPressed", "triggerBackLongPress")
+        self.assertIn("_downPressed = true;", pressed)
+        self.assertIn("_escPressed = true;", pressed)
+
+        released = method(text, "onKeyReleased", "toggleVibration")
+        self.assertIn("if (!_downPressed)", released)
+        self.assertIn("if (!_escPressed && !_handledBackLongPress)", released)
+
+    def test_short_back_exits_only_when_idle(self):
+        text = source(DELEGATES / "SimpleViewDelegate.mc")
+        short_back = method(text, "handleShortBack", "onBack")
+        self.assertIn("app.isRecording() || app.isPaused() || app.isStopped()", short_back)
+        self.assertIn("System.exit()", short_back)
+
+        on_back = method(text, "onBack")
+        self.assertIn("return false;", on_back)
 
     def test_legacy_advanced_view_can_return_to_main_if_already_stacked(self):
 
@@ -102,6 +142,35 @@ class UiNavigationDelegateTests(unittest.TestCase):
             with self.subTest(filename=filename, method=name):
                 body = method(source(SETTINGS_RING / filename), name, next_name)
                 self.assertIn("WatchUi.switchToView", body)
+
+    def test_settings_ring_has_one_consistent_order(self):
+        routes = (
+            ("CadenceSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage", "ProfileSettingsMenuView"),
+            ("ProfileSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage", "PostFeedbackSettingsView"),
+            ("PostFeedbackSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage", "BarChartSettingsMenuView"),
+            ("BarChartSettingsMenuDelegate.mc", "onNextPage", "onPreviousPage", "SummarySettingsMenuView"),
+            ("SummarySettingsMenuDelegate.mc", "handleDown", "onKey", "ResetSettingsView"),
+            ("ResetSettingsDelegate.mc", "handleDown", "onBack", "CadenceSettingsMenuView"),
+        )
+
+        for filename, name, next_name, destination in routes:
+            with self.subTest(filename=filename, direction="down"):
+                body = method(source(SETTINGS_RING / filename), name, next_name)
+                self.assertIn(f"new {destination}(", body)
+
+        reverse_routes = (
+            ("CadenceSettingsMenuDelegate.mc", "onPreviousPage", None, "ResetSettingsView"),
+            ("ProfileSettingsMenuDelegate.mc", "onPreviousPage", "pushProfileMenu", "CadenceSettingsMenuView"),
+            ("PostFeedbackSettingsMenuDelegate.mc", "onPreviousPage", None, "ProfileSettingsMenuView"),
+            ("BarChartSettingsMenuDelegate.mc", "onPreviousPage", "pushBarChartMenu", "PostFeedbackSettingsView"),
+            ("SummarySettingsMenuDelegate.mc", "handleUp", "handleDown", "BarChartSettingsMenuView"),
+            ("ResetSettingsDelegate.mc", "handleUp", "handleDown", "SummarySettingsMenuView"),
+        )
+
+        for filename, name, next_name, destination in reverse_routes:
+            with self.subTest(filename=filename, direction="up"):
+                body = method(source(SETTINGS_RING / filename), name, next_name)
+                self.assertIn(f"new {destination}(", body)
 
     def test_settings_cards_pop_back_to_settings_root(self):
         for filename in (

@@ -24,10 +24,10 @@ class PostFeedbackSettingsMenuDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onNextPage() as Boolean {
-        var summary = new SummarySettingsMenuView();
+        System.println("Down button pressed: Opening Bar Chart Settings");
         WatchUi.switchToView(
-            summary,
-            new SummarySettingsMenuDelegate(summary),
+            new BarChartSettingsMenuView(),
+            new BarChartSettingsMenuDelegate(),
             WatchUi.SLIDE_UP
         );
         return true;
