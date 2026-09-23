@@ -24,6 +24,7 @@ class CadenceTargetView extends WatchUi.View {
         var maxCadence = app.getCalculatedMaxCadence();
 
         var centerX = width / 2;
+        var titleFont = width < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM;
         var titleY = (height * 0.22).toNumber();
         var valueY = (height * 0.42).toNumber();
         var unitY = (height * 0.55).toNumber();
@@ -35,7 +36,7 @@ class CadenceTargetView extends WatchUi.View {
         dc.drawText(
             centerX,
             titleY,
-            Graphics.FONT_MEDIUM,
+            titleFont,
             "Target Cadence",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );

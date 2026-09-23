@@ -20,7 +20,8 @@ class BarChartSelectView extends WatchUi.View {
         dc.drawText(
             width / 2, 
             (height * 0.29).toNumber(),
-            Graphics.FONT_MEDIUM, "Bar Chart Length", 
+            width < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM,
+            "Bar Chart Length",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );
         

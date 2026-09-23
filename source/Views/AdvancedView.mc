@@ -166,17 +166,19 @@ class AdvancedView extends WatchUi.View {
         var hrX = (width * 0.28).toNumber();
         var hrY = (height * 0.27).toNumber();
         var circleRadius = (width * 0.13).toNumber();
+        var valueOffset = (circleRadius * 0.35).toNumber();
+        var unitOffset = (circleRadius * 0.20).toNumber();
         dc.setColor(0x9D0000, Graphics.COLOR_TRANSPARENT);
         dc.fillCircle(hrX, hrY, circleRadius);
         
         if (info != null && info.currentHeartRate != null) {
             dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(hrX, hrY - 25, Graphics.FONT_TINY, info.currentHeartRate.toString(), Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(hrX, hrY + 8, Graphics.FONT_XTINY, "bpm", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(hrX, hrY - valueOffset, Graphics.FONT_TINY, info.currentHeartRate.toString(), Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(hrX, hrY + unitOffset, Graphics.FONT_XTINY, "bpm", Graphics.TEXT_JUSTIFY_CENTER);
         } else {
             dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(hrX, hrY - 25, Graphics.FONT_TINY, "--", Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(hrX, hrY + 8, Graphics.FONT_XTINY, "bpm", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(hrX, hrY - valueOffset, Graphics.FONT_TINY, "--", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(hrX, hrY + unitOffset, Graphics.FONT_XTINY, "bpm", Graphics.TEXT_JUSTIFY_CENTER);
         }
         
         // 3. Draw Pace circle
@@ -189,12 +191,12 @@ class AdvancedView extends WatchUi.View {
             var paceSec = (1000.0 / info.currentSpeed).toNumber();
             var paceStr = (paceSec / 60).format("%d") + ":" + (paceSec % 60).format("%02d");
             dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(distX, distY - 25, Graphics.FONT_TINY, paceStr, Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(distX, distY + 8, Graphics.FONT_XTINY, "/km", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(distX, distY - valueOffset, Graphics.FONT_TINY, paceStr, Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(distX, distY + unitOffset, Graphics.FONT_XTINY, "/km", Graphics.TEXT_JUSTIFY_CENTER);
         } else {
             dc.setColor(0xFFFFFF, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(distX, distY - 25, Graphics.FONT_TINY, "--:--", Graphics.TEXT_JUSTIFY_CENTER);
-            dc.drawText(distX, distY + 8, Graphics.FONT_XTINY, "/km", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(distX, distY - valueOffset, Graphics.FONT_TINY, "--:--", Graphics.TEXT_JUSTIFY_CENTER);
+            dc.drawText(distX, distY + unitOffset, Graphics.FONT_XTINY, "/km", Graphics.TEXT_JUSTIFY_CENTER);
         }
 
         // 4. Draw Cadence Info

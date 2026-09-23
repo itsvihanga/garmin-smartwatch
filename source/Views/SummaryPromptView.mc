@@ -28,9 +28,10 @@ class SummaryPromptView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
         var centerX = width / 2;
+        var titleFont = width < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM;
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(centerX, (height * 0.27).toNumber(), Graphics.FONT_MEDIUM, "Show workout", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(centerX, (height * 0.40).toNumber(), Graphics.FONT_MEDIUM, "summary?", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(centerX, (height * 0.27).toNumber(), titleFont, "Show workout", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(centerX, (height * 0.40).toNumber(), titleFont, "summary?", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         var buttonWidth = (width * 0.32).toNumber();
         var buttonHeight = (height * 0.14).toNumber();

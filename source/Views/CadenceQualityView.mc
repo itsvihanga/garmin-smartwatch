@@ -18,7 +18,15 @@ class CadenceQualityView extends WatchUi.View {
 
     function initialize() {
         View.initialize();
-        _heartIcon = WatchUi.loadResource(Rez.Drawables.IconHeartRate);
+        _heartIcon = null;
+    }
+
+    function onLayout(dc as Dc) as Void {
+        _heartIcon = WatchUi.loadResource(
+            dc.getWidth() < 300
+                ? Rez.Drawables.FeedbackHeartRateIconCompact
+                : Rez.Drawables.IconHeartRate
+        );
     }
 
     function onShow() as Void {
@@ -115,7 +123,7 @@ class CadenceQualityView extends WatchUi.View {
         dc.drawText(
             centerX,
             (screenH * 0.235).toNumber(),
-            Graphics.FONT_LARGE,
+            screenW < 300 ? Graphics.FONT_MEDIUM : Graphics.FONT_LARGE,
             cadence == null ? "--" : cadence.toString(),
             Graphics.TEXT_JUSTIFY_CENTER
         );

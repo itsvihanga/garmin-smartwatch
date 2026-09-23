@@ -8,35 +8,11 @@ class PostFeedbackSettingsView extends WatchUi.View {
     }
 
     function onUpdate(dc as Dc) as Void {
-        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
-        dc.clear();
-
-        var centerX = dc.getWidth() / 2;
-        var height = dc.getHeight();
-        var icon = WatchUi.loadResource(Rez.Drawables.PostFeedbackIcon);
-
-        dc.drawBitmap(
-            centerX - (icon.getWidth() / 2),
-            (height * 0.20).toNumber(),
-            icon
+        var icon = WatchUi.loadResource(
+            dc.getWidth() < 300
+                ? Rez.Drawables.PostFeedbackIconCompact
+                : Rez.Drawables.PostFeedbackIcon
         );
-
-        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            centerX,
-            (height * 0.57).toNumber(),
-            Graphics.FONT_MEDIUM,
-            "Post Feedback",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
-
-        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(
-            centerX,
-            (height * 0.72).toNumber(),
-            Graphics.FONT_XTINY,
-            "START to open",
-            Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
-        );
+        SettingsCardRenderer.draw(dc, icon, "Post Feedback", "START to open");
     }
 }
