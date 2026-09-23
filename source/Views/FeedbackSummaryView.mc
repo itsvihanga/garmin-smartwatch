@@ -10,7 +10,15 @@ class FeedbackSummaryView extends WatchUi.View {
     function initialize(useSavedData as Boolean) {
         View.initialize();
         _useSavedData = useSavedData;
-        _heartRateIcon = WatchUi.loadResource(Rez.Drawables.FeedbackHeartRateIcon);
+        _heartRateIcon = null;
+    }
+
+    function onLayout(dc as Dc) as Void {
+        _heartRateIcon = WatchUi.loadResource(
+            dc.getWidth() < 300
+                ? Rez.Drawables.FeedbackHeartRateIconCompact
+                : Rez.Drawables.FeedbackHeartRateIcon
+        );
     }
 
     function onUpdate(dc as Dc) as Void {
@@ -112,7 +120,7 @@ class FeedbackSummaryView extends WatchUi.View {
         if (_heartRateIcon != null) {
             dc.drawBitmap(
                 (width * (smallScreen ? 0.08 : 0.07)).toNumber(),
-                y - 15,
+                y - (_heartRateIcon.getHeight() / 2),
                 _heartRateIcon
             );
         }

@@ -5,14 +5,12 @@ class SummarySettingsMenuView extends WatchUi.View {
 
     private var _screenState;
     private var _selectedButton;
-    private var _resetIcon;
 
     function initialize() {
         View.initialize();
 
         _screenState = 0;
         _selectedButton = 0; // 0 = YES, 1 = NO
-        _resetIcon = WatchUi.loadResource(Rez.Drawables.ResetIcon);
     }
 
     // 0 = Question Screen
@@ -229,14 +227,18 @@ function drawButtons(dc as Dc, startY) {
         var centerX = dc.getWidth() / 2;
         var height = dc.getHeight();
 
-        var icon = WatchUi.loadResource(Rez.Drawables.SummaryIcon);
+        var icon = WatchUi.loadResource(
+            dc.getWidth() < 300
+                ? Rez.Drawables.SummaryIconCompact
+                : Rez.Drawables.SummaryIcon
+        );
         dc.drawBitmap(centerX - (icon.getWidth() / 2), (height * 0.25).toNumber(), icon);
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawText(
             centerX,
             (height * 0.57).toNumber(),
-            Graphics.FONT_MEDIUM,
+            dc.getWidth() < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM,
             "Summary",
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );

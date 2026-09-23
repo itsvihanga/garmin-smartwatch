@@ -8,7 +8,6 @@ import Toybox.Attention;
 
 class SimpleView extends WatchUi.View {
 
-    const MAIN_VIBRATION_ICON_SIZE = 34;
     const MAIN_VIBRATION_ICON_BOTTOM_MARGIN = 0.05;
 
     // UI Drawables
@@ -42,6 +41,7 @@ class SimpleView extends WatchUi.View {
     
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
+        var compact = dc.getWidth() < 300;
         
         // Link UI variables to layout IDs
         _cadenceDisplay = findDrawableById("cadence_text");
@@ -52,10 +52,18 @@ class SimpleView extends WatchUi.View {
         _distanceDisplay = findDrawableById("distance_text"); // Restored
         _timeDisplay = findDrawableById("time_text");
         _paceDisplay = findDrawableById("pace_text");
-        _paceIcon = WatchUi.loadResource(Rez.Drawables.PaceIcon);
-        _heartRateIcon = WatchUi.loadResource(Rez.Drawables.MainHeartRateIcon);
-        _vibrationOnIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOnIcon);
-        _vibrationOffIcon = WatchUi.loadResource(Rez.Drawables.MainVibrationOffIcon);
+        _paceIcon = WatchUi.loadResource(
+            compact ? Rez.Drawables.PaceIconCompact : Rez.Drawables.PaceIcon
+        );
+        _heartRateIcon = WatchUi.loadResource(
+            compact ? Rez.Drawables.MainHeartRateIconCompact : Rez.Drawables.MainHeartRateIcon
+        );
+        _vibrationOnIcon = WatchUi.loadResource(
+            compact ? Rez.Drawables.MainVibrationOnIconCompact : Rez.Drawables.MainVibrationOnIcon
+        );
+        _vibrationOffIcon = WatchUi.loadResource(
+            compact ? Rez.Drawables.MainVibrationOffIconCompact : Rez.Drawables.MainVibrationOffIcon
+        );
 
     }
 
@@ -289,8 +297,15 @@ class SimpleView extends WatchUi.View {
     function drawRecordingIndicator(dc as Dc) as Void {
         var app = Application.getApp();
         if (app.isActivityRecording()) {
+            var radius = (dc.getWidth() * 0.015).toNumber();
+            if (radius < 3) { radius = 3; }
+            if (radius > 6) { radius = 6; }
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-            dc.fillCircle((dc.getWidth() * 0.82).toNumber(), (dc.getHeight() * 0.12).toNumber(), 6);
+            dc.fillCircle(
+                (dc.getWidth() * 0.82).toNumber(),
+                (dc.getHeight() * 0.12).toNumber(),
+                radius
+            );
         }
     }
 
@@ -322,9 +337,11 @@ class SimpleView extends WatchUi.View {
 
         // The x position is derived from the screen width so the icon remains
         // centred across every supported round watch size.
-        var x = ((dc.getWidth() - MAIN_VIBRATION_ICON_SIZE) / 2).toNumber();
+        var iconWidth = icon.getWidth();
+        var iconHeight = icon.getHeight();
+        var x = ((dc.getWidth() - iconWidth) / 2).toNumber();
         var bottomMargin = (dc.getHeight() * MAIN_VIBRATION_ICON_BOTTOM_MARGIN).toNumber();
-        var y = dc.getHeight() - MAIN_VIBRATION_ICON_SIZE - bottomMargin;
+        var y = dc.getHeight() - iconHeight - bottomMargin;
 
         dc.drawBitmap(x, y, icon);
     }

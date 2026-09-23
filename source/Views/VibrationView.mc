@@ -48,6 +48,7 @@ class VibrationView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
+        var titleFont = width < 300 ? Graphics.FONT_SMALL : Graphics.FONT_MEDIUM;
 
         var stateText = _enabled ? "ON" : "OFF";
 
@@ -62,11 +63,11 @@ class VibrationView extends WatchUi.View {
             dc.setColor(Graphics.COLOR_RED, Graphics.COLOR_TRANSPARENT);
         }
 
-        dc.drawText(width / 2, (height * 0.43).toNumber(), Graphics.FONT_MEDIUM, "Vibration", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width / 2, (height * 0.43).toNumber(), titleFont, "Vibration", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(
             width / 2,
             (height * 0.58).toNumber(),
-            Graphics.FONT_MEDIUM,
+            titleFont,
             stateText,
             Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER
         );

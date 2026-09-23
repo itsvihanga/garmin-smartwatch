@@ -28,7 +28,9 @@ class StartConfirmView extends WatchUi.View {
         
         var tickIcon = WatchUi.loadResource(Rez.Drawables.TickIcon);
         var crossIcon = WatchUi.loadResource(Rez.Drawables.CrossIcon);
-        var recIcon = WatchUi.loadResource(Rez.Drawables.RecIcon);
+        var recIcon = WatchUi.loadResource(
+            width < 300 ? Rez.Drawables.RecIconCompact : Rez.Drawables.RecIcon
+        );
         
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
         dc.drawBitmap(centerX - (recIcon.getWidth() / 2), (height * 0.09).toNumber(), recIcon);
