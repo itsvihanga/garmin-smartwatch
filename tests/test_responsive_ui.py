@@ -104,6 +104,11 @@ class ResponsiveUiTests(unittest.TestCase):
         self.assertIn('font="Gfx.FONT_LARGE"', compact)
         self.assertGreaterEqual(compact.count('font="Gfx.FONT_MEDIUM"'), 4)
 
+        for label_id in ("distance_text", "pace_text"):
+            start = compact.index(f'id="{label_id}"')
+            end = compact.index("/>", start)
+            self.assertIn('x="90%"', compact[start:end])
+
         for label_id in ("cadence_zone", "cadence_range"):
             start = compact.index(f'id="{label_id}"')
             end = compact.index("/>", start)

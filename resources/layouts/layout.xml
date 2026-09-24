@@ -36,21 +36,21 @@
         color="Gfx.COLOR_LT_GRAY" />
 
     <label id="heartrate_text"
-        x="30%"
+        x="28%"
         y="52%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_LEFT"
         color="Gfx.COLOR_RED" />
 
     <label id="distance_text"
-        x="86%"
+        x="90%"
         y="52%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_RIGHT"
         color="Gfx.COLOR_PURPLE" />
 
     <label id="pace_text"
-        x="84%"
+        x="90%"
         y="70%"
         font="Gfx.FONT_SMALL"
         justification="Gfx.TEXT_JUSTIFY_RIGHT"
@@ -101,21 +101,21 @@
         color="Gfx.COLOR_WHITE" />
 
     <label id="heartrate_text"
-        x="30%"
+        x="28%"
         y="51%"
         font="Gfx.FONT_MEDIUM"
         justification="Gfx.TEXT_JUSTIFY_LEFT"
         color="Gfx.COLOR_RED" />
 
     <label id="distance_text"
-        x="88%"
+        x="90%"
         y="51%"
         font="Gfx.FONT_MEDIUM"
         justification="Gfx.TEXT_JUSTIFY_RIGHT"
         color="Gfx.COLOR_PURPLE" />
 
     <label id="pace_text"
-        x="88%"
+        x="90%"
         y="69%"
         font="Gfx.FONT_MEDIUM"
         justification="Gfx.TEXT_JUSTIFY_RIGHT"

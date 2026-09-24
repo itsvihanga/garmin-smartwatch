@@ -322,7 +322,7 @@ class SimpleView extends WatchUi.View {
         if (_paceIcon == null) { return; }
 
         dc.drawBitmap(
-            (dc.getWidth() * 0.17).toNumber(),
+            (dc.getWidth() * 0.12).toNumber(),
             (dc.getHeight() * 0.70).toNumber(),
             _paceIcon
         );
@@ -333,7 +333,7 @@ class SimpleView extends WatchUi.View {
 
         // Align the icon's visual centre with the heart-rate text baseline.
         dc.drawBitmap(
-            (dc.getWidth() * 0.15).toNumber(),
+            (dc.getWidth() * 0.12).toNumber(),
             (dc.getHeight() * 0.50).toNumber(),
             _heartRateIcon
         );

@@ -35,10 +35,9 @@ class SimpleViewLayoutTests(unittest.TestCase):
     def test_live_values_use_separate_left_and_right_columns(self):
         self.assertEqual("Gfx.TEXT_JUSTIFY_LEFT", self.labels["heartrate_text"]["justification"])
         self.assertEqual("Gfx.TEXT_JUSTIFY_RIGHT", self.labels["distance_text"]["justification"])
-        self.assertLess(
-            int(self.labels["heartrate_text"]["x"].rstrip("%")),
-            int(self.labels["distance_text"]["x"].rstrip("%")),
-        )
+        self.assertEqual("28%", self.labels["heartrate_text"]["x"])
+        self.assertEqual("90%", self.labels["distance_text"]["x"])
+        self.assertEqual("90%", self.labels["pace_text"]["x"])
 
     def test_cadence_status_and_range_have_safe_column_spacing(self):
         self.assertEqual("14%", self.labels["cadence_zone"]["x"])
@@ -48,6 +47,7 @@ class SimpleViewLayoutTests(unittest.TestCase):
 
     def test_metric_icons_are_drawn_on_their_text_rows(self):
         self.assertIn("Rez.Drawables.MainHeartRateIcon", self.view_source)
+        self.assertEqual(2, self.view_source.count("(dc.getWidth() * 0.12).toNumber()"))
         self.assertIn("(dc.getHeight() * 0.50).toNumber()", self.view_source)
         self.assertIn("(dc.getHeight() * 0.70).toNumber()", self.view_source)
         self.assertIn("MAIN_VIBRATION_ICON_BOTTOM_MARGIN = 0.05", self.view_source)
