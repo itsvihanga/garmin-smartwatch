@@ -40,8 +40,17 @@ class SimpleView extends WatchUi.View {
     }
     
     function onLayout(dc as Dc) as Void {
-        setLayout(Rez.Layouts.MainLayout(dc));
         var compact = dc.getWidth() < 300;
+        var mip260 = dc.getWidth() >= 260 && dc.getWidth() < 300;
+
+        // The 260x260 MIP devices use smaller native fonts than the 390x390
+        // AMOLED devices. Give them a dedicated, more legible text layout,
+        // while retaining the original compact layout on 240x240 watches.
+        setLayout(
+            mip260
+                ? Rez.Layouts.MainLayoutMIP260(dc)
+                : Rez.Layouts.MainLayout(dc)
+        );
         
         // Link UI variables to layout IDs
         _cadenceDisplay = findDrawableById("cadence_text");

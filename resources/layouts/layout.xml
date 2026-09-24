@@ -58,6 +58,70 @@
 
 </layout>
 
+<!--
+    260x260 MIP watches (for example FR255/FR955 and fēnix 7) need a
+    stronger typographic hierarchy than the higher-resolution AMOLED models.
+    Keeping this as a separate layout also prevents the larger fonts from
+    crowding the 240x240 compact products.
+-->
+<layout id="MainLayoutMIP260">
+    <label id="time_text"
+        x="center"
+        y="5%"
+        font="Gfx.FONT_LARGE"
+        justification="Gfx.TEXT_JUSTIFY_CENTER"
+        color="Gfx.COLOR_WHITE" />
+
+    <label id="cadence_text"
+        x="18%"
+        y="25%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_LEFT"
+        color="Gfx.COLOR_BLUE" />
+
+    <label id="cadence_percent"
+        x="86%"
+        y="25%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_RIGHT"
+        color="Gfx.COLOR_BLUE" />
+
+    <label id="cadence_zone"
+        x="13%"
+        y="38%"
+        font="Gfx.FONT_XTINY"
+        justification="Gfx.TEXT_JUSTIFY_LEFT"
+        color="Gfx.COLOR_WHITE" />
+
+    <label id="cadence_range"
+        x="90%"
+        y="38%"
+        font="Gfx.FONT_XTINY"
+        justification="Gfx.TEXT_JUSTIFY_RIGHT"
+        color="Gfx.COLOR_WHITE" />
+
+    <label id="heartrate_text"
+        x="30%"
+        y="51%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_LEFT"
+        color="Gfx.COLOR_RED" />
+
+    <label id="distance_text"
+        x="88%"
+        y="51%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_RIGHT"
+        color="Gfx.COLOR_PURPLE" />
+
+    <label id="pace_text"
+        x="88%"
+        y="69%"
+        font="Gfx.FONT_MEDIUM"
+        justification="Gfx.TEXT_JUSTIFY_RIGHT"
+        color="Gfx.COLOR_GREEN" />
+</layout>
+
 <!-- Watch face with date and time Layout -->
 <layout id="WatchFace">
     <label id="Date"            

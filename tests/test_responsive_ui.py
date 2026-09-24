@@ -31,6 +31,8 @@ class ResponsiveUiTests(unittest.TestCase):
     def test_main_screen_selects_compact_metric_icons(self):
         text = source(VIEWS / "SimpleView.mc")
         self.assertIn("var compact = dc.getWidth() < 300;", text)
+        self.assertIn("var mip260 = dc.getWidth() >= 260 && dc.getWidth() < 300;", text)
+        self.assertIn("Rez.Layouts.MainLayoutMIP260(dc)", text)
         for resource in (
             "PaceIconCompact",
             "MainHeartRateIconCompact",
@@ -91,6 +93,23 @@ class ResponsiveUiTests(unittest.TestCase):
         ):
             self.assertIn(f'id="{label_id}"', main)
         self.assertNotRegex(main, r'[xy]="\d+"')
+
+    def test_260_mip_layout_uses_larger_high_contrast_text(self):
+        layout = source(ROOT / "resources" / "layouts" / "layout.xml")
+        compact = layout.split('<layout id="MainLayoutMIP260">', 1)[1].split(
+            "</layout>", 1
+        )[0]
+
+        self.assertIn('id="time_text"', compact)
+        self.assertIn('font="Gfx.FONT_LARGE"', compact)
+        self.assertGreaterEqual(compact.count('font="Gfx.FONT_MEDIUM"'), 4)
+
+        for label_id in ("cadence_zone", "cadence_range"):
+            start = compact.index(f'id="{label_id}"')
+            end = compact.index("/>", start)
+            label = compact[start:end]
+            self.assertIn('font="Gfx.FONT_XTINY"', label)
+            self.assertIn('color="Gfx.COLOR_WHITE"', label)
 
 
 if __name__ == "__main__":
